@@ -43,6 +43,9 @@ spec:
           cpu: 150m
         limits:
           memory: 2Gi
+      tcp:
+      udp:
+        69: default/pxe-boot-sparks-codes
     defaultBackend:
       enabled: true
       image:

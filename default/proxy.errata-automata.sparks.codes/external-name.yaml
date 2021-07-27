@@ -1,9 +1,0 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: external-errata-automata-sparks-codes
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: errata-automata.sparks.codes
-spec:
-  type: ExternalName
-  externalName: sparks.codes
