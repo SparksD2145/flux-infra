@@ -15,9 +15,39 @@ spec:
         name: coredns-charts
         namespace: flux-system
       interval: 5m
-  values:
-    serviceType: "LoadBalancer"
-    service:
-      loadBalancerIP: 10.10.0.254
-      annotations:
-        metallb.universe.tf/allow-shared-ip: "DNS"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ext-dns-udp
+  namespace: kube-system
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "DNS"
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.0.254
+  ports:
+    - port: 53
+      targetPort: 53
+      protocol: UDP
+  selector:
+    k8s-app: kube-dns
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ext-dns-tcp
+  namespace: kube-system
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "DNS"
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.0.254
+  ports:
+    - port: 53
+      targetPort: 53
+      protocol: TCP
+  selector:
+    k8s-app: kube-dns
