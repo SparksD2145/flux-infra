@@ -4,6 +4,9 @@ kind: Certificate
 metadata:
   name: acme-crt-imake-software
   namespace: cert-manager
+  annotations:
+    reflector.v1.k8s.emberstack.com/secret-reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/secret-reflection-auto-enabled: "true"
 spec:
   secretName: acme-crt-secret-imake-software
   commonName: "*.imake.software"
@@ -19,6 +22,9 @@ kind: Certificate
 metadata:
   name: acme-crt-sparks-codes
   namespace: cert-manager
+  annotations:
+    reflector.v1.k8s.emberstack.com/secret-reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/secret-reflection-auto-enabled: "true"
 spec:
   secretName: acme-crt-secret-sparks-codes
   commonName: "*.sparks.codes"
