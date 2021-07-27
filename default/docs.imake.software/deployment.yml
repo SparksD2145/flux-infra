@@ -1,0 +1,68 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raneto-docs-imake-software
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: raneto-docs
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: raneto-docs
+    spec:
+      containers:
+        - name: raneto-docs-imake-software
+          image: docker.io/linuxserver/raneto
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: "/config"
+              subPath: "docs.imake.software/config"
+              name: nfsvol
+      volumes:
+        - name: nfsvol
+          persistentVolumeClaim:
+            claimName: nfs
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: raneto-docs-imake-software
+  labels:
+    run: my-nginx
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    run: raneto-docs
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-raneto
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+    - hosts:
+        - docs.imake.software
+      secretName: acme-crt-secret-imake-software
+  rules:
+    - host: docs.imake.software
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: raneto-docs-imake-software
+                port:
+                  number: 80

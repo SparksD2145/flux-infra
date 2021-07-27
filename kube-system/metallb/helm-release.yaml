@@ -1,0 +1,35 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: kube-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: metallb
+      version: 2.4.3
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    configInline:
+      peers:
+        - peer-address: 10.10.0.1
+          peer-asn: 64512
+          my-asn: 64512
+      address-pools:
+        - name: bgp
+          protocol: bgp
+          addresses:
+            - 10.11.0.0/16
+          avoid-buggy-ips: true
+        - name: dns-reserved
+          protocol: bgp
+          addresses:
+            - 10.10.0.254/32
+          avoid-buggy-ips: true
+          auto-assign: false

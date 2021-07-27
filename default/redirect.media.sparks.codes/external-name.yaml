@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-media-sparks-codes
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: media.sparks.codes
+spec:
+  type: ExternalName
+  externalName: sparks.codes
