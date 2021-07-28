@@ -1,0 +1,42 @@
+---
+apiVersion: openebs.io/v1alpha1
+kind: StoragePoolClaim
+metadata:
+  name: cstor-disk-pool-lng-whiskey
+  namespace: openebs
+  annotations:
+    cas.openebs.io/config: |
+      - name: PoolResourceRequests
+        value: |-
+            memory: 4Gi
+      - name: PoolResourceLimits
+        value: |-
+            memory: 8Gi
+spec:
+  name: cstor-disk-pool-lng-whiskey
+  type: disk
+  poolSpec:
+    poolType: striped
+  blockDevices:
+    blockDeviceList:
+      - blockdevice-5ae3eb48589abfe78343a6c8d7b7a657
+      - blockdevice-d990ec24bc181a3a64cc745f1d3a3609
+      - blockdevice-ac9b357270d05e5165ddb5644ac833a8
+      - blockdevice-94d2c67f20485e78616408869d6ce46b
+      - blockdevice-4299c6b3b154262bbfa242fafde6015f
+      - blockdevice-400b0d62cdb05c91696e32b506ce3850
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-cstor-disk-lng-whiskey
+  annotations:
+    openebs.io/cas-type: cstor
+    cas.openebs.io/config: |
+      - name: StoragePoolClaim
+        value: "cstor-disk-pool-lng"
+      - name: ReplicaCount
+        value: "1"
+provisioner: openebs.io/provisioner-iscsi
+reclaimPolicy: Retain
