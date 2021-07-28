@@ -8,4 +8,5 @@ resources:
   - nginx-ingress
   - reflector
   - sources
+  - storage
   - system-upgrade
