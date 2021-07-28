@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "fedora"
+  labels:
+    app: containerized-data-importer
+  annotations:
+    cdi.kubevirt.io/storage.import.endpoint: "https://github.com/home-assistant/operating-system/releases/download/6.1/haos_ova-6.1.qcow2.xz"
+spec:
+  storageClassName: openebs-cstor-disk-lng-whiskey
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
