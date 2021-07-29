@@ -27,3 +27,4 @@ spec:
           addresses:
             - 10.11.0.0/16
           avoid-buggy-ips: true
+          auto-assign: false
