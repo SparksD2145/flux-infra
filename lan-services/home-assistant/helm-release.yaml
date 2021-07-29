@@ -1,0 +1,39 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: lan-services
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: home-assistant
+      version: 9.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        accessMode: "ReadWriteOnce"
+        size: 4G
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.org/websocket-services: home-assistant
+        hosts:
+          - host: home.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - home.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
