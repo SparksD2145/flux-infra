@@ -21,6 +21,7 @@ resources:
   - ./helm-repos/nicolaswilde-charts.yaml
   - ./helm-repos/openebs-charts.yaml
   - ./helm-repos/prometheus-community-charts.yaml
+  - ./helm-repos/pihole-charts.yaml
   - ./helm-repos/rancher-charts.yaml
   - ./helm-repos/raphaels-charts.yaml
   - ./helm-repos/sparks-helm-repo.yaml

@@ -27,9 +27,9 @@ spec:
           addresses:
             - 10.11.0.0/16
           avoid-buggy-ips: true
-        - name: dns-reserved
+        - name: lan-systems-reserved
           protocol: bgp
           addresses:
-            - 10.10.0.254/32
+            - 10.10.0.32/27
           avoid-buggy-ips: true
           auto-assign: false
