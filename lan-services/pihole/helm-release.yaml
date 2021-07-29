@@ -19,6 +19,8 @@ spec:
     DNS1: "10.10.0.1"
     DNS2: "8.8.4.4"
 
+    virtualHost: adblock.sparks.codes
+
     serviceDhcp:
       enabled: false
 
@@ -26,13 +28,13 @@ spec:
       enabled: true
 
     serviceWeb:
-      loadBalancerIP: 10.10.0.32
+      loadBalancerIP: 10.11.0.2
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
 
     serviceDns:
-      loadBalancerIP: 10.10.0.32
+      loadBalancerIP: 10.11.0.2
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
