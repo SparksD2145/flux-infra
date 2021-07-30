@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - mosquitto-mqtt/helm-release.yaml
   - zigbee2mqtt/helm-release.yaml
-  - zwavejs2mqtt/helm-release.yaml
+  - zwavejs2mqtt/deployment.yaml
   - ha-storage.yaml
   - helm-release.yaml

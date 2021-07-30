@@ -6,7 +6,7 @@ metadata:
   namespace: lan-services
 spec:
   capacity:
-    storage: 4Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteMany
   nfs:
