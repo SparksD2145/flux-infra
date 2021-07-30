@@ -30,6 +30,10 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
+          nginx.org/websocket-services: zigbee2mqtt
+          nginx.org/proxy-connect-timeout: 4200s
+          nginx.org/proxy-read-timeout: 4200s
+          nginx.org/proxy-send-timeout: 4200s
         hosts:
           - host: zigbee2mqtt.sparks.codes
             paths:
@@ -49,10 +53,12 @@ spec:
         mountPath: /data
         accessMode: "ReadWriteOnce"
         size: 400M
+        existingClaim: nfs-ha
+        subPath: zigbee2mqtt.sparks.codes
       usb:
         enabled: true
         type: hostPath
-        hostPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_22_98_92_3F-if00-port0
+        hostPath: /dev/ttyUSB0
 
     config:
       # These will be applied ONLY on first run
@@ -83,7 +89,7 @@ spec:
       # USB / Serial settings
       serial:
         # Location of your zigbee device
-        port: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_22_98_92_3F-if00-port0
+        port: /dev/ttyUSB0
         # Optional: adapter type, not needed unless you are experiencing problems (options: zstack, deconz)
         # adapter: deconz
 

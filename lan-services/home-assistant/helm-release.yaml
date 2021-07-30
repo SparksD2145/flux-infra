@@ -30,6 +30,9 @@ spec:
         annotations:
           kubernetes.io/ingress.class: nginx
           nginx.org/websocket-services: home-assistant
+          nginx.org/proxy-connect-timeout: 4200s
+          nginx.org/proxy-read-timeout: 4200s
+          nginx.org/proxy-send-timeout: 4200s
         hosts:
           - host: home.sparks.codes
             paths:
