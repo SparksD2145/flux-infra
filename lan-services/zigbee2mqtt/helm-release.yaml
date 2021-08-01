@@ -32,10 +32,6 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
-          nginx.org/websocket-services: zigbee2mqtt
-          nginx.org/proxy-connect-timeout: 4200s
-          nginx.org/proxy-read-timeout: 4200s
-          nginx.org/proxy-send-timeout: 4200s
         hosts:
           - host: zigbee2mqtt.sparks.codes
             paths:
