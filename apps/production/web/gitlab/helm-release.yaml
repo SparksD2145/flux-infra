@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: gitlab
+      version: 5.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    global:
+      hosts:
+        domain: imake.software
+        https: true
+        gitlab:
+          name: gitlab.imake.software
+        registry:
+          name: registry.imake.software
+        pages:
+          name: pages.imake.software
+      ingress:
+        class: nginx
+        configureCertmanager: false
+        tls:
+          enabled: true
+          secretName: acme-crt-imake-software
+      initialRootPassword:
+        secret: gitlab-initial-root-password
+        key: password
+      time_zone: America/Chicago
+      email:
+        from: "no-reply@gitlab.imake.software"
+        display_name: GitLab
+        reply_to: ""
+        subject_suffix: ""
+        smime:
+          enabled: false
+          secretName: ""
+          keyName: "tls.key"
+          certName: "tls.crt"
+    certmanager:
+      installCRDs: false
+      install: false
+      rbac:
+        create: false
+    nginx-ingress:
+      enabled: false
