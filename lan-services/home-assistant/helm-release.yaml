@@ -30,7 +30,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: nfs-ha
+        existingClaim: nfs
         subPath: home.sparks.codes
         mountPath: /config
         accessMode: "ReadWriteOnce"

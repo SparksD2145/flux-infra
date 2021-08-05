@@ -51,7 +51,7 @@ spec:
         mountPath: /data
         accessMode: "ReadWriteOnce"
         size: 400M
-        existingClaim: nfs-ha
+        existingClaim: nfs
         subPath: zigbee2mqtt.sparks.codes
       usb:
         enabled: true

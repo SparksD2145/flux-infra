@@ -76,7 +76,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: nfs-ha
+            claimName: nfs
         - name: usb
           hostPath:
             path: /dev/ttyACM0
