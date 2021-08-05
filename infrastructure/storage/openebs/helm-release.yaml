@@ -18,3 +18,5 @@ spec:
   values:
     crd:
       enableInstall: true
+    webhook:
+      enabled: false
