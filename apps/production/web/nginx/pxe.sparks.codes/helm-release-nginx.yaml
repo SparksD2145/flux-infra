@@ -31,6 +31,8 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/server-snippet: |
+          autoindex on;
       hostname: "pxe.sparks.codes"
       extraTls:
         - hosts:
