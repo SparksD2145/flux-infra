@@ -46,6 +46,24 @@ spec:
           secretName: ""
           keyName: "tls.key"
           certName: "tls.crt"
+      gitlab:
+        gitaly:
+          persistence:
+            storageClass: openebs-cstor-disk-lng
+            size: 50Gi
+      postgresql:
+        persistence:
+          storageClass: openebs-cstor-disk-lng
+          size: 8Gi
+      minio:
+        persistence:
+          storageClass: openebs-cstor-disk-lng
+          size: 10Gi
+      redis:
+        master:
+          persistence:
+            storageClass: openebs-cstor-disk-lng
+            size: 5Gi
     certmanager:
       installCRDs: false
       install: false
