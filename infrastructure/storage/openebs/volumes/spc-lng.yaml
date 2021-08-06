@@ -2,7 +2,7 @@
 apiVersion: openebs.io/v1alpha1
 kind: StoragePoolClaim
 metadata:
-  name: cstor-disk-pool-lng-whiskey
+  name: cstor-disk-pool-lng
   namespace: openebs
   annotations:
     cas.openebs.io/config: |
@@ -13,23 +13,24 @@ metadata:
         value: |-
             memory: 8Gi
 spec:
-  name: cstor-disk-pool-lng-whiskey
+  name: cstor-disk-pool-lng
   type: disk
   poolSpec:
     poolType: striped
   blockDevices:
-    blockDeviceList: []
+    blockDeviceList:
+      - blockdevice-87fe8fd73f6b968f95e0e0d23d52bf10
 
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: openebs-cstor-disk-lng-whiskey
+  name: openebs-cstor-disk-lng
   annotations:
     openebs.io/cas-type: cstor
     cas.openebs.io/config: |
       - name: StoragePoolClaim
-        value: "cstor-disk-pool-lng-whiskey"
+        value: "cstor-disk-pool-lng"
       - name: ReplicaCount
         value: "1"
 provisioner: openebs.io/provisioner-iscsi

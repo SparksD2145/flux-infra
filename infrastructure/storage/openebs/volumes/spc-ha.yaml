@@ -19,7 +19,22 @@ spec:
   poolSpec:
     poolType: striped
   blockDevices:
-    blockDeviceList: []
+    blockDeviceList:
+      - blockdevice-5c1fb4b8b6d3552a2a0c11bfe11aa928
+      - blockdevice-310719c5958622955a403a4da48f6db6
+      - blockdevice-504f61f2f38186cc5fbfab81a3ddcc2b
+      - blockdevice-684fc0e67501c223abb7e4494416dc91
+      - blockdevice-845a2a40249700d9cf7393fb57485c4a
+      - blockdevice-8ed6db63c0221bf62cf61df39e1f4af7
+      - blockdevice-a980fdbe678e9f47cc4f5b2d65441816
+      - blockdevice-dfa0ae3c1c3e3461b1f48044073da781
+      - blockdevice-400b0d62cdb05c91696e32b506ce3850
+      - blockdevice-4299c6b3b154262bbfa242fafde6015f
+      - blockdevice-dd837bba5c1545807aa594d54d156d2d
+      - blockdevice-8d0041fc5f741a3302f38a935e162cc1
+      - blockdevice-9845b63b1a794ce09364f05b5d13e2f9
+      - blockdevice-690f7329b7bc31491974b8b95fdd6ceb
+      - blockdevice-d14258f5405ef778749347527c1b44db
 provisioner: openebs.io/provisioner-iscsi
 
 ---
