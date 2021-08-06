@@ -71,3 +71,22 @@ spec:
         create: false
     nginx-ingress:
       enabled: false
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitlab-ssh-ingress
+  namespace: gitlab
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  selector:
+    app: gitlab-shell
+    release: gitlab
+  ports:
+    - name: ssh
+      port: 22
+      protocol: TCP
+      targetPort: 2222

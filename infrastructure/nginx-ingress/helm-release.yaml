@@ -43,6 +43,8 @@ spec:
           cpu: 150m
         limits:
           memory: 2Gi
+      tcp:
+        22: gitlab/gitlab-ssh-ingress:22
     defaultBackend:
       enabled: true
       image:
