@@ -27,11 +27,11 @@ spec:
         pages:
           name: pages.imake.software
       ingress:
-        class: nginx
         configureCertmanager: false
+        class: nginx
         tls:
           enabled: true
-          secretName: acme-crt-imake-software
+          secretName: acme-crt-secret-imake-software
       initialRootPassword:
         secret: gitlab-initial-root-password
         key: password
@@ -46,24 +46,23 @@ spec:
           secretName: ""
           keyName: "tls.key"
           certName: "tls.crt"
-      gitlab:
-        gitaly:
-          persistence:
-            storageClass: openebs-cstor-disk-lng
-            size: 50Gi
-      postgresql:
+    gitaly:
+      persistence:
+        storageClass: openebs-cstor-disk-lng
+        size: 50Gi
+    postgresql:
+      persistence:
+        storageClass: openebs-cstor-disk-lng
+        size: 8Gi
+    minio:
+      persistence:
+        storageClass: openebs-cstor-disk-lng
+        size: 10Gi
+    redis:
+      master:
         persistence:
           storageClass: openebs-cstor-disk-lng
-          size: 8Gi
-      minio:
-        persistence:
-          storageClass: openebs-cstor-disk-lng
-          size: 10Gi
-      redis:
-        master:
-          persistence:
-            storageClass: openebs-cstor-disk-lng
-            size: 5Gi
+          size: 5Gi
     certmanager:
       installCRDs: false
       install: false

@@ -19,7 +19,7 @@ spec:
     poolType: striped
   blockDevices:
     blockDeviceList:
-      - blockdevice-87fe8fd73f6b968f95e0e0d23d52bf10
+      - blockdevice-c817366236deac581aa6f8f7accfe696
 
 ---
 apiVersion: storage.k8s.io/v1
@@ -32,6 +32,6 @@ metadata:
       - name: StoragePoolClaim
         value: "cstor-disk-pool-lng"
       - name: ReplicaCount
-        value: "1"
+        value: "0"
 provisioner: openebs.io/provisioner-iscsi
 reclaimPolicy: Retain

@@ -43,6 +43,9 @@ spec:
           cpu: 150m
         limits:
           memory: 2Gi
+      autoscaling:
+        enabled: true
+        maxReplicas: 4
     defaultBackend:
       enabled: true
       image:
@@ -54,3 +57,5 @@ spec:
           cpu: 25m
         limits:
           memory: 350Mi
+    tcp:
+      22: "gitlab/gitlab-gitlab-shell:22"

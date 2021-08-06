@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      tag: 1.21.0
     env:
       TZ: "America/Chicago"
     affinity:
