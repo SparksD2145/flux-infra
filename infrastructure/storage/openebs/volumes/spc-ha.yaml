@@ -21,8 +21,8 @@ spec:
         kubernetes.io/hostname: "foxtrot"
       dataRaidGroups:
         - blockDevices:
-            - blockDeviceName: blockdevice-c3e68034a4d73f34a4aea85abbcef05f
-            - blockDeviceName: blockdevice-1427e6877891ac9b3262c53a885ce252
+            - blockDeviceName: blockdevice-1ecd7eaa1058f1dfbc45b54b014a7fd1
+            - blockDeviceName: blockdevice-3e003568b68db9ba09858a3d30eef77d
       poolConfig:
         dataRaidGroupType: "stripe"
 
@@ -30,7 +30,7 @@ spec:
         kubernetes.io/hostname: "lambda"
       dataRaidGroups:
         - blockDevices:
-            - blockDeviceName: blockdevice-d6f87f241d1501115dd62b833488f089
+            - blockDeviceName: blockdevice-ebc7bd0845fe285d38fab8e3fa097638
       poolConfig:
         dataRaidGroupType: "stripe"
 
@@ -38,7 +38,7 @@ spec:
     #     kubernetes.io/hostname: "omega"
     #   dataRaidGroups:
     #     - blockDevices:
-    #         - blockDeviceName: "blockdevice-c817366236deac581aa6f8f7accfe696"
+    #         - blockDeviceName: "blockdevice-ceb962bf5bbd347bcde9f5a5286a84cc"
     #   poolConfig:
     #     dataRaidGroupType: "stripe"
 

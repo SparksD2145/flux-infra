@@ -48,20 +48,20 @@ spec:
           certName: "tls.crt"
     gitaly:
       persistence:
-        storageClass: openebs-cstor-disk-lng
+        storageClass: cstor-sc-ha
         size: 50Gi
     postgresql:
       persistence:
-        storageClass: openebs-cstor-disk-lng
+        storageClass: cstor-sc-ha
         size: 8Gi
     minio:
       persistence:
-        storageClass: openebs-cstor-disk-lng
+        storageClass: cstor-sc-ha
         size: 10Gi
     redis:
       master:
         persistence:
-          storageClass: openebs-cstor-disk-lng
+          storageClass: cstor-sc-ha
           size: 5Gi
     certmanager:
       installCRDs: false

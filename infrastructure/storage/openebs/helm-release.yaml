@@ -19,7 +19,7 @@ spec:
     crd:
       enableInstall: true
     webhook:
-      enabled: true
+      enabled: false
     cstor:
       enabled: true
     localprovisioner:
