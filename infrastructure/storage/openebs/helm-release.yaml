@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: openebs
-      version: 2.11.0
+      version: 2.11.4
       sourceRef:
         kind: HelmRepository
         name: openebs-charts
@@ -19,4 +19,8 @@ spec:
     crd:
       enableInstall: true
     webhook:
-      enabled: false
+      enabled: true
+    cstor:
+      enabled: true
+    localprovisioner:
+      enabled: true

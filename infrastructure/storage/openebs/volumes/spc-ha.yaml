@@ -1,53 +1,56 @@
----
-apiVersion: openebs.io/v1alpha1
-kind: StoragePoolClaim
+apiVersion: cstor.openebs.io/v1
+kind: CStorPoolCluster
 metadata:
-  name: cstor-disk-pool-ha
+  name: cspc-ha
   namespace: openebs
-  annotations:
-    cas.openebs.io/config: |
-      - name: PoolResourceRequests
-        value: |-
-            memory: 4Gi
-      - name: PoolResourceLimits
-        value: |-
-            memory: 8Gi
 spec:
-  name: cstor-disk-pool-ha
-  type: disk
-  maxPools: 4
-  poolSpec:
-    poolType: striped
-  blockDevices:
-    blockDeviceList:
-      - blockdevice-684fc0e67501c223abb7e4494416dc91
-      - blockdevice-7416bd5abdb2698b8f9f9de41065e6c0
-      - blockdevice-a587418d9b13c5f79e82114ce3837ba3
-      - blockdevice-ff8af16f8dc06ac936b835790be48180
-      - blockdevice-8d0041fc5f741a3302f38a935e162cc1
-      - blockdevice-5c9d20fc445ca8868a27044c954c0b03
-      - blockdevice-f294158dba14d36df10ae2185bbdbc6e
-      - blockdevice-13bf07ce3686ad053997ccb2363f71f0
-      - blockdevice-9cf2457bee08d84b373ba7aec59d554b
-      - blockdevice-90e7d1fab02aabeb00e1aa43039793da
-      - blockdevice-265dfe55e45dcbc0eca8e331839f1d3c
-      - blockdevice-1c44dfed358bd4ba8c37422d4ecc05d8
-      - blockdevice-4299c6b3b154262bbfa242fafde6015f
-      - blockdevice-400b0d62cdb05c91696e32b506ce3850
-      - blockdevice-dd837bba5c1545807aa594d54d156d2d
-provisioner: openebs.io/provisioner-iscsi
+  pools:
+    - nodeSelector:
+        kubernetes.io/hostname: "whiskey"
+      dataRaidGroups:
+        - blockDevices:
+            - blockDeviceName: blockdevice-4299c6b3b154262bbfa242fafde6015f
+            - blockDeviceName: blockdevice-400b0d62cdb05c91696e32b506ce3850
+            - blockDeviceName: blockdevice-dd837bba5c1545807aa594d54d156d2d
+            - blockDeviceName: blockdevice-83f7e24735158a13b233468ac3fd05c7
+            - blockDeviceName: blockdevice-94d2c67f20485e78616408869d6ce46b
+      poolConfig:
+        dataRaidGroupType: "stripe"
+
+    - nodeSelector:
+        kubernetes.io/hostname: "foxtrot"
+      dataRaidGroups:
+        - blockDevices:
+            - blockDeviceName: blockdevice-c3e68034a4d73f34a4aea85abbcef05f
+            - blockDeviceName: blockdevice-1427e6877891ac9b3262c53a885ce252
+      poolConfig:
+        dataRaidGroupType: "stripe"
+
+    - nodeSelector:
+        kubernetes.io/hostname: "lambda"
+      dataRaidGroups:
+        - blockDevices:
+            - blockDeviceName: blockdevice-d6f87f241d1501115dd62b833488f089
+      poolConfig:
+        dataRaidGroupType: "stripe"
+
+    # - nodeSelector:
+    #     kubernetes.io/hostname: "omega"
+    #   dataRaidGroups:
+    #     - blockDevices:
+    #         - blockDeviceName: "blockdevice-c817366236deac581aa6f8f7accfe696"
+    #   poolConfig:
+    #     dataRaidGroupType: "stripe"
 
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: openebs-cstor-disk-ha
-  annotations:
-    openebs.io/cas-type: cstor
-    cas.openebs.io/config: |
-      - name: StoragePoolClaim
-        value: "cstor-disk-pool-ha"
-      - name: ReplicaCount
-        value: "4"
-provisioner: openebs.io/provisioner-iscsi
+  name: cstor-sc-ha
+provisioner: cstor.csi.openebs.io
+allowVolumeExpansion: true
+parameters:
+  replicaCount: "2"
+  cstorPoolCluster: "cspc-ha"
+  cas-type: "cstor"
 reclaimPolicy: Retain
