@@ -16,6 +16,7 @@ resources:
   - ./helm-repos/k8s-at-home-charts.yaml
   - ./helm-repos/kubernetes-stable-charts.yaml
   - ./helm-repos/minio-charts.yaml
+  - ./helm-repos/minecraft-charts.yaml
   - ./helm-repos/mlohr-charts.yaml
   - ./helm-repos/next-cloud-charts.yaml
   - ./helm-repos/nicolaswilde-charts.yaml
