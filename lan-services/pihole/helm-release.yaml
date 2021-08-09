@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: pihole
-      version: 2.0.0
+      version: 2.0.1
       sourceRef:
         kind: HelmRepository
         name: pihole-charts
@@ -17,7 +17,6 @@ spec:
       interval: 5m
   values:
     DNS1: "10.10.0.1"
-    DNS2: "8.8.4.4"
 
     virtualHost: adblock.sparks.codes
 

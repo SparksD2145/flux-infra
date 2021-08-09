@@ -46,21 +46,28 @@ spec:
           secretName: ""
           keyName: "tls.key"
           certName: "tls.crt"
-    gitaly:
-      persistence:
-        storageClass: cstor-sc-ha
-        size: 50Gi
+      minio:
+        replicas: 2
+    gitlab:
+      gitaly:
+        persistence:
+          volumeName: gitlab-gitaly-ha
+          storageClass: cstor-sc-ha
+          size: 75Gi
     postgresql:
       persistence:
+        volumeName: gitlab-postgresql-ha
         storageClass: cstor-sc-ha
         size: 8Gi
     minio:
       persistence:
-        storageClass: cstor-sc-ha
-        size: 10Gi
+        #volumeName: gitlab-minio-ha
+        ##storageClass: cstor-sc-ha
+        #size: 10Gi
     redis:
       master:
         persistence:
+          volumeName: gitlab-redis-ha
           storageClass: cstor-sc-ha
           size: 5Gi
     certmanager:

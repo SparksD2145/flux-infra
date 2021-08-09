@@ -34,13 +34,13 @@ spec:
       poolConfig:
         dataRaidGroupType: "stripe"
 
-    # - nodeSelector:
-    #     kubernetes.io/hostname: "omega"
-    #   dataRaidGroups:
-    #     - blockDevices:
-    #         - blockDeviceName: "blockdevice-ceb962bf5bbd347bcde9f5a5286a84cc"
-    #   poolConfig:
-    #     dataRaidGroupType: "stripe"
+    #- nodeSelector:
+    #    kubernetes.io/hostname: "omega"
+    #  dataRaidGroups:
+    #    - blockDevices:
+    #        - blockDeviceName: "blockdevice-ceb962bf5bbd347bcde9f5a5286a84cc"
+    #  poolConfig:
+    #    dataRaidGroupType: "stripe"
 
 ---
 apiVersion: storage.k8s.io/v1
