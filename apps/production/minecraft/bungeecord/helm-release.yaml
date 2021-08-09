@@ -31,7 +31,7 @@ spec:
             testing.mc.sparks.codes: testing
           ping_passthrough: true
           bind_local_address: true
-          host: 0.0.0.0:25565
+          host: 0.0.0.0:25577
           priorities:
             - testing
           max_players: -1
