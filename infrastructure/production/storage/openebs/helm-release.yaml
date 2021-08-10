@@ -23,4 +23,4 @@ spec:
     cstor:
       enabled: true
     localprovisioner:
-      enabled: false
+      enabled: true
