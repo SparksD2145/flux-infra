@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/storage/openebs
+  path: ./infrastructure/production/storage/openebs
   prune: true
   validation: client
 
@@ -25,6 +25,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/storage/openebs/volumes
+  path: ./infrastructure/production/storage/openebs/volumes
   prune: true
   validation: client
