@@ -58,12 +58,12 @@ spec:
       persistence:
         volumeName: gitlab-postgresql-ha
         storageClass: cstor-sc-ha
-        size: 8Gi
-    minio:
-      persistence:
-        #volumeName: gitlab-minio-ha
-        ##storageClass: cstor-sc-ha
-        #size: 10Gi
+        size: 10Gi
+    #minio:
+    #  persistence:
+    #    volumeName: gitlab-minio-ha
+    #    storageClass: cstor-sc-ha
+    #    size: 15Gi
     redis:
       master:
         persistence:
