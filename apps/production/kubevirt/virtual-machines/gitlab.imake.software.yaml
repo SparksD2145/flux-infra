@@ -1,20 +1,38 @@
 apiVersion: kubevirt.io/v1alpha3
-kind: VirtualMachineInstance
+kind: VirtualMachine
 metadata:
-  name: vmi-gitlab-imake-software
+  name: vm-gitlab
 spec:
-  terminationGracePeriodSeconds: 30
-  domain:
-    resources:
-      requests:
-        memory: 4096M
-    devices:
-      disks:
-        - name: ubuntu-iso
-          cdrom:
-            readonly: true
-            bus: sata
-  volumes:
-    - name: ubuntu-iso
-      persistentVolumeClaim:
-        claimName: ubuntu-20-04-iso
+  running: false
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: vm-gitlab
+    spec:
+      domain:
+        resources:
+          requests:
+            memory: 4096M
+        devices:
+          disks:
+            - name: gitlab-hdd
+              disk:
+                bus: virtio
+      volumes:
+        - name: gitlab-hdd
+          persistentVolumeClaim:
+            claimName: gitlab-hdd
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-hdd
+spec:
+  storageClassName: openebs-hostpath
+  resources:
+    requests:
+      storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
