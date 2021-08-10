@@ -6,5 +6,5 @@ resources:
   - cdi/cdi-cr.yaml
   - cdi/cdi-operator.yaml
   - cdi/ingress.yaml
-  - os-images
-  - virtual-machines
+  #- os-images
+  #- virtual-machines
