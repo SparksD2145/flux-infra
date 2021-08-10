@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ubuntu-20-04-iso
+  namespace: kubevirt
+  labels:
+    app: containerized-data-importer
+  annotations:
+    cdi.kubevirt.io/storage.import.endpoint: "https://releases.ubuntu.com/20.04.2/ubuntu-20.04.2-live-server-amd64.iso"
+spec:
+  storageClassName: cstor-sc-ha
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

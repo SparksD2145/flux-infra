@@ -1,0 +1,20 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachineInstance
+metadata:
+  name: vmi-gitlab-imake-software
+spec:
+  terminationGracePeriodSeconds: 30
+  domain:
+    resources:
+      requests:
+        memory: 4096M
+    devices:
+      disks:
+        - name: ubuntu-iso
+          cdrom:
+            readonly: true
+            bus: sata
+  volumes:
+    - name: ubuntu-iso
+      persistentVolumeClaim:
+        claimName: ubuntu-20-04-iso
