@@ -21,4 +21,4 @@ spec:
     webhook:
       enabled: false
     localprovisioner:
-      enabled: true
+      enabled: false
