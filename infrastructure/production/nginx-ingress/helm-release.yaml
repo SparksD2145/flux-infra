@@ -57,5 +57,3 @@ spec:
           cpu: 25m
         limits:
           memory: 350Mi
-    tcp:
-      22: "gitlab/gitlab-gitlab-shell:22"
