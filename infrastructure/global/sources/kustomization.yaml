@@ -25,5 +25,6 @@ resources:
   - ./helm-repos/pihole-charts.yaml
   - ./helm-repos/rancher-charts.yaml
   - ./helm-repos/raphaels-charts.yaml
+  - ./helm-repos/rook-charts.yaml
   - ./helm-repos/sparks-helm-repo.yaml
   - ./helm-repos/vmware-tanzu-charts.yaml
