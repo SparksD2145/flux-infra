@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - web
   - kubevirt
+  - gitlab
   - minecraft

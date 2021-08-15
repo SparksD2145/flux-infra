@@ -39,12 +39,12 @@ spec:
     persistence:
       dataDir:
         enabled: true
-    #extraVolumes:
-    #  - volumeMounts:
-    #      - name: nfs
-    #        mountPath: /data
-    #        subPath: "mc.sparks.codes/cwh11"
-    #    volumes:
-    #      - name: nfs
-    #        persistentVolumeClaim:
-    #          claimName: nfs
+    extraVolumes:
+      - volumeMounts:
+          - name: nfs
+            mountPath: /data
+            subPath: "mc.sparks.codes/cwh11"
+        volumes:
+          - name: nfs
+            persistentVolumeClaim:
+              claimName: nfs

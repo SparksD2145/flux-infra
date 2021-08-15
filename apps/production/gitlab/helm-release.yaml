@@ -47,28 +47,29 @@ spec:
           keyName: "tls.key"
           certName: "tls.crt"
       minio:
+        enabled: false
         replicas: 2
     gitlab:
       gitaly:
         persistence:
           volumeName: gitlab-gitaly-ha
-          storageClass: cstor-sc-ha
+          storageClass: ceph-block
           size: 75Gi
     postgresql:
       persistence:
         volumeName: gitlab-postgresql-ha
-        storageClass: cstor-sc-ha
+        storageClass: ceph-block
         size: 8Gi
     minio:
       persistence:
-        #volumeName: gitlab-minio-ha
-        ##storageClass: cstor-sc-ha
-        #size: 10Gi
+        volumeName: gitlab-minio-ha
+        storageClass: ceph-block
+        size: 10Gi
     redis:
       master:
         persistence:
           volumeName: gitlab-redis-ha
-          storageClass: cstor-sc-ha
+          storageClass: ceph-block
           size: 5Gi
     certmanager:
       installCRDs: false
@@ -77,3 +78,17 @@ spec:
         create: false
     nginx-ingress:
       enabled: false
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-minio
+  namespace: gitlab
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ceph-block
+  accessModes:
+    - ReadWriteOnce
