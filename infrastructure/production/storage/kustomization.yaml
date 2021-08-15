@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - standalone/nfs-pv.yaml
   - rook
-  #- openebs
