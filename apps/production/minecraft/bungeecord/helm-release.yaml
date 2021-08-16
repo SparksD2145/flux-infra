@@ -22,32 +22,33 @@ spec:
       loadBalancerIP: 10.11.2.1
       config: |
         listeners:
-        - query_port: 25577
-          motd: mc.sparks.codes
-          tab_list: SERVER
-          query_enabled: false
-          proxy_protocol: false
-          forced_hosts:
-            testing.mc.sparks.codes: testing
-          ping_passthrough: true
-          bind_local_address: true
-          host: 0.0.0.0:25577
-          priorities:
-            - testing
-          max_players: -1
-          tab_size: 60
-          force_default_server: false
+          - query_port: 25577
+            motd: mc.sparks.codes
+            tab_list: SERVER
+            query_enabled: false
+            proxy_protocol: false
+            forced_hosts:
+              cwh11.mc.sparks.codes: cwh11
+              testing.mc.sparks.codes: testing
+            ping_passthrough: true
+            bind_local_address: true
+            host: 0.0.0.0:25577
+            priorities:
+              - cwh11
+            max_players: -1
+            tab_size: 60
+            force_default_server: false
         remote_ping_cache: -1
         network_compression_threshold: 256
         permissions:
           default:
-          - bungeecord.command.server
-          - bungeecord.command.list
+            - bungeecord.command.server
+            - bungeecord.command.list
           admin:
-          - bungeecord.command.alert
-          - bungeecord.command.end
-          - bungeecord.command.ip
-          - bungeecord.command.reload
+            - bungeecord.command.alert
+            - bungeecord.command.end
+            - bungeecord.command.ip
+            - bungeecord.command.reload
         log_pings: true
         connection_throttle_limit: 3
         server_connect_timeout: 5000
@@ -57,7 +58,7 @@ spec:
         ip_forward: true
         groups:
           SuperDigDug:
-          - admin
+            - admin
         remote_ping_timeout: 5000
         connection_throttle: 4000
         log_commands: false
@@ -65,9 +66,17 @@ spec:
         online_mode: true
         forge_support: false
         disabled_commands:
-        - disabledcommandhere
+          - disabledcommandhere
         servers:
           testing:
             motd: testing.mc.sparks.codes
             address: 10.11.2.2:25565
+            restricted: false
+          superdigdug:
+            motd: superdigdug.mc.sparks.codes
+            address: 10.10.2.2:25566
+            restricted: false
+          cwh11:
+            motd: cwh11.mc.sparks.codes
+            address: 10.10.2.2:25567
             restricted: false

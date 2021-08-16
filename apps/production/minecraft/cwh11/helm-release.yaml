@@ -37,14 +37,6 @@ spec:
       serviceType: LoadBalancer
       loadBalancerIP: 10.11.2.2
     persistence:
+      storageClass: ceph-block
       dataDir:
         enabled: true
-    extraVolumes:
-      - volumeMounts:
-          - name: nfs
-            mountPath: /data
-            subPath: "mc.sparks.codes/cwh11"
-        volumes:
-          - name: nfs
-            persistentVolumeClaim:
-              claimName: nfs
