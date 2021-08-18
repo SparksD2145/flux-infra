@@ -16,7 +16,7 @@ spec:
     spec:
       # renovate: registryUrl=https://kubernetes.github.io/nginx-ingress
       chart: ingress-nginx
-      version: 3.34.0
+      version: 3.35.0
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx-charts
@@ -39,10 +39,10 @@ spec:
         default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
       resources:
         requests:
-          memory: 1Gi
-          cpu: 150m
-        limits:
           memory: 2Gi
+          cpu: 200m
+        limits:
+          memory: 4Gi
       autoscaling:
         enabled: true
         maxReplicas: 4
@@ -57,3 +57,5 @@ spec:
           cpu: 25m
         limits:
           memory: 350Mi
+    tcp:
+      "22": "gitlab/gitlab-gitlab-shell:22"
