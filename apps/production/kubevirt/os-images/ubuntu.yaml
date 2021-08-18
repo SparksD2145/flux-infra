@@ -7,7 +7,7 @@ metadata:
   annotations:
     cdi.kubevirt.io/storage.import.endpoint: "https://releases.ubuntu.com/20.04.2/ubuntu-20.04.2-live-server-amd64.iso"
 spec:
-  storageClassName: openebs-hostpath
+  storageClassName: ceph-block
   accessModes:
     - ReadWriteOnce
   resources:

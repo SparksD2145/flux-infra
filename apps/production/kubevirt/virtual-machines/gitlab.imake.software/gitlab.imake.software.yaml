@@ -15,13 +15,22 @@ spec:
             memory: 4096M
         devices:
           disks:
+            - name: ubuntu-iso
+              bootOrder: 1
+              cdrom:
+                readonly: true
+                bus: sata
             - name: gitlab-hdd
+              bootOrder: 2
               disk:
                 bus: virtio
       volumes:
         - name: gitlab-hdd
           persistentVolumeClaim:
             claimName: gitlab-hdd
+        - name: ubuntu-iso
+          persistentVolumeClaim:
+            claimName: ubuntu-20-04-iso
 
 ---
 apiVersion: v1
@@ -29,10 +38,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitlab-hdd
 spec:
-  storageClassName: openebs-hostpath
+  storageClassName: ceph-block
   resources:
     requests:
-      storage: 100Gi
+      storage: 120Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
