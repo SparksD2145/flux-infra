@@ -47,8 +47,7 @@ spec:
           keyName: "tls.key"
           certName: "tls.crt"
       minio:
-        enabled: false
-        replicas: 2
+        enabled: true
     gitlab:
       gitaly:
         persistence:
@@ -61,7 +60,9 @@ spec:
         storageClass: ceph-block
         size: 8Gi
     minio:
+      replicas: 1
       persistence:
+        enabled: true
         volumeName: gitlab-minio-ha
         storageClass: ceph-block
         size: 10Gi
@@ -78,17 +79,3 @@ spec:
         create: false
     nginx-ingress:
       enabled: false
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: gitlab-minio
-  namespace: gitlab
-spec:
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: ceph-block
-  accessModes:
-    - ReadWriteOnce
