@@ -3,11 +3,12 @@ kind: VirtualMachine
 metadata:
   name: vm-gitlab
 spec:
-  running: false
+  running: true
   template:
     metadata:
       labels:
         kubevirt.io/domain: vm-gitlab
+        app: gitlab
     spec:
       domain:
         resources:
@@ -15,22 +16,14 @@ spec:
             memory: 4096M
         devices:
           disks:
-            - name: ubuntu-iso
-              bootOrder: 1
-              cdrom:
-                readonly: true
-                bus: sata
             - name: gitlab-hdd
-              bootOrder: 2
+              bootOrder: 1
               disk:
                 bus: virtio
       volumes:
         - name: gitlab-hdd
           persistentVolumeClaim:
             claimName: gitlab-hdd
-        - name: ubuntu-iso
-          persistentVolumeClaim:
-            claimName: ubuntu-20-04-iso
 
 ---
 apiVersion: v1

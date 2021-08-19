@@ -58,4 +58,4 @@ spec:
         limits:
           memory: 350Mi
     tcp:
-      "22": "gitlab/gitlab-gitlab-shell:22"
+      "22": "default/gitlab-ssh:22"
