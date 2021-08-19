@@ -13,7 +13,8 @@ spec:
       domain:
         resources:
           requests:
-            memory: 4096M
+            cpu: 4
+            memory: 6144M
         devices:
           disks:
             - name: gitlab-hdd
