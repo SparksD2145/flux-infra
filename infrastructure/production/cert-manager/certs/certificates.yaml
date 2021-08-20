@@ -1,6 +1,6 @@
 ---
 apiVersion: cert-manager.io/v1
-kind: certificate
+kind: Certificate
 metadata:
   name: acme-crt-imake-software
   namespace: cert-manager
@@ -11,14 +11,14 @@ spec:
   secretName: acme-crt-secret-imake-software
   issuerRef:
     name: letsencrypt-prod
-    kind: clusterissuer
+    kind: ClusterIssuer
   dnsNames:
     - "imake.software"
     - "*.imake.software"
 
 ---
 apiVersion: cert-manager.io/v1
-kind: certificate
+kind: Certificate
 metadata:
   name: acme-crt-sparks-codes
   namespace: cert-manager
@@ -29,7 +29,7 @@ spec:
   secretName: acme-crt-secret-sparks-codes
   issuerRef:
     name: letsencrypt-prod
-    kind: clusterissuer
+    kind: ClusterIssuer
   dnsNames:
     - "sparks.codes"
     - "*.sparks.codes"
