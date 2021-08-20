@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: metallb
-      version: 2.5.1
+      version: 2.5.2
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -28,3 +28,18 @@ spec:
             - 10.11.0.0/16
           avoid-buggy-ips: true
           auto-assign: false
+    resources:
+      limits:
+        cpu: 400m
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        memory: 512Mi
+    speaker:
+      resources:
+        limits:
+          cpu: 400m
+          memory: 1Gi
+        requests:
+          cpu: 200m
+          memory: 512Mi
