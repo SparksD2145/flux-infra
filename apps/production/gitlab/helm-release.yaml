@@ -19,13 +19,6 @@ spec:
     global:
       hosts:
         domain: imake.software
-        https: true
-        gitlab:
-          name: gitlab.imake.software
-        registry:
-          name: registry.imake.software
-        pages:
-          name: pages.imake.software
       ingress:
         configureCertmanager: false
         class: nginx
@@ -47,7 +40,7 @@ spec:
           keyName: "tls.key"
           certName: "tls.crt"
       minio:
-        enabled: true
+        enabled: false
     gitlab:
       gitaly:
         persistence:
@@ -59,13 +52,13 @@ spec:
         volumeName: gitlab-postgresql-ha
         storageClass: ceph-block
         size: 8Gi
-    minio:
-      replicas: 1
-      persistence:
-        enabled: true
-        volumeName: gitlab-minio-ha
-        storageClass: ceph-block
-        size: 10Gi
+    #minio:
+    #  replicas: 1
+    #  persistence:
+    #    enabled: true
+    #    volumeName: gitlab-minio-ha
+    #    storageClass: ceph-block
+    #    size: 10Gi
     redis:
       master:
         persistence:
