@@ -40,7 +40,13 @@ spec:
           keyName: "tls.key"
           certName: "tls.crt"
       minio:
-        enabled: false
+        enabled: true
+      #appConfig:
+      #  object_store:
+      #    enabled: true
+      #    connection:
+      #      secret: gitlab-bucket-storage
+      #      key: connection
     gitlab:
       gitaly:
         persistence:
