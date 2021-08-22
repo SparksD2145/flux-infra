@@ -1,0 +1,11 @@
+---
+- hosts:
+    - servers_with_idracs
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+  tasks:
+    - name: Install K3s
+      ansible.builtin.shell: >
+        curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="--flannel-backend=none --cluster-cidr=10.42.0.0/16 --disable-network-policy --disable=traefik,servicelb,local-storage" sh -

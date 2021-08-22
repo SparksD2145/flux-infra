@@ -1,0 +1,11 @@
+---
+- hosts:
+    - servers_with_idracs
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+  tasks:
+    - name: Install K3s
+      ansible.builtin.shell: >
+        curl -sfL https://get.k3s.io | K3S_URL=https://whiskey.sparks.codes:6443 K3S_TOKEN='K108e12df6b4f31ed3adbbcbbbe8800014107287772df30e6e087ec045423fbd190::server:d351cb7c226a5a2a0c89b6eb7bdf4c79' sh - 
