@@ -29,8 +29,11 @@ spec:
       replicaCount: 1
       config:
         use-proxy-protocol: false
-        force-ssl-redirect: "false"
-      use-forwarded-headers: "true"
+        force-ssl-redirect: false
+        proxy-body-size: 1024m
+        proxy-request-buffering: on
+        proxy-buffering: on
+        use-gzip: true
       service:
         loadBalancerIP: 10.11.0.1
         externalTrafficPolicy: Local
