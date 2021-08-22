@@ -22,16 +22,10 @@ spec:
           peer-asn: 64512
           my-asn: 64512
       address-pools:
-        #- name: bgp
-        #  protocol: bgp
-        #  addresses:
-        #    - 10.11.0.0/16
-        #  avoid-buggy-ips: true
-        #  auto-assign: false
-        - name: layer2
-          protocol: layer2
+        - name: bgp
+          protocol: bgp
           addresses:
-            - 10.11.0.0-10.11.2.254
+            - 10.11.0.0/16
           avoid-buggy-ips: true
           auto-assign: false
     resources:
