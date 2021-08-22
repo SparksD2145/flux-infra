@@ -1,0 +1,46 @@
+all:
+  children:
+    servers:
+      hosts:
+        whiskey.sparks.codes:
+          virt_dir: "/backplane/virt"
+
+        tango.sparks.codes:
+
+        foxtrot.sparks.codes:
+          virt_dir: "/backplane_main/virt"
+
+        omega.sparks.codes:
+          virt_dir: "/mnt/local/storage/virt"
+
+        lambda.sparks.codes:
+          virt_dir: "/mnt/local/storage/virt"
+
+    servers_with_idracs:
+      hosts:
+        whiskey.sparks.codes:
+        foxtrot.sparks.codes:
+        omega.sparks.codes:
+        lambda.sparks.codes:
+
+    vms:
+      hosts:
+        ipa.sparks.codes:
+        gitlab.sparks.codes:
+        dixie.sparks.codes:
+        adblock.sparks.codes:
+
+    ios_switches:
+      hosts:
+        1gbe-switch.sparks.codes:
+
+    nxos_switches:
+      hosts:
+        10gbe-switch.sparks.codes:
+
+    k3os_nodes:
+      hosts:
+        k3s-master.sparks.codes:
+        k3s-node-1.sparks.codes:
+        k3s-node-2.sparks.codes:
+        k3s-node-3.sparks.codes:
