@@ -1,0 +1,12 @@
+---
+- hosts: servers_with_idracs
+  become: true
+  roles:
+    # Ubuntu
+    - role: jnv.unattended-upgrades
+      when: ansible_facts['os_family'] == 'Debian'
+      unattended_origins_patterns:
+        - "origin=Ubuntu,archive=${distro_codename}-security"
+        - "o=Ubuntu,a=${distro_codename}"
+        - "o=Ubuntu,a=${distro_codename}-updates"
+      unattended_automatic_reboot: true
