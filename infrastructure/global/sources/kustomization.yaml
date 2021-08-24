@@ -11,7 +11,6 @@ resources:
   - ./helm-repos/gitlab-charts.yaml
   - ./helm-repos/grafana-charts.yaml
   - ./helm-repos/hashicorp-charts.yaml
-  - ./helm-repos/ingress-nginx-charts.yaml
   - ./helm-repos/jetstack-charts.yaml
   - ./helm-repos/k8s-at-home-charts.yaml
   - ./helm-repos/kubernetes-stable-charts.yaml

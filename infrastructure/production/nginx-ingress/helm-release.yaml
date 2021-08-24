@@ -14,50 +14,40 @@ spec:
       retries: 3
   chart:
     spec:
-      # renovate: registryUrl=https://kubernetes.github.io/nginx-ingress
-      chart: ingress-nginx
-      version: 3.35.0
+      chart: nginx-ingress-controller
+      version: 7.6.19
       sourceRef:
         kind: HelmRepository
-        name: ingress-nginx-charts
+        name: bitnami-charts
         namespace: flux-system
       interval: 5m
   values:
-    controller:
-      admissionWebhooks:
-        enabled: false
-      replicaCount: 1
-      config:
-        use-proxy-protocol: false
-        force-ssl-redirect: false
-        proxy-body-size: 1024m
-        proxy-request-buffering: on
-        proxy-buffering: on
-        use-gzip: true
-      service:
-        loadBalancerIP: 10.11.0.1
-        externalTrafficPolicy: Local
-      extraArgs:
-        default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
-      resources:
-        requests:
-          memory: 6Gi
-          cpu: 400m
-        limits:
-          memory: 6Gi
-      autoscaling:
-        enabled: true
-        maxReplicas: 4
+    publishService:
+      enabled: true
+    service:
+      loadBalancerIP: 10.11.0.1
+      externalTrafficPolicy: Cluster
+    extraArgs:
+      default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
+    resources:
+      requests:
+        memory: 6Gi
+        cpu: 400m
+      limits:
+        cpu: 400m
+        memory: 6Gi
+    autoscaling:
+      enabled: true
     defaultBackend:
       enabled: true
       image:
         repository: billimek/custom-error-pages
         tag: 0.4.4
-      resources:
-        requests:
-          memory: 250Mi
-          cpu: 25m
-        limits:
-          memory: 350Mi
-    tcp:
-      "22": "gitlab/gitlab-gitlab-shell:22"
+    #  resources:
+    #    requests:
+    #      memory: 250Mi
+    #      cpu: 25m
+    #    limits:
+    #      memory: 350Mi
+    #tcp:
+    #  "22": "gitlab/gitlab-gitlab-shell:22"

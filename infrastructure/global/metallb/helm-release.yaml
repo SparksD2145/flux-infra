@@ -17,14 +17,19 @@ spec:
       interval: 5m
   values:
     configInline:
-      peers:
-        - peer-address: 10.10.0.1
-          peer-asn: 64512
-          my-asn: 64512
+      # peers:
+      #   - peer-address: 10.10.0.1
+      #     peer-asn: 64512
+      #     my-asn: 64513
       address-pools:
-        - name: bgp
-          protocol: bgp
+        - name: default
+          protocol: layer2
+          auto-assign: false
           addresses:
             - 10.11.0.0/16
-          avoid-buggy-ips: true
-          auto-assign: false
+        # - name: bgp
+        #   protocol: bgp
+        #   addresses:
+        #     - 10.11.0.0/16
+        #   avoid-buggy-ips: true
+        #   auto-assign: false
