@@ -49,5 +49,3 @@ spec:
           - hosts:
               - home.sparks.codes
             secretName: acme-crt-secret-sparks-codes
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet
