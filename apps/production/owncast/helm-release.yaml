@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: paperless
+      chart: owncast
       version: 7.0.0
       sourceRef:
         kind: HelmRepository
@@ -24,32 +24,14 @@ spec:
         annotations:
           kubernetes.io/ingress.class: nginx
         hosts:
-          - host: paperless.sparks.codes
+          - host: owncast.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
         tls:
           - hosts:
-              - paperless.sparks.codes
+              - owncast.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      data:
+      config:
         enabled: true
-        mountPath: /usr/src/paperless/data
-        accessMode: ReadWriteOnce
-        size: 25Gi
-      media:
-        enabled: true
-        mountPath: /usr/src/paperless/media
-        accessMode: ReadWriteOnce
-        size: 25Gi
-      consume:
-        enabled: true
-        mountPath: /usr/src/paperless/consume
-        accessMode: ReadWriteOnce
-        size: 25Gi
-      export:
-        enabled: true
-        mountPath: /usr/src/paperless/export
-        accessMode: ReadWriteOnce
-        size: 25Gi
