@@ -31,11 +31,11 @@ spec:
       default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
     resources:
       requests:
-        memory: 6Gi
-        cpu: 400m
+        memory: 1i
+        cpu: 200m
       limits:
         cpu: 400m
-        memory: 6Gi
+        memory: 2Gi
     autoscaling:
       enabled: true
     defaultBackend:
