@@ -18,21 +18,24 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
-      TTRSS_SELF_URL_PATH: https://rss.sparks.codes/
+      TRANSMISSION_RPC_PASSWORD: "transmission2145"
     ingress:
       main:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
         hosts:
-          - host: rss.sparks.codes
+          - host: transmission.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
         tls:
           - hosts:
-              - rss.sparks.codes
+              - transmission.sparks.codes
             secretName: acme-crt-secret-sparks-codes
-    postgresql:
       persistence:
-        enabled: true
+        downloads:
+          enabled: true
+          storageClass: ceph-block
+          accessMode: ReadWriteMany
+          size: 25Gi
