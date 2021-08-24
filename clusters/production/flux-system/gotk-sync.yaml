@@ -10,7 +10,7 @@ spec:
     branch: master
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/SparksD2145/flux-infra
+  url: ssh://git@github.com/sparksd2145/flux-infra
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
