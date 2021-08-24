@@ -18,6 +18,7 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
+      TTRSS_SELF_URL_PATH: https://rss.sparks.codes/
     ingress:
       main:
         enabled: true
