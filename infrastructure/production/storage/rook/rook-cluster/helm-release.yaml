@@ -44,6 +44,7 @@ spec:
               - name: /dev/disk/by-id/scsi-SATA_ST2000DM006-2DM1_Z560VAE4
               - name: /dev/disk/by-id/scsi-SATA_ST2000DM008-2FR1_ZFL068C2
               - name: /dev/disk/by-id/scsi-SATA_ST2000VN004-2E41_Z525MFKA
+              - name: /dev/disk/by-id/scsi-SATA_ST2000VN004-2E41_Z52B90Y9
           - name: foxtrot
             devices:
               - name: /dev/disk/by-id/scsi-3500000e01f068b20
@@ -57,4 +58,4 @@ spec:
               - name: /dev/disk/by-id/scsi-SDELL_PERC_H310_004a12ec044f4da925002f49e5a0a38c
           - name: omega
             devices:
-              - name: /dev/disk/by-id/scsi-SDELL_PERC_H710_001d5d1106de2edb2400af09e260f681
+              - name: /dev/disk/by-id/scsi-SDELL_PERC_H710_001d5d1106de2edb2400af09e260f681-part1

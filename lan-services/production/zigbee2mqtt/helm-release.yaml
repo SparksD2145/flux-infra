@@ -43,7 +43,6 @@ spec:
           - hosts:
               - zigbee2mqtt.sparks.codes
             secretName: acme-crt-secret-sparks-codes
-
     securityContext:
       privileged: true
 
@@ -53,7 +52,7 @@ spec:
         mountPath: /data
         accessMode: "ReadWriteOnce"
         size: 400M
-        existingClaim: nfs-ha
+        existingClaim: nfs-lan-services
         subPath: zigbee2mqtt.sparks.codes
       usb:
         enabled: true

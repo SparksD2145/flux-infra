@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-ha
+  name: nfs-lan-services
   namespace: lan-services
 spec:
   capacity:
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-ha
+  name: nfs-lan-services
   namespace: lan-services
 spec:
   accessModes:

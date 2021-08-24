@@ -1,0 +1,12 @@
+---
+- hosts: servers_with_idracs
+  gather_facts: false
+  vars_prompt:
+    - name: ipmi_password
+      prompt: "IPMI Password"
+      private: yes
+      unsafe: yes
+  tasks:
+    - name: Set power state
+      shell: ipmitool -I lanplus -H idrac-{{ inventory_hostname }} -U {{ lookup('env','USER') }} -P {{ ipmi_password }} power {{ state }}
+      delegate_to: localhost

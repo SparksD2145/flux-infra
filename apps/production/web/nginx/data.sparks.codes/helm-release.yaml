@@ -23,7 +23,7 @@ spec:
     extraVolumes:
       - name: nfsvol
         persistentVolumeClaim:
-          claimName: nfs
+          claimName: nfs-default
     service:
       type: ClusterIP
     ingress:

@@ -1,0 +1,9 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Start Serial Service
+      systemd:
+        name: "serial-getty@ttyS0.service"
+        state: started
+        enabled: yes

@@ -26,7 +26,7 @@ spec:
       volumes:
         - name: nfsvol
           persistentVolumeClaim:
-            claimName: nfs
+            claimName: nfs-default
 
 ---
 apiVersion: v1
