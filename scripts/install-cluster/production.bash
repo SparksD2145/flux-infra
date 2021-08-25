@@ -5,7 +5,7 @@
 
 # Prepare cert-manager
 kubectl apply -f infrastructure/production/cert-manager/namespace.yaml
-kubectl apply -f infrastructure/production/cert-manager/apply-crds.sh
+./infrastructure/production/cert-manager/apply-crds.sh
 kubectl apply -f secrets/cloudflare-certmanager.yaml
 
 # Prepare external-dns
