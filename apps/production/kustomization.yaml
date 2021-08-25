@@ -6,6 +6,6 @@ resources:
   - tt-rss
   - transmission
   - paperless
-  - focalboard
+  #- focalboard
   - heimdall
   - gitlab
