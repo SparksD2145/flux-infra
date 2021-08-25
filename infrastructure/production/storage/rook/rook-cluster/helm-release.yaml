@@ -39,23 +39,23 @@ spec:
         nodes:
           - name: whiskey
             devices:
-              - name: /dev/sdb
-              - name: /dev/sdc
-              - name: /dev/sdd
-              - name: /dev/sde
-              - name: /dev/sdf
-              - name: /dev/sdg
+              - name: sdb
+              - name: sdc
+              - name: sdd
+              - name: sde
+              - name: sdf
+              - name: sdg
           - name: foxtrot
             devices:
-              - name: /dev/sdb
-              - name: /dev/sdc
-              - name: /dev/sdd
-              - name: /dev/sde
-              - name: /dev/sdf
-              - name: /dev/sdg
+              - name: sdb
+              - name: sdc
+              - name: sdd
+              - name: sde
+              - name: sdf
+              - name: sdg
           - name: lambda
             devices:
-              - name: /dev/sda
+              - name: sdb
           - name: omega
             devices:
-              - name: /dev/sdb1
+              - name: sdb1
