@@ -22,6 +22,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    config:
+      proxy-body-size: 10M
     publishService:
       enabled: true
     service:
