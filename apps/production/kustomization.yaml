@@ -8,3 +8,4 @@ resources:
   - paperless
   - focalboard
   - heimdall
+  - gitlab

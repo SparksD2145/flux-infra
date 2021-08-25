@@ -43,11 +43,5 @@ spec:
       image:
         repository: billimek/custom-error-pages
         tag: 0.4.4
-    #  resources:
-    #    requests:
-    #      memory: 250Mi
-    #      cpu: 25m
-    #    limits:
-    #      memory: 350Mi
-    #tcp:
-    #  "22": "gitlab/gitlab-gitlab-shell:22"
+    tcp:
+      "22": "gitlab/gitlab-gitlab-shell:22"
