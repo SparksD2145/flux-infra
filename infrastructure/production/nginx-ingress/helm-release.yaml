@@ -33,7 +33,7 @@ spec:
       default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
     resources:
       requests:
-        memory: 1i
+        memory: 1Gi
         cpu: 200m
       limits:
         cpu: 400m
