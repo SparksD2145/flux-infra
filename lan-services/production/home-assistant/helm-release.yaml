@@ -49,3 +49,7 @@ spec:
           - hosts:
               - home.sparks.codes
             secretName: acme-crt-secret-sparks-codes
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "1"

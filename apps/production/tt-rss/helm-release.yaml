@@ -36,3 +36,7 @@ spec:
     postgresql:
       persistence:
         enabled: true
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "1"

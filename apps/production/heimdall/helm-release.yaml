@@ -37,3 +37,7 @@ spec:
         enabled: true
         accessMode: ReadWriteOnce
         size: 512Mi
+    dnsConfig:
+      options:
+        - name: ndots
+          value: "1"
