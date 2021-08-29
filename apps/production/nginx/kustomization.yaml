@@ -4,4 +4,4 @@ resources:
   - ./data.sparks.codes
   - ./proxy.admin.mc.sparks.codes
   - ./pxe.sparks.codes
-  - ./redirect.media.sparks.codes
+  #- ./redirect.media.sparks.codes
