@@ -26,10 +26,21 @@ spec:
           protocol: layer2
           auto-assign: false
           addresses:
-            - 10.11.0.0/16
-        # - name: bgp
-        #   protocol: bgp
-        #   addresses:
-        #     - 10.11.0.0/16
-        #   avoid-buggy-ips: true
-        #   auto-assign: false
+            - 10.10.200.0/24
+        - name: minecraft
+          protocol: layer2
+          auto-assign: false
+          addresses:
+            - 10.10.201.0/24
+        #- name: services
+        #  protocol: bgp
+        #  addresses:
+        #    - 10.10.200.0/24
+        #  avoid-buggy-ips: true
+        #  auto-assign: false
+        #- name: minecraft
+        #  protocol: bgp
+        #  addresses:
+        #    - 10.10.201.0/24
+        #  avoid-buggy-ips: true
+        #  auto-assign: false

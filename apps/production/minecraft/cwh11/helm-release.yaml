@@ -35,7 +35,7 @@ spec:
       onlineMode: false
       memory: 6144M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.11.2.2
+      loadBalancerIP: 10.10.201.2
     persistence:
       storageClass: ceph-block
       dataDir:

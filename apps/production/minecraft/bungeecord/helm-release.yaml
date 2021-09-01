@@ -19,7 +19,7 @@ spec:
     minecraftProxy:
       type: BUNGEECORD
       serviceType: LoadBalancer
-      loadBalancerIP: 10.11.2.1
+      loadBalancerIP: 10.10.201.1
       config: |
         listeners:
           - query_port: 25577
@@ -70,7 +70,7 @@ spec:
         servers:
           testing:
             motd: testing.mc.sparks.codes
-            address: 10.11.2.2:25565
+            address: 10.10.201.2:25565
             restricted: false
           superdigdug:
             motd: superdigdug.mc.sparks.codes
