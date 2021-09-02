@@ -39,15 +39,19 @@ spec:
         mountPath: /usr/src/paperless/data
         accessMode: ReadWriteOnce
         size: 25Gi
+        retain: true
       media:
         enabled: true
         mountPath: /usr/src/paperless/media
         accessMode: ReadWriteOnce
         size: 25Gi
+        retain: true
       consume:
         enabled: true
         mountPath: /usr/src/paperless/consume
-        accessMode: ReadWriteOnce
+        accessMode: ReadWriteMany
+        existingClaim: nfs-paperless
+        subPath: paperless.sparks.codes
         size: 25Gi
       export:
         enabled: true
