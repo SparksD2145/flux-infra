@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - nginx
   - minecraft
-  - tt-rss
   - transmission
   - paperless
   - jellyfin
