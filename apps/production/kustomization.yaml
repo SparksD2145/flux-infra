@@ -6,6 +6,5 @@ resources:
   - transmission
   - paperless
   - jellyfin
-  #- focalboard
   - heimdall
   - gitlab
