@@ -36,5 +36,7 @@ spec:
     persistence:
       downloads:
         enabled: true
-        storageClass: ceph-block
+        accessMode: ReadWriteMany
+        existingClaim: nfs-transmission
+        subPath: transmisson.sparks.codes
         size: 25Gi
