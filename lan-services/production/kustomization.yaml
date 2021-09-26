@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
   - nfs-lan-services.yaml
   - pihole
-  - home-assistant
+  #- home-assistant
   - mosquitto-mqtt
-  - zigbee2mqtt
-  - zwavejs2mqtt
+  #- zigbee2mqtt
+  #- zwavejs2mqtt
