@@ -10,8 +10,8 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 10gbe-tango.sparks.codes
-    path: "/mnt/local/storage/k8s-nfs/"
+    server: omega.sparks.codes
+    path: "/mnt/static"
 
 ---
 apiVersion: v1
