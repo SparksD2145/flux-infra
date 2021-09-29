@@ -59,3 +59,13 @@ spec:
           - name: omega
             devices:
               - name: sdb1
+          - name: tango
+            devices:
+              - name: sda
+              - name: sdb
+              - name: sdc
+              - name: sdd
+              - name: sdf
+              - name: sdg
+              - name: sdh
+              - name: sdi
