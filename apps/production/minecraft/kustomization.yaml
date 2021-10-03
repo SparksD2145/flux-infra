@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - bungeecord/helm-release.yaml
   - lumberjacks/helm-release.yaml
-  #- cwh11/helm-release.yaml
+  - cwh11

@@ -16,27 +16,33 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image: itzg/minecraft-server
+    imageTag: java15
     resources:
       requests:
-        memory: 6144Mi
+        memory: 8192Mi
         cpu: 500m
     minecraftServer:
       eula: "TRUE"
-      version: "1.17.1"
+      version: "1.16.4"
       type: SPIGOT
-      motd: "testing.mc.sparks.codes"
+      motd: "cwh11.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
+      worldSaveName: world_cwh11
       maxPlayers: 20
       viewDistance: 14
-      #levelSeed:
-      gameMode: creative
+      levelSeed: -6121001965162030037
+      gameMode: survival
       pvp: true
       onlineMode: false
-      memory: 6144M
+      memory: 8192M
       serviceType: LoadBalancer
       loadBalancerIP: 10.10.201.2
+      rcon:
+        enabled: true
+        password: "minecraft2145"
     persistence:
-      storageClass: ceph-block
       dataDir:
         enabled: true
+        existingClaim: local-mc-cwh11
