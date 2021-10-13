@@ -28,3 +28,4 @@ resources:
   - ./helm-repos/rook-charts.yaml
   - ./helm-repos/sparks-helm-repo.yaml
   - ./helm-repos/vmware-tanzu-charts.yaml
+  - ./helm-repos/node-feature-discovery-charts.yaml
