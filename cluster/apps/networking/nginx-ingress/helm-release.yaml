@@ -14,6 +14,7 @@ spec:
       retries: 3
   chart:
     spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: nginx-ingress-controller
       version: 7.6.19
       sourceRef:

@@ -8,6 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
+      # renovate: registryUrl=https://charts.rook.io/release
       chart: rook-ceph
       version: 1.7.1
       sourceRef:
