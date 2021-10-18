@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - proxy.router.sparks.codes
   - pxe.sparks.codes
+  - nfs-pv.yaml
