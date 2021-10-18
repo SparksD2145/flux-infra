@@ -8,6 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
+      # renovate: registryUrl=https://charts.gitlab.io
       chart: gitlab
       version: 5.2.1
       sourceRef:
