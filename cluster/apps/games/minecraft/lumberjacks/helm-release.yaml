@@ -1,0 +1,134 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-lumberjacks
+  namespace: games
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: minecraft
+      version: 3.4.2
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    resources:
+      requests:
+        memory: 6144Mi
+        cpu: 500m
+    minecraftServer:
+      eula: "TRUE"
+      version: "1.17.1"
+      type: SPIGOT
+      motd: "lumberjacks.mc.sparks.codes"
+      difficulty: normal
+      ops: "superdigdug"
+      maxPlayers: 20
+      viewDistance: 14
+      levelSeed: -1013382714437321718
+      gameMode: survival
+      pvp: true
+      onlineMode: false
+      memory: 8192M
+      serviceType: LoadBalancer
+      loadBalancerIP: 10.10.201.3
+      rcon:
+        enabled: true
+        password: "minecraft2145"
+    persistence:
+      dataDir:
+        enabled: true
+        existingClaim: local-mc-lumberjacks
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dynmap-lumberjacks
+  namespace: games
+  labels:
+    run: svc-dynmap-lumberjacks
+spec:
+  ports:
+    - port: 80
+      targetPort: 8123
+      protocol: TCP
+  selector:
+    app: minecraft-lumberjacks-minecraft
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-dynmap-lumberjacks
+  namespace: games
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+    - hosts:
+        - "lumberjacks.mc.sparks.codes"
+        - "dynmap-lumberjacks.mc.sparks.codes"
+      secretName: acme-crt-secret-sparks-codes
+  rules:
+    - host: "lumberjacks.mc.sparks.codes"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-dynmap-lumberjacks
+                port:
+                  number: 80
+    - host: "dynmap-lumberjacks.mc.sparks.codes"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-dynmap-lumberjacks
+                port:
+                  number: 80
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-mc-lumberjacks
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 20Gi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/static/mc.sparks.codes/lumberjacks
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - omega
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-mc-lumberjacks
+  namespace: games
+spec:
+  volumeName: local-mc-lumberjacks
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 20Gi

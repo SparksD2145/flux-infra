@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: networking
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active

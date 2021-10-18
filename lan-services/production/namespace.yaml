@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: lan-services
-spec:
-  finalizers:
-    - kubernetes
-status:
-  phase: Active

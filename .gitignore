@@ -1,1 +1,40 @@
-/secrets
+# Editors
+.vscode/
+
+# Trash
+.DS_Store
+Thumbs.db
+
+# Binaries
+bin
+/flux
+*.iso
+
+# Temp folders
+.temp*
+.private/
+.logs/
+.task/
+
+# Ansible
+xanmanning.k3s*
+mrlesmithjr.zfs*
+
+# Terraform
+.terraform
+.terraform.tfstate*
+terraform.tfstate*
+
+# Sops
+.decrypted~*
+
+# Kubernetes
+kubeconfig
+talosconfig
+
+# Secrets
+secrets.json
+secrets/
+
+# Other
+report.html

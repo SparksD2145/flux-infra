@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: paperless
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: paperless
+      version: 7.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    env:
+      TZ: "America/Chicago"
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/proxy-body-size: 75M
+        hosts:
+          - host: paperless.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - paperless.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      data:
+        enabled: true
+        mountPath: /usr/src/paperless/data
+        accessMode: ReadWriteOnce
+        size: 25Gi
+        retain: true
+      media:
+        enabled: true
+        mountPath: /usr/src/paperless/media
+        accessMode: ReadWriteOnce
+        size: 25Gi
+        retain: true
+      consume:
+        enabled: true
+        mountPath: /usr/src/paperless/consume
+        accessMode: ReadWriteMany
+        existingClaim: nfs-paperless
+        subPath: paperless.sparks.codes
+        size: 25Gi
+      export:
+        enabled: true
+        mountPath: /usr/src/paperless/export
+        accessMode: ReadWriteOnce
+        size: 25Gi
