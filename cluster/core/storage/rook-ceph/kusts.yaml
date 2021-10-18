@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/production/storage/rook/rook-operator
+  path: ./cluster/core/storage/rook-ceph/rook-operator
   prune: true
   validation: client
 
@@ -25,6 +25,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/production/storage/rook/rook-cluster
+  path: ./cluster/core/storage/rook-ceph/rook-cluster
   prune: true
   validation: client
