@@ -9,5 +9,6 @@ spec:
     requests:
       storage: 500Mi
   volumeMode: Filesystem
+  reclaimPolicy: Retain
   accessModes:
     - ReadWriteOnce
