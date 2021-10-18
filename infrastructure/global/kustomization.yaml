@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - sources
   - metallb
-  - node-feature-discovery
