@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cert-manager.yaml
+  - games.yaml
+  - gitlab.yaml
+  - home.yaml
+  - media.yaml
+  - networking.yaml
+  - nginx.yaml
+  - rook-ceph.yaml
