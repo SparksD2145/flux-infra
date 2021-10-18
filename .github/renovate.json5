@@ -104,11 +104,6 @@
       "enabled": true,
       "matchUpdateTypes": ["major", "minor", "patch"]
     },
-    {
-      "matchDatasources": ["docker"],
-      "semanticCommitScope": "images",
-      "separateMinorPatch": true
-    },
     // add labels according to package and update types
     {
       "matchDatasources": ["docker"],
