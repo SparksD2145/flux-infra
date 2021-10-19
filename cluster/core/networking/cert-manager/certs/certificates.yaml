@@ -9,6 +9,7 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph"
   secretName: acme-crt-secret-imake-software
   issuerRef:
     name: letsencrypt-prod
@@ -28,6 +29,7 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph"
   secretName: acme-crt-secret-sparks-codes
   issuerRef:
     name: letsencrypt-prod
