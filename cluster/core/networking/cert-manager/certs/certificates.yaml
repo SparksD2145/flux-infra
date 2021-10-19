@@ -4,10 +4,11 @@ kind: Certificate
 metadata:
   name: acme-crt-imake-software
   namespace: cert-manager
-  annotations:
-    reflector.v1.k8s.emberstack.com/secret-reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/secret-reflection-auto-enabled: "true"
 spec:
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph"
   secretName: acme-crt-secret-imake-software
   issuerRef:
     name: letsencrypt-prod
@@ -22,10 +23,11 @@ kind: Certificate
 metadata:
   name: acme-crt-sparks-codes
   namespace: cert-manager
-  annotations:
-    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "networking,home,games,kube-system,media,gitlab,nginx,rook-ceph"
 spec:
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph"
   secretName: acme-crt-secret-sparks-codes
   issuerRef:
     name: letsencrypt-prod
