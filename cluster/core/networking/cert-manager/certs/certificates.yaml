@@ -23,8 +23,8 @@ metadata:
   name: acme-crt-sparks-codes
   namespace: cert-manager
   annotations:
-    reflector.v1.k8s.emberstack.com/secret-reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/secret-reflection-auto-enabled: "true"
+    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "networking,home,games,kube-system,media,gitlab,nginx,rook-ceph"
 spec:
   secretName: acme-crt-secret-sparks-codes
   issuerRef:
