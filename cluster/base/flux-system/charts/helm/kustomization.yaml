@@ -25,6 +25,7 @@ resources:
   - lwolf-charts.yaml
   - metrics-server-charts.yaml
   - minecraft-server-charts.yaml
+  - minecraft-charts.yaml
   - minio-charts.yaml
   - mlohr-charts.yaml
   - next-cloud-charts.yaml
