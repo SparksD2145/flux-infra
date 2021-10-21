@@ -33,11 +33,14 @@ spec:
           - gitlab
       name: "Sparks"
       customApps:
+        - name: Alpha
+          url: https://alpha.sparks.codes
+          icon: "desktop-classic"
         - name: PfSense Router
           url: https://router.sparks.codes
           icon: "router-network"
         - name: PiHole Adblock
-          url: https://adblock.sparks.codes
+          url: http://adblock.sparks.codes
           icon: "card-off"
         - name: Gitlab
           url: https://gitlab.imake.software
@@ -46,7 +49,7 @@ spec:
           url: https://home.sparks.codes
           icon: "home-assistant"
         - name: Z-Wave Controller
-          url: https://zwavejs2mqtt.sparks.codes
+          url: http://zwavejs2mqtt.sparks.codes
           icon: "z-wave"
         - name: Zigbee Controller
           url: https://zigbee2mqtt.sparks.codes
@@ -70,11 +73,38 @@ spec:
           url: https://transmission.sparks.codes
           icon: "web"
         - name: Agent NVR
-          url: https://nvr.sparks.codes
+          url: http://nvr.sparks.codes
           icon: "webcam"
         - name: PXE Server
           url: https://pxe.sparks.codes
           icon: "refresh-auto"
+        - name: Whiskey iDRAC
+          url: https://idrac-whiskey.sparks.codes
+          icon: "remote-desktop"
+        - name: Foxtrot iDRAC
+          url: https://idrac-foxtrot.sparks.codes
+          icon: "remote-desktop"
+        - name: Lambda iDRAC
+          url: https://idrac-lambda.sparks.codes
+          icon: "remote-desktop"
+        - name: Omega iDRAC
+          url: https://idrac-omega.sparks.codes
+          icon: "remote-desktop"
+        - name: Dome Camera 1
+          url: http://dome-camera-1.sparks.codes
+          icon: "webcam"
+        - name: Dome Camera 2
+          url: http://dome-camera-2.sparks.codes
+          icon: "webcam"
+        - name: Printer
+          url: https://printer.sparks.codes
+          icon: "printer"
+        - name: TV Tuner 1
+          url: https://tv-tuner-1.sparks.codes
+          icon: "television-classic"
+        - name: TV Tuner 2
+          url: https://tv-tuner-2.sparks.codes
+          icon: "television-classic"
       groups:
         - name: Communicate
           links:
