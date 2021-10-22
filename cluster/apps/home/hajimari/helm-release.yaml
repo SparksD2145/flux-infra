@@ -122,6 +122,8 @@ spec:
               url: "https://dropbox.com"
             - name: Drive
               url: "https://drive.google.com"
+            - name: flux-infra
+              url: "https://github.com/sparksd2145/flux-infra"
         # - name: Design
         #   links:
         #     - name: Awwwards
