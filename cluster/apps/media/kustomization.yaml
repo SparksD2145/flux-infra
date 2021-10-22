@@ -4,4 +4,4 @@ resources:
   - jellyfin
   - paperless
   - transmission
-  #- photoprism
+  - photoprism
