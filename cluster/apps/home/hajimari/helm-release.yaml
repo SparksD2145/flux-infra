@@ -34,7 +34,7 @@ spec:
       name: "Sparks"
       customApps:
         - name: Alpha
-          url: https://alpha.sparks.codes
+          url: http://alpha.sparks.codes
           icon: "desktop-classic"
         - name: PfSense Router
           url: https://router.sparks.codes
