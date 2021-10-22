@@ -19,6 +19,11 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
+      APP_URL: "http://docs.sparks.codes"
+      DB_HOST: localhost
+      DB_USER: bookstack
+      DB_PASS: bookstack
+      DB_DATABASE: bookstack
     ingress:
       main:
         enabled: true
@@ -35,6 +40,11 @@ spec:
             secretName: acme-crt-secret-sparks-codes
     mariadb:
       enabled: true
+      architecture: standalone
+      auth:
+        database: bookstack
+        username: bookstack
+        password: bookstack
       primary:
         persistence:
           enabled: true
