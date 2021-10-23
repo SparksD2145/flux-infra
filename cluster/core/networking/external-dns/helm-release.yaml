@@ -30,4 +30,4 @@ spec:
     domainFilters:
       - imake.software
       - sparks.codes
-    txtPrefix: sparkstxt
+    txtPrefix: sparks-txt-
