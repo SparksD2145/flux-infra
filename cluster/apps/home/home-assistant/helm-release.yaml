@@ -40,7 +40,7 @@ spec:
       main:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
+          kubernetes.io/ingress.class: "nginx-external"
         hosts:
           - host: home.sparks.codes
             paths:

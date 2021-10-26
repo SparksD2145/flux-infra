@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nginx-ingress
+  name: nginx-ingress-internal
   namespace: networking
 spec:
   interval: 5m
@@ -23,6 +23,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    ingressClassResource:
+      name: nginx-internal
     config:
       proxy-body-size: 10M
       #custom-http-errors: 404,401,403,500,503
@@ -33,6 +35,7 @@ spec:
       externalTrafficPolicy: Cluster
     extraArgs:
       default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
+      ingress-class: nginx-internal
     resources:
       requests:
         memory: 1Gi

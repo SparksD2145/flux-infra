@@ -34,7 +34,7 @@ spec:
       main:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: nginx
+          kubernetes.io/ingress.class: "nginx-internal"
         hosts:
           - host: zigbee2mqtt.sparks.codes
             paths:

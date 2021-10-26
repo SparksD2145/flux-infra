@@ -22,7 +22,7 @@ spec:
         domain: imake.software
       ingress:
         configureCertmanager: false
-        class: nginx
+        class: nginx-external
         tls:
           enabled: true
           secretName: acme-crt-secret-imake-software

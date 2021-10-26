@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress-external
+  namespace: networking
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      chart: nginx-ingress-controller
+      version: 8.0.11
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    ingressClassResource:
+      name: nginx-external
+    config:
+      proxy-body-size: 10M
+      #custom-http-errors: 404,401,403,500,503
+    publishService:
+      enabled: true
+    service:
+      loadBalancerIP: 10.10.200.0
+      externalTrafficPolicy: Cluster
+    extraArgs:
+      default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"
+      ingress-class: nginx-external
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 200m
+      limits:
+        cpu: 400m
+        memory: 2Gi
+    autoscaling:
+      enabled: true
+    defaultBackend:
+      enabled: true
+      image:
+        repository: billimek/custom-error-pages
+        tag: 0.4.4
+    tcp:
+      "22": "gitlab/gitlab-gitlab-shell:22"

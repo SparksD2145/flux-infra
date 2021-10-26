@@ -19,4 +19,4 @@ kubectl apply -f secrets/gitlab-initial-root-password.yaml
 kubectl label node lambda zwave-controller=true
 kubectl label node lambda zigbee-controller=true
 
-flux bootstrap github --owner SparksD2145 --personal --private --repository flux-infra --branch master --path ./clusters/production
+flux bootstrap github --owner SparksD2145 --personal --private --repository flux-infra --branch master --path ./cluster/base

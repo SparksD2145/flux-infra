@@ -30,7 +30,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: "nginx"
+        kubernetes.io/ingress.class: "nginx-internal"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
         nginx.ingress.kubernetes.io/server-snippet: |
           autoindex on;
