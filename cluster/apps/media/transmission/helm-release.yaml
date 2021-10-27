@@ -40,4 +40,4 @@ spec:
         accessMode: ReadWriteMany
         existingClaim: nfs-transmission
         subPath: transmisson.sparks.codes
-        size: 25Gi
+        size: 500Gi
