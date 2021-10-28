@@ -9,3 +9,4 @@ resources:
   - networking.yaml
   - nginx.yaml
   - rook-ceph.yaml
+  - tools.yaml
