@@ -66,9 +66,6 @@ spec:
         - name: Rook Storage
           url: https://rook.sparks.codes
           icon: "database"
-        - name: Syncthing
-          url: https://sync.sparks.codes
-          icon: "sync"
         - name: Transmission
           url: https://transmission.sparks.codes
           icon: "web"
