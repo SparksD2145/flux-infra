@@ -52,3 +52,4 @@ spec:
       requests:
         cpu: 400m
         memory: 6144Mi
+    hostNetwork: true
