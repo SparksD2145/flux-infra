@@ -8,11 +8,11 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: nvidia-gpu-operator
+      chart: gpu-operator
       version: v1.8.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: nvidia-charts
         namespace: flux-system
       interval: 5m
   values:
