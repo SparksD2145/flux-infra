@@ -45,11 +45,4 @@ spec:
         type: pvc
         existingClaim: local-jellyfin-media
         retain: true
-    resources:
-      limits:
-        cpu: 800m
-        memory: 16Gi
-      requests:
-        cpu: 800m
-        memory: 16Gi
     hostNetwork: true
