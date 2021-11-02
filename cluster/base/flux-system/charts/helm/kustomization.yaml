@@ -37,6 +37,7 @@ resources:
   - pihole-charts.yaml
   - projectcalico-charts.yaml
   - prometheus-community-charts.yaml
+  - portainer-charts.yaml
   - raphaels-charts.yaml
   - rook-ceph-charts.yaml
   - rook-charts.yaml

@@ -81,3 +81,14 @@ spec:
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
+
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx-internal
+      hosts:
+        - adblock.sparks.codes
+      tls:
+        - secretName: acme-crt-secret-sparks-codes
+          hosts:
+            - adblock.sparks.codes

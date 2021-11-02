@@ -40,7 +40,7 @@ spec:
           url: https://router.sparks.codes
           icon: "router-network"
         - name: PiHole Adblock
-          url: http://adblock.sparks.codes
+          url: https://adblock.sparks.codes
           icon: "card-off"
         - name: Gitlab
           url: https://gitlab.imake.software
@@ -49,7 +49,7 @@ spec:
           url: https://home.sparks.codes
           icon: "home-assistant"
         - name: Z-Wave Controller
-          url: http://zwavejs2mqtt.sparks.codes
+          url: https://zwavejs2mqtt.sparks.codes
           icon: "z-wave"
         - name: Zigbee Controller
           url: https://zigbee2mqtt.sparks.codes
@@ -70,7 +70,7 @@ spec:
           url: https://transmission.sparks.codes
           icon: "web"
         - name: Agent NVR
-          url: http://nvr.sparks.codes
+          url: https://nvr.sparks.codes
           icon: "webcam"
         - name: PXE Server
           url: https://pxe.sparks.codes

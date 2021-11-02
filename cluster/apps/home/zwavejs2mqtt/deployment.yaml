@@ -103,3 +103,28 @@ spec:
   loadBalancerIP: 10.10.200.4
   selector:
     run: zwavejs2mqtt
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zwavejs2mqtt
+  namespace: home
+  labels:
+    name: zwavejs2mqtt
+spec:
+  rules:
+    - host: zwavejs2mqtt.sparks.codes
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: zwavejs2mqtt
+                port:
+                  number: 80
+  tls:
+    - secretName: acme-crt-secret-sparks-codes
+      hosts:
+        - zwavejs2mqtt.sparks.codes

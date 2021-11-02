@@ -153,3 +153,28 @@ spec:
       protocol: UDP
   selector:
     run: nvr-sparks-codes
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nvr-sparks-codes
+  namespace: home
+  labels:
+    name: nvr
+spec:
+  rules:
+    - host: nvr.sparks.codes
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: nvr-sparks-codes-tcp
+                port:
+                  number: 80
+  tls:
+    - secretName: acme-crt-secret-sparks-codes
+      hosts:
+        - nvr.sparks.codes
