@@ -8,12 +8,11 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://mojo2600.github.io/pihole-kubernetes
       chart: adguard-home
       version: 5.0.3
       sourceRef:
         kind: HelmRepository
-        name: pihole-charts
+        name: k8s-at-home-charts
         namespace: flux-system
       interval: 5m
   values:

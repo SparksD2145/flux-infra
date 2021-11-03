@@ -8,4 +8,4 @@ resources:
   - media
   - networking
   - nginx
-  #- tools
+  - tools
