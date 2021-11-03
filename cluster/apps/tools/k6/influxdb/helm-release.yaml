@@ -8,6 +8,7 @@ spec:
   interval: 10m
   chart:
     spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: influxdb
       version: 2.3.18
       sourceRef:
