@@ -162,6 +162,8 @@ metadata:
   namespace: home
   labels:
     name: nvr
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
 spec:
   rules:
     - host: nvr.sparks.codes

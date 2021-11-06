@@ -112,6 +112,8 @@ metadata:
   namespace: home
   labels:
     name: zwavejs2mqtt
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
 spec:
   rules:
     - host: zwavejs2mqtt.sparks.codes
