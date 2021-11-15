@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://portainer.github.io/k8s
       chart: portainer
-      version: 1.0.18
+      version: 1.0.19
       sourceRef:
         kind: HelmRepository
         name: portainer-charts
