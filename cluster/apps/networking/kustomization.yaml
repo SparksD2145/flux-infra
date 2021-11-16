@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - nginx-ingress-external
   - nginx-ingress-internal
-  - pihole
+  #- pihole

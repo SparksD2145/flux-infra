@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ispy-dvr
-  - hajimari
+  #- ispy-dvr
+  #- hajimari
   - nfs-home.yaml
   - home-assistant
-  - mosquitto-mqtt
+  #- mosquitto-mqtt
   - zigbee2mqtt
   - zwavejs2mqtt
