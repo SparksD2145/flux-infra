@@ -26,7 +26,6 @@ spec:
                   operator: In
                   values:
                     - "true"
-
     env:
       TZ: "America/Chicago"
     persistence:
