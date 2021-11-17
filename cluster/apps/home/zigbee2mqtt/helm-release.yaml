@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     image:
-      tag: 1.21.1
+      tag: latest
     env:
       TZ: "America/Chicago"
     affinity:
@@ -52,9 +52,8 @@ spec:
         enabled: true
         mountPath: /data
         accessMode: "ReadWriteOnce"
-        size: 1Gi
-        existingClaim: zigbee2mqtt-data
-        subPath: zigbee2mqtt.sparks.codes
+        size: 2Gi
+        existingClaim: zigbee2mqtt-data-pvc
       usb:
         enabled: true
         type: hostPath

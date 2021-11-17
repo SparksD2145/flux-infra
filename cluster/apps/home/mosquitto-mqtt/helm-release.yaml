@@ -33,9 +33,8 @@ spec:
         enabled: true
         mountPath: /data
         accessMode: "ReadWriteOnce"
-        size: 1Gi
-        existingClaim: mosquitto-data
-        subPath: mqtt.sparks.codes
+        size: 2Gi
+        existingClaim: mosquitto-data-pvc
     service:
       main:
         enabled: true

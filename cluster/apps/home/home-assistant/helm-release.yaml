@@ -31,7 +31,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: home-assistant-cfg
+        existingClaim: home-assistant-pvc
         mountPath: /config
         accessMode: "ReadWriteOnce"
         size: 5Gi
