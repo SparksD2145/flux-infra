@@ -17,6 +17,14 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    controller:
+      image:
+        repository: metallb/controller
+        tag: main
+    speaker:
+      image:
+        repository: metallb/speaker
+        tag: main
     configInline:
       # peers:
       #   - peer-address: 10.10.0.1
