@@ -17,6 +17,16 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: mqtt-controller
+                  operator: In
+                  values:
+                    - "true"
+
     env:
       TZ: "America/Chicago"
     persistence:
@@ -24,7 +34,9 @@ spec:
         enabled: true
         mountPath: /data
         accessMode: "ReadWriteOnce"
-        size: 400M
+        size: 512Mi
+        existingClaim: nfs-home
+        subPath: mqtt.sparks.codes
     service:
       main:
         enabled: true

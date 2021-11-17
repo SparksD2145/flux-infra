@@ -24,7 +24,7 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
             - matchExpressions:
-                - key: zigbee-controller
+                - key: home-assistant
                   operator: In
                   values:
                     - "true"
