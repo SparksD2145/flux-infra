@@ -76,7 +76,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: nfs-home
+            claimName: zwavejs2mqtt-data
         - name: usb
           hostPath:
             path: /dev/ttyACM0

@@ -31,11 +31,10 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: nfs-home
-        subPath: home.sparks.codes
+        existingClaim: home-assistant-cfg
         mountPath: /config
         accessMode: "ReadWriteOnce"
-        size: 4G
+        size: 5Gi
     ingress:
       main:
         enabled: true
