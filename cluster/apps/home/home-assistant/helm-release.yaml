@@ -34,7 +34,7 @@ spec:
         existingClaim: home-assistant-pvc
         mountPath: /config
         accessMode: "ReadWriteOnce"
-        size: 5Gi
+        size: 30Gi
     ingress:
       main:
         enabled: true

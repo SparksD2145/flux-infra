@@ -47,7 +47,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/src/app/store
-              subPath: zwavejs2mqtt.sparks.codes
             - name: usb
               mountPath: /dev/ttyACM0
           livenessProbe:
@@ -76,7 +75,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: zwavejs2mqtt-data
+            claimName: zwavejs2mqtt-data-pvc
         - name: usb
           hostPath:
             path: /dev/ttyACM0

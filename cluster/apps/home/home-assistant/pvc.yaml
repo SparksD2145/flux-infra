@@ -7,7 +7,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 8Gi
+    storage: 30Gi
   persistentVolumeReclaimPolicy: Retain
   local:
     path: /opt/home.sparks.codes
@@ -33,4 +33,4 @@ spec:
   storageClassName: ""
   resources:
     requests:
-      storage: 8Gi
+      storage: 30Gi
