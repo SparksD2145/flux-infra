@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://mojo2600.github.io/pihole-kubernetes
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: adguard-home
       version: 5.0.3
       sourceRef:
