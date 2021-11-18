@@ -37,13 +37,6 @@ spec:
             - name: zwavejs
               containerPort: 3000
               protocol: TCP
-          resources:
-            limits:
-              cpu: 100m
-              memory: 256Mi
-            requests:
-              cpu: 100m
-              memory: 256Mi
           volumeMounts:
             - name: data
               mountPath: /usr/src/app/store
