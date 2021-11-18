@@ -68,7 +68,7 @@ spec:
       enabled: false
 
     persistentVolumeClaim:
-      enabled: true
+      enabled: false
 
     serviceWeb:
       loadBalancerIP: 10.10.200.2
