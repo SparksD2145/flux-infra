@@ -30,6 +30,8 @@ spec:
       - https://mirror1.malwaredomains.com/files/justdomains
       - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
       - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+      # Additional List
+      - https://dbl.oisd.nl
       # SUSPICIOUS
       - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
       - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
