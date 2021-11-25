@@ -21,15 +21,11 @@ spec:
       tag: latest
     env:
       TZ: "America/Chicago"
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: zigbee-controller
-                  operator: In
-                  values:
-                    - "true"
+    tolerations:
+      - key: "zwave-zigbee-control"
+        operator: "Equal"
+        value: "active"
+        effect: "NoSchedule"
     ingress:
       main:
         enabled: true

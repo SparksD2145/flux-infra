@@ -14,15 +14,11 @@ spec:
       labels:
         run: zwavejs2mqtt
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: zwave-controller
-                    operator: In
-                    values:
-                      - "true"
+      tolerations:
+        - key: "zwave-zigbee-control"
+          operator: "Equal"
+          value: "active"
+          effect: "NoSchedule"
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwavejs2mqtt
