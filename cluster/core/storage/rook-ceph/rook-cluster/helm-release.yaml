@@ -32,6 +32,16 @@ spec:
             secretName: acme-crt-secret-sparks-codes
     toolbox:
       enabled: false
+    placement:
+      all:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: ceph-storage
+                    operator: In
+                values:
+                  - true
     cephClusterSpec:
       dataDirHostPath: "/opt/rook"
       storage:
