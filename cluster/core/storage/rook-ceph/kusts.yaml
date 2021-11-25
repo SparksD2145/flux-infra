@@ -4,7 +4,7 @@ metadata:
   name: rook-operator
   namespace: flux-system
 spec:
-   15m0s
+  interval: 15m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -19,7 +19,7 @@ metadata:
   name: rook-cluster
   namespace: flux-system
 spec:
-   15m0s
+  interval: 15m0s
   dependsOn:
     - name: rook-operator
   sourceRef:
