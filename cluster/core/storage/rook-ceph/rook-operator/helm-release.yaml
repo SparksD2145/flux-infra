@@ -5,7 +5,7 @@ metadata:
   name: rook-ceph-operator
   namespace: rook-ceph
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       # renovate: registryUrl=https://charts.rook.io/release
@@ -15,4 +15,4 @@ spec:
         kind: HelmRepository
         name: rook-charts
         namespace: flux-system
-      interval: 5m
+      interval: 15m

@@ -5,6 +5,6 @@ metadata:
   name: projectcalico-charts
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 15m
   url: https://docs.projectcalico.org/charts
   timeout: 3m

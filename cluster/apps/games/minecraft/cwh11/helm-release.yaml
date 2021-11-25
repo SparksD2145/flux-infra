@@ -5,7 +5,7 @@ metadata:
   name: minecraft-cwh11
   namespace: games
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       # renovate: registryUrl=https://itzg.github.io/minecraft-server-charts/
@@ -15,7 +15,7 @@ spec:
         kind: HelmRepository
         name: minecraft-charts
         namespace: flux-system
-      interval: 5m
+      interval: 15m
   values:
     image: itzg/minecraft-server
     imageTag: java15

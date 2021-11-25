@@ -5,7 +5,7 @@ metadata:
   name: nginx-data-sparks-codes
   namespace: nginx
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
@@ -15,7 +15,7 @@ spec:
         kind: HelmRepository
         name: bitnami-charts
         namespace: flux-system
-      interval: 5m
+      interval: 15m
   values:
     extraVolumeMounts:
       - mountPath: "/app"
