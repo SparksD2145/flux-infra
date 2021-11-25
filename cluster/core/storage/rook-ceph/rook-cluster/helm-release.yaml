@@ -33,7 +33,8 @@ spec:
     toolbox:
       enabled: false
     cephClusterSpec:
-      dataDirHostPath: "/opt/rook"
+      dashboard:
+        enabled: true
       storage:
         useAllNodes: false
         useAllDevices: false
