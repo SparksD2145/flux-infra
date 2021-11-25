@@ -105,40 +105,50 @@ spec:
       groups:
         - name: Kubernetes
           links:
-            - name: flux-infra
+            - name: SparksD2145/flux-infra
               url: "https://github.com/sparksd2145/flux-infra"
+            - name: christianmetal3/home-infra
+              url: https://github.com/christianmetal3/home-infra
             - name: k8s-at-home Charts
               url: "https://github.com/k8s-at-home/charts/tree/master/charts"
-        - name: Communicate
-          links:
-            - name: Discord
-              url: "https://discord.com"
-            - name: Gmail
-              url: "https://gmail.com"
-            - name: Slack
-              url: "https://slack.com/signin"
-        - name: Cloud
+        - name: Services
           links:
             - name: Cloudflare
               url: "https://dash.cloudflare.com"
-            - name: Dropbox
-              url: "https://dropbox.com"
+            - name: Namecheap
+              url: "https://namecheap.com"
             - name: Drive
               url: "https://drive.google.com"
+        - name: Finance
+          links:
+            - name: OneFinance
+              url: "https://onefinance.com"
+            - name: Mint
+              url: "https://mint.com"
+            - name: Credit Karma
+              url: "https://creditkarma.com"
+            - name: Chase
+              url: "https://chase.com"
+            - name: PayPal
+              url: "https://paypal.com"
+            - name: Charles Schwab
+              url: "https://www.schwab.com/"
+        - name: Shopping
+          links:
+            - name: eBay
+              url: "https://ebay.com/"
+            - name: Craigslist
+              url: "https://sanantonio.craigslist.com/"
+            - name: FB Marketplace
+              url: "https://facebook.com/marketplace"
         - name: Media
           links:
-            - name: Spotify
-              url: "http://browse.spotify.com"
             - name: YouTube
               url: "https://youtube.com/"
-        - name: Reading
-          links:
-            - name: Reddit
-              url: "http://reddit.com"
-        - name: Tech
-          links:
-            - name: Hacker News
-              url: "https://news.ycombinator.com/"
+            - name: YouTube Music
+              url: "https://music.youtube.com/"
+            - name: My Soundcloud
+              url: "https://soundcloud.com/SparksD2145"
     ingress:
       main:
         enabled: true
