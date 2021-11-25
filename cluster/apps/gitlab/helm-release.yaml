@@ -52,7 +52,7 @@ spec:
       gitaly:
         persistence:
           volumeName: gitlab-gitaly-ha
-          storageClass: ceph-block
+          storageClass: ceph-filesystem
           size: 75Gi
     postgresql:
       persistence:
