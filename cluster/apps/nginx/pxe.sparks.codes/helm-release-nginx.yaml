@@ -27,13 +27,21 @@ spec:
           claimName: nfs-nginx
     service:
       type: ClusterIP
+    serverBlock: |-
+      server {
+        listen        8080;
+        server_name   pxe.sparks.codes;
+        root          /app;
+
+        location / {
+          autoindex on;
+        }
+      }
     ingress:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx-internal"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
-        nginx.ingress.kubernetes.io/configuration-snippet: |
-          autoindex on;
       hostname: "pxe.sparks.codes"
       extraTls:
         - hosts:
