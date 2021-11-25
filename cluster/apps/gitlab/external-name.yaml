@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-gitlab-imake-software
+  namespace: gitlab
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: gitlab.imake.software
+spec:
+  type: ExternalName
+  externalName: imake.software

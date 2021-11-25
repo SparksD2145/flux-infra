@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-helm-imake-software
+  namespace: nginx
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: helm.imake.software
+spec:
+  type: ExternalName
+  externalName: imake.software
