@@ -45,7 +45,7 @@ spec:
       config:
         enabled: true
         mountPath: /photoprism/storage
-        storageClass: ceph-block
+        storageClass: ceph-filesystem
         accessMode: ReadWriteOnce
         size: 35Gi
         retain: true
@@ -53,7 +53,7 @@ spec:
       originals:
         enabled: true
         mountPath: "/photoprism/originals"
-        storageClass: ceph-block
+        storageClass: ceph-filesystem
         accessMode: ReadWriteOnce
-        size: 2Ti
+        size: 1536Gi
         retain: true
