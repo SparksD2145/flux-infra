@@ -31,10 +31,11 @@ spec:
               - rook.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     toolbox:
-      enabled: false
+      enabled: true
     cephClusterSpec:
       dashboard:
         enabled: true
+        ssl: false
       storage:
         useAllNodes: false
         useAllDevices: false
@@ -64,16 +65,17 @@ spec:
           - name: omega
             devices:
               - name: sdb1
-          #- name: tango
-          #  devices:
-          #    - name: sda
-          #    - name: sdb
-          #    - name: sdc
-          #    - name: sdd
-          #    - name: sdf
-          #    - name: sdg
-          #    - name: sdh
-          #    - name: sdi
+          - name: tango
+            devices:
+              - name: sda
+              - name: sdb
+              - name: sdc
+              - name: sdd
+              - name: sdf
+              - name: sdg
+              - name: sdh
+              - name: sdi
+
     cephBlockPools:
       - name: ceph-blockpool
         spec:
@@ -153,32 +155,33 @@ spec:
             csi.storage.k8s.io/fstype: ext4
 
     cephObjectStores:
-      - name: ceph-objectstore
-        # see https://github.com/rook/rook/blob/master/Documentation/ceph-object-store-crd.md#object-store-settings for available configuration
-        spec:
-          metadataPool:
-            failureDomain: host
-            replicated:
-              size: 3
-          dataPool:
-            failureDomain: host
-            erasureCoded:
-              dataChunks: 2
-              codingChunks: 1
-          preservePoolsOnDelete: true
-          gateway:
-            port: 80
-            # securePort: 443
-            # sslCertificateRef:
-            instances: 1
-          healthCheck:
-            bucket:
-              interval: 60s
-        storageClass:
-          enabled: true
-          name: ceph-bucket
-          reclaimPolicy: Retain
-          # see https://github.com/rook/rook/blob/master/Documentation/ceph-object-bucket-claim.md#storageclass for available configuration
-          parameters:
-            # note: objectStoreNamespace and objectStoreName are configured by the chart
-            region: us-east-1
+      []
+      #- name: ceph-objectstore
+      #  # see https://github.com/rook/rook/blob/master/Documentation/ceph-object-store-crd.md#object-store-settings for available configuration
+      #  spec:
+      #    metadataPool:
+      #      failureDomain: host
+      #      replicated:
+      #        size: 3
+      #    dataPool:
+      #      failureDomain: host
+      #      erasureCoded:
+      #        dataChunks: 2
+      #        codingChunks: 1
+      #    preservePoolsOnDelete: true
+      #    gateway:
+      #      port: 80
+      #      # securePort: 443
+      #      # sslCertificateRef:
+      #      instances: 1
+      #    healthCheck:
+      #      bucket:
+      #        interval: 60s
+      #  storageClass:
+      #    enabled: true
+      #    name: ceph-bucket
+      #    reclaimPolicy: Retain
+      #    # see https://github.com/rook/rook/blob/master/Documentation/ceph-object-bucket-claim.md#storageclass for available configuration
+      #    parameters:
+      #      # note: objectStoreNamespace and objectStoreName are configured by the chart
+      #      region: us-east-1
