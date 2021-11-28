@@ -33,6 +33,9 @@ spec:
           - gitlab
       name: "Sparks"
       customApps:
+        - name: Habitica
+          url: https://habitica.com
+          icon: "check-bold"
         - name: Alpha
           url: http://alpha.sparks.codes
           icon: "desktop-classic"
