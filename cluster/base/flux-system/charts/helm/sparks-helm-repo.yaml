@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  url: http://helm.imake.software
+  url: https://helm.imake.software
   timeout: 3m
