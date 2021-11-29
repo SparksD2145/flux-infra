@@ -57,3 +57,11 @@ spec:
         accessMode: ReadWriteOnce
         size: 1536Gi
         retain: true
+
+      import:
+        enabled: true
+        mountPath: /photoprism/import
+        accessMode: ReadWriteMany
+        existingClaim: nfs-photoprism-imports
+        subPath: import
+        size: 55Gi
