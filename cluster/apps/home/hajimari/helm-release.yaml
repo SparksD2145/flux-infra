@@ -69,6 +69,9 @@ spec:
         - name: Rook Storage
           url: https://rook.sparks.codes
           icon: "database"
+        - name: Cryptofolio
+          url: https://crypto.sparks.codes
+          icon: "currency-btc"
         - name: Transmission
           url: https://transmission.sparks.codes
           icon: "web"
