@@ -18,5 +18,3 @@ spec:
   values:
     operator:
       defaultRuntime: containerd
-    nfd:
-      enabled: false
