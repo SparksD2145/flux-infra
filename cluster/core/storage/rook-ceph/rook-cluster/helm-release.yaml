@@ -51,30 +51,30 @@ spec:
               - name: sde
               - name: sdf
               - name: sdg
-          - name: foxtrot
-            devices:
-              - name: sdb
-              - name: sdc
-              - name: sdd
-              - name: sde
-              - name: sdf
-              - name: sdg
-          #- name: lambda
-          #  devices:
-          #    - name: sdb
-          - name: omega
-            devices:
-              - name: sdb1
-          - name: tango
-            devices:
-              - name: sda
-              - name: sdb
-              - name: sdc
-              - name: sdd
-              - name: sdf
-              - name: sdg
-              - name: sdh
-              - name: sdi
+          # - name: foxtrot
+          #   devices:
+          #     - name: sdb
+          #     - name: sdc
+          #     - name: sdd
+          #     - name: sde
+          #     - name: sdf
+          #     - name: sdg
+          # #- name: lambda
+          # #  devices:
+          # #    - name: sdb
+          # - name: omega
+          #   devices:
+          #     - name: sdb1
+          # - name: tango
+          #   devices:
+          #     - name: sda
+          #     - name: sdb
+          #     - name: sdc
+          #     - name: sdd
+          #     - name: sdf
+          #     - name: sdg
+          #     - name: sdh
+          #     - name: sdi
 
     cephBlockPools:
       - name: ceph-blockpool
