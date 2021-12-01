@@ -1,0 +1,14 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Correct Timezone
+      shell: TZ="America/Chicago" ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
+
+    - name: Install Packages
+      apt:
+        pkg:
+          - lvm2
+
+    - name: Start K3s Worker
+      shell: curl -sfL https://get.k3s.io | K3S_URL='https://omega.sparks.codes:6443' K3S_TOKEN='' sh -
