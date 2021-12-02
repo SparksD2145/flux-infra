@@ -30,6 +30,7 @@ resources:
   - mlohr-charts.yaml
   - next-cloud-charts.yaml
   - nvidia-charts.yaml
+  - nvdp-charts.yaml
   - nfs-subdir-external-provisioner-charts.yaml
   - nicolaswilde-charts.yaml
   - node-feature-discovery-charts.yaml
