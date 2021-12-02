@@ -5,11 +5,17 @@
     - name: Correct Timezone
       shell: TZ="America/Chicago" ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 
+    - name: Install Latest Packages
+      apt:
+        name: "*"
+        state: latest
+
     - name: Install Packages
       apt:
         pkg:
           - lvm2
           - nfs-kernel-server
+          - nfs-common
 
     - name: Start K3s Master
       shell: curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - server --flannel-backend=host-gw --no-deploy=traefik,servicelb,local-storage --disable=traefik,servicelb,local-storage
