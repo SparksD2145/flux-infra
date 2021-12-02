@@ -10,7 +10,7 @@ spec:
     storage: 30Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /opt/home.sparks.codes
+    path: /mnt/static/home.sparks.codes
   nodeAffinity:
     required:
       nodeSelectorTerms:
