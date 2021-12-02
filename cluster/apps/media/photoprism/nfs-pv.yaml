@@ -10,7 +10,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: omega.sparks.codes
-    path: "/mnt/static/photos.sparks.codes/"
+    path: "/mnt/static/"
 
 ---
 apiVersion: v1

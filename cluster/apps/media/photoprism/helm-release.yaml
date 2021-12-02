@@ -63,5 +63,5 @@ spec:
         mountPath: /photoprism/import
         accessMode: ReadWriteMany
         existingClaim: nfs-photoprism-imports
-        subPath: import
+        subPath: photos.sparks.codes/import
         size: 55Gi
