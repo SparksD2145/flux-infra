@@ -19,15 +19,11 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: home-assistant
-                  operator: In
-                  values:
-                    - "true"
+    tolerations:
+      - key: "zwave-zigbee-control"
+        operator: "Equal"
+        value: "active"
+        effect: "NoSchedule"
     persistence:
       config:
         enabled: true

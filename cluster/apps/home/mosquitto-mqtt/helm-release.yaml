@@ -17,15 +17,11 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: mqtt-controller
-                  operator: In
-                  values:
-                    - "true"
+    tolerations:
+      - key: "zwave-zigbee-control"
+        operator: "Equal"
+        value: "active"
+        effect: "NoSchedule"
     env:
       TZ: "America/Chicago"
     persistence:
