@@ -36,6 +36,55 @@ spec:
       dashboard:
         enabled: true
         ssl: false
+      placement:
+        all:
+          nodeAffinity:
+            requiredrequiredDuringSchedulingRequiredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: role
+                      operator: In
+                      values:
+                        - storage
+          tolerations:
+            - key: storage-node
+              operator: Exists
+        mgr:
+          nodeAffinity:
+            requiredrequiredDuringSchedulingRequiredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: role
+                      operator: In
+                      values:
+                        - storage
+          tolerations:
+            - key: storage-node
+              operator: Exists
+        mon:
+          nodeAffinity:
+            requiredrequiredDuringSchedulingRequiredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: role
+                      operator: In
+                      values:
+                        - storage
+          tolerations:
+            - key: storage-node
+              operator: Exists
+        osd:
+          nodeAffinity:
+            requiredrequiredDuringSchedulingRequiredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: role
+                      operator: In
+                      values:
+                        - storage
+          tolerations:
+            - key: storage-node
+              operator: Exists
       storage:
         useAllNodes: false
         useAllDevices: false
