@@ -1,0 +1,18 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Uninstall Packages
+      apt:
+        state: absent
+        pkg:
+          - nvidia-headless-470-server
+          - nvidia-container-toolkit
+
+    - name: Uninstall Containerd Template
+      file:
+        path: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+        state: absent
+
+    - name: Restart Machine
+      reboot:
