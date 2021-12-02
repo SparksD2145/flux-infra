@@ -92,14 +92,14 @@ spec:
           metadataDevice:
           osdsPerDevice: "1"
         nodes:
-          #- name: whiskey
-          #  devices:
-          #    - name: sdb
-          #    - name: sdc
-          #    - name: sdd
-          #    - name: sde
-          #    - name: sdf
-          #    - name: sdg
+          - name: whiskey
+            devices:
+              - name: sdb
+              - name: sdc
+              - name: sdd
+              - name: sde
+              - name: sdf
+              - name: sdg
           #- name: foxtrot
           #  devices:
           #    - name: sdb
