@@ -52,6 +52,3 @@ spec:
         tag: 0.4.4
     tcp:
       "22": "gitlab/gitlab-gitlab-shell:22"
-      "32400": "media/plex:32400"
-    udp:
-      "32400": "media/plex:32400"
