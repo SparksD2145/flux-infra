@@ -16,3 +16,6 @@ spec:
         name: rook-charts
         namespace: flux-system
       interval: 15m
+  values:
+    crds:
+      enabled: false
