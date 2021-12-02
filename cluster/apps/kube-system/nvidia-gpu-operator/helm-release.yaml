@@ -16,5 +16,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    psp:
+      enabled: true
     operator:
       defaultRuntime: containerd
