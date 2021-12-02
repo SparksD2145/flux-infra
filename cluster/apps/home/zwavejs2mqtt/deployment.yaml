@@ -18,7 +18,7 @@ spec:
         - key: "zwave-zigbee-control"
           operator: "Equal"
           value: "active"
-          effect: "NoSchedule"
+          effect: "PreferNoSchedule"
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwavejs2mqtt

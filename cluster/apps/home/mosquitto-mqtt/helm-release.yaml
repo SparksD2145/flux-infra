@@ -21,7 +21,7 @@ spec:
       - key: "zwave-zigbee-control"
         operator: "Equal"
         value: "active"
-        effect: "NoSchedule"
+        effect: "PreferNoSchedule"
     env:
       TZ: "America/Chicago"
     persistence:
