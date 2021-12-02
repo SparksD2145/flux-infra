@@ -7,7 +7,10 @@
         state: absent
         pkg:
           - nvidia-headless-470-server
-          - nvidia-container-toolkit
+          - nvidia-utils-470-server
+          - nvidia-cuda-toolkit
+          - nvidia-settings
+          - nvidia-docker2
 
     - name: Uninstall Containerd Template
       file:

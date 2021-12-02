@@ -6,7 +6,13 @@
       apt:
         pkg:
           - nvidia-headless-470-server
-          - nvidia-container-toolkit
+          - nvidia-utils-470-server
+          - nvidia-cuda-toolkit
+          - nvidia-settings
+          - nvidia-docker2
+
+    - name: Set text target
+      shell: systemctl set-default multi-user.target
 
     - name: Install Containerd Template
       copy:
@@ -67,3 +73,17 @@
           {{end}}
           {{end}}
           {{end}}
+
+    - name: Install Docker Config
+      copy:
+        dest: /etc/docker/daemon.json
+        content: |
+          {
+              "default-runtime": "nvidia",
+              "runtimes": {
+                  "nvidia": {
+                      "path": "nvidia-container-runtime",
+                      "runtimeArgs": []
+                  }
+              }
+          }

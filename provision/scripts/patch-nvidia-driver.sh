@@ -1,0 +1,1 @@
+kubectl -n kube-system patch daemonsets.apps nvidia-gpu-plugin-nvidia-device-plugin --patch '{"spec": { "template": {"spec": {"containers": [{"env": [{"name": "DP_DISABLE_HEALTHCHECKS","value": "xids"}],"name": "nvidia-device-plugin-ctr"}]}}}}'

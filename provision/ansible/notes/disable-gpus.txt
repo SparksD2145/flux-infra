@@ -1,0 +1,17 @@
+# Disable persistence mode
+sudo nvidia-smi -i 0000:xx:00.0 -pm 0
+
+# changing gpu to draining mode (power idling)
+sudo nvidia-smi drain -p 0000:xx:00.0 -m 1
+
+#enable again persistance mode.
+sudo nvidia-smi -pm 1
+
+
+
+
+---------------
+sudo nvidia-smi -i 0000:01:00.0 -pm 0
+sudo nvidia-smi drain -p 0000:01:00.0 -m 1
+sudo nvidia-smi -pm 1
+
