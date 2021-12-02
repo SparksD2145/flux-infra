@@ -168,7 +168,7 @@ spec:
       hostNetwork: true
       tolerations:
         - operator: Exists
-          effect: PreferNoSchedule
+          effect: NoSchedule
       serviceAccountName: multus
       containers:
         - name: kube-multus
