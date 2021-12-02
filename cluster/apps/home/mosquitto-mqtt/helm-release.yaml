@@ -30,7 +30,7 @@ spec:
       TZ: "America/Chicago"
     persistence:
       data:
-        enabled: true
+        enabled: false
         mountPath: /data
         accessMode: "ReadWriteOnce"
         size: 2Gi
