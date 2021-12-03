@@ -20,6 +20,8 @@ spec:
           env:
             - name: TERM
               value: linux
+            - name: DISPLAY
+              value: :0
           #tolerations:
           #  - key: "workstation"
           #    operator: "Equal"
@@ -33,13 +35,10 @@ spec:
           command:
             - /app/cgminer
           args:
-            - -S
-            - opencl:auto
-            - --set-device
-            - intensity=9
-            - --url
-            - stratum+tcp://solo.ckpool.org:3333
-            - --user
-            - "3MGxJa3ra1b1NJbyVex1hMDgDk4nXD6VRC"
-            - --pass
-            - "x"
+            - -n
+            #- --url
+            #- stratum+tcp://solo.ckpool.org:3333
+            #- --user
+            #- "3MGxJa3ra1b1NJbyVex1hMDgDk4nXD6VRC"
+            #- --pass
+            #- "x"
