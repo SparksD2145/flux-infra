@@ -12,6 +12,11 @@
           - nvidia-settings
           - nvidia-docker2
 
+    - name: Install bottle python package
+      pip:
+        name: coolgpus
+        state: absent
+
     - name: Uninstall Containerd Template
       file:
         path: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl

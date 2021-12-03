@@ -5,11 +5,16 @@
     - name: Install Packages
       apt:
         pkg:
+          - tmux
           - nvidia-headless-470-server
           - nvidia-utils-470-server
           - nvidia-cuda-toolkit
           - nvidia-settings
           - nvidia-docker2
+
+    - name: Install bottle python package
+      pip:
+        name: coolgpus
 
     - name: Set text target
       shell: systemctl set-default multi-user.target
