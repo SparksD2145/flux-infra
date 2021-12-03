@@ -53,25 +53,23 @@ spec:
         persistence:
           volumeName: gitlab-gitaly-ha
           storageClass: ceph-filesystem
-          size: 75Gi
+          size: 350Gi
     postgresql:
       persistence:
         volumeName: gitlab-postgresql-ha
         storageClass: ceph-block
-        size: 8Gi
-    #minio:
-    #  replicas: 1
-    #  persistence:
-    #    enabled: true
-    #    volumeName: gitlab-minio-ha
-    #    storageClass: ceph-block
-    #    size: 10Gi
+        size: 20Gi
+    minio:
+      persistence:
+        volumeName: gitlab-minio-ha
+        storageClass: ceph-block
+        size: 40Gi
     redis:
       master:
         persistence:
           volumeName: gitlab-redis-ha
           storageClass: ceph-block
-          size: 5Gi
+          size: 15Gi
     certmanager:
       installCRDs: false
       install: false

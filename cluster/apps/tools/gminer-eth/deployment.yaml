@@ -4,7 +4,7 @@ metadata:
   name: gminer
   namespace: tools
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       run: gminer
@@ -13,25 +13,35 @@ spec:
       labels:
         run: gminer
     spec:
+      tolerations:
+        - key: "workstation"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       containers:
         - name: gminer
           image: "dockminer/gminer:latest"
-          tolerations:
-            - key: "workstation"
-              operator: "Equal"
-              value: "true"
-              effect: "NoSchedule"
+          #image: "registry.imake.software/sparks/gminer:v3.1.0"
+          imagePullPolicy: Always
+          env:
+            - name: DISPLAY
+              value: :0
+            - name: POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           resources:
             limits:
               nvidia.com/gpu: "1"
               cpu: 100m
               memory: "1024Mi"
-          command:
-            - miner
           args:
             - --algo
             - ethash
             - --server
             - eth.2miners.com:2020
             - --user
-            - "0xD4145bEFDDE842f3Cbc8ce1a1d1094fD6d242eFf"
+            # BTC
+            #- 39ZA8zqaNAn4JJU8KzjW9ya5p9rNcCGiCo.$(POD_UID)
+            # ETH
+            - "0xD4145bEFDDE842f3Cbc8ce1a1d1094fD6d242eFf.$(POD_UID)"
