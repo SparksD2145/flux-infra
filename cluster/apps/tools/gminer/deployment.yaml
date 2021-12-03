@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gminer
+  namespace: tools
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: gminer
+  template:
+    metadata:
+      labels:
+        run: gminer
+    spec:
+      containers:
+        - name: gminer
+          image: "dockminer/gminer:latest"
+          resources:
+            limits:
+              nvidia.com/gpu: "1"
+              cpu: 100m
+              memory: "1024Mi"
+          command:
+            - miner
+          args:
+            - --algo
+            - ethash
+            - --server
+            - eth.2miners.com:2020
+            - --user
+            - "0xD4145bEFDDE842f3Cbc8ce1a1d1094fD6d242eFf"
