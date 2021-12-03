@@ -2,10 +2,19 @@
 - hosts: servers
   become: true
   tasks:
+    - name: Add Nvidia Repo
+      shell: |
+        distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+        && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+        && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
     - name: Install Packages
       apt:
+        update_cache: "yes"
         pkg:
           - tmux
+          - python3
+          - python3-pip
           - nvidia-headless-470-server
           - nvidia-utils-470-server
           - nvidia-cuda-toolkit
