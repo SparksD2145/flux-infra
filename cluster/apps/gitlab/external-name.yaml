@@ -8,3 +8,15 @@ metadata:
 spec:
   type: ExternalName
   externalName: imake.software
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-registry-imake-software
+  namespace: gitlab
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: registry.imake.software
+spec:
+  type: ExternalName
+  externalName: imake.software

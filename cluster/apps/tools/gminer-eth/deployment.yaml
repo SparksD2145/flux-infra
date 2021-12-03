@@ -16,6 +16,11 @@ spec:
       containers:
         - name: gminer
           image: "dockminer/gminer:latest"
+          tolerations:
+            - key: "workstation"
+              operator: "Equal"
+              value: "true"
+              effect: "NoSchedule"
           resources:
             limits:
               nvidia.com/gpu: "1"

@@ -16,6 +16,7 @@
           - python3
           - python3-pip
           - nvidia-headless-470-server
+          - xserver-xorg-video-nvidia-470-server
           - nvidia-utils-470-server
           - nvidia-cuda-toolkit
           - nvidia-settings
