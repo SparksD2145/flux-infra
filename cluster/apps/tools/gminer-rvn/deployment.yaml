@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gminer-eth
+  name: gminer-rvn
   namespace: tools
 spec:
   replicas: 5
   selector:
     matchLabels:
-      run: gminer-eth
+      run: gminer-rvn
   template:
     metadata:
       labels:
-        run: gminer-eth
+        run: gminer-rvn
     spec:
       tolerations:
         - key: "workstation"
@@ -19,9 +19,9 @@ spec:
           value: "true"
           effect: "NoSchedule"
       containers:
-        - name: gminer-eth
+        - name: gminer-rvn
           image: "dockminer/gminer:latest"
-          #image: "registry.imake.software/sparks/gminer-eth:v3.1.0"
+          #image: "registry.imake.software/sparks/gminer-rvn:v3.1.0"
           imagePullPolicy: Always
           env:
             - name: DISPLAY
@@ -37,11 +37,10 @@ spec:
               memory: "1024Mi"
           args:
             - --algo
-            - ethash
+            - kawpow
             - --server
-            - us-eth.2miners.com:2020
+            - rvn.2miners.com:6060
             - --user
-            # BTC
-            #- 39ZA8zqaNAn4JJU8KzjW9ya5p9rNcCGiCo.$(POD_UID)
-            # ETH
-            - "0xD4145bEFDDE842f3Cbc8ce1a1d1094fD6d242eFf.$(POD_UID)"
+            - "RD1C9QhqFpxCaXxBbybJzVjhG2Ab3m275e.$(POD_UID)"
+            - -p
+            - "x"
