@@ -4,4 +4,4 @@ resources:
   - cryptofolio
   #- cgminer-btc
   #- gminer-eth
-  - gminer-rvn
+  #- gminer-rvn
