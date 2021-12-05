@@ -1,0 +1,11 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Update Packages
+      apt:
+        name: "*"
+        state: latest
+
+    - name: Reboot System
+      reboot:
