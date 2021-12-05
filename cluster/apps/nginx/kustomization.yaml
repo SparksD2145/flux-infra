@@ -3,9 +3,5 @@ kind: Kustomization
 resources:
   - helm.imake.software
   - proxy.router.sparks.codes
-  - proxy.idrac.whiskey.sparks.codes
-  - proxy.idrac.foxtrot.sparks.codes
-  - proxy.idrac.omega.sparks.codes
-  - proxy.idrac.lambda.sparks.codes
   - pxe.sparks.codes
   - nfs-pv.yaml

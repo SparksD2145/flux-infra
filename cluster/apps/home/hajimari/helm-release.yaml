@@ -82,16 +82,16 @@ spec:
           url: https://pxe.sparks.codes
           icon: "refresh-auto"
         - name: Whiskey iDRAC
-          url: https://idrac.whiskey.sparks.codes
+          url: https://idrac-whiskey.sparks.codes
           icon: "remote-desktop"
         - name: Foxtrot iDRAC
-          url: https://idrac.foxtrot.sparks.codes
+          url: https://idrac-foxtrot.sparks.codes
           icon: "remote-desktop"
         - name: Lambda iDRAC
-          url: https://idrac.lambda.sparks.codes
+          url: https://idrac-lambda.sparks.codes
           icon: "remote-desktop"
         - name: Omega iDRAC
-          url: https://idrac.omega.sparks.codes
+          url: https://idrac-omega.sparks.codes
           icon: "remote-desktop"
         - name: Dome Camera 1
           url: http://dome-camera-1.sparks.codes
