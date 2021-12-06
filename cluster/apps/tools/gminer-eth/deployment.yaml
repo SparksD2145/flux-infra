@@ -39,7 +39,10 @@ spec:
             - --algo
             - ethash
             - --server
-            - us-eth.2miners.com:2020
+            # pool
+            #- us-eth.2miners.com:2020
+            # solo
+            - solo-eth.2miners.com:6060
             - --user
             # BTC
             #- 39ZA8zqaNAn4JJU8KzjW9ya5p9rNcCGiCo.$(POD_UID)
