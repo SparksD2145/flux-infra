@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - cryptofolio
   #- cgminer-btc
-  - gminer-eth
+  #- gminer-eth
   #- gminer-rvn
