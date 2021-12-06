@@ -1,31 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gminer-eth
+  name: gminer-eth-trevor
   namespace: tools
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      run: gminer-eth
+      run: gminer-eth-trevor
   template:
     metadata:
       labels:
-        run: gminer-eth
+        run: gminer-eth-trevor
     spec:
-      tolerations:
-        - key: "workstation"
-          operator: "Equal"
-          value: "true"
-          effect: "NoSchedule"
+      affinity:
+        nodeAffinity:
+          k3s.io/hostname: kappa
       containers:
         - name: gminer-eth
           image: "dockminer/gminer:latest"
           #image: "registry.imake.software/sparks/gminer-eth:v3.1.0"
-          imagePullPolicy: Always
           env:
             - name: DISPLAY
               value: :0
+            - name: CUDA_VISIBLE_DEVICES
+              value: "0"
             - name: POD_UID
               valueFrom:
                 fieldRef:
