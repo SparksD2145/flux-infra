@@ -4,7 +4,7 @@ metadata:
   name: gminer-eth
   namespace: tools
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       run: gminer-eth
