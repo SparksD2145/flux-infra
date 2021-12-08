@@ -1,0 +1,6 @@
+
+# Enable Ubuntu's BS libvirt bridge to work
+sudo iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
+sudo iptables -A FORWARD -i br0 -o virbr0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i virbr0 -o br0 -j ACCEPT
+sudo iptables -I FORWARD 1 -i br0 -o br0 -j ACCEPT
