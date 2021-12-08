@@ -155,6 +155,17 @@ spec:
               url: "https://music.youtube.com/"
             - name: My Soundcloud
               url: "https://soundcloud.com/SparksD2145"
+        - name: Cryptocurrency
+          links:
+            - name: 2Miners ETH
+              url: https://eth.2miners.com/account/0xD4145bEFDDE842f3Cbc8ce1a1d1094fD6d242eFf#farms
+            - name: Coinbase
+              url: https://www.coinbase.com/dashboard
+            - name: Yieldly
+              url: https://yieldly.finance/app
+            - name: Guarda
+              url: https://guarda.com
+
     ingress:
       main:
         enabled: true
