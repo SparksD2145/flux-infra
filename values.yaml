@@ -18,7 +18,7 @@ operatorNamespace: rook-ceph
 # Installs a debugging toolbox deployment
 toolbox:
   enabled: false
-  image: rook/ceph:v1.7.9
+  image: rook/ceph:v1.8.0
   tolerations: []
   affinity: {}
 
