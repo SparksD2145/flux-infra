@@ -17,13 +17,18 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    adminPassword: "choosesomethingelse"
     DNS1: "10.10.0.1"
-    DNS2: "127.0.0.1"
+    DNS2: "10.0.0.10"
     podDnsConfig:
-      enabled:
+      enabled: true
       policy: None
       nameservers:
-        - 10.10.0.1
+        - 10.0.0.1
+        - 10.10.0.10
+    whitelist:
+      - (\.|^)2miners\.com$
+      - (\.|^)unmineable\.com$
     adlists:
       # DEFAULT LISTS
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
