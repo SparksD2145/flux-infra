@@ -4,3 +4,4 @@ resources:
   - nginx-ingress-external
   - nginx-ingress-internal
   - pihole
+  - s2s-dnsmasq

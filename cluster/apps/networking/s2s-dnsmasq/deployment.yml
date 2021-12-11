@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: s2s-dnsmasq
+  namespace: networking
+spec:
+  selector:
+    matchLabels:
+      run: s2s-dnsmasq
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: s2s-dnsmasq
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: s2s-dnsmasq
+          image: registry.imake.software/sparks/dnsmasq:2.0.0
+          volumeMounts:
+            - name: config-vol
+              mountPath: /etc/dnsmasq.conf
+              subPath: config
+          ports:
+            - name: dns-responder
+              containerPort: 53
+              protocol: UDP
+          resources:
+            limits:
+              cpu: 50m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+      volumes:
+        - name: config-vol
+          configMap:
+            name: s2s-dnsmasq-config
+      imagePullSecrets:
+        - name: gitlab-pull-secret
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 127.0.0.1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: s2s-dnsmasq
+  namespace: networking
+  labels:
+    run: s2s-dnsmasq
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.200.6
+  ports:
+    - port: 53
+      targetPort: 53
+      protocol: UDP
+  selector:
+    run: s2s-dnsmasq

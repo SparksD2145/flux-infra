@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: s2s-dnsmasq-config
+  namespace: networking
+data:
+  config: |
+    # Do not use /etc/hosts
+    no-resolv
+
+    ## SPARKS.CODES AND IMAKE.SOFTWARE
+    # Reverse Lookups for 10.10.0.0/16 go to 10.10.0.1
+    rev-server=10.10.0.0/16,10.10.0.1
+
+    # Use sparks.codes NS
+    server=/sparks.codes/10.10.0.1
+
+    # Use imake.software NS
+    server=/imake.software/10.10.0.1
+
+    ## CM3.CLOUD
+    # Reverse Lookups for 10.0.0.0/24 go to 10.0.0.1
+    rev-server=10.0.0.0/24,10.0.0.1
+
+    # Use cm3.cloud NS
+    server=/cm3.cloud/10.0.0.10
+
+    # Use these nameservers for all other requests:
+    # Use ADBLOCK
+    server=10.10.200.2
