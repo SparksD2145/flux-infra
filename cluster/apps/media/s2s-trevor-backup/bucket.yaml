@@ -1,0 +1,12 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: s2s-trevor-backups-bucket
+  namespace: media
+spec:
+  # bucketName: 
+  generateBucketName: trevor-backup
+  storageClassName: rook-ceph-bucket [4]
+  additionalConfig: [5]
+    maxObjects: "1000"
+    maxSize: "2G"
