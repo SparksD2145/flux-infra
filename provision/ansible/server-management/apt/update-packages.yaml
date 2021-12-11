@@ -6,6 +6,3 @@
       apt:
         name: "*"
         state: latest
-
-    - name: Reboot System
-      reboot:
