@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rook-ceph-rgw-my-store-external
+  namespace: rook-ceph
+  labels:
+    app: rook-ceph-rgw
+    rook_cluster: rook-ceph
+    rook_object_store: ceph-objectstore
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.200.7
+  ports:
+    - name: rgw
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: rook-ceph-rgw
+    rook_cluster: rook-ceph
+    rook_object_store: ceph-objectstore
+  sessionAffinity: None
