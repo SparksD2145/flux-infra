@@ -4,9 +4,8 @@ metadata:
   name: s2s-trevor-backups-bucket
   namespace: media
 spec:
-  # bucketName: 
+  # bucketName:
   generateBucketName: trevor-backup
-  storageClassName: rook-ceph-bucket [4]
-  additionalConfig: [5]
-    maxObjects: "1000"
-    maxSize: "2G"
+  storageClassName: ceph-bucket
+  additionalConfig:
+    maxSize: "3T"
