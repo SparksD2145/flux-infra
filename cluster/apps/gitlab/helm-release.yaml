@@ -42,32 +42,22 @@ spec:
           certName: "tls.crt"
       minio:
         enabled: true
-      #appConfig:
-      #  object_store:
-      #    enabled: true
-      #    connection:
-      #      secret: gitlab-bucket-storage
-      #      key: connection
     gitlab:
       gitaly:
         persistence:
-          volumeName: gitlab-gitaly-ha
           storageClass: ceph-filesystem
           size: 350Gi
     postgresql:
       persistence:
-        volumeName: gitlab-postgresql-ha
         storageClass: ceph-block
         size: 20Gi
     minio:
       persistence:
-        volumeName: gitlab-minio-ha
         storageClass: ceph-block
         size: 40Gi
     redis:
       master:
         persistence:
-          volumeName: gitlab-redis-ha
           storageClass: ceph-block
           size: 15Gi
     certmanager:
