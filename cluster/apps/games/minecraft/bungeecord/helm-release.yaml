@@ -21,6 +21,10 @@ spec:
       type: BUNGEECORD
       serviceType: LoadBalancer
       loadBalancerIP: 10.10.201.1
+      rcon:
+        enabled: true
+        password: "minecraft2145"
+        serviceType: ClusterIP
     persistence:
       dataDir:
         enabled: true
