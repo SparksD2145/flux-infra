@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-cwh11-mc-sparks-codes
+  namespace: gitlab
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: cwh11.mc.sparks.codes
+spec:
+  type: ExternalName
+  externalName: sparks.codes

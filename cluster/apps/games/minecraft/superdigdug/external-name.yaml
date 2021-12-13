@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-superdigdug-mc-sparks-codes
+  namespace: gitlab
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: superdigdug.mc.sparks.codes
+spec:
+  type: ExternalName
+  externalName: sparks.codes
