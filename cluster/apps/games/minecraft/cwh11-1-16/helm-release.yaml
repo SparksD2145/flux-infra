@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-cwh11
+  name: minecraft-cwh11-1-16
   namespace: games
 spec:
   interval: 15m
