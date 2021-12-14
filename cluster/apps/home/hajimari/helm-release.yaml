@@ -67,7 +67,7 @@ spec:
           url: https://paperless.sparks.codes
           icon: "newspaper-variant-multiple-outline"
         - name: Duplicati Backups
-          url: https://backups.sparks.codes
+          url: https://duplicati.sparks.codes
           icon: backup-restore
         - name: Rook Storage
           url: https://rook.sparks.codes

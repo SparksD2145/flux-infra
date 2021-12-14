@@ -4,5 +4,6 @@
   tasks:
     - name: Update Packages
       apt:
+        update_cache: "yes"
         name: "*"
         state: latest
