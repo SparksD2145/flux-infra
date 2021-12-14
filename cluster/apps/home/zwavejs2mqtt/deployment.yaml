@@ -21,7 +21,7 @@ spec:
           effect: "NoSchedule"
       containers:
         - name: zwavejs2mqtt
-          image: zwavejs/zwavejs2mqtt
+          image: zwavejs/zwavejs2mqtt:latest
           env:
             - name: NETWORK_KEY
             - name: TZ

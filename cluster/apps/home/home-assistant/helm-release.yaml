@@ -19,11 +19,7 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
-    tolerations:
-      - key: "zwave-zigbee-control"
-        operator: "Equal"
-        value: "active"
-        effect: "NoSchedule"
+    node-selector: omega
     persistence:
       config:
         enabled: true
