@@ -8,6 +8,14 @@ data:
     # Do not use /etc/hosts
     no-resolv
 
+    # Standard Options
+    domain-needed
+    bogus-priv
+
+    # Logging
+    log-queries
+    log-facility=-
+
     # Fequently Ask upstream servers
     max-ttl=60
     max-cache-ttl=20
