@@ -8,6 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
+      # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts
       chart: velero
       version: 2.27.0
       sourceRef:
