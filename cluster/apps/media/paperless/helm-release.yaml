@@ -51,8 +51,7 @@ spec:
         enabled: true
         mountPath: /usr/src/paperless/consume
         accessMode: ReadWriteMany
-        existingClaim: nfs-paperless
-        subPath: paperless.sparks.codes
+        existingClaim: nfs-paperless-import
         size: 25Gi
       export:
         enabled: true
