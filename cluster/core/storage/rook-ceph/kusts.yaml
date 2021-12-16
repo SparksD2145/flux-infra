@@ -5,6 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m0s
+  dependsOn:
+    - name: rook-ceph-crds
   sourceRef:
     kind: GitRepository
     name: flux-system
