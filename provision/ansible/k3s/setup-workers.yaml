@@ -17,4 +17,4 @@
           - nfs-common
 
     - name: Start K3s Worker
-      shell: curl -sfL https://get.k3s.io | K3S_URL='https://omega.sparks.codes:6443' K3S_TOKEN='K100cc4b9e3e45a2011700522184662c1e81c1375fe5d94440c2d3f891e9ea969fb::server:f92e53cb3b7e6bbe71829ed98690ded6' sh -
+      shell: curl -sfL https://get.k3s.io | K3S_URL='https://omega.sparks.codes:6443' K3S_TOKEN='K106dabf48ea0e968951a7ff8c7615581f8a0650932ef18a131d1cb8688c55693b1::server:caf3fc6d264c73ff136e5ace0d8f2816' sh -
