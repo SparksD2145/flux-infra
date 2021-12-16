@@ -65,7 +65,7 @@ spec:
           icon: "play-network"
         - name: Paperless Documents
           url: https://paperless.sparks.codes
-          icon: "newspaper-variant-multiple-outline"
+          icon: "file-compare"
         - name: Duplicati Backups
           url: https://duplicati.sparks.codes
           icon: backup-restore
@@ -78,6 +78,9 @@ spec:
         - name: Transmission
           url: https://transmission.sparks.codes
           icon: "web"
+        - name: File Browser
+          url: https://data.sparks.codes
+          icon: "folder-file-outline"
         - name: Agent NVR
           url: https://nvr.sparks.codes
           icon: "webcam"
