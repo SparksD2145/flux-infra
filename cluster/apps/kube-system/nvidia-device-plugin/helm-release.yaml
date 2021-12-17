@@ -8,7 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://nvidia.github.io/k8s-device-plugin
+      # renovate: registryUrl=daihttps://nvidia.github.io/k8s-device-plugin
       chart: nvidia-device-plugin
       version: 0.10.0
       sourceRef:
@@ -16,3 +16,8 @@ spec:
         name: nvidia-device-plugin-charts
         namespace: flux-system
       interval: 15m
+  values:
+    tolerations:
+      - key: "gpu-dedicated"
+        operator: Exists
+        effect: NoSchedule

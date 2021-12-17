@@ -14,9 +14,8 @@ spec:
         run: gminer-eth
     spec:
       tolerations:
-        - key: "workstation"
-          operator: "Equal"
-          value: "true"
+        - key: "gpu-dedicated"
+          operator: "Exists"
           effect: "NoSchedule"
       containers:
         - name: gminer-eth
