@@ -8,7 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=daihttps://nvidia.github.io/k8s-device-plugin
+      # renovate: registryUrl=https://nvidia.github.io/k8s-device-plugin
       chart: nvidia-device-plugin
       version: 0.10.0
       sourceRef:
