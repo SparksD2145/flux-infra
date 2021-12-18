@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx-helm-repo
-          image: registry.imake.software/sparks/helm-repo:latest
+          image: registry.imake.software/sparks/helm-repo:1.0.0
           ports:
             - containerPort: 8080
           resources:
@@ -26,8 +26,6 @@ spec:
             requests:
               cpu: 50m
               memory: 128Mi
-      imagePullSecrets:
-        - name: gitlab-pull-secret
 
 ---
 apiVersion: v1
