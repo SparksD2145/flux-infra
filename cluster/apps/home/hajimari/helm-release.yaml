@@ -80,7 +80,7 @@ spec:
           icon: "web"
         - name: File Browser
           url: https://data.sparks.codes
-          icon: "folder-file-outline"
+          icon: "file-download"
         - name: Agent NVR
           url: https://nvr.sparks.codes
           icon: "webcam"

@@ -20,10 +20,6 @@
           - nvidia-cuda-toolkit
           - nvidia-docker2
 
-    - name: Install bottle python package
-      pip:
-        name: coolgpus
-
     - name: Set text target
       shell: systemctl set-default multi-user.target
 
