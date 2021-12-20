@@ -5,7 +5,7 @@ metadata:
   name: local-jellyfin-media
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   capacity:
     storage: 4Ti
   persistentVolumeReclaimPolicy: Retain
@@ -28,7 +28,7 @@ metadata:
   namespace: media
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: ""
   resources:
     requests:
