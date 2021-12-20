@@ -4,5 +4,5 @@ resources:
   - duplicati
   - cryptofolio
   #- cgminer-btc
-  - gminer-eth
+  #- gminer-eth
   #- gminer-rvn
