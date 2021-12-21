@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - ./bungeecord/helm-release.yaml
   #- ./cwh11-1-16
-  - ./cwh11-1-16-test
   - ./cwh11-1-18
