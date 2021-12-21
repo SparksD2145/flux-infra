@@ -37,8 +37,6 @@ spec:
         - name: config-vol
           configMap:
             name: s2s-dnsmasq-config
-      imagePullSecrets:
-        - name: gitlab-pull-secret
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
