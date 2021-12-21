@@ -18,7 +18,7 @@ spec:
       interval: 15m
   values:
     image: itzg/minecraft-server
-    imageTag: java15
+    imageTag: latest
     resources:
       requests:
         memory: 8192Mi
