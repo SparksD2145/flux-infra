@@ -22,7 +22,7 @@ spec:
     cloudflare:
       email: sparksd2145@gmail.com
       secretName: cloudflare-credentials-externaldns
-      proxied: false
+      proxied: true
     sources:
       - service
     serviceTypeFilter:
