@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: youtube-dlp
+  namespace: media
+spec:
+  selector:
+    matchLabels:
+      run: youtube-dlp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: youtube-dlp
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: youtube-dlp
+          image: jeeaaasustest/youtube-dl:latest
+          env:
+            - name: TZ
+              value: America/Chicago
+            - name: youtubedl_interval
+              value: 12h
+            - name: youtubedl_quality
+              value: "1440"
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          volumeMounts:
+            - name: config-vol
+              mountPath: /config
+            - name: config-map
+              mountPath: /config/channels.txt
+              subPath: channels
+            - name: media-vol
+              mountPath: /downloads
+              subPath: YoutubeVideos/TEST
+      volumes:
+        - name: config-map
+          configMap:
+            name: youtube-dlp-config
+        - name: config-vol
+          persistentVolumeClaim:
+            claimName: local-youtubedl-config
+        - name: media-vol
+          persistentVolumeClaim:
+            claimName: local-jellyfin-media

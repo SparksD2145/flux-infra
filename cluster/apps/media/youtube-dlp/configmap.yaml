@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: youtube-dlp-config
+  namespace: media
+data:
+  channels: |
+    # 8-bit Music Theory
+    https://www.youtube.com/channel/UCeZLO2VgbZHeDcongKzzfOw
+
+    # Andrew Huang
+    https://www.youtube.com/user/songstowearpantsto
+
+    # AvE
+    https://www.youtube.com/user/arduinoversusevil
+
+    # Bright Sun Films
+    https://www.youtube.com/user/BrightSunGaming
+
+    # Computer History Museum
+    https://www.youtube.com/user/ComputerHistory
+
+    # Craft Computing
+    https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ
+
+    # CuriousMarc
+    https://www.youtube.com/user/mverdiell
+
+    # DankPods
+    https://www.youtube.com/channel/UC7Jwj9fkrf1adN4fMmTkpug
+
+    # EEVBlog
+    https://www.youtube.com/user/EEVblog
+
+    # FL Studio by Image-Line Software
+    https://www.youtube.com/user/imageline
+
+    # Gamers Nexus
+    https://www.youtube.com/user/GamersNexus
+
+    # GarbageTime
+    https://www.youtube.com/channel/UCHdpnvKJDijKNe2caIasnww
+
+    # Humankind
+    https://www.youtube.com/channel/UC5O6NXFXe_Bn4nCsbWgONLg
+
+    # Jeff Geerling
+    https://www.youtube.com/user/geerlingguy
+
+    # Lazy Game Reviews
+    https://www.youtube.com/c/Lazygamereviews
+
+    # Lock Picking Lawyer
+    https://www.youtube.com/channel/UCm9K6rby98W8JigLoZOh6FQ
+
+    # Louie Zong
+    https://www.youtube.com/channel/UCdkkQvJoB0kGgYHCYwSkdww
+
+    # Makers Muse
+    https://www.youtube.com/user/TheMakersMuse
+
+    # Max0r
+    https://www.youtube.com/channel/UCfgh3Ul_dG6plQ7rzuOLx-w
+
+    # Mustard
+    https://www.youtube.com/channel/UC1ZBQ-F-yktYD4m5AzM6pww
+
+    # Noodle
+    https://www.youtube.com/user/SomeDudeFl
+
+    # Oboeshoesgames
+    https://www.youtube.com/user/oboeshoesgames
+
+    # Smary Home Solver
+    https://www.youtube.com/channel/UCwOBG77Tm8cE24FPxHb_abw
+
+    # Smarter Every Day
+    https://www.youtube.com/channel/UC6107grRI4m0o2-emgoDnAA
+
+    # Smarter Every Day
+    https://www.youtube.com/user/FunnerEveryDay
+
+    # Snazzy Labs
+    https://www.youtube.com/user/ThatSnazzyiPhoneGuy
+
+    # StuffMadeHere
+    https://www.youtube.com/c/StuffMadeHere
+
+    # Tantacrul
+    https://www.youtube.com/user/martinthekearykid
+
+    # TeamFourStar
+    https://www.youtube.com/user/TeamFourStar
+
+    # The Dodo
+    https://www.youtube.com/user/TheDodoSite
+
+    # Thomas Game Docs
+    https://www.youtube.com/channel/UCyy7dZhgfeMMctSoo3wDXlQ
+
+    # Videogamedunkey
+    https://www.youtube.com/user/videogamedunkey
+
+    # Vories
+    https://www.youtube.com/channel/UCmxmYvWPHQ2KOqWD0CM2j7g
+
+    # Tumblr Central
+    https://www.youtube.com/c/UC93Vp3AwDgvnA5B53ZLz3cA
