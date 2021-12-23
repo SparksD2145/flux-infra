@@ -104,9 +104,9 @@ spec:
         # Additional provider-specific configuration. See link above
         # for details of required/optional fields for your provider.
         config:
-          region: minio
+          region: us-east-1
           s3ForcePathStyle: "true"
-          s3Url: http://alpha.sparks.codes:9768
+          s3Url: http://object-storage.sparks.codes:80
           #kmsKeyId:
           #resourceGroup:
           # The ID of the subscription containing the storage account, if different from the cluster’s subscription. (Azure only)
@@ -121,21 +121,21 @@ spec:
       # https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
       volumeSnapshotLocation:
         # name is the name of the volume snapshot location where snapshots are being taken. Required.
-        name:
+        name: default
         # provider is the name for the volume snapshot provider. If omitted
         # `configuration.provider` will be used instead.
-        provider:
+        # provider:
         # Additional provider-specific configuration. See link above
         # for details of required/optional fields for your provider.
-        config: {}
-      #    region:
-      #    apiTimeout:
-      #    resourceGroup:
-      #    The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)
-      #    subscriptionId:
-      #    incremental:
-      #    snapshotLocation:
-      #    project:
+        config:
+          region: us-east-1
+          # apiTimeout:
+          # resourceGroup:
+          # The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)
+          # subscriptionId:
+          # incremental:
+          # snapshotLocation:
+          # project:
 
       # These are server-level settings passed as CLI flags to the `velero server` command. Velero
       # uses default values if they're not passed in, so they only need to be explicitly specified
