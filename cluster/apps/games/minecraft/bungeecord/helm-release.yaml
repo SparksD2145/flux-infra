@@ -36,6 +36,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: local-mc-bungee
+  labels:
+    app: minecraft-bungeecord-proxy-minecraft-proxy
 spec:
   accessModes:
     - ReadWriteOnce
@@ -59,6 +61,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: local-mc-bungee
   namespace: games
+  labels:
+    app: minecraft-bungeecord-proxy-minecraft-proxy
 spec:
   volumeName: local-mc-bungee
   accessModes:

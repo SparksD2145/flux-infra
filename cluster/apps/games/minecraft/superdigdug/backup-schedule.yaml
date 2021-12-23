@@ -1,0 +1,17 @@
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: games-minecraft-superdigdug
+  namespace: velero
+spec:
+  schedule: 0 10 * * 0,2,4,6
+  template:
+    defaultVolumesToRestic: true
+    ttl: 720h
+    snapshotVolumes: true
+    labelSelector:
+      matchExpressions:
+        - key: app
+          operator: "In"
+          values:
+            - "minecraft-superdigdug-minecraft"

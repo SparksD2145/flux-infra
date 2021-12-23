@@ -2,7 +2,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-mc-cwh11-test
+  name: local-mc-cwh11
+  labels:
+    app: minecraft-cwh11-116-minecraft
 spec:
   accessModes:
     - ReadWriteOnce
@@ -10,7 +12,7 @@ spec:
     storage: 20Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mc.sparks.codes/cwh11-test
+    path: /mnt/static/mc.sparks.codes/cwh11
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -24,10 +26,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: local-mc-cwh11-test
+  name: local-mc-cwh11
   namespace: games
+  labels:
+    app: minecraft-cwh11-116-minecraft
 spec:
-  volumeName: local-mc-cwh11-test
+  volumeName: local-mc-cwh11
   accessModes:
     - ReadWriteOnce
   storageClassName: ""

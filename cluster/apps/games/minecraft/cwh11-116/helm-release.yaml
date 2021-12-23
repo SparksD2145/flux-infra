@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-cwh11-1-16-test
+  name: minecraft-cwh11-116
   namespace: games
 spec:
   interval: 15m
@@ -25,9 +25,9 @@ spec:
         cpu: 500m
     minecraftServer:
       eula: "TRUE"
-      version: "1.18.1"
+      version: "1.16.4"
       type: SPIGOT
-      motd: "cwh11-testing.mc.sparks.codes"
+      motd: "cwh11.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
       worldSaveName: world_cwh11
@@ -46,45 +46,4 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        existingClaim: local-mc-cwh11-test
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cwh11-test-dynmap
-  namespace: games
-  labels:
-    app: minecraft-cwh11-1-16-test-minecraft
-spec:
-  ports:
-    - port: 80
-      targetPort: 8123
-      protocol: TCP
-  selector:
-    app: minecraft-cwh11-1-16-test-minecraft
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-cwh11-test-dynmap
-  namespace: games
-  annotations:
-    kubernetes.io/ingress.class: "nginx-external"
-spec:
-  tls:
-    - hosts:
-        - dynmap-cwh11.mc.sparks.codes
-      secretName: acme-crt-secret-sparks-codes
-  rules:
-    - host: dynmap-cwh11.mc.sparks.codes
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: cwh11-test-dynmap
-                port:
-                  number: 80
+        existingClaim: local-mc-cwh11

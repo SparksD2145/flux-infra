@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - pvc.yaml
   - helm-release.yaml
+  - external-name.yaml
+  - backup-schedule.yaml
