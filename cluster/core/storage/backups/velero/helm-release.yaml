@@ -308,7 +308,13 @@ spec:
     #       ttl: "240h"
     #       includedNamespaces:
     #       - foo
-    schedules: {}
+    schedules:
+      primary:
+        disabled: false
+        schedule: "0 10 * * 0,2,4,6"
+        template:
+          ttl: 720h
+          defaultVolumesToRestic: true
 
     # Velero ConfigMaps.
     # Eg:
