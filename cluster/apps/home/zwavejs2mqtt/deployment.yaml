@@ -102,6 +102,9 @@ metadata:
     name: zwavejs2mqtt
   annotations:
     kubernetes.io/ingress.class: "nginx-internal"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "ZwaveJS2MQTT"
+    hajimari.io/icon: "z-wave"
 spec:
   rules:
     - host: zwavejs2mqtt.sparks.codes

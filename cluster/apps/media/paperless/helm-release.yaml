@@ -25,6 +25,9 @@ spec:
         annotations:
           kubernetes.io/ingress.class: nginx-internal
           nginx.ingress.kubernetes.io/proxy-body-size: 75M
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Paperless"
+          hajimari.io/icon: "file-compare"
         hosts:
           - host: paperless.sparks.codes
             paths:

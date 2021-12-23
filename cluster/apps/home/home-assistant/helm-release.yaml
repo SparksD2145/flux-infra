@@ -32,6 +32,9 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx-external"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Home Assistant"
+          hajimari.io/icon: "home-assistant"
         hosts:
           - host: home.sparks.codes
             paths:

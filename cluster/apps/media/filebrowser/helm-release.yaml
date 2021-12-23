@@ -24,6 +24,9 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx-external"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "File Browser"
+          hajimari.io/icon: "file-download"
         hosts:
           - host: data.sparks.codes
             paths:

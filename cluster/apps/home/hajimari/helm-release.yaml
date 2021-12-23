@@ -39,54 +39,9 @@ spec:
         - name: Alpha
           url: http://alpha.sparks.codes
           icon: "desktop-classic"
-        - name: PfSense Router
-          url: https://router.sparks.codes
-          icon: "router-network"
-        - name: PiHole Adblock
-          url: https://adblock.sparks.codes
-          icon: "card-off"
         - name: Gitlab
           url: https://gitlab.imake.software
           icon: "gitlab"
-        - name: Home Assistant
-          url: https://home.sparks.codes
-          icon: "home-assistant"
-        - name: Z-Wave Controller
-          url: https://zwavejs2mqtt.sparks.codes
-          icon: "z-wave"
-        - name: Zigbee Controller
-          url: https://zigbee2mqtt.sparks.codes
-          icon: "zigbee"
-        - name: Photos
-          url: https://photos.sparks.codes
-          icon: "image-multiple"
-        - name: Jellyfin Media
-          url: https://media.sparks.codes
-          icon: "play-network"
-        - name: Paperless Documents
-          url: https://paperless.sparks.codes
-          icon: "file-compare"
-        - name: Duplicati Backups
-          url: https://duplicati.sparks.codes
-          icon: backup-restore
-        - name: Rook Storage
-          url: https://rook.sparks.codes
-          icon: "database"
-        - name: Cryptofolio
-          url: https://crypto.sparks.codes
-          icon: "currency-btc"
-        - name: Transmission
-          url: https://transmission.sparks.codes
-          icon: "web"
-        - name: File Browser
-          url: https://data.sparks.codes
-          icon: "file-download"
-        - name: Agent NVR
-          url: https://nvr.sparks.codes
-          icon: "webcam"
-        - name: PXE Server
-          url: https://pxe.sparks.codes
-          icon: "refresh-auto"
         - name: Whiskey iDRAC
           url: https://idrac-whiskey.sparks.codes
           icon: "remote-desktop"

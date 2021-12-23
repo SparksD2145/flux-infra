@@ -164,6 +164,9 @@ metadata:
     name: nvr
   annotations:
     kubernetes.io/ingress.class: "nginx-internal"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Agent NVR"
+    hajimari.io/icon: "video"
 spec:
   rules:
     - host: nvr.sparks.codes

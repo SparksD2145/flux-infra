@@ -23,6 +23,9 @@ spec:
       dashboard:
         annotations:
           kubernetes.io/ingress.class: nginx-internal
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Rook"
+          hajimari.io/icon: "database"
         host:
           name: rook.sparks.codes
           path: "/"

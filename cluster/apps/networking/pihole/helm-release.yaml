@@ -91,6 +91,9 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx-internal
+        hajimari.io/enable: "true"
+        hajimari.io/appName: "Pihole"
+        hajimari.io/icon: "card-off"
       hosts:
         - adblock.sparks.codes
       tls:

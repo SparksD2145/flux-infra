@@ -32,6 +32,9 @@ spec:
         annotations:
           kubernetes.io/ingress.class: nginx-internal
           nginx.ingress.kubernetes.io/proxy-body-size: 2G
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Photos"
+          hajimari.io/icon: "image-multiple"
         hosts:
           - host: photos.sparks.codes
             paths:
