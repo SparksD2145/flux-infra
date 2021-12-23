@@ -89,7 +89,7 @@ spec:
       backupStorageLocation:
         # name is the name of the backup storage location where backups should be stored. If a name is not provided,
         # a backup storage location will be created with the name "default". Optional.
-        name: alpha
+        name: default
         # provider is the name for the backup storage location provider. If omitted
         # `configuration.provider` will be used instead.
         # provider:
@@ -235,10 +235,10 @@ spec:
     # Whether to create backupstoragelocation crd, if false => do not create a default backup location
     backupsEnabled: true
     # Whether to create volumesnapshotlocation crd, if false => disable snapshot feature
-    snapshotsEnabled: false
+    snapshotsEnabled: true
 
     # Whether to deploy the restic daemonset.
-    deployRestic: false
+    deployRestic: true
 
     restic:
       podVolumePath: /var/lib/kubelet/pods
