@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: local-mc-cwh11
   labels:
-    app: minecraft-cwh11-116-minecraft
+    app: minecraft-cwh11-minecraft
 spec:
   accessModes:
     - ReadWriteOnce
@@ -29,7 +29,7 @@ metadata:
   name: local-mc-cwh11
   namespace: games
   labels:
-    app: minecraft-cwh11-116-minecraft
+    app: minecraft-cwh11-minecraft
 spec:
   volumeName: local-mc-cwh11
   accessModes:
