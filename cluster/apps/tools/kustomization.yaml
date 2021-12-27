@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - duplicati
   - haste-server
-  #- cgminer-btc
-  #- gminer-eth
+  - gminer-eth
   #- gminer-rvn
