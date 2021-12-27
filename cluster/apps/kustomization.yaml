@@ -5,6 +5,7 @@ resources:
   - gitlab
   - home
   - kube-system
+  - kubevirt
   - media
   - networking
   - nginx
