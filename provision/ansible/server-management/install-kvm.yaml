@@ -1,0 +1,9 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Update Packages
+      apt:
+        update_cache: "yes"
+        name: "qemu-kvm"
+        state: latest
