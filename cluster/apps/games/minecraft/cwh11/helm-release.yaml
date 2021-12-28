@@ -76,7 +76,7 @@ spec:
   tls:
     - hosts:
         - dynmap-cwh11.mc.sparks.codes
-      secretName: acme-crt-secret-sparks-codes
+      secretName: acme-crt-secret-mc-sparks-codes
   rules:
     - host: dynmap-cwh11.mc.sparks.codes
       http:
