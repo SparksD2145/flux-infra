@@ -5,3 +5,4 @@ resources:
   - helm-release.yaml
   - external-name.yaml
   - backup-schedule.yaml
+  - proxy.dynmap-cwh11.mc.sparks.codes

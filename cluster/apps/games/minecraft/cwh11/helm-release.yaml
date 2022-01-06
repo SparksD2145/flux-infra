@@ -71,14 +71,10 @@ metadata:
   name: ingress-cwh11-dynmap
   namespace: games
   annotations:
-    kubernetes.io/ingress.class: "nginx-external"
+    kubernetes.io/ingress.class: "nginx-internal"
 spec:
-  tls:
-    - hosts:
-        - dynmap-cwh11.mc.sparks.codes
-      secretName: acme-crt-secret-mc-sparks-codes
   rules:
-    - host: dynmap-cwh11.mc.sparks.codes
+    - host: dynmap-cwh11.mc.int.sparks.codes
       http:
         paths:
           - path: /

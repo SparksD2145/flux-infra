@@ -1,0 +1,50 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nginx-proxy-dynmap-cwh11-mc-sparks-codes
+  namespace: games
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      chart: nginx
+      version: 9.7.0
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    service:
+      type: ClusterIP
+    serverBlock: |-
+      server {
+        listen       8080;
+        server_name  dynmap-cwh11.mc.sparks.codes;
+
+        location / {
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_ssl_verify off;
+
+          resolver 10.10.0.1;
+          set $backend "http://dynmap-cwh11.mc.int.sparks.codes";
+          proxy_pass $backend;
+        }
+
+        location ~ /\.ht {
+          deny  all;
+        }
+      }
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx-external"
+        ingress.kubernetes.io/force-ssl-redirect: "true"
+      hostname: "dynmap-cwh11.mc.sparks.codes"
+      extraTls:
+        - hosts:
+            - dynmap-cwh11.mc.sparks.codes
+          secretName: acme-crt-secret-mc-sparks-codes
