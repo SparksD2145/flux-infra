@@ -31,6 +31,11 @@ spec:
           - monitoring
           - networking
           - gitlab
+          - games
+          - nginx
+          - rook-ceph
+          - tools
+          - velero
       name: "Sparks"
       customApps:
         - name: Habitica
