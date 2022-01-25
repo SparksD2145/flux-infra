@@ -1,0 +1,15 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Deploy Registries configuration
+      copy:
+        dest: "/etc/rancher/k3s/registries.yaml"
+        content: |
+          mirrors:
+            registry-cache.sparks.codes:
+              endpoint:
+                - "https://registry-cache.sparks.codes"
+            docker.io:
+              endpoint:
+                - "https://registry-1.docker.io"
