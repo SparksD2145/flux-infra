@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: stash-metadata-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 25Gi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/static/stash.sparks.codes/metadata
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - omega
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: stash-metadata-pvc
+  namespace: media
+spec:
+  volumeName: stash-metadata-pv
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 25Gi
