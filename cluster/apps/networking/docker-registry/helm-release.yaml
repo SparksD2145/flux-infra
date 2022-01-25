@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: docker-registry-cache
+  namespace: networking
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: docker-registry
+      version: 2.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: docker-registry-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 50m
+      limits:
+        cpu: 100m
+        memory: 512Mi
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: ceph-block
+    proxy:
+      enabled: true
+      secretRef: "docker-proxy-login"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx-internal"
+      hosts:
+        - "registry-cache.sparks.codes"
+      tls:
+        - hosts:
+            - registry-cache.sparks.codes
+          secretName: acme-crt-secret-sparks-codes
