@@ -7,7 +7,6 @@ all:
         foxtrot.sparks.codes:
         omega.sparks.codes:
         lambda.sparks.codes:
-        echo.sparks.codes:
         kappa.sparks.codes:
     servers_with_idracs:
       hosts:
