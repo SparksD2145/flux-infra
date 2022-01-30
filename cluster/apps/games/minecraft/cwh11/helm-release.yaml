@@ -19,6 +19,8 @@ spec:
   values:
     image: itzg/minecraft-server
     imageTag: latest
+    nodeSelector:
+      services/minecraft: active
     resources:
       requests:
         memory: 8192Mi
@@ -46,7 +48,7 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        existingClaim: local-mc-cwh11
+        existingClaim: minecraft-cwh11-pvc
 
 ---
 apiVersion: v1

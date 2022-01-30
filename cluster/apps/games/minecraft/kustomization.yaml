@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - bungeecord
   - cwh11
+  - samba.yaml
