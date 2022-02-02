@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-cwh11-samba
+  name: minecraft-samba
   namespace: games
 spec:
   interval: 15m
@@ -18,8 +18,10 @@ spec:
   values:
     env:
       TZ: America/Chicago
-      SHARE1: bungee;/share/samba/share1
-      SHARE2: cwh11;/share/samba/share2
+      RECYCLE: "false"
+      # PERMISSIONS: "true"
+      SHARE1: bungee;/share/samba/share1;yes;no
+      SHARE2: cwh11;/share/samba/share2;yes;no
     service:
       main:
         type: LoadBalancer
