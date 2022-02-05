@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - duplicati
   - haste-server
+  - littlelink
   #- gminer-eth
   #- gminer-rvn
   - statping

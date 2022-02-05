@@ -1,0 +1,77 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: littlelinks
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: littlelink-server
+      version: 1.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    env:
+      TZ: "America/Chicago"
+      META_TITLE: Thomas Ibarra - Links Page
+      META_DESCRIPTION: Thomas Ibarra - Links Page
+      META_AUTHOR: Thomas Ibarra <hello@imake.software>
+      THEME: Dark
+      FAVICON_URL: https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_200x200.jpg
+      AVATAR_URL: https://www.gravatar.com/avatar/d22d82dec0d1b27fab6e5d770685e7d8
+      AVATAR_2X_URL: https://www.gravatar.com/avatar/d22d82dec0d1b27fab6e5d770685e7d8
+      AVATAR_ALT: Thomas Ibarra <hello@imake.software>
+      NAME: Thomas Ibarra
+      BIO: Hey! Just a place where you can connect with me!
+      GITHUB: https://github.com/SparksD2145
+      TWITTER: https://twitter.com/SparksD2145
+      # INSTAGRAM: https://www.instagram.com/techno.tim
+      YOUTUBE: https://www.youtube.com/channel/UCDm76fgv7i3tzHvDvYAUuLw
+      # TWITCH: https://www.twitch.tv/technotim/
+      # DISCORD: https://discord.gg/DJKexrJ
+      # TIKTOK: https://www.tiktok.com/@technotim
+      # KIT: https://kit.co/TechnoTim
+      # FACEBOOK: https://facebook.com
+      # FACEBOOK_MESSENGER: https://facebook.com
+      LINKED_IN: https://www.linkedin.com/in/sparksd2145/
+      # PRODUCT_HUNT: https://www.producthunt.com/
+      # SNAPCHAT: https://www.snapchat.com/
+      # SPOTIFY: https://www.spotify.com/
+      # REDDIT: https://www.reddit.com/
+      # MEDIUM: https://medium.com
+      # PINTEREST: https://www.pinterest.com/
+      # EMAIL: hello@imake.software
+      # EMAIL_ALT: you@example.com
+      SOUND_CLOUD: https://soundcloud.com/SparksD2145
+      # FIGMA: https://figma.com
+      # TELEGRAM: https://telegram.org/
+      # TUMBLR: https://www.tumblr.com/
+      # STEAM: https://steamcommunity.com/
+      # VIMEO: https://vimeo.com/
+      # WORDPRESS: https://wordpress.com/
+      # GOODREADS: https://www.goodreads.com/
+      # SKOOB: https://www.skoob.com.br/
+      FOOTER: Thanks for stopping by!
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx-external"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Links"
+          hajimari.io/icon: "link"
+        hosts:
+          - host: imake.software
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - imake.software
+            secretName: acme-crt-secret-imake-software
