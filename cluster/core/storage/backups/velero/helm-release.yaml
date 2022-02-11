@@ -27,7 +27,7 @@ spec:
     # If the value is a string then it is evaluated as a template.
     initContainers:
       - name: velero-plugin-for-aws
-        image: velero/velero-plugin-for-aws:v1.3.0
+        image: velero/velero-plugin-for-aws:v1.4.0
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target
