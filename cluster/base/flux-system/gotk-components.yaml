@@ -3803,6 +3803,8 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
         - mountPath: /tmp
           name: temp
@@ -3820,7 +3822,173 @@ metadata:
   labels:
     app.kubernetes.io/instance: flux-system
     app.kubernetes.io/part-of: flux
-    app.kubernetes.io/version: v0.20.0
+    app.kubernetes.io/version: v0.26.3
+    control-plane: controller
+  name: image-automation-controller
+  namespace: flux-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-automation-controller
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      labels:
+        app: image-automation-controller
+    spec:
+      containers:
+      - args:
+        - --events-addr=http://notification-controller.flux-system.svc.cluster.local/
+        - --watch-all-namespaces=true
+        - --log-level=info
+        - --log-encoding=json
+        - --enable-leader-election
+        env:
+        - name: RUNTIME_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: ghcr.io/fluxcd/image-automation-controller:v0.20.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: healthz
+        name: manager
+        ports:
+        - containerPort: 8080
+          name: http-prom
+          protocol: TCP
+        - containerPort: 9440
+          name: healthz
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: healthz
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+        volumeMounts:
+        - mountPath: /tmp
+          name: temp
+      nodeSelector:
+        kubernetes.io/os: linux
+      securityContext:
+        fsGroup: 1337
+      serviceAccountName: image-automation-controller
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - emptyDir: {}
+        name: temp
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: flux-system
+    app.kubernetes.io/part-of: flux
+    app.kubernetes.io/version: v0.26.3
+    control-plane: controller
+  name: image-reflector-controller
+  namespace: flux-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-reflector-controller
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      labels:
+        app: image-reflector-controller
+    spec:
+      containers:
+      - args:
+        - --events-addr=http://notification-controller.flux-system.svc.cluster.local/
+        - --watch-all-namespaces=true
+        - --log-level=info
+        - --log-encoding=json
+        - --enable-leader-election
+        env:
+        - name: RUNTIME_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: ghcr.io/fluxcd/image-reflector-controller:v0.16.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: healthz
+        name: manager
+        ports:
+        - containerPort: 8080
+          name: http-prom
+          protocol: TCP
+        - containerPort: 9440
+          name: healthz
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: healthz
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+        volumeMounts:
+        - mountPath: /tmp
+          name: temp
+        - mountPath: /data
+          name: data
+      nodeSelector:
+        kubernetes.io/os: linux
+      securityContext:
+        fsGroup: 1337
+      serviceAccountName: image-reflector-controller
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - emptyDir: {}
+        name: temp
+      - emptyDir: {}
+        name: data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: flux-system
+    app.kubernetes.io/part-of: flux
+    app.kubernetes.io/version: v0.26.3
     control-plane: controller
   name: kustomize-controller
   namespace: flux-system
@@ -3876,6 +4044,8 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
         - mountPath: /tmp
           name: temp
@@ -3954,6 +4124,8 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
         - mountPath: /tmp
           name: temp
@@ -4032,6 +4204,8 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
         - mountPath: /data
           name: data
