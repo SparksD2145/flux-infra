@@ -8,4 +8,5 @@ resources:
   - media
   - networking
   - nginx
+  - system-upgrade
   - tools
