@@ -2,7 +2,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: flux-system
   name: cluster-settings
+  namespace: flux-system
 data:
-  METALLB_ARP_RANGE: "192.168.42.100-192.168.42.150"
+  METALLB_LB_RANGE: 
+  METALLB_TRAEFIK_ADDR: 
