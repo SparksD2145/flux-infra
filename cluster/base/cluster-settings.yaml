@@ -5,4 +5,4 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
-  UNUSED: UNUSED
+  UNUSED: "Do Not Use"
