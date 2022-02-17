@@ -31,7 +31,7 @@ spec:
     publishService:
       enabled: true
     service:
-      loadBalancerIP: 10.10.200.0
+      loadBalancerIP: 10.10.201.0
       externalTrafficPolicy: Cluster
     extraArgs:
       default-ssl-certificate: "cert-manager/acme-crt-secret-imake-software"

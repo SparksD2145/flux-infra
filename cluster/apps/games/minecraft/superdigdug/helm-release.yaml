@@ -36,7 +36,7 @@ spec:
       onlineMode: false
       memory: 8192M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.201.4
+      loadBalancerIP: 10.10.202.4
     persistence:
       dataDir:
         enabled: true

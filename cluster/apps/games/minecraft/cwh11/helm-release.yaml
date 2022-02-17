@@ -41,7 +41,7 @@ spec:
       onlineMode: false
       memory: 8192M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.201.2
+      loadBalancerIP: 10.10.202.2
       rcon:
         enabled: true
         password: "minecraft2145"

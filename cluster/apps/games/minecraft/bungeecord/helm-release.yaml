@@ -20,7 +20,7 @@ spec:
     minecraftProxy:
       type: BUNGEECORD
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.201.1
+      loadBalancerIP: 10.10.202.1
       rcon:
         enabled: true
         password: "minecraft2145"

@@ -39,4 +39,4 @@ data:
 
     # Use these nameservers for all other requests:
     # Use ADBLOCK
-    server=10.10.200.2
+    server=10.10.201.2

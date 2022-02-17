@@ -34,4 +34,4 @@ spec:
           enabled: true
           port: 1883
         type: LoadBalancer
-        loadBalancerIP: 10.10.200.3
+        loadBalancerIP: 10.10.201.3

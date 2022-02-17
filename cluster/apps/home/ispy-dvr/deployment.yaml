@@ -80,7 +80,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: nvr-sparks-codes-svc
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.10.200.5
+  loadBalancerIP: 10.10.201.5
   ports:
     - name: web-ui
       port: 80
@@ -101,7 +101,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: nvr-sparks-codes-svc
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.10.200.5
+  loadBalancerIP: 10.10.201.5
   ports:
     - name: turn-server
       port: 3478

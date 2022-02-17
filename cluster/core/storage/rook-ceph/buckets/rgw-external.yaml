@@ -9,7 +9,7 @@ metadata:
     rook_object_store: ceph-objectstore
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.10.200.7
+  loadBalancerIP: 10.10.201.7
   ports:
     - name: rgw
       port: 80

@@ -88,7 +88,7 @@ spec:
       targetPort: 3000
       protocol: TCP
   type: LoadBalancer
-  loadBalancerIP: 10.10.200.4
+  loadBalancerIP: 10.10.201.4
   selector:
     run: zwavejs2mqtt
 

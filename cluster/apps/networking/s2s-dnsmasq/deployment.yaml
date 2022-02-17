@@ -52,7 +52,7 @@ metadata:
     run: s2s-dnsmasq
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.10.200.6
+  loadBalancerIP: 10.10.201.6
   ports:
     - port: 53
       targetPort: 53
