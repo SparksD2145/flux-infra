@@ -19,10 +19,6 @@ spec:
   values:
     env:
       TZ: America/Chicago
-      RECYCLE: "false"
-      # PERMISSIONS: "true"
-      SHARE1: bungee;/share/samba/share1;yes;no
-      SHARE2: cwh11;/share/samba/share2;yes;no
     service:
       main:
         type: LoadBalancer
@@ -41,9 +37,43 @@ spec:
         enabled: true
         existingClaim: minecraft-bungee-pvc
         accessMode: ReadWriteMany
-        mountPath: /share/samba/share1
+        mountPath: /share/samba/bungee
       share2:
         enabled: true
         existingClaim: minecraft-cwh11-pvc
         accessMode: ReadWriteMany
-        mountPath: /share/samba/share2
+        mountPath: /share/samba/cwh11
+    configmap:
+      config:
+        # -- Store samba configuration as a ConfigMap
+        enabled: true
+        # -- Samba configuration. See [image documentation](https://github.com/crazy-max/docker-samba#configuration) for more information.
+        # @default -- See values.yaml
+        data:
+          config.yml: |
+            auth:
+              - user: sparks
+                group: sparks
+                uid: 1000
+                gid: 1000
+                password: ${MINECRAFT_SAMBA_SPARKS_PASSWORD}
+            global:
+              - "force user = sparks"
+              - "force group = sparks"
+            share:
+              - name: bungee
+                path: /share/samba/bungee
+                browsable: yes
+                readonly: no
+                guestok: no
+                validusers: sparks
+                writelist: sparks
+                veto: no
+              - name: cwh11
+                path: /share/samba/cwh11
+                browsable: yes
+                readonly: no
+                guestok: no
+                validusers: sparks
+                writelist: sparks
+                veto: no
