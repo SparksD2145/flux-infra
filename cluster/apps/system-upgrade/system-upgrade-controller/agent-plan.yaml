@@ -16,11 +16,6 @@ spec:
         operator: NotIn
         values:
           - "true"
-    tolerations:
-      - key: zwave-zigbee-control
-        operator: Equal
-        value: "active"
-        effect: NoSchedule
   prepare:
     image: rancher/k3s-upgrade
     args:
