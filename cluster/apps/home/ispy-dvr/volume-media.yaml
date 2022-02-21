@@ -5,9 +5,9 @@ metadata:
   name: nvr-sparks-codes-media
   namespace: home
 spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "ceph-filesystem"
   resources:
     requests:
       storage: 200Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
