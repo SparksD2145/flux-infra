@@ -35,7 +35,7 @@ spec:
           protocol: layer2
           auto-assign: true
           addresses:
-            - 10.10.201.0/24
+            - 10.10.200.0/24
         - name: services
           protocol: layer2
           auto-assign: false
