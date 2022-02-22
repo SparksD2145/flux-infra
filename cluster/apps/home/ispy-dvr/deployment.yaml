@@ -178,7 +178,7 @@ spec:
               service:
                 name: nvr-sparks-codes-tcp
                 port:
-                  number: 80
+                  number: 8090
   tls:
     - secretName: acme-crt-secret-sparks-codes
       hosts:
