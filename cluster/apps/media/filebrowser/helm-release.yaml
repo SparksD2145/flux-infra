@@ -27,6 +27,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "File Browser"
           hajimari.io/icon: "file-download"
+          nginx.ingress.kubernetes.io/client-body-buffer-size: "10g"
+          nginx.ingress.kubernetes.io/proxy-body-size: "10g"
+          nginx.ingress.kubernetes.io/proxy-buffering: "off"
         hosts:
           - host: data.sparks.codes
             paths:
