@@ -4,4 +4,3 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - pvc.yaml
-  - samba.yaml

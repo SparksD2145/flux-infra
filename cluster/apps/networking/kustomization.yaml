@@ -5,3 +5,4 @@ resources:
   - pihole
   - pxe-server
   - s2s-dnsmasq
+  - samba.yaml
