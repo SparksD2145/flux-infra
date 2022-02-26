@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - helm.imake.software
   - proxy.router.sparks.codes
-  - pxe.sparks.codes
   - nfs-pv.yaml

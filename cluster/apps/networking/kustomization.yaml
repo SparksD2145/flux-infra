@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - docker-registry
   - pihole
+  - pxe-server
   - s2s-dnsmasq
