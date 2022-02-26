@@ -18,7 +18,7 @@ spec:
       interval: 15m
   values:
     updateStrategy:
-      - Recreate
+      type: Recreate
     resources:
       requests:
         memory: 256Mi
