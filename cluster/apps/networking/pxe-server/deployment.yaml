@@ -32,6 +32,7 @@ spec:
               mountPath: "/app"
             - name: pxe-sparks-codes-nginx-config
               mountPath: "/opt/bitnami/nginx/conf/server_blocks/main.conf"
+              subPath: config
         - name: pxe-sparks-codes-tftpd
           image: jumanjiman/tftp-hpa:latest
           resources:
