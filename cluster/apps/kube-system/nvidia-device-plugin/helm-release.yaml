@@ -17,6 +17,15 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node-role.kubernetes.io/gpu
+                  operator: In
+                  values:
+                    - "true"
     tolerations:
       - key: "gpu-dedicated"
         operator: Exists
