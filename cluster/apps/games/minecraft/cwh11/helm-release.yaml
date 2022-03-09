@@ -48,7 +48,7 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        existingClaim: minecraft-cwh11-pvc
+        existingClaim: local-mc-cwh11
 
 ---
 apiVersion: v1

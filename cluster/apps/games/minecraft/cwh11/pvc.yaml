@@ -1,15 +1,40 @@
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: minecraft-cwh11-pvc
-  namespace: games
+  name: local-mc-cwh11
   labels:
-    app: minecraft
+    app: minecraft-cwh11-minecraft
 spec:
   accessModes:
-    - ReadWriteMany
-  storageClassName: "ceph-filesystem"
+    - ReadWriteOnce
+  capacity:
+    storage: 45Gi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/static/mc.sparks.codes/cwh11
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - omega
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-mc-cwh11
+  namespace: games
+  labels:
+    app: minecraft-cwh11-minecraft
+spec:
+  volumeName: local-mc-cwh11
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
   resources:
     requests:
       storage: 45Gi
