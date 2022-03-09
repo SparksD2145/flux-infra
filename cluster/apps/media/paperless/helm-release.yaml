@@ -17,8 +17,16 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    redis:
+      enabled: true
+      auth:
+        enabled: false
     env:
       TZ: "America/Chicago"
+      PAPERLESS_TIME_ZONE: "America/Chicago"
+      PAPERLESS_ADMIN_USER: sparks
+      PAPERLESS_ADMIN_PASSWORD: ${MEDIA_PAPERLESS_SPARKS_PASSWORD}
+      PAPERLESS_REDIS: redis://paperless-redis-master:6379
     ingress:
       main:
         enabled: true
@@ -41,13 +49,15 @@ spec:
       data:
         enabled: true
         mountPath: /usr/src/paperless/data
-        accessMode: ReadWriteOnce
+        accessMode: ReadWriteMany
+        storageClass: "ceph-filesystem"
         size: 25Gi
         retain: true
       media:
         enabled: true
         mountPath: /usr/src/paperless/media
-        accessMode: ReadWriteOnce
+        accessMode: ReadWriteMany
+        storageClass: "ceph-filesystem"
         size: 25Gi
         retain: true
       consume:
@@ -59,5 +69,6 @@ spec:
       export:
         enabled: true
         mountPath: /usr/src/paperless/export
-        accessMode: ReadWriteOnce
+        storageClass: "ceph-filesystem"
+        accessMode: ReadWriteMany
         size: 25Gi
