@@ -5,4 +5,5 @@ resources:
   - littlelink
   #- gminer-eth
   #- gminer-rvn
+  - hajimari
   - statping
