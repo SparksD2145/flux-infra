@@ -38,11 +38,6 @@ spec:
         existingClaim: minecraft-bungee-pvc
         accessMode: ReadWriteMany
         mountPath: /share/samba/bungee
-      share2:
-        enabled: true
-        existingClaim: minecraft-cwh11-pvc
-        accessMode: ReadWriteMany
-        mountPath: /share/samba/cwh11
     configmap:
       config:
         # -- Store samba configuration as a ConfigMap
@@ -63,14 +58,6 @@ spec:
             share:
               - name: bungee
                 path: /share/samba/bungee
-                browsable: yes
-                readonly: no
-                guestok: no
-                validusers: sparks
-                writelist: sparks
-                veto: no
-              - name: cwh11
-                path: /share/samba/cwh11
                 browsable: yes
                 readonly: no
                 guestok: no
