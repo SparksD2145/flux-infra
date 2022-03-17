@@ -42,10 +42,13 @@ spec:
       config:
         enabled: true
         type: pvc
-        existingClaim: local-jellyfin-config
+        existingClaim: nfs-jellyfin-config
       media:
         enabled: true
         type: pvc
-        existingClaim: local-jellyfin-media
+        existingClaim: nfs-jellyfin-media
         retain: true
     hostNetwork: true
+    resources:
+      limits:
+        nvidia.com/gpu: 1
