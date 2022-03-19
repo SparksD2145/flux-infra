@@ -17,8 +17,8 @@ data:
     log-facility=-
 
     # Fequently Ask upstream servers
-    max-ttl=60
-    max-cache-ttl=20
+    max-ttl=120
+    max-cache-ttl=120
 
     ## SPARKS.CODES AND IMAKE.SOFTWARE
     # Reverse Lookups for 10.10.0.0/16 go to 10.10.0.1
