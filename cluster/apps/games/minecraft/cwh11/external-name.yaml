@@ -1,15 +1,3 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: external-cwh11-mc-sparks-codes
-  namespace: games
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: cwh11.mc.sparks.codes
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-spec:
-  type: ExternalName
-  externalName: mc.sparks.codes
-
 ---
 kind: Service
 apiVersion: v1
