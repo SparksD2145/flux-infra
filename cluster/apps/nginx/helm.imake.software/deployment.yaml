@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx-helm-repo
-          image: registry.imake.software/sparks/helm-repo:1.0.4
+          image: registry.imake.software/sparks/helm-repo:1.0.5
           ports:
             - containerPort: 8080
           resources:
