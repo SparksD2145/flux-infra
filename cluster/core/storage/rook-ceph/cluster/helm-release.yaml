@@ -36,6 +36,7 @@ spec:
     toolbox:
       enabled: true
     cephClusterSpec:
+      resources: {}
       dashboard:
         enabled: true
         ssl: false
