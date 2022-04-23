@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  config: |
+    address-pools:
+      - name: default
+        protocol: layer2
+        auto-assign: true
+        addresses:
+          - 10.10.200.0/24
+      - name: services
+        protocol: layer2
+        auto-assign: false
+        addresses:
+          - 10.10.201.0/24
+      - name: minecraft
+        protocol: layer2
+        auto-assign: false
+        addresses:
+          - 10.10.202.0/24
+kind: ConfigMap
+metadata:
+  name: metallb
+  namespace: networking

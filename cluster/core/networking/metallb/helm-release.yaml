@@ -17,28 +17,4 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    controller:
-      image:
-        repository: metallb/controller
-        tag: main
-    speaker:
-      image:
-        repository: metallb/speaker
-        tag: main
-    configInline:
-      address-pools:
-        - name: default
-          protocol: layer2
-          auto-assign: true
-          addresses:
-            - 10.10.200.0/24
-        - name: services
-          protocol: layer2
-          auto-assign: false
-          addresses:
-            - 10.10.201.0/24
-        - name: minecraft
-          protocol: layer2
-          auto-assign: false
-          addresses:
-            - 10.10.202.0/24
+    existingConfigMap: metallb
