@@ -47,14 +47,14 @@ spec:
           metadataDevice:
           osdsPerDevice: "1"
         nodes:
-          - name: whiskey
-            devices:
-              - name: /dev/disk/by-id/lvm-pv-uuid-56ajOl-XAWN-lb2B-9Qrf-1QlX-XDdg-1bzaMr
-              - name: /dev/disk/by-id/lvm-pv-uuid-l89iwC-m8gB-udJ7-20fa-FaOx-fj6e-ji482A
-              - name: /dev/disk/by-id/lvm-pv-uuid-cZGGe4-Lr10-cl71-b0qJ-Vk4k-78we-sqYqe3
-              - name: /dev/disk/by-id/lvm-pv-uuid-LUC2lQ-pvGw-uWdv-CeRH-2JYI-mRQf-h8p3Pv
-              - name: /dev/disk/by-id/lvm-pv-uuid-buIHbt-mCqs-U0zm-leiV-5OMS-LLTu-cg1rRB
-              - name: /dev/disk/by-id/lvm-pv-uuid-03uX53-8dTO-Xt3r-bpei-x74R-I44H-sj0m5V
+          # - name: whiskey
+          #   devices:
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-56ajOl-XAWN-lb2B-9Qrf-1QlX-XDdg-1bzaMr
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-l89iwC-m8gB-udJ7-20fa-FaOx-fj6e-ji482A
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-cZGGe4-Lr10-cl71-b0qJ-Vk4k-78we-sqYqe3
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-LUC2lQ-pvGw-uWdv-CeRH-2JYI-mRQf-h8p3Pv
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-buIHbt-mCqs-U0zm-leiV-5OMS-LLTu-cg1rRB
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-03uX53-8dTO-Xt3r-bpei-x74R-I44H-sj0m5V
           #- name: foxtrot
           #  devices:
           #    - name: sdb
@@ -69,16 +69,16 @@ spec:
           - name: omega
             devices:
               - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
-          - name: tango
-            devices:
-              - name: /dev/disk/by-id/lvm-pv-uuid-ffWw2I-pZxz-3g1Y-tGSK-0HBA-2V0U-ReDTdg
-              - name: /dev/disk/by-id/lvm-pv-uuid-8psYbs-uji9-0q2m-KMX3-EEc2-PvHd-qBU81t
-              - name: /dev/disk/by-id/lvm-pv-uuid-JR93nM-z71I-SNj7-TN3p-y6Co-AQio-MLU6Pr
-              - name: /dev/disk/by-id/lvm-pv-uuid-4y5RG2-SPQz-qMOy-LkYD-BJdl-NGQ6-J6xO8G
-              - name: /dev/disk/by-id/lvm-pv-uuid-tfWcBD-Zhho-vJv0-Egu6-lUJ4-KS7N-IxIZmG
-              - name: /dev/disk/by-id/lvm-pv-uuid-T97Vca-92Bb-2pRJ-4p7Q-kzP9-9lFC-aylDOl
-              - name: /dev/disk/by-id/lvm-pv-uuid-zSRDY3-lu48-hpJx-JCcB-3rw6-GJWy-Z6Epod
-              - name: /dev/disk/by-id/lvm-pv-uuid-ZtT2OT-CkWv-hprZ-YBH9-7jfe-oJOx-lCXuRj
+          # - name: tango
+          #   devices:
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-ffWw2I-pZxz-3g1Y-tGSK-0HBA-2V0U-ReDTdg
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-8psYbs-uji9-0q2m-KMX3-EEc2-PvHd-qBU81t
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-JR93nM-z71I-SNj7-TN3p-y6Co-AQio-MLU6Pr
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-4y5RG2-SPQz-qMOy-LkYD-BJdl-NGQ6-J6xO8G
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-tfWcBD-Zhho-vJv0-Egu6-lUJ4-KS7N-IxIZmG
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-T97Vca-92Bb-2pRJ-4p7Q-kzP9-9lFC-aylDOl
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-zSRDY3-lu48-hpJx-JCcB-3rw6-GJWy-Z6Epod
+          #     - name: /dev/disk/by-id/lvm-pv-uuid-ZtT2OT-CkWv-hprZ-YBH9-7jfe-oJOx-lCXuRj
 
     cephBlockPools:
       - name: ceph-blockpool
