@@ -26,35 +26,19 @@ spec:
         repository: metallb/speaker
         tag: main
     configInline:
-      # peers:
-      #   - peer-address: 10.10.0.1
-      #     peer-asn: 64512
-      #     my-asn: 64513
       address-pools:
         - name: default
           protocol: layer2
           auto-assign: true
           addresses:
-            - 10.10.200.0-10.10.200.254
+            - 10.10.200.0/24
         - name: services
           protocol: layer2
           auto-assign: false
           addresses:
-            - 10.10.201.0-10.10.201.254
+            - 10.10.201.0/24
         - name: minecraft
           protocol: layer2
           auto-assign: false
           addresses:
-            - 10.10.202.0-10.10.202.254
-        #- name: services
-        #  protocol: bgp
-        #  addresses:
-        #    - 10.10.201.0/24
-        #  avoid-buggy-ips: true
-        #  auto-assign: false
-        #- name: minecraft
-        #  protocol: bgp
-        #  addresses:
-        #    - 10.10.202.0/24
-        #  avoid-buggy-ips: true
-        #  auto-assign: false
+            - 10.10.202.0/24
