@@ -10,4 +10,4 @@ resources:
   - nginx.yaml
   - rook-ceph.yaml
   - tools.yaml
-  - velero.yaml
+  - system-upgrade.yaml
