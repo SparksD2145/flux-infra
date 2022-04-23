@@ -1,15 +1,36 @@
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: minecraft-bungee-pvc
-  namespace: games
-  labels:
-    app: minecraft
+  name: local-mc-bungee
 spec:
   accessModes:
-    - ReadWriteMany
-  storageClassName: "ceph-filesystem"
+    - ReadWriteOnce
+  capacity:
+    storage: 512Mi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/static/mc.sparks.codes/bungee
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - omega
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-mc-bungee
+  namespace: games
+spec:
+  volumeName: local-mc-bungee
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
   resources:
     requests:
-      storage: 20Gi
+      storage: 512Mi
