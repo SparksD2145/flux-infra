@@ -19,6 +19,7 @@ spec:
   values:
     adminPassword: "choosesomethingelse"
     DNS1: "10.10.0.1"
+    DNS2: "127.0.0.1"
     podDnsConfig:
       enabled: true
       policy: None
