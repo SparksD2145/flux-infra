@@ -28,4 +28,4 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        existingClaim: minecraft-bungee-pvc
+        existingClaim: local-mc-bungee
