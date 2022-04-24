@@ -69,16 +69,9 @@ spec:
           - name: omega
             devices:
               - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
-          # - name: tango
-          #   devices:
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-ffWw2I-pZxz-3g1Y-tGSK-0HBA-2V0U-ReDTdg
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-8psYbs-uji9-0q2m-KMX3-EEc2-PvHd-qBU81t
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-JR93nM-z71I-SNj7-TN3p-y6Co-AQio-MLU6Pr
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-4y5RG2-SPQz-qMOy-LkYD-BJdl-NGQ6-J6xO8G
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-tfWcBD-Zhho-vJv0-Egu6-lUJ4-KS7N-IxIZmG
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-T97Vca-92Bb-2pRJ-4p7Q-kzP9-9lFC-aylDOl
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-zSRDY3-lu48-hpJx-JCcB-3rw6-GJWy-Z6Epod
-          #     - name: /dev/disk/by-id/lvm-pv-uuid-ZtT2OT-CkWv-hprZ-YBH9-7jfe-oJOx-lCXuRj
+          - name: tango
+            devices:
+              - name: /dev/md/raidgroupmain
 
     cephBlockPools:
       - name: ceph-blockpool
