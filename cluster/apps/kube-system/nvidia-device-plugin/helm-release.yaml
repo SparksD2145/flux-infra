@@ -26,7 +26,3 @@ spec:
                   operator: In
                   values:
                     - "true"
-    tolerations:
-      - key: "gpu-dedicated"
-        operator: Exists
-        effect: NoSchedule
