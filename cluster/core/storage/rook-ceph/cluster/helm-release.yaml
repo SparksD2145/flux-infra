@@ -36,9 +36,9 @@ spec:
     toolbox:
       enabled: true
     cephClusterSpec:
-      resources: {}
       dashboard:
         enabled: true
+        port: 8080
         ssl: false
       storage:
         useAllNodes: false
