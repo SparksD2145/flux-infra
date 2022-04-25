@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: omega.sparks.codes
-    path: /mnt/static/media.sparks.codes/media
+    path: "/mnt/static"
 
 ---
 apiVersion: v1
