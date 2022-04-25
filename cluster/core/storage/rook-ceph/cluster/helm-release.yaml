@@ -60,13 +60,20 @@ spec:
           #    - name: sdb
           - name: whiskey
             devices:
-              - name: /dev/md/raidgroupmain
+              - name: /dev/disk/by-id/scsi-35000c500b28f2de8
+              - name: /dev/disk/by-id/scsi-35000c500b1bf1be2
+              - name: /dev/disk/by-id/scsi-35000c500b4e03ac2
+              - name: /dev/disk/by-id/scsi-35000c500db4276d7
+              - name: /dev/disk/by-id/scsi-35000c500b1a1d44d
+              - name: /dev/disk/by-id/scsi-35000c500b1a31fd9
           - name: omega
             devices:
               - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
           - name: tango
             devices:
-              - name: /dev/md/raidgroupmain
+              - name: /dev/disk/by-id/scsi-35000c500506f96e1
+              - name: /dev/disk/by-id/scsi-35000c5004f8b248c
+              - name: /dev/disk/by-id/scsi-35000c5004e5c29e4
 
     cephBlockPools:
       - name: ceph-blockpool
