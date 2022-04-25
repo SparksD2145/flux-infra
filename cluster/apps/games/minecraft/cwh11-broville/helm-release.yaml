@@ -41,6 +41,7 @@ spec:
       memory: 8192M
       serviceType: LoadBalancer
       loadBalancerIP: 10.10.202.3
+      servicePort: 25566
     persistence:
       dataDir:
         enabled: true
