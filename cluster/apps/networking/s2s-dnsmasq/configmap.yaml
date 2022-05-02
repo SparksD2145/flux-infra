@@ -38,5 +38,5 @@ data:
     server=/cm3.cloud/10.0.0.10
 
     # Use these nameservers for all other requests:
-    # Use ADBLOCK
-    server=10.10.201.2
+    # Use ROUTER
+    server=10.10.0.1
