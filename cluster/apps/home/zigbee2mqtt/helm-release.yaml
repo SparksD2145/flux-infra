@@ -69,7 +69,7 @@ spec:
       # allow new devices to join
       # WARNING: Disable this after all devices have been paired! (default: false)
       # Note: this will be controllable in the UI
-      permit_join: true
+      permit_join: false
 
       # MQTT settings
       mqtt:
