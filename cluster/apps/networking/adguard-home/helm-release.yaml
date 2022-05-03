@@ -52,8 +52,8 @@ spec:
       bind_port: 3000
       beta_bind_port: 0
       users:
-        - name: sparks
-          password: ${SPARKS_ADGUARD_PASSWORD}
+        - name: admin
+          password: "$2y$05$MHO8OfbNDOwV4aAWOuGD/eMbFABzCJG5.ciIGAGOkI3Xgo0cUbw/W"
       auth_attempts: 8
       block_auth_min: 10
       http_proxy: ""
@@ -83,12 +83,9 @@ spec:
         refuse_any: true
         upstream_dns:
           - 10.10.201.6
-          - 10.10.0.1
         upstream_dns_file: ""
         bootstrap_dns:
-          - 8.8.8.8
-          - 8.8.4.4
-          - 1.1.1.1
+          - 10.10.201.6
         all_servers: false
         fastest_addr: false
         allowed_clients: []
