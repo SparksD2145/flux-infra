@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: pihole
+  name: adguard
   namespace: networking
 spec:
   interval: 15m
@@ -17,65 +17,295 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    podDnsConfig:
-      enabled:
-      policy: None
-      nameservers:
-        - 10.10.0.1
-    adlists:
-      # DEFAULT LISTS
-      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-      - https://mirror1.malwaredomains.com/files/justdomains
-      - https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-      # SUSPICIOUS
-      - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
-      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
-      - https://v.firebog.net/hosts/static/w3kbl.txt
-      # Advertizing
-      - https://adaway.org/hosts.txt
-      - https://v.firebog.net/hosts/AdguardDNS.txt
-      - https://v.firebog.net/hosts/Admiral.txt
-      - https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
-      - https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-      - https://v.firebog.net/hosts/Easylist.txt
-      - https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
-      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
-      - https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
-      # Tracking and Telemetry
-      - https://v.firebog.net/hosts/Easyprivacy.txt
-      - https://v.firebog.net/hosts/Prigent-Ads.txt
-      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
-      - https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
-      - https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
-      # Malicious
-      - https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
-      - https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
-      - https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
-      - https://v.firebog.net/hosts/Prigent-Crypto.txt
-      - https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
-      - https://phishing.army/download/phishing_army_blocklist_extended.txt
-      - https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
-      - https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
-      - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
-      - https://urlhaus.abuse.ch/downloads/hostfile/
-
-    virtualHost: adblock.sparks.codes
-
-    serviceDhcp:
-      enabled: false
-
-    persistentVolumeClaim:
-      enabled: true
-
-    serviceWeb:
-      loadBalancerIP: 10.10.201.2
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
-      type: LoadBalancer
-
-    serviceDns:
-      loadBalancerIP: 10.10.201.2
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
-      type: LoadBalancer
+    env:
+      TZ: America/Chicago
+    service:
+      main:
+        ports:
+          http:
+            port: 3000
+      dns-tcp:
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.2
+        annotations:
+          metallb.universe.tf/allow-shared-ip: pihole-svc
+      dns-udp:
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.2
+        annotations:
+          metallb.universe.tf/allow-shared-ip: pihole-svc
+    persistence:
+      config:
+        enabled: true
+        mountPath: /opt/adguardhome/conf
+        accessMode: "ReadWriteMany"
+        size: 1Gi
+        existingClaim: adguard-config-pvc
+      data:
+        enabled: false
+        mountPath: /opt/adguardhome/work
+        accessMode: "ReadWriteMany"
+        size: 2Gi
+        existingClaim: adguard-data-pvc
+    config: |
+      bind_host: 0.0.0.0
+      bind_port: 3000
+      beta_bind_port: 0
+      users:
+        - name: sparks
+          password: ${SPARKS_ADGUARD_PASSWORD}
+      auth_attempts: 8
+      block_auth_min: 10
+      http_proxy: ""
+      language: en
+      rlimit_nofile: 0
+      debug_pprof: false
+      web_session_ttl: 720
+      dns:
+        bind_hosts:
+          - 0.0.0.0
+        port: 53
+        statistics_interval: 1
+        querylog_enabled: true
+        querylog_file_enabled: true
+        querylog_interval: 90
+        querylog_size_memory: 1000
+        anonymize_client_ip: false
+        protection_enabled: true
+        blocking_mode: default
+        blocking_ipv4: ""
+        blocking_ipv6: ""
+        blocked_response_ttl: 10
+        parental_block_host: family-block.dns.adguard.com
+        safebrowsing_block_host: standard-block.dns.adguard.com
+        ratelimit: 0
+        ratelimit_whitelist: []
+        refuse_any: true
+        upstream_dns:
+          - 10.10.201.6
+          - 10.10.0.1
+        upstream_dns_file: ""
+        bootstrap_dns:
+          - 8.8.8.8
+          - 8.8.4.4
+          - 1.1.1.1
+        all_servers: false
+        fastest_addr: false
+        allowed_clients: []
+        disallowed_clients: []
+        blocked_hosts: []
+        cache_size: 4194304
+        cache_ttl_min: 0
+        cache_ttl_max: 0
+        bogus_nxdomain: []
+        aaaa_disabled: false
+        enable_dnssec: false
+        edns_client_subnet: false
+        max_goroutines: 300
+        ipset: []
+        filtering_enabled: true
+        filters_update_interval: 24
+        parental_enabled: false
+        safesearch_enabled: false
+        safebrowsing_enabled: false
+        safebrowsing_cache_size: 1048576
+        safesearch_cache_size: 1048576
+        parental_cache_size: 1048576
+        cache_time: 30
+        rewrites: []
+        blocked_services: []
+        local_domain_name: lan
+        resolve_clients: true
+        local_ptr_upstreams: []
+      tls:
+        enabled: false
+        server_name: ""
+        force_https: false
+        port_https: 443
+        port_dns_over_tls: 853
+        port_dns_over_quic: 784
+        port_dnscrypt: 0
+        dnscrypt_config_file: ""
+        allow_unencrypted_doh: false
+        strict_sni_check: false
+        certificate_chain: ""
+        private_key: ""
+        certificate_path: ""
+        private_key_path: ""
+      filters:
+        - enabled: true
+          url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+          name: AdGuard DNS filter
+          id: 1
+        - enabled: true
+          url: https://adaway.org/hosts.txt
+          name: AdAway
+          id: 2
+        - enabled: true
+          url: https://www.malwaredomainlist.com/hostslist/hosts.txt
+          name: MalwareDomainList.com Hosts List
+          id: 4
+        # DEFAULT LISTS
+        - enabled: true
+          url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+          name: StevenBlack
+          id: 5
+        - enabled: true
+          url: https://mirror1.malwaredomains.com/files/justdomains
+          name: MalwareDomains
+          id: 6
+        - enabled: true
+          url: https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+          name: SimpleTracking
+          id: 7
+        - enabled: true
+          url: https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+          name: disconnect.me
+          id: 8
+        # SUSPICIOUS
+        - enabled: true
+          url: https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
+          name: PolishFiltersTeam
+          id: 9
+        - enabled: true
+          url: https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
+          name: FadeMind
+          id: 10
+        - enabled: true
+          url: https://v.firebog.net/hosts/static/w3kbl.txt
+          name: Firebog
+          id: 11
+        - enabled: true
+          url: https://v.firebog.net/hosts/AdguardDNS.txt
+          name: Firebog AdguardDNS
+          id: 13
+        - enabled: true
+          url: https://v.firebog.net/hosts/Admiral.txt
+          name: Firebog Admiral
+          id: 14
+        - enabled: true
+          url: https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+          name: adudeepmd Adservers
+          id: 15
+        - enabled: true
+          url: https://v.firebog.net/hosts/Easylist.txt
+          name: Easylist
+          id: 17
+        - enabled: true
+          url: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+          name: Yoyo server list
+          id: 18
+        - enabled: true
+          url: https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
+          name: Unchecky Ads
+          id: 19
+        - enabled: true
+          url: https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+          name: Bigdargon master
+          id: 20
+        # Tracking and Telemetry
+        - enabled: true
+          url: https://v.firebog.net/hosts/Easyprivacy.txt
+          name: Firebog Easy Privacy
+          id: 21
+        - enabled: true
+          url: https://v.firebog.net/hosts/Prigent-Ads.txt
+          name: Firebog Prigent Ads
+          id: 22
+        - enabled: true
+          url: https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
+          name: Fademind Ads
+          id: 23
+        - enabled: true
+          url: https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+          name: WindowsSpyBlocker Hosts
+          id: 24
+        - enabled: true
+          url: https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
+          name: Frogeye First Partys
+          id: 25
+        # Malicious
+        - enabled: true
+          url: https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
+          name: Alrternate Adfilter
+          id: 26
+        - enabled: true
+          url: https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
+          name: Intel Threats
+          id: 27
+        - enabled: true
+          url: https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
+          name: Malware Advertizing
+          id: 28
+        - enabled: true
+          url: https://v.firebog.net/hosts/Prigent-Crypto.txt
+          name: Crypto prigent
+          id: 29
+        - enabled: true
+          url: https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
+          name: Mandiant APT1
+          id: 30
+        - enabled: true
+          url: https://phishing.army/download/phishing_army_blocklist_extended.txt
+          name: Phishing army
+          id: 31
+        - enabled: true
+          url: https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
+          name: notrack malware
+          id: 32
+        - enabled: true
+          url: https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
+          name: spam404
+          id: 33
+        - enabled: true
+          url: https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
+          name: Add.Risk
+          id: 34
+        - enabled: true
+          url: https://urlhaus.abuse.ch/downloads/hostfile/
+          name: urlhause abuse list
+          id: 35
+      whitelist_filters: []
+      user_rules: []
+      dhcp:
+        enabled: false
+        interface_name: ""
+        dhcpv4:
+          gateway_ip: ""
+          subnet_mask: ""
+          range_start: ""
+          range_end: ""
+          lease_duration: 86400
+          icmp_timeout_msec: 1000
+          options: []
+        dhcpv6:
+          range_start: ""
+          lease_duration: 86400
+          ra_slaac_only: false
+          ra_allow_slaac: false
+      clients: []
+      log_compress: false
+      log_localtime: false
+      log_max_backups: 0
+      log_max_size: 100
+      log_max_age: 3
+      log_file: ""
+      verbose: false
+      schema_version: 10
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Adguard"
+          hajimari.io/icon: "card-off"
+        hosts:
+          - host: adblock.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
+              - adblock.sparks.codes
