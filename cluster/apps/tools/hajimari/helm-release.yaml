@@ -141,6 +141,7 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx-internal"
+          hajimari.io/url: "http://nvr-actual.sparks.codes"
         hosts:
           - host: "dashboard.sparks.codes"
             paths:
