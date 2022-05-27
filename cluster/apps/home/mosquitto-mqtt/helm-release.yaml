@@ -21,6 +21,10 @@ spec:
     env:
       TZ: "America/Chicago"
     persistence:
+      configinc:
+        enabled: true
+        size: 512Mi
+        existingClaim: mosquitto-config-pvc
       data:
         enabled: false
         mountPath: /data

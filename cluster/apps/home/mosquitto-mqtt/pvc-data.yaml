@@ -10,7 +10,7 @@ spec:
     storage: 2Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mqtt.sparks.codes
+    path: /mnt/static/mqtt.sparks.codes/data
   nodeAffinity:
     required:
       nodeSelectorTerms:
