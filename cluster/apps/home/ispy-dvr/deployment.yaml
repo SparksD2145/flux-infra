@@ -167,6 +167,7 @@ metadata:
     hajimari.io/enable: "true"
     hajimari.io/appName: "Agent NVR"
     hajimari.io/icon: "video"
+    hajimari.io/url: "http://nvr-actual.sparks.codes"
 spec:
   rules:
     - host: nvr.sparks.codes
@@ -178,7 +179,7 @@ spec:
               service:
                 name: nvr-sparks-codes-tcp
                 port:
-                  number: 8090
+                  number: 80
   tls:
     - secretName: acme-crt-secret-sparks-codes
       hosts:
