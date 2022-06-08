@@ -123,10 +123,6 @@ spec:
               url: "https://soundcloud.com/SparksD2145"
         - name: Cryptocurrency
           links:
-            - name: 2Miners ETH
-              url: https://eth.2miners.com/account/0xD4145bEFDDE842f3Cbc8ce1a1d1094fD6d242eFf#farms
-            - name: 2Miners RVN
-              url: https://rvn.2miners.com/account/RD1C9QhqFpxCaXxBbybJzVjhG2Ab3m275e
             - name: ETH Profitability Calculator
               url: https://www.cryptocompare.com/mining/calculator/eth
             - name: Coinbase
