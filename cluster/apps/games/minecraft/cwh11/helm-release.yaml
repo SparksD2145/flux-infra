@@ -17,8 +17,9 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    image: itzg/minecraft-server
-    imageTag: latest
+    image:
+      repository: itzg/minecraft-server
+      tag: latest
     nodeSelector:
       services/minecraft: active
     resources:
