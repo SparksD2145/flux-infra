@@ -121,16 +121,6 @@ spec:
               url: "https://music.youtube.com/"
             - name: My Soundcloud
               url: "https://soundcloud.com/SparksD2145"
-        - name: Cryptocurrency
-          links:
-            - name: ETH Profitability Calculator
-              url: https://www.cryptocompare.com/mining/calculator/eth
-            - name: Coinbase
-              url: https://www.coinbase.com/dashboard
-            - name: Yieldly
-              url: https://yieldly.finance/app
-            - name: Guarda
-              url: https://guarda.com
 
     ingress:
       main:

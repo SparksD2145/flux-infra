@@ -19,7 +19,7 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
-      PHOTOPRISM_ADMIN_PASSWORD: "photoprism45@"
+      PHOTOPRISM_ADMIN_PASSWORD: "${MEDIA_PHOTOPRISM_ADMIN_PASSWORD}"
       # -- Photoprism storage path
       PHOTOPRISM_STORAGE_PATH: /photoprism/storage
       # -- Photoprism originals path
