@@ -22,7 +22,7 @@ spec:
     env:
       TZ: "America/Chicago"
     tolerations:
-      - key: "zwave-zigbee-control"
+      - key: "iot-control"
         operator: "Equal"
         value: "active"
         effect: "NoSchedule"

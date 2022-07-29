@@ -7,7 +7,10 @@ all:
         foxtrot.sparks.codes:
         omega.sparks.codes:
         lambda.sparks.codes:
-        # kappa.sparks.codes:
+        rpi3-1.sparks.codes:
+        rpi3-2.sparks.codes:
+        rpi4-poe-1.sparks.codes:
+        rpi4-poe-2.sparks.codes:
     servers_with_idracs:
       hosts:
         whiskey.sparks.codes:

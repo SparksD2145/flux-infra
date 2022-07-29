@@ -15,7 +15,7 @@ spec:
         run: zwavejs2mqtt
     spec:
       tolerations:
-        - key: "zwave-zigbee-control"
+        - key: "iot-control"
           operator: "Equal"
           value: "active"
           effect: "NoSchedule"
