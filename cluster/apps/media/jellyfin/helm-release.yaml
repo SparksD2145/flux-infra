@@ -41,12 +41,10 @@ spec:
         enabled: true
         type: pvc
         existingClaim: nfs-jellyfin-config
-        subPath: media.sparks.codes/config
       media:
         enabled: true
         type: pvc
         existingClaim: nfs-jellyfin-media
-        subPath: media.sparks.codes/media
         retain: true
     hostNetwork: true
     resources:
