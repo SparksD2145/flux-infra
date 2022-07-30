@@ -73,7 +73,7 @@ spec:
         config: |
           [[runners]]
             [runners.kubernetes]
-              image = "ubuntu:20.04"
+              image = "docker:stable"
               privileged = true
             [[runners.kubernetes.volumes.empty_dir]]
               name = "docker-certs"
