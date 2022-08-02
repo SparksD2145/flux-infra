@@ -26,6 +26,7 @@ spec:
       defaultEnable: false
       namespaceSelector:
         matchNames:
+          - kube-system
           - home
           - media
           - monitoring

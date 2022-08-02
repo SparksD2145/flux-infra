@@ -1,0 +1,34 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: k8s-dashboard
+  namespace: kube-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: kubernetes-dashboard
+      version: 5.7.0
+      sourceRef:
+        kind: HelmRepository
+        name: kubernetes-dashboard-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    ingress:
+      enabled: true
+      className: nginx-internal
+      annotations:
+        nginx.ingress.kubernetes.io/auth-type: basic
+        nginx.ingress.kubernetes.io/auth-secret: k8s-dashboard-secret
+        nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+        hajimari.io/enable: "true"
+        hajimari.io/appName: "K8s Dashboard"
+        hajimari.io/icon: "kubernetes"
+      hosts:
+        - k8s-dashboard.sparks.codes
+      tls:
+        - secretName: acme-crt-secret-sparks-codes
+          hosts:
+            - k8s-dashboard.sparks.codes
