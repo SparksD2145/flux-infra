@@ -20,9 +20,6 @@ spec:
       enabled: true
       className: nginx-internal
       annotations:
-        nginx.ingress.kubernetes.io/auth-type: basic
-        nginx.ingress.kubernetes.io/auth-secret: k8s-dashboard-secret
-        nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
         hajimari.io/enable: "true"
         hajimari.io/appName: "K8s Dashboard"
         hajimari.io/icon: "kubernetes"
