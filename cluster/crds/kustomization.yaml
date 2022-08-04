@@ -4,5 +4,4 @@ resources:
   - cert-manager
   - external-dns
   - external-snapshotter
-  - metallb
   - rook-ceph
