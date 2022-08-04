@@ -1,0 +1,47 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: calibre
+  namespace: media
+spec:
+  interval: 10m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: calibre
+      version: 5.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    env:
+      TZ: America/Chicago
+      GUAC_USER: christianmetal3
+      GUAC_PASS: calibre
+    image:
+      tag: latest
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+        hosts:
+          - host: "calibre-backend.cm3.cloud"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "calibre-backend.cm3.cloud"
+            secretName: acme-crt-secret-cm3-cloud
+    persistence:
+      config:
+        enabled: true
+        existingClaim: nfs-calibre-config
+      books:
+        enabled: true
+        existingClaim: nfs-calibre-books

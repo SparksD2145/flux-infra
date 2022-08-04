@@ -1,0 +1,55 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-calibre-config
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.0.0.80
+    path: "/mnt/hdd/k8s/calibre/config"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-calibre-config
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-calibre-books
+spec:
+  capacity:
+    storage: 350Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.0.0.80
+    path: "/mnt/hdd/k8s/calibre/books"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-calibre-books
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 350Gi
