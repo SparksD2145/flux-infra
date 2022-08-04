@@ -4,5 +4,6 @@ resources:
   - focalboard
   - haste-server
   - littlelink
+  - nfty
   - hajimari
   - statping
