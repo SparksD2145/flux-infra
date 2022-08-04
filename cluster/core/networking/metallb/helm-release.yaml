@@ -17,4 +17,3 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    existingConfigMap: metallb
