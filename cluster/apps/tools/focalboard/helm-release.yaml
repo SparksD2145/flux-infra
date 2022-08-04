@@ -27,13 +27,13 @@ spec:
           hajimari.io/appName: "Focalboard"
           hajimari.io/icon: "bulletin-board"
         hosts:
-          - host: focalboard.sparks.codes
+          - host: boards.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
         tls:
           - hosts:
-              - focalboard.sparks.codes
+              - boards.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
       data:
