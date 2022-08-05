@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -20,12 +21,15 @@ data:
     max-ttl=120
     max-cache-ttl=120
 
-    ## SPARKS.CODES AND IMAKE.SOFTWARE
+    ## SPARKS.CODES, SPRK.SH AND IMAKE.SOFTWARE
     # Reverse Lookups for 10.10.0.0/16 go to 10.10.0.1
     rev-server=10.10.0.0/16,10.10.0.1
 
     # Use sparks.codes NS
     server=/sparks.codes/10.10.0.1
+
+    # Use sprk.sh NS
+    server=/sprk.sh/10.10.0.1
 
     # Use imake.software NS
     server=/imake.software/10.10.0.1
