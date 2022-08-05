@@ -13,6 +13,7 @@ resources:
   - docker-registry-charts.yaml
   - emqx-charts.yaml
   - external-dns-charts.yaml
+  - emberstack-charts.yaml
   - falco-security-charts.yaml
   - gitlab-charts.yaml
   - grafana-charts.yaml
