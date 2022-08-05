@@ -42,7 +42,7 @@ spec:
 
 ---
 apiVersion: cert-manager.io/v1
-kind: certificate
+kind: Certificate
 metadata:
   name: acme-crt-mc-sparks-codes
   namespace: cert-manager
@@ -63,7 +63,7 @@ spec:
 
 ---
 apiVersion: cert-manager.io/v1
-kind: certificate
+kind: Certificate
 metadata:
   name: acme-crt-sprk-sh
   namespace: cert-manager
