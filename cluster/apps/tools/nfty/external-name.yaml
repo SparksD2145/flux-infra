@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-notify-sparks-codes
+  namespace: tools
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: notify.sparks.codes
+spec:
+  type: ExternalName
+  externalName: sparks.codes
