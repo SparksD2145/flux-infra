@@ -19,7 +19,7 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
-      SHORT_DOMAIN_HOST: "sprk.sh/go"
+      SHORT_DOMAIN_HOST: "sprk.sh"
       SHORT_DOMAIN_SCHEMA: "https"
       # GEOLITE_LICENSE_KEY: "kjh23ljkbndskj345"
 
@@ -34,7 +34,7 @@ spec:
         hosts:
           - host: sprk.sh
             paths:
-              - path: "/go"
+              - path: "/"
                 pathType: "Prefix"
         tls:
           - hosts:
