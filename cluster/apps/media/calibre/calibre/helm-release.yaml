@@ -19,29 +19,30 @@ spec:
   values:
     env:
       TZ: America/Chicago
-      GUAC_USER: christianmetal3
-      GUAC_PASS: calibre
+      GUAC_USER: calibre
+      GUAC_PASS: "${MEDIA_CALIBRE_GUAC_PASSWORD}"
     image:
       tag: latest
     ingress:
       main:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
+          kubernetes.io/ingress.class: "nginx-internal"
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+          hajimari.io/enable: "false"
         hosts:
-          - host: "calibre-backend.cm3.cloud"
+          - host: "books-backend.sparks.codes"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "calibre-backend.cm3.cloud"
-            secretName: acme-crt-secret-cm3-cloud
+              - "books-backend.sparks.codes"
+            secretName: acme-crt-secret-sparks.codes
     persistence:
       config:
         enabled: true
-        existingClaim: nfs-calibre-config
+        existingClaim: local-calibre-config
       books:
         enabled: true
-        existingClaim: nfs-calibre-books
+        existingClaim: local-calibre-books
