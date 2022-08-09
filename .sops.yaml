@@ -5,6 +5,6 @@ creation_rules:
     age: >-
       age1rhy2neq0qg7y6svfu2pcyd85z3wkgspkgzz4jcmguypymk3e958qzhgwqx
   - path_regex: cluster/.*\.ya?ml
-    encrypted_regex: "^(data|stringData)$"
+    encrypted_regex: "((?i)(pass|secret($|[^N])|key|token|^data$|^stringData))"
     age: >-
       age1rhy2neq0qg7y6svfu2pcyd85z3wkgspkgzz4jcmguypymk3e958qzhgwqx
