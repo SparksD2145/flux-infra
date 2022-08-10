@@ -45,7 +45,7 @@ spec:
       loadBalancerIP: 10.10.202.2
       rcon:
         enabled: true
-        password: "minecraft2145"
+        password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}
     persistence:
       dataDir:
         enabled: true
