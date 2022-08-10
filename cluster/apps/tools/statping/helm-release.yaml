@@ -21,8 +21,8 @@ spec:
       TZ: "America/Chicago"
       VIRTUAL_HOST: uptime.sparks.codes
       NAME: "Spark's Uptime Report"
-      ADMIN_USER: sparks
-      ADMIN_PASSWORD: choosesomethingelse@
+      ADMIN_USER: ${TOOLS_STATPING_ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${TOOLS_STATPING_ADMIN_PASSWORD}
       ADMIN_EMAIL: uptime@sparks.codes
     ingress:
       main:
