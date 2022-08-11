@@ -135,7 +135,7 @@ spec:
       TZ: "America/Chicago"
 
     # -- default upstream DNS 1 server to use
-    DNS1: "10.10.201.6"
+    DNS1: "10.10.0.1"
     # -- default upstream DNS 2 server to use
     DNS2: "127.0.0.1"
 
@@ -161,9 +161,45 @@ spec:
       # - dhcp-host=MAC_ADDRESS,IP_ADDRESS,HOSTNAME
 
       # -- Other options
-      customSettings:
-      # otherSettings:
-      # - rebind-domain-ok=/plex.direct/
+      customSettings: |
+        # Do not use /etc/hosts
+        no-resolv
+
+        # Standard Options
+        domain-needed
+        bogus-priv
+
+        # Logging
+        log-queries
+        log-facility=-
+
+        # Fequently Ask upstream servers
+        max-ttl=120
+        max-cache-ttl=120
+
+        ## SPARKS.CODES, SPRK.SH AND IMAKE.SOFTWARE
+        # Reverse Lookups for 10.10.0.0/16 go to 10.10.0.1
+        rev-server=10.10.0.0/16,10.10.0.1
+
+        # Use sparks.codes NS
+        server=/sparks.codes/10.10.0.1
+
+        # Use sprk.sh NS
+        server=/sprk.sh/10.10.0.1
+
+        # Use imake.software NS
+        server=/imake.software/10.10.0.1
+
+        ## CM3.CLOUD
+        # Reverse Lookups for 10.0.0.0/24 go to 10.0.0.1
+        rev-server=10.0.0.0/24,10.0.0.1
+
+        # Use cm3.cloud NS
+        server=/cm3.cloud/10.0.0.10
+
+        # Use these nameservers for all other requests:
+        # Use ROUTER
+        server=10.10.0.1
 
       # -- Here we specify custom cname entries that should point to `A` records or
       # elements in customDnsEntries array.
