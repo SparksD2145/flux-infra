@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: openldap-charts
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://jp-gouin.github.io/helm-openldap/
+  timeout: 3m
