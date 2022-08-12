@@ -17,7 +17,15 @@ spec:
         values:
           - "true"
   tolerations:
-    - key: zwave-zigbee-control
+    - key: dns-master
+      effect: NoSchedule
+      operator: Equal
+      value: active
+    - key: iot-master
+      effect: NoSchedule
+      operator: Equal
+      value: active
+    - key: iot-control
       effect: NoSchedule
       operator: Equal
       value: active
