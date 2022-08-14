@@ -6,6 +6,7 @@ resources:
   - banzaicloud-charts.yaml
   - bitnami-charts.yaml
   - bitnami-labs-charts.yaml
+  - bjw-s-charts.yaml
   - blakeshome-charts.yaml
   - coredns-charts.yaml
   - deliveryhero-charts.yaml
@@ -16,6 +17,7 @@ resources:
   - emberstack-charts.yaml
   - falco-security-charts.yaml
   - gitlab-charts.yaml
+  - glauth-charts.yaml
   - grafana-charts.yaml
   - hajimari-charts.yaml
   - hashicorp-charts.yaml

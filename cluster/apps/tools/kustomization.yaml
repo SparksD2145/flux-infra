@@ -7,6 +7,5 @@ resources:
   - littlelink
   - nfty
   - hajimari
-  - openldap
   - shlink
   - statping

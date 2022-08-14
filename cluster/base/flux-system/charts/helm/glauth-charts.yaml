@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: glauth-charts
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://glauth.github.io/helm-glauth
+  timeout: 3m
