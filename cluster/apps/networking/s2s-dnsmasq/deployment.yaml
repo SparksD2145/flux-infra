@@ -17,7 +17,6 @@ spec:
       restartPolicy: Always
       containers:
         - name: s2s-dnsmasq
-          # image: registry.imake.software/sparks/dnsmasq:1.0.0
           image: sirscythe/dnsmasq-arm
           volumeMounts:
             - name: config-vol
