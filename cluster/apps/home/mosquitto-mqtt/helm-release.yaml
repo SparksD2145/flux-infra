@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    node-selector: omega
+    node-selector: rpi4-poe-2
     env:
       TZ: "America/Chicago"
     persistence:

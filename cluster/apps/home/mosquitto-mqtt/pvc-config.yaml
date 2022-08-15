@@ -10,7 +10,7 @@ spec:
     storage: 512Mi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mqtt.sparks.codes/config
+    path: /opt/mqtt.sparks.codes/config
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - omega
+                - rpi4-poe-2
 
 ---
 apiVersion: v1
