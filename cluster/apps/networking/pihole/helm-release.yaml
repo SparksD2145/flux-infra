@@ -302,3 +302,9 @@ spec:
       policy: "None"
       nameservers:
         - 10.10.201.6
+
+    tolerations:
+      - key: dns-master
+        operator: Equal
+        value: "active"
+        effect: NoSchedule
