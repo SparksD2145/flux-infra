@@ -8,87 +8,81 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: common
-      version: 4.5.2
+      chart: authelia
+      version: 0.8.38
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-libraries-charts
+        name: authelia-charts
         namespace: flux-system
-  install:
-    createNamespace: true
-    remediation:
-      retries: 5
-  upgrade:
-    remediation:
-      retries: 5
   dependsOn:
-    # - name: postgres
-    #   namespace: default
     - name: glauth
       namespace: auth
-    # - name: redis
-    #   namespace: default
   values:
-    controller:
-      replicas: 3
-      strategy: RollingUpdate
-    image:
-      repository: ghcr.io/authelia/authelia
-      tag: 4.36.4
-    envFrom:
-      - secretRef:
-          name: *app
-    service:
-      main:
-        ports:
-          http:
-            enabled: true
-            primary: true
-            protocol: HTTP
-            port: 80
+    domain: sparks.codes
     ingress:
-      main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx-internal
+      subdomain: auth
+      tls:
         enabled: true
-        ingressClassName: "nginx-internal"
-        annotations:
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            add_header Cache-Control "no-store";
-            add_header Pragma "no-cache";
-            add_header X-Frame-Options "SAMEORIGIN";
-            add_header X-XSS-Protection "1; mode=block";
-        hosts:
-          - host: &host "auth.sparks.codes"
-            paths:
-              - path: /
-                pathType: Prefix
-                service: http
-                backend:
-                  servicePort: 80
-        tls:
-          - secretName: acme-crt-secret-sparks-codes
-            hosts:
-              - *host
-    persistence:
-      config:
-        enabled: true
-        type: configMap
-        name: *app
-        subPath: configuration.yml
-        mountPath: /config/configuration.yml
-        readOnly: false
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *app
-      secret.reloader.stakater.com/reload: *app
-    topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app.kubernetes.io/name: *app
-    resources:
-      requests:
-        cpu: 10m
-        memory: 50Mi
-      limits:
-        memory: 250Mi
+        secret: acme-crt-secret-sparks-codes
+    configMap:
+      server:
+        csp_template: "default-src 'self'; object-src 'none'; style-src 'self' 'nonce-${NONCE}'"
+      default_redirection_url: https://auth.sparks.codes
+      default_2fa_method: webauthn
+      # totp:
+      # webauthn:
+      # duo_api
+      authentication_backend:
+        password_reset:
+          disable: true
+        ldap:
+          implementation: custom
+          url: "ldap://ldap.sparks.codes"
+          base_dn: dc=sparks,dc=codes
+          username_attribute: uid
+          additional_users_dn: ou=users
+          users_filter: "(&({username_attribute}={input})(objectClass=posixAccount))"
+          groups_filter: "(&(memberUid={username})(objectClass=posixGroup))"
+          group_name_attribute: cn
+          mail_attribute: mail
+          display_name_attribute: name
+          user: cn=search,ou=svcaccts,dc=sparks,dc=codes
+      access_control:
+        networks:
+          - name: private
+            networks:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+        rules:
+          - domain_regex: '^.*\.sparks\.codes$'
+            policy: one_factor
+            networks:
+              - private
+      session:
+        expiration: 2h
+        inactivity: 20m
+        redis:
+          enabled: false
+        high_availability:
+          enabled: false
+      storage:
+        local:
+          enabled: true
+        postgres:
+          enabled: false
+      notifier:
+        disable_startup_check: true
+        filesystem:
+          enabled: true
+        smtp:
+          enabled: false
+      secret:
+        ldap:
+          key: LDAP_PASSWORD
+          value: ${AUTH_AUTHELIA_LDAP_PASSWORD}
+          filename: LDAP_PASSWORD
+      certificates: {}
