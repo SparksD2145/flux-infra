@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    node-selector: rpi4-poe-2
+    node-selector: rpi4-poe-1
     env:
       TZ: "America/Chicago"
     persistence:
@@ -40,7 +40,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: 10.10.201.3
     tolerations:
-      - key: iot-control
+      - key: iot-master
         operator: Equal
         value: "active"
         effect: NoSchedule
