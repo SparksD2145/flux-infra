@@ -39,3 +39,8 @@ spec:
           port: 1883
         type: LoadBalancer
         loadBalancerIP: 10.10.201.3
+    tolerations:
+      - key: iot-control
+        operator: Equal
+        value: "active"
+        effect: NoSchedule
