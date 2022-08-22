@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    node-selector: rpi4-poe-1
+    node-selector: omega
     env:
       TZ: "America/Chicago"
     persistence:
@@ -39,8 +39,3 @@ spec:
           port: 1883
         type: LoadBalancer
         loadBalancerIP: 10.10.201.3
-    tolerations:
-      - key: iot-master
-        operator: Equal
-        value: "active"
-        effect: NoSchedule
