@@ -13,7 +13,7 @@ spec:
       version: 8.4.3
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:

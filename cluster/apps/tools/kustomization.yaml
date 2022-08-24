@@ -5,7 +5,7 @@ resources:
   - focalboard
   - haste-server
   - littlelink
-  - nfty
+  - ntfy
   - hajimari
   - shlink
   - statping
