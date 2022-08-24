@@ -2,17 +2,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app home-assistant
+  name: home-assistant
   namespace: home
 spec:
   interval: 15m
   chart:
     spec:
-      chart: app-template
-      version: 0.1.1
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: home-assistant
+      version: 13.4.2
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: k8s-at-home-charts
         namespace: flux-system
       interval: 15m
   dependsOn:
@@ -24,9 +25,6 @@ spec:
     env:
       TZ: "America/Chicago"
     node-selector: omega
-    image:
-      repository: ghcr.io/onedr0p/home-assistant
-      tag: 2022.8.6@sha256:3c3f508b3b79383bef875f79c45d688a59c945a0f4aa93ffeacf76bc84de81e2
     persistence:
       config:
         enabled: true
