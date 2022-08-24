@@ -22,6 +22,9 @@ spec:
     - name: zigbee2mqtt
       namespace: home
   values:
+    image:
+      repository: homeassistant/home-assistant
+      tag: '2022.8'
     env:
       TZ: "America/Chicago"
     node-selector: omega
