@@ -8,16 +8,26 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: ntfy
-      version: 1.1.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    image:
+      repository: binwiederhier/ntfy
+      tag: latest
     env:
       TZ: America/Chicago
+    args:
+      - serve
+    service:
+      main:
+        ports:
+          http:
+            port: 80
     ingress:
       main:
         enabled: true

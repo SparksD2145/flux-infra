@@ -8,17 +8,33 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: filebrowser
-      version: 1.4.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    image:
+      repository: filebrowser/filebrowser
+      tag: v2.18.0
     env:
       TZ: "America/Chicago"
+    config: |
+      {
+        "port": 80,
+        "baseURL": "",
+        "address": "",
+        "log": "stdout",
+        "database": "/config/database.db",
+        "root": "/srv/data"
+      }
+    service:
+      main:
+        ports:
+          http:
+            port: 80
     ingress:
       main:
         enabled: true

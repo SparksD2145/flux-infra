@@ -8,21 +8,28 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: shlink
-      version: 5.1.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    image:
+      repository: shlinkio/shlink
+      tag: 2.7.1
     env:
       TZ: "America/Chicago"
       SHORT_DOMAIN_HOST: "sprk.sh"
       SHORT_DOMAIN_SCHEMA: "https"
+      DB_DRIVER: sqlite
       # GEOLITE_LICENSE_KEY: "kjh23ljkbndskj345"
-
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
     ingress:
       main:
         enabled: true
@@ -47,13 +54,6 @@ spec:
         accessMode: ReadWriteMany
         size: 1Gi
       data:
-        enabled: true
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
-        size: 2Gi
-    postgresql:
-      enabled: true
-      persistence:
         enabled: true
         storageClass: ceph-filesystem
         accessMode: ReadWriteMany

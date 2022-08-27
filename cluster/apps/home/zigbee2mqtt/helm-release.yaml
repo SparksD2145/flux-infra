@@ -8,12 +8,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: zigbee2mqtt
-      version: 9.4.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   dependsOn:
@@ -21,9 +20,15 @@ spec:
       namespace: home
   values:
     image:
+      repository: koenkk/zigbee2mqtt
       tag: latest
     env:
       TZ: "America/Chicago"
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
     tolerations:
       - key: "iot-control"
         operator: "Equal"

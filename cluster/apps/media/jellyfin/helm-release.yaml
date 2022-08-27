@@ -8,15 +8,17 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: jellyfin
-      version: 9.5.3
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    image:
+      repository: jellyfin/jellyfin
+      tag: latest
     env:
       TZ: "America/Chicago"
     ingress:
@@ -50,3 +52,8 @@ spec:
     resources:
       limits:
         nvidia.com/gpu: 1
+    service:
+      main:
+        ports:
+          http:
+            port: 8096

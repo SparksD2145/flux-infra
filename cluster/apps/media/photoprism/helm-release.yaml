@@ -8,15 +8,17 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: photoprism
-      version: 7.1.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    image:
+      repository: photoprism/photoprism
+      tag: latest
     env:
       TZ: "America/Chicago"
       PHOTOPRISM_ADMIN_PASSWORD: "${MEDIA_PHOTOPRISM_ADMIN_PASSWORD}"
@@ -26,6 +28,16 @@ spec:
       PHOTOPRISM_ORIGINALS_PATH: /photoprism/originals
       # -- Disable authentication / password protection
       PHOTOPRISM_PUBLIC: "false"
+      PHOTOPRISM_DATABASE_DRIVER: sqlite
+      PHOTOPRISM_DATABASE_SERVER: photoprism-mariadb:3306
+      PHOTOPRISM_DATABASE_NAME: photoprism
+      PHOTOPRISM_DATABASE_USER: photoprism
+      PHOTOPRISM_DATABASE_PASSWORD: photoprism
+    service:
+      main:
+        ports:
+          http:
+            port: 2342
     ingress:
       main:
         enabled: true

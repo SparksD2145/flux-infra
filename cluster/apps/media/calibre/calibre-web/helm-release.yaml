@@ -8,17 +8,24 @@ spec:
   interval: 10m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: calibre-web
-      version: 8.4.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      repository: linuxserver/calibre-web
+      tag: version-0.6.12
     env:
       TZ: America/Chicago
+    service:
+      main:
+        ports:
+          http:
+            port: 8083
     ingress:
       main:
         enabled: true

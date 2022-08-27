@@ -8,15 +8,17 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: littlelink-server
-      version: 1.4.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    image:
+      repository: ghcr.io/techno-tim/littlelink-server
+      tag: latest
     env:
       TZ: "America/Chicago"
       META_TITLE: Thomas Ibarra - Links Page
@@ -58,6 +60,11 @@ spec:
       # GOODREADS: https://www.goodreads.com/
       # SKOOB: https://www.skoob.com.br/
       FOOTER: Thanks for stopping by!
+    service:
+      main:
+        ports:
+          http:
+            port: 3000
     ingress:
       main:
         enabled: true

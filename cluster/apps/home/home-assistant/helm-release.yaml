@@ -34,6 +34,11 @@ spec:
         mountPath: /config
         accessMode: "ReadWriteOnce"
         size: 30Gi
+    service:
+      main:
+        ports:
+          http:
+            port: 8123
     ingress:
       main:
         enabled: true
@@ -57,3 +62,17 @@ spec:
           value: "1"
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
+    addons:
+      # -- Enable and configure codeserver for the chart.
+      #    This allows for easy access to configuration.yaml
+      # @default -- See values.yaml
+      codeserver:
+        enabled: true
+        args:
+          - --auth
+          - none
+          - --user-data-dir
+          - /data/config/.vscode
+        volumeMounts:
+          - name: config
+            mountPath: /data/config

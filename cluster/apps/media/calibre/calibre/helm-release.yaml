@@ -8,21 +8,39 @@ spec:
   interval: 10m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: calibre
-      version: 5.4.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      repository: linuxserver/calibre
+      tag: version-v5.21.0
     env:
       TZ: America/Chicago
       GUAC_USER: calibre
       GUAC_PASS: "${MEDIA_CALIBRE_GUAC_PASSWORD}"
-    image:
-      tag: latest
+      PUID: "1001"
+      PGID: "1001"
+      UMASK_SET: "022"
+      CLI_ARGS:
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+      webserver:
+        enabled: false
+        type: ClusterIP
+        ports:
+          webserver:
+            enabled: true
+            port: 8081
+            protocol: TCP
+            targetPort: 8081
     ingress:
       main:
         enabled: true
