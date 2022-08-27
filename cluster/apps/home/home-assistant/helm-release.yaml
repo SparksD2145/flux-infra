@@ -8,12 +8,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: home-assistant
-      version: 13.4.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   dependsOn:
@@ -56,5 +55,5 @@ spec:
       options:
         - name: ndots
           value: "1"
-    hostNetwor: true
+    hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
