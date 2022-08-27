@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: shlinkio/shlink
-      tag: 2.7.1
+      tag: 2.10.3
     env:
       TZ: "America/Chicago"
       SHORT_DOMAIN_HOST: "sprk.sh"
