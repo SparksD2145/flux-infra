@@ -28,6 +28,7 @@ spec:
     ingressClassResource:
       name: nginx-external
     config:
+      lua-shared-dicts: "certificate_data: 100"
       proxy-body-size: 10M
       #custom-http-errors: 404,401,403,500,503
     publishService:
