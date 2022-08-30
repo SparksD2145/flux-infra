@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
       interval: 15m
   dependsOn:
-    - name: mosquitto
+    - name: emqx
       namespace: home
     - name: zigbee2mqtt
       namespace: home

@@ -4,6 +4,6 @@ resources:
   - ispy-dvr
   - nfs-home.yaml
   - home-assistant
-  - mosquitto-mqtt
+  - emqx
   - zigbee2mqtt
   - zwavejs2mqtt
