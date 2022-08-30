@@ -42,8 +42,3 @@ spec:
           - hosts:
               - sprk.sh
             secretName: acme-crt-secret-sprk-sh
-    persistence:
-      data:
-        enabled: true
-        existingClaim: local-shlink-data
-        mountPath: /etc/shlink/data/database.sqlite

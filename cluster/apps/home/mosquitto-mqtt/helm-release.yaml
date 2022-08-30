@@ -35,8 +35,11 @@ spec:
     service:
       main:
         enabled: true
-        mqtt:
-          enabled: true
-          port: 1883
+        ports:
+          http:
+            enabled: false
+          mqtt:
+            enabled: true
+            port: 1883
         type: LoadBalancer
         loadBalancerIP: 10.10.201.3
