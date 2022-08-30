@@ -18,6 +18,7 @@ spec:
   values:
     image:
       repository: eclipse-mosquitto
+      tag: latest
     node-selector: omega
     env:
       TZ: "America/Chicago"
