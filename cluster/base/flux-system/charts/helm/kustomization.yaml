@@ -53,6 +53,7 @@ resources:
   - rook-ceph-charts.yaml
   - rook-charts.yaml
   - sparks-helm-repo.yaml
+  - truecharts-charts.yaml
   - stakater-charts.yaml
   - traefik-charts.yaml
   - vernemq-charts.yaml

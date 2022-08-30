@@ -8,21 +8,17 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: app-template
-      version: 0.1.1
+      chart: shlink
+      version: 4.0.35
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: truecharts-charts
         namespace: flux-system
       interval: 15m
   values:
-    image:
-      repository: shlinkio/shlink
-      tag: 2.10.3
     env:
       TIMEZONE: "America/Chicago"
       DEFAULT_DOMAIN: "sprk.sh"
-      IS_HTTPS_ENABLED: true
       GEOLITE_LICENSE_KEY: "${TOOLS_SHLINK_GEOIP_LICENSE}"
     service:
       main:
@@ -47,13 +43,7 @@ spec:
               - sprk.sh
             secretName: acme-crt-secret-sprk-sh
     persistence:
-      params:
-        enabled: true
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
-        size: 1Gi
       data:
         enabled: true
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
-        size: 2Gi
+        existingClaim: local-shlink-data
+        mountPath: /etc/shlink/data/database.sqlite
