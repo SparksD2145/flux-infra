@@ -20,11 +20,10 @@ spec:
       repository: shlinkio/shlink
       tag: 2.10.3
     env:
-      TZ: "America/Chicago"
-      SHORT_DOMAIN_HOST: "sprk.sh"
-      SHORT_DOMAIN_SCHEMA: "https"
-      DB_DRIVER: sqlite
-      # GEOLITE_LICENSE_KEY: "kjh23ljkbndskj345"
+      TIMEZONE: "America/Chicago"
+      DEFAULT_DOMAIN: "sprk.sh"
+      IS_HTTPS_ENABLED: true
+      GEOLITE_LICENSE_KEY: "${TOOLS_SHLINK_GEOIP_LICENSE}"
     service:
       main:
         ports:
