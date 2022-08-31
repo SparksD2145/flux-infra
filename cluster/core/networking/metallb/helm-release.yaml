@@ -27,12 +27,3 @@ spec:
         tag: v0.13.4
       frr:
         enabled: true
-      tolerations:
-        - key: dns-master
-          operator: Equal
-          value: "active"
-          effect: NoSchedule
-        - key: iot-master
-          operator: Equal
-          value: "active"
-          effect: NoSchedule
