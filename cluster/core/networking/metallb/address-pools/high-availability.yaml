@@ -1,0 +1,42 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: high-availability
+  namespace: networking
+spec:
+  addresses:
+    - 10.10.203.0/24
+  autoAssign: false
+
+---
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: high-availability
+  namespace: networking
+spec:
+  myASN: 64513
+  peerASN: 64512
+  peerAddress: 10.10.0.1
+  BFDProfile: high-availability-bfd
+
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: high-availability
+  namespace: networking
+spec:
+  ipAddressPools:
+    - high-availability
+
+---
+apiVersion: metallb.io/v1beta1
+kind: BFDProfile
+metadata:
+  name: high-availability-bfd
+  namespace: networking
+spec:
+  receiveInterval: 380
+  transmitInterval: 270

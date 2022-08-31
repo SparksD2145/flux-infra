@@ -1,0 +1,24 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  creationTimestamp: null
+  name: default
+  namespace: networking
+spec:
+  addresses:
+    - 10.10.200.0/24
+  autoAssign: true
+status: {}
+
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  creationTimestamp: null
+  name: l2advertisement1
+  namespace: networking
+spec:
+  ipAddressPools:
+    - default
+status: {}
