@@ -60,14 +60,15 @@ spec:
     persistence:
       data:
         enabled: true
-        mountPath: /data
+        mountPath: /app/data
         accessMode: "ReadWriteOnce"
         size: 2Gi
         existingClaim: zigbee2mqtt-data-pvc
       usb:
         enabled: true
         type: hostPath
-        hostPath: /dev/ttyUSB0
+        mountPath: /dev/ttyUSB0
+        hostPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_22_98_92_3F-if00-port0
 
     config:
       # These will be applied ONLY on first run
