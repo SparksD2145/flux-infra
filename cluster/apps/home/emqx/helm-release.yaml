@@ -38,6 +38,10 @@ spec:
       dashboard:
         enabled: true
         ingressClassName: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Emqx Dashboard"
+          hajimari.io/icon: "home-automation"
         path: /
         pathType: Prefix
         hosts:
