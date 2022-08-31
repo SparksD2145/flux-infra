@@ -56,7 +56,7 @@ spec:
         tls:
           - hosts:
               - "books-backend.sparks.codes"
-            secretName: acme-crt-secret-sparks.codes
+            secretName: acme-crt-secret-sparks-codes
     persistence:
       config:
         enabled: true
