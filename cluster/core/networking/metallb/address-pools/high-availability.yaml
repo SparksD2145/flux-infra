@@ -19,7 +19,6 @@ spec:
   myASN: 64513
   peerASN: 64512
   peerAddress: 10.10.0.1
-  BFDProfile: high-availability-bfd
 
 ---
 apiVersion: metallb.io/v1beta1
@@ -30,13 +29,3 @@ metadata:
 spec:
   ipAddressPools:
     - high-availability
-
-# ---
-# apiVersion: metallb.io/v1beta1
-# kind: BFDProfile
-# metadata:
-#   name: high-availability-bfd
-#   namespace: networking
-# spec:
-#   receiveInterval: 380
-#   transmitInterval: 270

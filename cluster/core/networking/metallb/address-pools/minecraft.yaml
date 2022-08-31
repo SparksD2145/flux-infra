@@ -2,7 +2,6 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  creationTimestamp: null
   name: minecraft
   namespace: networking
 spec:
@@ -15,8 +14,7 @@ status: {}
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
-  creationTimestamp: null
-  name: l2advertisement3
+  name: minecraft
   namespace: networking
 spec:
   ipAddressPools:
