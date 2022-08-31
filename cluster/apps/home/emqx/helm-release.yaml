@@ -32,7 +32,7 @@ spec:
     service:
       type: LoadBalancer
       externalIPs:
-        - 10.10.203.3
+        - 10.10.201.3
       externalTrafficPolicy: Local
     ingress:
       dashboard:
