@@ -5,3 +5,4 @@ resources:
   - default.yaml
   - services.yaml
   - minecraft.yaml
+  - high-availability.haml
