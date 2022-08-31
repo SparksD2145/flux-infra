@@ -31,12 +31,12 @@ spec:
   ipAddressPools:
     - high-availability
 
----
-apiVersion: metallb.io/v1beta1
-kind: BFDProfile
-metadata:
-  name: high-availability-bfd
-  namespace: networking
-spec:
-  receiveInterval: 380
-  transmitInterval: 270
+# ---
+# apiVersion: metallb.io/v1beta1
+# kind: BFDProfile
+# metadata:
+#   name: high-availability-bfd
+#   namespace: networking
+# spec:
+#   receiveInterval: 380
+#   transmitInterval: 270
