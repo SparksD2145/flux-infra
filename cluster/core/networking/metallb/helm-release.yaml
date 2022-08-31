@@ -17,3 +17,15 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    speaker:
+      frr:
+        enabled: true
+      tolerations:
+        - key: dns-master
+          operator: Equal
+          value: "active"
+          effect: NoSchedule
+        - key: iot-master
+          operator: Equal
+          value: "active"
+          effect: NoSchedule
