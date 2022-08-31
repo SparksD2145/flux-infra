@@ -5,4 +5,4 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
-  UNUSED: "Do Not Use"
+  NET_POD_CIDR: 10.244.0.0/16

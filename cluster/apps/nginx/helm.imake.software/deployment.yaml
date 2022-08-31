@@ -36,8 +36,6 @@ metadata:
   labels:
     run: nginx-helm-repo
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.10.203.1
   ports:
     - port: 80
       targetPort: 8080
