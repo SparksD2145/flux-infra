@@ -11,9 +11,6 @@ spec:
   upgrade:
     remediation:
       retries: 3
-  dependsOn:
-    - name: metallb
-      namespace: networking
   chart:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami

@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - external-dns
-  #- calico-tigera-operator
+  - kube-router
   - metallb
   - nginx-ingress-external
   - nginx-ingress-internal
