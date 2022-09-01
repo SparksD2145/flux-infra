@@ -1,0 +1,8 @@
+---
+apiVersion: projectcalico.org/v3
+kind: BGPPeer
+metadata:
+  name: router
+spec:
+  peerIP: 10.10.0.1
+  asNumber: 64512

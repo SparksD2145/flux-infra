@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: metallb
-      version: 0.13.4
+      version: 0.13.5
       sourceRef:
         kind: HelmRepository
         name: metallb-charts
@@ -20,8 +20,8 @@ spec:
     controller:
       image:
         repository: quay.io/metallb/controller
-        tag: v0.13.4
+        tag: v0.13.5
     speaker:
       image:
         repository: quay.io/metallb/speaker
-        tag: v0.13.4
+        tag: v0.13.5

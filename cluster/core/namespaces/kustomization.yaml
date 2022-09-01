@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - auth.yaml
   - cert-manager.yaml
+  - calico-system.yaml
   - games.yaml
   - gitlab.yaml
   - home.yaml
@@ -10,5 +11,6 @@ resources:
   - networking.yaml
   - nginx.yaml
   - rook-ceph.yaml
+  - tigera-operator.yaml
   - tools.yaml
   - system-upgrade.yaml
