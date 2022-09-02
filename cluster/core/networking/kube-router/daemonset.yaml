@@ -71,13 +71,13 @@ spec:
           image: docker.io/cloudnativelabs/kube-router
           imagePullPolicy: Always
           args:
-            - "--run-router=false"
-            - "--run-firewall=false"
+            - "--run-router=true"
+            - "--run-firewall=true"
             - "--run-service-proxy=true"
             - "--bgp-graceful-restart=true"
             - "--kubeconfig=/var/lib/kube-router/kubeconfig"
-            - "--enable-ibgp=false"
-            - "--enable-overlay=false"
+            # - "--enable-ibgp=false"
+            # - "--enable-overlay=false"
             - "--advertise-cluster-ip=false"
             - "--advertise-external-ip=false"
             - "--advertise-loadbalancer-ip=false"

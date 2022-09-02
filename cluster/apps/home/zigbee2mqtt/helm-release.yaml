@@ -85,10 +85,11 @@ spec:
         # MQTT base topic for zigbee2mqtt MQTT messages
         base_topic: zigbee2mqtt
         # MQTT server URL
-        server: "mqtt://10.10.201.3"
+        server: "mqtt://10.10.201.3:1883"
         # MQTT server authentication, uncomment if required:
-        # user: my_user
-        # password: my_password
+        user: "zigbee2mqtt"
+        password: "${HOME_ZIGBEE2MQTT_SPARKS_PASSWORD}"
+        reject_unauthorized: false
         # client_id: my_id
         # Alternatively, credentials may be put into a separate file, managed through a secret:
         # password: '!secret password'
@@ -108,7 +109,7 @@ spec:
         pan_id: GENERATE
         log_output:
           - console
-        log_level: info
+        log_level: advanced
 
         # Optional: ZigBee channel, changing requires re-pairing of all devices. (Note: use a ZLL channel: 11, 15, 20, or 25 to avoid Problems)
         # default: 11
@@ -135,5 +136,3 @@ spec:
       # Both of these need to be enabled for the webui
       frontend:
         port: 8080
-      experimental:
-        new_api: true
