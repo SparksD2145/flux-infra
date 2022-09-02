@@ -33,7 +33,7 @@ spec:
       type: LoadBalancer
       externalIPs:
         - 10.10.201.3
-      externalTrafficPolicy: Local
+      externalTrafficPolicy: Cluster
     ingress:
       dashboard:
         enabled: true
