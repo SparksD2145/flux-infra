@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: idrac-foxtrot-console
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 0.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  dependsOn:
+    - name: emqx
+      namespace: home
+  values:
+    image:
+      repository: registry.imake.software/sparks/docker-idrac6
+      tag: 1.0.2
+    env:
+      TZ: "America/Chicago"
+      IDRAC_HOST: "idrac-foxtrot.sparks.codes"
+    envFrom:
+      - secretRef:
+          name: idrac-secret
+    service:
+      main:
+        ports:
+          http:
+            port: 5800
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx-internal"
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: idrac-auth-secret
+          nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Foxtrot IDRAC Console"
+          hajimari.io/icon: "console-network"
+        hosts:
+          - host: idrac-foxtrot-console.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - idrac-foxtrot-console.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
