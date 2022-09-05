@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: qbittorent
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 0.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    image:
+      repository: crazymax/rtorrent-rutorrent
+      tag: 3.10-0.9.8-0.13.8
+    env:
+      TZ: "America/Chicago"
+      RUTORRENT_PORT: 8080
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx-internal"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "ruTorrent"
+          hajimari.io/icon: "file-arrow-up-down"
+        hosts:
+          - host: torrents.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - torrents.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        existingClaim: torrents-data
+      downloads:
+        enabled: true
+        type: pvc
+        existingClaim: torrents-downloads
