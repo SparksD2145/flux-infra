@@ -60,8 +60,10 @@ spec:
         enabled: true
         type: pvc
         existingClaim: local-data-sparks-codes-config
+        mountpath: /config
       data:
         enabled: true
         type: pvc
         existingClaim: local-data-sparks-codes-data
         retain: true
+        mountPath: /srv
