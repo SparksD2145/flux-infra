@@ -25,7 +25,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/nginx-ingress-controller
-      tag: 1.3.0-debian-11-r16
+      tag: 1.2.1
     ingressClassResource:
       name: nginx-external
     config:

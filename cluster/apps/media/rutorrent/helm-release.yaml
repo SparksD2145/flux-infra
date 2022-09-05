@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: qbittorent
+  name: rutorrent
   namespace: media
 spec:
   interval: 15m
@@ -35,6 +35,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "ruTorrent"
           hajimari.io/icon: "file-arrow-up-down"
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: rutorrent-auth-secret
+          nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
         hosts:
           - host: torrents.sparks.codes
             paths:
