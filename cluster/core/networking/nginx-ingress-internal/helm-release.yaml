@@ -15,7 +15,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: nginx-ingress-controller
-      version: 9.3.4
+      version: 9.3.7
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
