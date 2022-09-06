@@ -7,6 +7,7 @@ all:
         foxtrot.sparks.codes:
         omega.sparks.codes:
         lambda.sparks.codes:
+        beta.sparks.codes:
         rpi3-1.sparks.codes:
         rpi3-2.sparks.codes:
         rpi4-poe-1.sparks.codes:
