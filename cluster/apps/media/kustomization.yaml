@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - calibre
   - filebrowser
+  - ghost
   - jellyfin
   - photoprism
   - rutorrent
