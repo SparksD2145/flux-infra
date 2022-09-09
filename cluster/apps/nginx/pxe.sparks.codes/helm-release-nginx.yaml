@@ -19,12 +19,11 @@ spec:
   values:
     extraVolumeMounts:
       - mountPath: "/app"
-        subPath: "pxe.sparks.codes"
         name: nfsvol
     extraVolumes:
       - name: nfsvol
         persistentVolumeClaim:
-          claimName: nfs-nginx
+          claimName: local-pxe-pvc
     service:
       type: ClusterIP
     serverBlock: |-
