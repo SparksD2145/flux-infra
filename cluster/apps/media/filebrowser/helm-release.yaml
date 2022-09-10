@@ -18,23 +18,14 @@ spec:
   values:
     image:
       repository: filebrowser/filebrowser
-      tag: v2.22.4
+      tag: v2.22.4-s6
     env:
       TZ: "America/Chicago"
-    config: |
-      {
-        "port": 80,
-        "baseURL": "",
-        "address": "",
-        "log": "stdout",
-        "database": "/config/database.db",
-        "root": "/srv/data"
-      }
     service:
       main:
         ports:
           http:
-            port: 80
+            port: 8080
     ingress:
       main:
         enabled: true
@@ -61,9 +52,22 @@ spec:
         type: pvc
         existingClaim: local-data-sparks-codes-config
         mountpath: /config
+      database:
+        enabled: true
+        type: pvc
+        existingClaim: local-data-sparks-codes-database
+        mountpath: /database
       data:
         enabled: true
         type: pvc
         existingClaim: local-data-sparks-codes-data
         retain: true
         mountPath: /srv
+      settings:
+        enabled: true
+        mountPath: "/config/settings.json"
+        subPath: ".filebrowser.json"
+        type: "custom"
+        volumeSpec:
+          configMap:
+            name: filebrowser-settings
