@@ -2,22 +2,28 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-jellyfin-config
+  name: local-jellyfin-config
 spec:
   accessModes:
     - ReadWriteMany
   capacity:
     storage: 25Gi
-  persistentVolumeReclaimPolicy: Retain
-  nfs:
-    server: omega.sparks.codes
-    path: "/mnt/static/media.sparks.codes/config"
+  local:
+    path: /mnt/media-vault/media.sparks.codes/config
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - tango
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-jellyfin-config
+  name: local-jellyfin-config
   namespace: media
 spec:
   accessModes:

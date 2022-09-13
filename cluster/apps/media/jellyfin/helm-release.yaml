@@ -42,11 +42,11 @@ spec:
       config:
         enabled: true
         type: pvc
-        existingClaim: nfs-jellyfin-config
+        existingClaim: local-jellyfin-config
       media:
         enabled: true
         type: pvc
-        existingClaim: nfs-jellyfin-media
+        existingClaim: local-jellyfin-media
         retain: true
     hostNetwork: true
     resources:
