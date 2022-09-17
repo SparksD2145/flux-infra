@@ -86,3 +86,6 @@ spec:
           value: ${AUTH_AUTHELIA_LDAP_PASSWORD}
           filename: LDAP_PASSWORD
       certificates: {}
+      selectors:
+        nodeSelector:
+          kubernetes.io/arch: amd64
