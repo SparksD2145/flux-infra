@@ -19,3 +19,14 @@ spec:
   values:
     crds:
       enabled: false
+    discover:
+      nodeAffinity: &affinity "role=storage"
+    csi:
+      provisionerNodeAffinity: *affinity
+      pluginNodeAffinity: *affinity
+      rbdProvisionerNodeAffinity: *affinity
+      rbdPluginNodeAffinity: *affinity
+      cephFSProvisionerNodeAffinity: *affinity
+      cephFSPluginNodeAffinity: *affinity
+      nfsProvisionerNodeAffinity: *affinity
+      nfsPluginNodeAffinity: *affinity

@@ -40,6 +40,16 @@ spec:
         enabled: true
         port: 8080
         ssl: false
+      placement:
+        all:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: kubernetes.io/arch
+                      operator: In
+                      values:
+                        - amd64
       storage:
         useAllNodes: false
         useAllDevices: false
@@ -47,17 +57,17 @@ spec:
           metadataDevice:
           osdsPerDevice: "1"
         nodes:
-          #- name: foxtrot
-          #  devices:
-          #    - name: sdb
-          #    - name: sdc
-          #    - name: sdd
-          #    - name: sde
-          #    - name: sdf
-          #    - name: sdg
-          #- name: lambda
-          #  devices:
-          #    - name: sdb
+          # - name: foxtrot
+          #   devices:
+          #     - name: sdb
+          #     - name: sdc
+          #     - name: sdd
+          #     - name: sde
+          #     - name: sdf
+          #     - name: sdg
+          # - name: lambda
+          #   devices:
+          #     - name: sdb
           - name: whiskey
             devices:
               - name: /dev/disk/by-id/scsi-35000c500b28f2de8
