@@ -20,7 +20,7 @@ spec:
     crds:
       enabled: false
     discover:
-      nodeAffinity: &affinity "role=storage"
+      nodeAffinity: &affinity "node-role.kubernetes.io/storage"
     csi:
       provisionerNodeAffinity: *affinity
       pluginNodeAffinity: *affinity
