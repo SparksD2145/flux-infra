@@ -69,12 +69,6 @@ spec:
         - name: Printer
           url: https://printer.sparks.codes
           icon: "printer"
-        - name: TV Tuner 1
-          url: https://tv-tuner-1.sparks.codes
-          icon: "television-classic"
-        - name: TV Tuner 2
-          url: https://tv-tuner-2.sparks.codes
-          icon: "television-classic"
       groups:
         - name: Kubernetes
           links:
