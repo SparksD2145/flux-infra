@@ -30,7 +30,7 @@ spec:
     configMap:
       server:
         csp_template: "default-src 'self'; object-src 'none'; style-src 'self' 'nonce-${NONCE}'"
-      default_redirection_url: https://auth.sparks.codes
+      default_redirection_url: https://dashboard.sparks.codes
       default_2fa_method: webauthn
       # totp:
       # webauthn:
@@ -51,6 +51,7 @@ spec:
           display_name_attribute: name
           user: cn=search,ou=svcaccts,dc=sparks,dc=codes
       access_control:
+        default_policy: deny
         networks:
           - name: private
             networks:
@@ -70,8 +71,10 @@ spec:
         high_availability:
           enabled: false
       storage:
+        encryption_key: ${AUTH_AUTHELIA_ENCRYPTION_KEY}
         local:
           enabled: true
+          path: /config/db.sqlite3
         postgres:
           enabled: false
       notifier:
