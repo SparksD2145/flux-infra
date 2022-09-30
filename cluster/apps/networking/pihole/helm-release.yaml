@@ -122,12 +122,12 @@ spec:
     # -- `spec.PersitentVolumeClaim` configuration
     persistentVolumeClaim:
       # -- set to true to use pvc
-      enabled: false
+      enabled: true
       # -- specify an existing `PersistentVolumeClaim` to use
       existingClaim: pihole-data-pvc
       accessModes:
         - ReadWriteMany
-      size: "1Gi"
+      size: "2Gi"
 
     adminPassword: ${NETWORKING_PIHOLE_ADMIN_PASSWORD}
 
