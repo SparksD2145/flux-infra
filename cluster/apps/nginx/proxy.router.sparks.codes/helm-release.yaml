@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: nginx
-      version: 13.2.8
+      version: 13.2.9
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -30,7 +30,7 @@ spec:
           proxy_request_buffering off;
           proxy_ssl_verify off;
 
-          # resolver 10.13.2.8;
+          # resolver 10.13.2.9;
           set $backend "https://10.10.0.1";
           proxy_pass $backend;
         }
