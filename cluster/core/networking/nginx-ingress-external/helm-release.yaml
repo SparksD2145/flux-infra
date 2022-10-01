@@ -50,7 +50,7 @@ spec:
     autoscaling:
       enabled: true
     defaultBackend:
-      enabled: true
+      enabled: false
       image:
         repository: billimek/custom-error-pages
         tag: 0.4.4
