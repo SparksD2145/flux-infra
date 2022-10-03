@@ -24,6 +24,16 @@ spec:
       TZ: "America/Chicago"
     hajimari:
       defaultEnable: false
+      showGreeting: true
+      showAppGroups: false
+      showAppUrls: true
+      showAppInfo: true
+      showAppStatus: true
+      defaultAppIcon: mdi:application
+      showBookmarkGroups: true
+      showGlobalBookmarks: true
+      lightTheme: blackboard
+      darkTheme: blackboard
       namespaceSelector:
         matchNames:
           - kube-system
@@ -39,55 +49,57 @@ spec:
           - velero
       name: "Sparks"
       customApps:
-        - name: Habitica
-          url: https://habitica.com
-          icon: "check-bold"
-        - name: Alpha
-          url: http://alpha.sparks.codes
-          icon: "desktop-classic"
-        - name: Gitlab
-          url: https://gitlab.imake.software
-          icon: "gitlab"
-        - name: Whiskey iDRAC
-          url: https://idrac-whiskey.sparks.codes
-          icon: "remote-desktop"
-        - name: Foxtrot iDRAC
-          url: https://idrac-foxtrot.sparks.codes
-          icon: "remote-desktop"
-        - name: Lambda iDRAC
-          url: https://idrac-lambda.sparks.codes
-          icon: "remote-desktop"
-        - name: Omega iDRAC
-          url: https://idrac-omega.sparks.codes
-          icon: "remote-desktop"
-        - name: Dome Camera 1
-          url: http://dome-camera-1.sparks.codes:8080
-          icon: "webcam"
-        - name: Dome Camera 2
-          url: http://dome-camera-2.sparks.codes:8080
-          icon: "webcam"
-        - name: Printer
-          url: https://printer.sparks.codes
-          icon: "printer"
-      groups:
-        - name: Kubernetes
-          links:
+        - group: LAN
+          apps:
+            - name: Habitica
+              url: https://habitica.com
+              icon: "check-bold"
+            - name: Alpha
+              url: http://alpha.sparks.codes
+              icon: "desktop-classic"
+            - name: Gitlab
+              url: https://gitlab.imake.software
+              icon: "gitlab"
+            - name: Whiskey iDRAC
+              url: https://idrac-whiskey.sparks.codes
+              icon: "remote-desktop"
+            - name: Foxtrot iDRAC
+              url: https://idrac-foxtrot.sparks.codes
+              icon: "remote-desktop"
+            - name: Lambda iDRAC
+              url: https://idrac-lambda.sparks.codes
+              icon: "remote-desktop"
+            - name: Omega iDRAC
+              url: https://idrac-omega.sparks.codes
+              icon: "remote-desktop"
+            - name: Dome Camera 1
+              url: http://dome-camera-1.sparks.codes:8080
+              icon: "webcam"
+            - name: Dome Camera 2
+              url: http://dome-camera-2.sparks.codes:8080
+              icon: "webcam"
+            - name: Printer
+              url: https://printer.sparks.codes
+              icon: "printer"
+      globalBookmarks:
+        - group: Kubernetes
+          bookmarks:
             - name: SparksD2145/flux-infra
               url: "https://github.com/sparksd2145/flux-infra"
             - name: christianmetal3/home-infra
               url: https://github.com/christianmetal3/home-infra
             - name: k8s-at-home Charts
               url: "https://github.com/k8s-at-home/charts/tree/master/charts"
-        - name: Services
-          links:
+        - group: Services
+          bookmarks:
             - name: Cloudflare
               url: "https://dash.cloudflare.com"
             - name: Namecheap
               url: "https://namecheap.com"
             - name: Drive
               url: "https://drive.google.com"
-        - name: Finance
-          links:
+        - group: Finance
+          bookmarks:
             - name: OneFinance
               url: "https://onefinance.com"
             - name: Mint
@@ -100,16 +112,16 @@ spec:
               url: "https://paypal.com"
             - name: Charles Schwab
               url: "https://www.schwab.com/"
-        - name: Shopping
-          links:
+        - group: Shopping
+          bookmarks:
             - name: eBay
               url: "https://ebay.com/"
             - name: Craigslist
               url: "https://sanantonio.craigslist.com/"
             - name: FB Marketplace
               url: "https://facebook.com/marketplace"
-        - name: Media
-          links:
+        - group: Media
+          bookmarks:
             - name: YouTube
               url: "https://youtube.com/"
             - name: YouTube Music
@@ -138,3 +150,8 @@ spec:
       requests:
         cpu: 100m
         memory: 128M
+    persistence:
+      data:
+        enabled: true
+        accessMode: ReadWriteMany
+        size: 1Gi
