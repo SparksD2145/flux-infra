@@ -134,12 +134,7 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx-internal"
-          nginx.ingress.kubernetes.io/auth-method: GET
-          nginx.ingress.kubernetes.io/auth-url: https://auth.sparks.codes/api/verify
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.sparks.codes?rm=$request_method
-          nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
-          nginx.ingress.kubernetes.io/auth-snippet: |
-            proxy_set_header X-Forwarded-Method $request_method;
+          hajimari.io/url: http://nvr-actual.sparks.codes
         hosts:
           - host: "dashboard.sparks.codes"
             paths:

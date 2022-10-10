@@ -35,12 +35,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "ruTorrent"
           hajimari.io/icon: "file-arrow-up-down"
-          nginx.ingress.kubernetes.io/auth-method: GET
-          nginx.ingress.kubernetes.io/auth-url: https://auth.sparks.codes/api/verify
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.sparks.codes?rm=$request_method
-          nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
-          nginx.ingress.kubernetes.io/auth-snippet: |
-            proxy_set_header X-Forwarded-Method $request_method;
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: rutorrent-auth-secret
+          nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
         hosts:
           - host: torrents.sparks.codes
             paths:
