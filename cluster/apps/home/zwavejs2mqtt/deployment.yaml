@@ -63,11 +63,11 @@ spec:
             timeoutSeconds: 1
           resources:
             requests:
-              cpu: 50m
-              memory: 64Mi
+              cpu: 300m
+              memory: 256Mi
             limits:
-              cpu: 100m
-              memory: 128Mi
+              cpu: 300m
+              memory: 512Mi
       volumes:
         - name: data
           persistentVolumeClaim:
