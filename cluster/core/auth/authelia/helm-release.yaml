@@ -52,7 +52,7 @@ spec:
           display_name_attribute: name
           user: cn=search,ou=svcaccts,dc=sparks,dc=codes
       access_control:
-        default_policy: deny
+        default_policy: bypass
         networks:
           - name: private
             networks:
