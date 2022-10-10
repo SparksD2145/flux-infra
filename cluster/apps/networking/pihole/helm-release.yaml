@@ -112,6 +112,12 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/appName: "Pihole"
         hajimari.io/icon: "card-off"
+        nginx.ingress.kubernetes.io/auth-method: GET
+        nginx.ingress.kubernetes.io/auth-url: https://auth.sparks.codes/api/verify
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.sparks.codes?rm=$request_method
+        nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
+        nginx.ingress.kubernetes.io/auth-snippet: |
+          proxy_set_header X-Forwarded-Method $request_method;
       hosts:
         - adblock.sparks.codes
       tls:
@@ -129,7 +135,7 @@ spec:
         - ReadWriteMany
       size: "2Gi"
 
-    adminPassword: ${NETWORKING_PIHOLE_ADMIN_PASSWORD}
+    adminPassword: ""
 
     extraEnvVars:
       TZ: "America/Chicago"

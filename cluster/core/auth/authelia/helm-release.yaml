@@ -32,7 +32,8 @@ spec:
         csp_template: "default-src 'self'; object-src 'none'; style-src 'self' 'nonce-${NONCE}'"
       default_redirection_url: https://dashboard.sparks.codes
       default_2fa_method: webauthn
-      # totp:
+      totp:
+        issuer: auth.sparks.codes
       # webauthn:
       # duo_api
       authentication_backend:
