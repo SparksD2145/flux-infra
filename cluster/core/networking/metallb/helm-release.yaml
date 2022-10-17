@@ -20,7 +20,7 @@ spec:
     controller:
       image:
         repository: quay.io/metallb/controller
-        tag: v0.13.6
+        tag: v0.13.7
     speaker:
       image:
         repository: quay.io/metallb/speaker
