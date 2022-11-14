@@ -9,7 +9,7 @@
           - nvidia-headless-470-server
           - nvidia-utils-470-server
           - nvidia-cuda-toolkit
-          - nvidia-docker2
+          - nvidia-container-toolkit
 
     - name: Uninstall Containerd Template
       file:
