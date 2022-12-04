@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - auth.yaml
   - cert-manager.yaml
-  - database.yaml
+  - databases.yaml
   - games.yaml
   - gitlab.yaml
   - home.yaml

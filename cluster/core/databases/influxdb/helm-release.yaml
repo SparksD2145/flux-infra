@@ -24,15 +24,17 @@ spec:
   values:
     auth:
       admin:
+        password: "${DATABASES_INFLUXDB_ADMIN_TOKEN}"
         token: "${DATABASES_INFLUXDB_ADMIN_TOKEN}"
       user:
         username: sparks
         password: "{DATABASES_INFLUXDB_USER_PASSWORD}"
         org: sparkscodes
         bucket: "helloworld"
-    service:
-      type: LoadBalancer
-      loadBalancerIP: 10.10.201.8
+    influxdb:
+      service:
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.8
     ingress:
       enabled: true
       hostname: influxdb.sparks.codes
