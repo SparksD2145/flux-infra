@@ -7,7 +7,7 @@ metadata:
   labels:
     k3s-upgrade: agent
 spec:
-  channel: https://github.com/rancher/k3os/releases/latest
+  channel: https://update.k3s.io/v1-release/channels/stable
   serviceAccountName: system-upgrade
   concurrency: 1
   nodeSelector:
