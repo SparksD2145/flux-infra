@@ -6,6 +6,7 @@ metadata:
   namespace: system-upgrade
 spec:
   channel: https://update.k3s.io/v1-release/channels/stable
+  version: v1.25.4+k3s1
   serviceAccountName: system-upgrade
   concurrency: 1
   cordon: true

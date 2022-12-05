@@ -41,7 +41,7 @@ spec:
       ingressClassName: nginx-internal
       annotations:
         hajimari.io/enable: "true"
-        hajimari.io/appName: "Photos"
+        hajimari.io/appName: "InfluxDB"
         hajimari.io/icon: "database-clock"
       extraTls:
         - secretName: acme-crt-secret-sparks-codes
