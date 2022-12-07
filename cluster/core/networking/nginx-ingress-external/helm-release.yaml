@@ -25,7 +25,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/nginx-ingress-controller
-      tag: 1.5.1
+      tag: 1.6.0
     ingressClassResource:
       name: nginx-external
     config:
