@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ispy-dvr
   - home-assistant
+  - homekit-bridge
   - emqx
   - zigbee2mqtt
   - zwavejs2mqtt
