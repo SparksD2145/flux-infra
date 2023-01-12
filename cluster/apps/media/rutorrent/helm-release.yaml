@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: crazymax/rtorrent-rutorrent
-      tag: 3.10-0.9.8-0.13.8
+      tag: 4.0-0.9.8-0.13.8
     env:
       TZ: "America/Chicago"
       RUTORRENT_PORT: 8080
