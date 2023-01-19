@@ -135,7 +135,8 @@ spec:
       TZ: "America/Chicago"
 
     # -- default upstream DNS 1 server to use
-    DNS1: "10.10.201.6"
+    # DNS1: "10.10.201.6"
+    DNS1: "10.10.0.1"
     # -- default upstream DNS 2 server to use
     DNS2: "127.0.0.1"
 
@@ -319,7 +320,8 @@ spec:
       enabled: true
       policy: "None"
       nameservers:
-        - 10.10.201.6
+        # - 10.10.201.6
+        - 10.10.0.1
 
     # tolerations:
     #   - key: dns-master
