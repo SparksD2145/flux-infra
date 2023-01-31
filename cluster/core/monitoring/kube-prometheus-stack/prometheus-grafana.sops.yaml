@@ -1,0 +1,29 @@
+apiVersion: v1
+stringData:
+    admin-password: ENC[AES256_GCM,data:4Vya7NM0wlcPwH0=,iv:hkDt9SVz612ABofBs0w8iTlkxIFB4u0vzq1WMZuhYoQ=,tag:Ngy5T61C44/EbHzUiMxi4w==,type:str]
+    admin-user: ENC[AES256_GCM,data:m+Mm9Kyg7g==,iv:07zxo3jZOszJ6CDKcPmye/RGoX/c2+AaEMwarqMOvbM=,tag:qfsIKRf1rXs0bHhzoiDXTA==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: "2023-01-31T21:26:34Z"
+    name: grafana-admin-credentials
+    namespace: monitoring
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1rhy2neq0qg7y6svfu2pcyd85z3wkgspkgzz4jcmguypymk3e958qzhgwqx
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiQ3ZaKzN6MXRyWE1KV0tH
+            cmNxekNwaTMzS1ZtdUpjZm9LWkVJTnBJNGxRCm1tWm9xL2xTRm5MTjUvOUhHMnNS
+            MzFtdWd2eFJUdVhWQ256dkNKTnQ2djQKLS0tIHNDN1l6SUVELytZeE5saUw5bDgx
+            TkRyRHhKemtId2kyTXBGdmR3UFIrV1UKf5nEssPAk7P6mj0baWqJfTl/cc/HNg0J
+            FHGNpGoFKMxMGEPcipeJCPznQ2/Rc/tQcxtjNKHq0JCr6pSHnc2QXw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-01-31T21:43:44Z"
+    mac: ENC[AES256_GCM,data:l+9ipRcFasa8r1E49mrRzQtIT1yYSFZG2U8Umvylveprs+2KHpp/zPFQL+BWH+D4UXMeYO2K01v/eVcZ+8oa4eH1K1aEbin2d/2mqvTaHDR5Y55qdC7U+RPkCIDdKqPm2NfGy/QzgZHHuIHRATOdmvRTVPKeZ45lixFUamyEP2c=,iv:cGe9qCH93fUcKYfgakYy9LWjGmJFu4TX/Pa/9nju+dY=,tag:0vAgkfE00dWwb3hkXGa38Q==,type:str]
+    pgp: []
+    encrypted_regex: ((?i)(pass|secret($|[^N])|key|token|^data$|^stringData))
+    version: 3.7.1
