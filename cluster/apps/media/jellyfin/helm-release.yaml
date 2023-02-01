@@ -50,7 +50,7 @@ spec:
         retain: true
     hostNetwork: true
     resources:
-      limits:
+      requests:
         nvidia.com/gpu: 1
     service:
       main:
