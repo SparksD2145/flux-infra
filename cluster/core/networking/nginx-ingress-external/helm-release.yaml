@@ -22,10 +22,6 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    image:
-      registry: docker.io
-      repository: bitnami/nginx-ingress-controller
-      tag: 1.6.0
     ingressClassResource:
       name: nginx-external
     config:
@@ -49,10 +45,5 @@ spec:
         memory: 2Gi
     autoscaling:
       enabled: true
-    defaultBackend:
-      enabled: false
-      image:
-        repository: billimek/custom-error-pages
-        tag: 0.4.4
     tcp:
       "22": "gitlab/gitlab-gitlab-shell:22"
