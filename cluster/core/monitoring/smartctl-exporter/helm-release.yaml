@@ -24,9 +24,9 @@ spec:
   values:
     common:
       config:
-        bind_to: "0.0.0.0:9633"
-        url_path: "/metrics"
-        smartctl_location: /usr/sbin/smartctl
+        # bind_to: "0.0.0.0:9633"
+        # url_path: "/metrics"
+        # smartctl_location: /usr/sbin/smartctl
         collect_not_more_than_period: 120s
 
     serviceMonitor:
