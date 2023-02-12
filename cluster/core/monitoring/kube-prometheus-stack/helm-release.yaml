@@ -84,11 +84,11 @@ spec:
         enabled: true
         ingressClassName: nginx-internal
         hosts:
-          - prometheus-grafana.sparks.codes
+          - monitoring.sparks.codes
         tls:
           - secretName: acme-crt-secret-sparks-codes
             hosts:
-              - prometheus-grafana.sparks.codes
+              - monitoring.sparks.codes
 
     kubeApiServer:
       enabled: true
@@ -105,9 +105,9 @@ spec:
     kubeControllerManager:
       enabled: false
       endpoints: # ips of servers
-        - 10.5.0.3
-        - 10.5.0.4
-        - 10.5.0.5
+        # - 10.5.0.3
+        # - 10.5.0.4
+        # - 10.5.0.5
 
     coreDns:
       enabled: true
@@ -118,9 +118,9 @@ spec:
     kubeEtcd:
       enabled: false
       endpoints: # ips of servers
-        - 10.5.0.3
-        - 10.5.0.4
-        - 10.5.0.5
+        # - 10.5.0.3
+        # - 10.5.0.4
+        # - 10.5.0.5
       service:
         enabled: true
         port: 2381
@@ -129,16 +129,22 @@ spec:
     kubeScheduler:
       enabled: false
       endpoints: # ips of servers
-        - 10.5.0.3
-        - 10.5.0.4
-        - 10.5.0.5
+        # - 10.5.0.3
+        # - 10.5.0.4
+        # - 10.5.0.5
 
     kubeProxy:
       enabled: true
       endpoints: # ips of servers
-        - 10.5.0.3
-        - 10.5.0.4
-        - 10.5.0.5
+        - 10.10.1.1
+        - 10.10.2.1
+        - 10.10.3.1
+        - 10.10.4.1
+        - 10.10.5.1
+        - 10.10.7.1
+        - 10.10.7.2
+        - 10.10.7.3
+        - 10.10.7.4
 
     kubeStateMetrics:
       enabled: true

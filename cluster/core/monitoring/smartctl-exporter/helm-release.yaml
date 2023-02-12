@@ -1,0 +1,59 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app prometheus-smartctl-exporter
+  namespace: monitoring
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: prometheus-smartctl-exporter
+      version: 0.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    common:
+      config:
+        bind_to: "0.0.0.0:9633"
+        url_path: "/metrics"
+        smartctl_location: /usr/sbin/smartctl
+        collect_not_more_than_period: 120s
+
+    serviceMonitor:
+      enabled: true
+      # Specify namespace to load the monitor if not in the same namespace
+      # Add Extra labels if needed. Prometeus operator may need them to find it.
+      extraLabels:
+        release: kube-prometheus-stack
+
+    prometheusRules:
+      enabled: false
+      # Specify namespace to load the monitor if not in the same namespace
+      # namespace: prometheus-operator
+      # Add Extra labels if needed. Prometeus operator may need them to find it.
+      extraLabels: {}
+      # release: prometheus-operator
+
+    image:
+      repository: quay.io/prometheuscommunity/smartctl-exporter
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: ""
+
+    rbac:
+      create: true
+      podSecurityPolicy: unrestricted-psp
+
+    service:
+      type: ClusterIP
+      port: 80
