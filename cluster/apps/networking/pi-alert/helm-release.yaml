@@ -53,6 +53,10 @@ spec:
         enabled: true
         mountPath: /home/pi/pialert/db
         existingClaim: pialert-db-pvc
+      front:
+        enabled: true
+        mountPath: /home/pi/pialert/front
+        existingClaim: pialert-front-pvc
     resources:
       requests:
         cpu: 100m
