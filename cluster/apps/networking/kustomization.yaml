@@ -5,4 +5,5 @@ resources:
   # - docker-registry
   # - adguard-home
   - pihole
+  - pi-alert
   - s2s-dnsmasq
