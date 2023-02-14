@@ -72,8 +72,14 @@ spec:
         privileged: true
         config: |
           [[runners]]
-            [runners.kubernetes]
+            [runners.docker]
+              tls_verify = false
               image = "docker:stable"
+              privileged = true
+              disable_cache = false
+              volumes = ["/certs/client", "/cache"]
+            [runners.kubernetes]
+              image = "ubuntu:latest"
               privileged = true
             [[runners.kubernetes.volumes.empty_dir]]
               name = "docker-certs"
