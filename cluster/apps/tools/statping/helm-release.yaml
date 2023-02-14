@@ -1,0 +1,59 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: statping
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    image:
+      repository: adamboutcher/statping-ng
+      tag: latest
+    env:
+      TZ: "America/Chicago"
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx-external"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Uptime"
+          hajimari.io/icon: "update"
+        hosts:
+          - host: uptime.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - uptime.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      data:
+        enabled: true
+        mountPath: /app
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 1Gi
+        retain: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 52M
+      limits:
+        memory: 128M
