@@ -1,0 +1,70 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: paperless
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: paperless-ng
+      version: 7.0.29
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    secretEnv:
+      PAPERLESS_ADMIN_USER: "paperless"
+      PAPERLESS_ADMIN_PASSWORD: ${MEDIA_PAPERLESS_PAPERLESS_PASSWORD}
+      PAPERLESS_ADMIN_MAIL: "paperless@imake.software"
+    env:
+      TZ: "America/Chicago"
+      PAPERLESS_DATA_DIR: "/data/"
+      PAPERLESS_CONSUMPTION_DIR: "/consume/"
+      PAPERLESS_MEDIA_ROOT: "/media/"
+
+    persistence:
+      data:
+        enabled: true
+        mountPath: "/data"
+        size: 20Gi
+      consume:
+        enabled: true
+        mountPath: "/consume"
+        size: 250Mi
+      media:
+        enabled: true
+        mountPath: "/media"
+        size: 20Gi
+
+    redis:
+      enabled: true
+      existingSecret: "rediscreds"
+      redisUsername: default
+
+    postgresql:
+      enabled: true
+      existingSecret: "dbcreds"
+      postgresqlUsername: paperless-ng
+      postgresqlDatabase: paperless-ng
+
+    portal:
+      enabled: true
+
+    ingress:
+      main:
+        enabled: truecharts-charts\
+        ingressClassName: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Documents"
+          hajimari.io/icon: "file-document"
+        tls:
+          - hosts:
+              - paperless.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
+        hosts:
+          - host: "paperless.sparks.codes"
