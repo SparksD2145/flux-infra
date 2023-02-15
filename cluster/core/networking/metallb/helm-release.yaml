@@ -25,5 +25,3 @@ spec:
       image:
         repository: quay.io/metallb/speaker
         tag: v0.13.7
-      frr:
-        enabled: true
