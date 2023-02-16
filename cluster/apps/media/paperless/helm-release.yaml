@@ -56,7 +56,7 @@ spec:
 
     ingress:
       main:
-        enabled: truecharts-charts\
+        enabled: true
         ingressClassName: nginx-internal
         annotations:
           hajimari.io/enable: "true"
