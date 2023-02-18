@@ -29,3 +29,5 @@ metadata:
 spec:
   ipAddressPools:
     - high-availability
+  peers:
+    - high-availability
