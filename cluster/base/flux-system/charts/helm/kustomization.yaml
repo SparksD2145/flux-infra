@@ -51,6 +51,7 @@ resources:
   - prometheus-community-charts.yaml
   - portainer-charts.yaml
   - raphaels-charts.yaml
+  - rocketchat-charts.yaml
   - rook-ceph-charts.yaml
   - rook-charts.yaml
   - sparks-helm-repo.yaml
