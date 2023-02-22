@@ -18,10 +18,15 @@ spec:
   values:
     host: chat.sparks.codes
     mongodb:
+      enabled: true
       auth:
-        passwords:
-          - "${MEDIA_ROCKETCHAT_PASSWORD}"
-        rootPassword: "${MEDIA_ROCKETCHAT_PASSWORD}"
+        rootPassword: "${MEDIA_ROCKETCHAT_ROOT_PASSWORD}"
+        username: ${MEDIA_ROCKETCHAT_DB_USERNAME}
+        password: ${MEDIA_ROCKETCHAT_DB_PASSWORD}
+        database: rocketchat
+      persistence:
+        enabled: true
+        size: 10G
     persistence:
       enabled: true
       size: 24G
