@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: rocketchat
-      version: 5.3.2
+      version: 5.4.3
       sourceRef:
         kind: HelmRepository
         name: rocketchat-charts
