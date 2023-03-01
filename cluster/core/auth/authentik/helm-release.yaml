@@ -1,0 +1,50 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: security
+spec:
+  interval: 15m
+
+  chart:
+    spec:
+      chart: authentik
+      version: 2023.2.3
+      sourceRef:
+        kind: HelmRepository
+        name: authentik-charts
+        namespace: flux-system
+      interval: 15m
+
+  values:
+    authentik:
+      secret_key: "${AUTH_AUTHENTIK_SECRET_KEY}"
+      log_level: debug
+      postgresql:
+        password: "${AUTH_AUTHENTIK_POSTGRESQL_PASSWORD}"
+
+    postgresql:
+      enabled: true
+      postgresqlPassword: "${AUTH_AUTHENTIK_POSTGRESQL_PASSWORD}"
+    redis:
+      enabled: false
+
+    prometheus:
+      rules:
+        create: true
+      serviceMonitor:
+        create: true
+
+    ingress:
+      enabled: true
+      ingressClassName: nginx-internal
+      hosts:
+        - host: &host auth.sparks.codes
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: acme-crt-secret-sparks-codes
+          hosts:
+            - *host
