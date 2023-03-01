@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: auth
 resources:
   - helm-release.yaml
+  - clusterpolicy.yaml

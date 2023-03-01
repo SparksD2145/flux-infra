@@ -31,6 +31,7 @@ resources:
   - kuberhealthy-charts.yaml
   - kubernetes-stable-charts.yaml
   - kubernetes-dashboard-charts.yaml
+  - kyverno-charts.yaml
   - lwolf-charts.yaml
   - metallb-charts.yaml
   - metrics-server-charts.yaml
