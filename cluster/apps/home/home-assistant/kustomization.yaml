@@ -6,3 +6,4 @@ resources:
   - helm-release.yaml
   - external-name.yaml
   - codeserver-auth-secret.sops.yaml
+  - auth-ingress.yaml

@@ -48,15 +48,17 @@ spec:
           hajimari.io/appName: "Home Assistant"
           hajimari.io/icon: "home-assistant"
           authentik.sparks.codes/enabled: "true"
+          nginx.ingress.kubernetes.io/auth-signin: |-
+            https://home.sparks.codes/outpost.goauthentik.io/start?rd=$escaped_request_uri
         hosts:
           - host: home.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
         tls:
-          - hosts:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
               - home.sparks.codes
-            secretName: acme-crt-secret-sparks-codes
     dnsConfig:
       options:
         - name: ndots

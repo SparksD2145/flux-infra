@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: home-assistant-authentik-relay
+  namespace: home
+spec:
+  rules:
+    - host: home.sparks.codes
+      http:
+        paths:
+          - path: /outpost.goauthentik.io
+            pathType: Prefix
+            backend:
+              service:
+                name: authentik-relay
+                port:
+                  number: 80
+  tls:
+    - secretName: acme-crt-secret-sparks-codes
+      hosts:
+        - home.sparks.codes
