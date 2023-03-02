@@ -34,6 +34,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Inventory"
           hajimari.io/icon: "currency-usd"
+          authentik.sparks.codes/enabled: "true"
         hosts:
           - host: budgeting.sparks.codes
             paths:
