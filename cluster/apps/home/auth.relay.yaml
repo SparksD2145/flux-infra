@@ -1,9 +1,0 @@
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: authentik-relay
-  namespace: home
-spec:
-  type: ExternalName
-  externalName: auth.sparks.codes
