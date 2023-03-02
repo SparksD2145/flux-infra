@@ -54,9 +54,9 @@ spec:
               - path: "/"
                 pathType: "Prefix"
         tls:
-          - hosts:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
               - home.sparks.codes
-            secretName: acme-crt-secret-sparks-codes
     dnsConfig:
       options:
         - name: ndots
