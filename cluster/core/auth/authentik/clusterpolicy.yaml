@@ -30,6 +30,6 @@ spec:
               +(nginx.ingress.kubernetes.io/auth-snippet): |-
                 proxy_set_header X-Forwarded-Host $http_host;
               +(nginx.ingress.kubernetes.io/auth-url): |-
-                http://ak-outpost-authentik-embedded-outpost.auth.svc.cluster.local/outpost.goauthentik.io/auth/nginx
-              # +(nginx.ingress.kubernetes.io/auth-signin): |-
-              #   https://auth.sparks.codes/outpost.goauthentik.io/start?rd=$escaped_request_uri
+                http://authentik.auth.svc.cluster.local/outpost.goauthentik.io/auth/nginx
+              +(nginx.ingress.kubernetes.io/auth-signin): |-
+                https://auth.sparks.codes/outpost.goauthentik.io/start?rd=$escaped_request_uri
