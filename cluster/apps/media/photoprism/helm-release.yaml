@@ -49,6 +49,8 @@ spec:
           hajimari.io/appName: "Photos"
           hajimari.io/icon: "image-multiple"
           authentik.sparks.codes/enabled: "true"
+          nginx.ingress.kubernetes.io/auth-signin: |-
+            https://photos.sparks.codes/outpost.goauthentik.io/start?rd=$escaped_request_uri
         hosts:
           - host: photos.sparks.codes
             paths:
