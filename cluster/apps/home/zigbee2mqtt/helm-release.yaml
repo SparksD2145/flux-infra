@@ -105,8 +105,8 @@ spec:
         # adapter: deconz
 
       advanced:
-        network_key: GENERATE
-        pan_id: GENERATE
+        network_key: ${HOME_ZIGBEE2MQTT_NETWORK_KEY}
+        pan_id: ${HOME_ZIGBEE2MQTT_PANID}
         log_output:
           - console
         log_level: advanced
