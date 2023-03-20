@@ -100,8 +100,6 @@ spec:
               url: "https://drive.google.com"
         - group: Finance
           bookmarks:
-            - name: OneFinance
-              url: "https://onefinance.com"
             - name: Mint
               url: "https://mint.com"
             - name: Credit Karma
