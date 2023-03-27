@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-cwh11
+  name: minecraft-cwh11-archive
   namespace: games
 spec:
   interval: 15m
@@ -28,9 +28,9 @@ spec:
         cpu: 2000m
     minecraftServer:
       eula: "TRUE"
-      version: "1.19.4"
+      version: "1.19.2"
       type: SPIGOT
-      motd: "cwh11.mc.sparks.codes"
+      motd: "archive-cwh11.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
       worldSaveName: world_cwh11
@@ -42,11 +42,11 @@ spec:
       onlineMode: false
       memory: 8192M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.202.3
+      loadBalancerIP: 10.10.202.2
       rcon:
         enabled: true
         password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}
     persistence:
       dataDir:
         enabled: true
-        existingClaim: local-mc-cwh11
+        existingClaim: local-mc-cwh11-archive
