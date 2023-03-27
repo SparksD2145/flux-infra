@@ -36,7 +36,7 @@ spec:
       worldSaveName: world_cwh11
       maxPlayers: 20
       viewDistance: 14
-      levelSeed: -6121001965162030037
+      levelSeed: '-6121001965162030037'
       gameMode: survival
       pvp: true
       onlineMode: false

@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: archive-cwh11-mc-sparks-codes
+  name: cwh11-mc-sparks-codes
   namespace: games
   annotations:
     external-dns.alpha.kubernetes.io/hostname: cwh11.mc.sparks.codes
