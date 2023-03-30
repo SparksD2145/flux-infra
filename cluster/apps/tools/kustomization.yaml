@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - idrac6
   - littlelink
+  - netboot.xyz
   - nfty
   - hajimari
   - shlink
