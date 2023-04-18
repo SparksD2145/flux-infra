@@ -33,7 +33,7 @@ spec:
       PHOTOPRISM_DATABASE_NAME: photoprism
       PHOTOPRISM_DATABASE_USER: photoprism
       PHOTOPRISM_DATABASE_PASSWORD: photoprism
-      PHOTOPRISM_AUTH_MODE: public
+      # PHOTOPRISM_AUTH_MODE: public
     service:
       main:
         ports:
@@ -48,7 +48,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Photos"
           hajimari.io/icon: "image-multiple"
-          authentik.sparks.codes/enabled: "true"
+          # authentik.sparks.codes/enabled: "true"
         hosts:
           - host: photos.sparks.codes
             paths:
