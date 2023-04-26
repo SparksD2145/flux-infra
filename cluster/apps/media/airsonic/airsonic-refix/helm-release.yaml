@@ -2,24 +2,41 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: airsonic
+  name: airsonic-refix
   namespace: media
 spec:
   interval: 15m
   chart:
     spec:
-      chart: airsonic-advanced
-      version: 7.0.22
+      chart: app-template
+      version: 1.4.0
       sourceRef:
         kind: HelmRepository
-        name: truecharts-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
+  dependsOn:
+    - name: airsonic
+      namespace: media
   values:
+    image:
+      repository: tamland/airsonic-refix
+      tag: latest
     env:
       TZ: "America/Chicago"
-    portal:
-      enabled: true
+      SERVER_URL: https://music-backend.sparks.codes
+    # persistence:
+    #   config:
+    #     enabled: true
+    #     existingClaim: home-assistant-pvc
+    #     mountPath: /config
+    #     accessMode: "ReadWriteOnce"
+    #     size: 30Gi
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
     ingress:
       main:
         enabled: true
@@ -34,19 +51,6 @@ spec:
               - path: "/"
                 pathType: "Prefix"
         tls:
-          - hosts:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
               - music.sparks.codes
-            secretName: acme-crt-secret-sparks-codes
-    persistence:
-      config:
-        enabled: true
-        mountPath: "/airsonic"
-      music:
-        enabled: true
-        mountPath: "/music"
-      podcasts:
-        enabled: true
-        mountPath: "/podcasts"
-      playlists:
-        enabled: true
-        mountPath: "/playlists"
