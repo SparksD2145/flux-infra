@@ -8,9 +8,10 @@ all:
         omega.sparks.codes:
         lambda.sparks.codes:
         beta.sparks.codes:
-        rpi3-2.sparks.codes:
         rpi4-poe-1.sparks.codes:
         rpi4-poe-2.sparks.codes:
+        sierra.sparks.codes:
+        romeo.sparks.codes:
     servers_with_idracs:
       hosts:
         whiskey.sparks.codes:
