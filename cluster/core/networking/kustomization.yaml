@@ -6,5 +6,5 @@ resources:
   - external-dns
   - kube-router
   - metallb
-  #- nginx-ingress-external
-  #- nginx-ingress-internal
+  - nginx-ingress-external
+  - nginx-ingress-internal
