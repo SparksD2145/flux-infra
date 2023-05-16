@@ -7,7 +7,6 @@
 
     - name: Install Latest Packages
       apt:
-        update_cache: yes
         name: "*"
         state: latest
 
@@ -15,7 +14,8 @@
       apt:
         pkg:
           - lvm2
+          - nfs-kernel-server
           - nfs-common
 
-    - name: Start K3s Worker
-      shell: curl -sfL https://get.k3s.io | K3S_URL='https://k8s-control.sparks.codes:6443' K3S_TOKEN='' sh -
+    - name: Start K3s Master
+      shell: curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - server --write-kubeconfig-mode=644 --disable=traefik,servicelb,local-storage --tls-san=k8s-control.sparks.codes --token='' --server='https://k8s-control.sparks.codes:6443'
