@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   # - docker-registry
   # - adguard-home
-  - pihole
+  # - pihole
   - s2s-dnsmasq
