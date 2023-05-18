@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: registry.imake.software/sparks/actual-server
-      tag: v23.2.99
+      tag: 69.0.0
     env:
       TZ: "America/Chicago"
     service:
