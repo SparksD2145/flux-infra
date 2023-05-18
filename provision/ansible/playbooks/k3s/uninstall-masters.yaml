@@ -1,0 +1,6 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Remove K3s Worker
+      shell: /usr/local/bin/k3s-uninstall.sh
