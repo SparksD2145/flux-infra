@@ -33,3 +33,13 @@ spec:
           - secretName: acme-crt-secret-sprk-sh
             hosts:
               - sprk.sh
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                DEFAULT_DOMAIN: "sprk.sh"
+                GEOLITE_LICENSE_KEY: "${TOOLS_SHLINK_GEOIP_LICENSE}"
+                ANONYMIZE_REMOTE_ADDR: true
+                ENABLE_PERIODIC_VISIT_LOCATE: true
