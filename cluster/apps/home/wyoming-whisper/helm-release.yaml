@@ -1,0 +1,44 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wyoming-whisper
+  namespace: home
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    image:
+      repository: rhasspy/wyoming-whisper
+      tag: latest
+    command:
+      - --model tiny-int8 --language en
+    env:
+      TZ: "America/Chicago"
+    persistence:
+      config:
+        enabled: true
+        mountPath: /data
+        accessMode: "ReadWriteMany"
+        size: 15Gi
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.10
+        ports:
+          http:
+            enabled: false
+            primary: false
+          whisper:
+            enabled: true
+            primary: true
+            port: 10300
+            protocol: TCP

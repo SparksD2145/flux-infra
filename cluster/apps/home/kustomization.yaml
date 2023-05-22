@@ -4,5 +4,7 @@ resources:
   - ispy-dvr
   - home-assistant
   - emqx
+  # - wyoming-piper
+  # - wyoming-whisper
   - zigbee2mqtt
   - zwavejs2mqtt
