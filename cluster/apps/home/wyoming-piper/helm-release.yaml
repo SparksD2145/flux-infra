@@ -19,11 +19,14 @@ spec:
     image:
       repository: rhasspy/wyoming-piper
       tag: latest
-    command:
-      - bash /run.sh --voice en-us-ryan-medium
+    args:
+      - --voice
+      - en-us-ryan-medium
     env:
       TZ: "America/Chicago"
     persistence:
+      config:
+        enabled: false
       data:
         enabled: true
         mountPath: /data
@@ -45,5 +48,5 @@ spec:
     probes:
       liveness:
         enabled: false
-      rediness:
+      readiness:
         enabled: false

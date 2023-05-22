@@ -19,12 +19,17 @@ spec:
     image:
       repository: rhasspy/wyoming-whisper
       tag: latest
-    command:
-      - bash /run.sh --model base --language en
+    args:
+      - --model
+      - base
+      - --language
+      - en
     env:
       TZ: "America/Chicago"
     persistence:
       config:
+        enabled: false
+      data:
         enabled: true
         mountPath: /data
         accessMode: "ReadWriteMany"
@@ -45,5 +50,5 @@ spec:
     probes:
       liveness:
         enabled: false
-      rediness:
+      readiness:
         enabled: false
