@@ -17,7 +17,6 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
-    runtimeClassName: nvidia
     securityContext:
       privileged: true
     affinity:
