@@ -69,12 +69,12 @@ spec:
           #     - name: sdb
           - name: whiskey
             devices:
-              - name: /dev/disk/by-id/scsi-35000c500b28f2de8
-              - name: /dev/disk/by-id/scsi-35000c500b1bf1be2
-              - name: /dev/disk/by-id/scsi-35000c500b4e03ac2
-              - name: /dev/disk/by-id/scsi-35000c500db4276d7
-              - name: /dev/disk/by-id/scsi-35000c500b1a1d44d
-              - name: /dev/disk/by-id/scsi-35000c500b1a31fd9
+              - name: sdb
+              - name: sdc
+              - name: sdd
+              - name: sde
+              - name: sdf
+              - name: sdg
           - name: omega
             devices:
               - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
