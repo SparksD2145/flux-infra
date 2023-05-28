@@ -7,5 +7,6 @@ resources:
   - filebrowser
   # - ghost
   - jellyfin
+  - paperless-ngx
   - photoprism
   - rutorrent
