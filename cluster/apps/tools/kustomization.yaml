@@ -10,5 +10,6 @@ resources:
   - homebox
   - honeygain
   - shlink
-  - statping
+  # - statping
   - traggo
+  - uptime-kuma
