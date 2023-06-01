@@ -1,0 +1,39 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: honeygain
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    image:
+      repository: honeygain/honeygain
+      tag: latest
+    args:
+      - -tou-accept
+      - -email
+      - ${TOOLS_HONEYGAIN_ACCOUNT}
+      - -pass
+      - ${TOOLS_HONEYGAIN_PASSWORD}
+      - -device
+      - K8s_CLUSTER
+    env:
+      TZ: "America/Chicago"
+    service:
+      main:
+        enabled: false
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
