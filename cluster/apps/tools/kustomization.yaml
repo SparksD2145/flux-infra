@@ -8,7 +8,7 @@ resources:
   - nfty
   - hajimari
   - homebox
-  - honeygain
+  # - honeygain
   - shlink
   - traggo
   - uptime-kuma
