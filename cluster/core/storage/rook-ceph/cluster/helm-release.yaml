@@ -57,13 +57,13 @@ spec:
           metadataDevice:
           osdsPerDevice: "1"
         nodes:
-          - name: foxtrot
-            devices:
-              - name: /dev/disk/by-id/scsi-3500000e01f06b880
-              - name: /dev/disk/by-id/scsi-35000c5003609f44d
-              - name: /dev/disk/by-id/scsi-35000c5004d032bcf
-              - name: /dev/disk/by-id/scsi-35000c500b40310fb
-              - name: /dev/disk/by-id/scsi-35000c500b4031499
+          # - name: foxtrot
+          #   devices:
+          #     - name: /dev/disk/by-id/scsi-3500000e01f06b880
+          #     - name: /dev/disk/by-id/scsi-35000c5003609f44d
+          #     - name: /dev/disk/by-id/scsi-35000c5004d032bcf
+          #     - name: /dev/disk/by-id/scsi-35000c500b40310fb
+          #     - name: /dev/disk/by-id/scsi-35000c500b4031499
           # - name: lambda
           #   devices:
           #     - name: sdb
