@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prowlarr
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 15m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-helm-charts
+        namespace: flux-system
+
+  # See https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
+  values:
+    image:
+      repository: ghcr.io/onedr0p/prowlarr-nightly
+      tag: 1.6.0.3499@sha256:9c54c5f31546ae4473d8de560377f189f1e9f183666a848d0a1bcc09afdbbf2f
+
+    env:
+      TZ: "America/Chicago"
+      PROWLARR__INSTANCE_NAME: Prowlarr
+      PROWLARR__PORT: &port 9696
+      PROWLARR__LOG_LEVEL: info
+
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: cloud-search
+          hajimari.io/info: Media Search
+          hajimari.io/group: media
+        hosts:
+          - host: &host "prowlarr.sparks.codes"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
+              - *host
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: prowlarr-config
+      backup:
+        enabled: true
+        existingClaim: prowlarr-backup
+        mountPath: /config/Backups
+
+    resources:
+      requests:
+        memory: 250Mi
+        cpu: 500m
+      limits:
+        memory: 1500Mi
