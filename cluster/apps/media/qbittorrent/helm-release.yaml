@@ -33,11 +33,8 @@ spec:
         annotations:
           kubernetes.io/ingress.class: "nginx-internal"
           hajimari.io/enable: "true"
-          hajimari.io/appName: "ruTorrent"
+          hajimari.io/appName: "qBittorrent"
           hajimari.io/icon: "file-arrow-up-down"
-          nginx.ingress.kubernetes.io/auth-type: basic
-          nginx.ingress.kubernetes.io/auth-secret: rutorrent-auth-secret
-          nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
         hosts:
           - host: torrents.sparks.codes
             paths:
