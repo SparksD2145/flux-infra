@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/qbittorrent
-      tag: 4.5.3
+      tag: 20.04.1
     env:
       TZ: "America/Chicago"
       RUTORRENT_PORT: 8080
