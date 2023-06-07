@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: rutorrent
+  name: qbittorrent
   namespace: media
 spec:
   interval: 15m
@@ -17,8 +17,8 @@ spec:
       interval: 15m
   values:
     image:
-      repository: crazymax/rtorrent-rutorrent
-      tag: 4.0-0.9.8-0.13.8
+      repository: linuxserver/qbittorrent
+      tag: 4.5.3
     env:
       TZ: "America/Chicago"
       RUTORRENT_PORT: 8080
@@ -48,10 +48,12 @@ spec:
               - torrents.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      data:
+      config:
         enabled: true
-        type: pvc
-        existingClaim: torrents-data
+        size: 1Gi
+        storageClass: ceph-block
+        accessMode: ReadWriteOnce
+        mountPath: /config
       downloads:
         enabled: true
         type: pvc
