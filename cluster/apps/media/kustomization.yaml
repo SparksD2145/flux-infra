@@ -7,7 +7,6 @@ resources:
   # - ghost
   - jellyfin
   - monica
-  - paperless-ngx
   - photoprism
   - prowlarr
   - rutorrent
