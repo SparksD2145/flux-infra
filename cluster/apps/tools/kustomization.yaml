@@ -9,6 +9,7 @@ resources:
   - hajimari
   - homebox
   # - honeygain
+  - serge-chat
   - shlink
   - traggo
   - uptime-kuma
