@@ -34,6 +34,7 @@ resources:
   - kubernetes-dashboard-charts.yaml
   - kyverno-charts.yaml
   - lwolf-charts.yaml
+  - mailu-charts.yaml
   - metallb-charts.yaml
   - metrics-server-charts.yaml
   - minecraft-server-charts.yaml
