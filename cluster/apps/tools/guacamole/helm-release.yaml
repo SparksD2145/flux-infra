@@ -1,0 +1,57 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: serge
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: guacamole
+      version: 1.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: berryju-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    env:
+      TZ: "America/Chicago"
+    auth:
+      username: ${TOOLS_GUAC_USERNAME}
+      password: ${TOOLS_GUAC_PASSWORD}
+    postgres:
+      password: ${TOOLS_GUAC_PASSWORD}
+    ingress:
+      enabled: true
+      className: "nginx-internal"
+      annotations:
+        kubernetes.io/ingress.class: "nginx-internal"
+        hajimari.io/enable: "true"
+        hajimari.io/appname: "Guacamole"
+        hajimari.io/icon: "remote-desktop"
+      hosts:
+        - host: guac.sparks.codes
+          paths:
+            - path: "/"
+              pathtype: "prefix"
+      tls:
+        - hosts:
+            - guac.sparks.codes
+          secretName: acme-crt-secret-sparks-codes
+    persistence:
+      data:
+        enabled: true
+        storageClass: ceph-block
+        size: 50Gi
+        mountPath: /data/db/
+        accessMode: ReadWriteOnce
+        retain: true
+      weights:
+        enabled: true
+        storageClass: ceph-block
+        size: 100Gi
+        mountPath: /usr/src/app/weights
+        accessMode: ReadWriteOnce
+        retain: true
