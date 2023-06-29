@@ -1,7 +1,7 @@
 #!/bin/sh
 for file in cluster/base/flux-system/charts/helm/*.yaml; do
-    name=$(yq '.metadata.name' $file);
-    url=$(yq '.spec.url' $file);
+    name=$(yq -r '.metadata.name' $file);
+    url=$(yq -r '.spec.url' $file);
 
     if [ "$name" != "null" ]; then
         helm repo add "$name" "$url";
