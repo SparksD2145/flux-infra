@@ -1,0 +1,4 @@
+---
+ansible_user: sparks
+ansible_shell_type: powershell
+ansible_connection: ssh

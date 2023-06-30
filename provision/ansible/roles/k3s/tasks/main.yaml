@@ -1,0 +1,75 @@
+---
+- name: Check if cluster is installed
+  check_mode: false
+  ansible.builtin.stat:
+    path: /etc/rancher/k3s/config.yaml
+  register: k3s_check_installed
+
+- name: Ignore manifests templates and urls if the cluster is already installed
+  when: k3s_check_installed.stat.exists
+  ansible.builtin.set_fact:
+    k3s_server_manifests_templates: []
+    k3s_server_manifests_urls: []
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    update_cache: true
+    name: "{{ dependencies }}"
+    state: present
+
+- name: Enable iscsi modprobe module
+  community.general.modprobe:
+    name: iscsi_tcp
+    state: present
+
+- name: Build a cluster with HA control plane
+  include_role:
+    name: xanmanning.k3s
+  vars:
+    k3s_state: installed
+
+- name: Control remote_user escalation
+  vars:
+    ansible_user_dir: "/home/{{ ansible_user }}"
+  block:
+    - name: Copy kubeconfig file
+      become: false
+      run_once: true
+      ansible.builtin.fetch:
+        src: "/etc/rancher/k3s/k3s.yaml"
+        dest: "{{ ansible_user_dir }}/.kube/config"
+        flat: true
+      when:
+        - k3s_control_node | default(false)
+
+    - name: Copy kube-vip manifest file
+      delegate_to: "{{ item }}"
+      ansible.builtin.copy:
+        src: templates/kube-vip-static-pod.yaml.j2
+        dest: /var/lib/rancher/k3s/server/manifests/kube-vip-static-pod.yaml
+        owner: "root"
+        group: "root"
+        mode: 0644
+      when:
+        - k3s_control_node | default(false)
+      loop: "{{ groups['master'][1:] }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Update kubeconfig with the correct IPv4 address
+      delegate_to: localhost
+      become: false
+      run_once: true
+      ansible.builtin.replace:
+        path: "{{ ansible_user_dir }}/.kube/config"
+        regexp: "https://127.0.0.1:6443"
+        replace: "https://{{ kube_vip_address }}:6443"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+
+- name: Create SOPs secret
+  delegate_to: localhost
+  kubernetes.core.k8s:
+    state: present
+    template: templates/age.sops.yaml.j2
+  become: false

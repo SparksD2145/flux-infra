@@ -1,0 +1,8 @@
+---
+dependencies:
+  - curl
+  - jq
+  - wget
+  - open-iscsi
+  - nfs-common
+  - parted

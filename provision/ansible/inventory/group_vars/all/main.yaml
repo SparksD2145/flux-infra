@@ -1,0 +1,7 @@
+# Region Settings - Time Zone
+timezone: 'America/Chicago'
+ntp_timezone: '{{ timezone }}'
+
+# Region Settings - Keyboard
+locale: 'en_US.UTF-8'
+keyboard_layout: 'us'

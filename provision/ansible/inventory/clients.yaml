@@ -1,0 +1,94 @@
+---
+all:
+  hosts:
+    localhost:
+  children:
+
+    # -------------------------------------------
+    # Servers found in the server room
+    # -------------------------------------------
+    servers:
+      children:
+        linux_servers:
+
+    # -------------------------------------------
+    # Servers equipped with an iDRAC
+    # -------------------------------------------
+    servers_with_idracs:
+      hosts:
+        whiskey.sparks.codes:
+        foxtrot.sparks.codes:
+        omega.sparks.codes:
+        lambda.sparks.codes:
+
+    # -------------------------------------------
+    # Unraid Workstation ------------------------
+    # -------------------------------------------
+    workstation:
+      hosts:
+        alpha.sparks.codes:
+
+    # -------------------------------------------
+    # All Linux Machines ------------------------
+    # -------------------------------------------
+    linux:
+      children:
+        linux_servers:
+        linux_workstations:
+
+    linux_workstations:
+      hosts:
+        gamma.sparks.codes:
+
+    linux_servers:
+      hosts:
+        whiskey.sparks.codes:
+        tango.sparks.codes:
+        foxtrot.sparks.codes:
+        omega.sparks.codes:
+        lambda.sparks.codes:
+        rpi4-poe-1.sparks.codes:
+        rpi4-poe-2.sparks.codes:
+        sierra.sparks.codes:
+        romeo.sparks.codes:
+        beta.sparks.codes:
+
+    # -------------------------------------------
+    # All Windows Machines ----------------------
+    # -------------------------------------------
+    windows_workstations:
+      hosts:
+        zeta.sparks.codes:
+
+    windows:
+      children:
+        windows_workstations:
+
+    # -------------------------------------------
+    # Networking --------------------------------
+    # -------------------------------------------
+    cisco_ios_switches:
+      hosts:
+        1gbe-switch.sparks.codes:
+
+    cisco_nxos_switches:
+      hosts:
+        nexus.sparks.codes:
+
+    # -------------------------------------------
+    # K3s Cluster -------------------------------
+    # -------------------------------------------
+    k3s_cluster:
+      children:
+        k3s_masters:
+        # k3s_workers:
+
+    k3s_masters:
+      hosts: {}
+
+    # -------------------------------------------
+    # Virtual Machine Hypervisors ---------------
+    # -------------------------------------------
+    hypervisors:
+      hosts:
+        beta.sparks.codes:
