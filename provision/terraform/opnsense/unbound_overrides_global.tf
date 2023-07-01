@@ -6,3 +6,12 @@ resource "opnsense_unbound_host_override" "nexus-switch" {
   domain   = "sparks.codes"
   server   = "10.10.0.5"
 }
+
+resource "opnsense_unbound_host_override" "k3s-vip" {
+  enabled     = true
+  description = "K3s-vip API Virtual IP"
+
+  hostname = "k3s-vip"
+  domain   = "sparks.codes"
+  server   = "10.10.0.100"
+}
