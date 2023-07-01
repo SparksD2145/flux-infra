@@ -9,7 +9,7 @@ k3s_etcd_datastore: true
 
 # Kube-vip
 kube_vip_address: 10.10.0.100
-k3s-vip.sparks.codes: k3s-vip.sparks.codes
+kube_vip_hostname: k3s-vip.sparks.codes
 k3s_server_manifests_urls:
   # Kube-vip RBAC
   - url: https://raw.githubusercontent.com/kube-vip/kube-vip/main/docs/manifests/rbac.yaml
