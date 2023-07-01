@@ -1,7 +1,6 @@
 ---
 # K3s Settings
-
-k3s_release_version: "v1.26.1+k3s1"
+k3s_release_version: "v1.27.3+k3s1"
 k3s_install_hard_links: true
 k3s_become: true
 k3s_debug: false
@@ -9,14 +8,14 @@ k3s_etcd_datastore: true
 
 # Kube-vip
 kube_vip_address: 10.10.0.100
-k3s-vip.sparks.codes: k3s-vip.sparks.codes
+kube_vip_hostname: k3s-vip.sparks.codes
 k3s_server_manifests_urls:
   # Kube-vip RBAC
   - url: https://raw.githubusercontent.com/kube-vip/kube-vip/main/docs/manifests/rbac.yaml
     filename: custom-kube-vip-rbac.yaml
 k3s_server_manifests_templates:
   - kube-vip-static-pod.yaml.j2
-k3s_registration_address: "{{ kubevip_address }}"
+k3s_registration_address: "{{ kube_vip_address }}"
 
 # Systemd Directory
 systemd_dir: /etc/systemd/system
