@@ -81,16 +81,16 @@ all:
     k3s_cluster:
       children:
         k3s_masters:
-          whiskey.sparks.codes:
-            ansible_host: 10.10.1.1
-          lambda.sparks.codes:
-            ansible_host: 10.10.5.1
-          romeo.sparks.codes:
-            ansible_host: 10.10.10.0
         # k3s_workers:
 
     k3s_masters:
-      hosts: {}
+      hosts:
+        whiskey.sparks.codes:
+          ansible_host: 10.10.1.1
+        lambda.sparks.codes:
+          ansible_host: 10.10.5.1
+        romeo.sparks.codes:
+          ansible_host: 10.10.10.0
 
     # -------------------------------------------
     # Virtual Machine Hypervisors ---------------
