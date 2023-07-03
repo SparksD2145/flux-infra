@@ -85,12 +85,12 @@ all:
 
     k3s_masters:
       hosts:
-        whiskey.sparks.codes:
-          ansible_host: 10.10.1.1
-        lambda.sparks.codes:
-          ansible_host: 10.10.5.1
         romeo.sparks.codes:
           ansible_host: 10.10.10.0
+        whiskey.sparks.codes:
+          ansible_host: 10.10.1.1
+        rpi4-poe-2.sparks.codes:
+          ansible_host: 10.10.7.4
 
     # -------------------------------------------
     # Virtual Machine Hypervisors ---------------
