@@ -98,3 +98,12 @@ all:
     hypervisors:
       hosts:
         beta.sparks.codes:
+
+    # -------------------------------------------
+    # K3s Cluster -------------------------------
+    # -------------------------------------------
+    storage:
+      hosts:
+        omega.sparks.codes:
+        whiskey.sparks.codes:
+        tango.sparks.codes:
