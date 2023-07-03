@@ -32,7 +32,7 @@ data:
       - name: cluster
         cluster:
           certificate-authority: "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
-          server: "https://10.10.1.1:6443"
+          server: "https://10.10.9.1:6443"
     users:
       - name: kube-router
         user:
