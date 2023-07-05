@@ -19,7 +19,12 @@ spec:
     - name: emqx
       namespace: home
   values:
-    node-selector: romeo
+    node-selector: rpi4-poe-1
+    tolerations:
+      - key: "iot-control"
+        operator: "Equal"
+        value: "active"
+        effect: "NoSchedule"
     image:
       repository: ghcr.io/esphome/esphome
       tag: "2023.6.4"
