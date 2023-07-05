@@ -21,12 +21,12 @@ spec:
     - name: zigbee2mqtt
       namespace: home
   values:
+    node-selector: romeo
     image:
       repository: homeassistant/home-assistant
       tag: "2023.6"
     env:
       TZ: "America/Chicago"
-    node-selector: romeo
     persistence:
       config:
         enabled: true
