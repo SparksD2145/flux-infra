@@ -22,7 +22,7 @@ spec:
     remediation:
       retries: 5
   values:
-    replicaCount: 3
+    replicaCount: 1
     recreatePods: true
     emqxConfig:
       EMQX_ALLOW_ANONYMOUS: "true"
@@ -52,8 +52,8 @@ spec:
       enabled: false
     persistence:
       enabled: true
-      storageClass: ceph-filesystem
-      size: 200Mi
+      existingClaim: emqx-pvc
+      size: 1Gi
     resources:
       requests:
         cpu: 10m
