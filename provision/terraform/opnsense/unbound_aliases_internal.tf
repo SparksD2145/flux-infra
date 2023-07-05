@@ -52,6 +52,15 @@ resource "opnsense_unbound_host_alias" "svc-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-esphome-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "ESPHome dashboard"
+  hostname    = "esphome"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-emqx-dashboard-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
