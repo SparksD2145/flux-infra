@@ -19,6 +19,13 @@ spec:
     image:
       repository: ghcr.io/techno-tim/littlelink-server
       tag: latest
+    affinity:
+      nodeAffinity:
+        required:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: services/lightweight
+                  operator: Exists
     env:
       TZ: "America/Chicago"
       META_TITLE: Thomas Ibarra - Links Page
