@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: "2023.6"
+      tag: "2023.7"
     env:
       TZ: "America/Chicago"
     node-selector: romeo
