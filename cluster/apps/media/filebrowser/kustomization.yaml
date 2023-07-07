@@ -6,5 +6,4 @@ resources:
   - configmap.yaml
   - pvc-config.yaml
   - pvc-data.yaml
-  - pvc-database.yaml
   - external-name.yaml

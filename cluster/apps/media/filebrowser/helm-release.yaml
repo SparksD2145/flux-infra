@@ -51,11 +51,6 @@ spec:
         type: pvc
         existingClaim: local-data-sparks-codes-config
         mountpath: /config
-      database:
-        enabled: true
-        type: pvc
-        existingClaim: local-data-sparks-codes-database
-        mountpath: /database
       data:
         enabled: true
         type: pvc
