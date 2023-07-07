@@ -12,5 +12,5 @@ data:
       "address": "",
       "log": "stdout",
       "database": "/config/database.db",
-      "root": "/srv/data"
+      "root": "/srv"
     }
