@@ -27,6 +27,7 @@ metadata:
   name: torrents-downloads
   namespace: media
 spec:
+  volumeName: torrents-downloads
   accessModes:
     - ReadWriteOnce
   storageClassName: ""

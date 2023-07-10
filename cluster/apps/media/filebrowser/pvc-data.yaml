@@ -7,7 +7,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 50Gi
+    storage: 167Gi
   persistentVolumeReclaimPolicy: Retain
   local:
     path: /mnt/static/data.sparks.codes/data
@@ -27,9 +27,10 @@ metadata:
   name: local-data-sparks-codes-data
   namespace: media
 spec:
+  volumeName: local-data-sparks-codes-data
   accessModes:
     - ReadWriteOnce
   storageClassName: ""
   resources:
     requests:
-      storage: 50Gi
+      storage: 167Gi

@@ -27,6 +27,7 @@ metadata:
   name: local-data-sparks-codes-config
   namespace: media
 spec:
+  volumeName: local-data-sparks-codes-config
   accessModes:
     - ReadWriteOnce
   storageClassName: ""
