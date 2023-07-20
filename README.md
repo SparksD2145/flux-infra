@@ -1,4 +1,4 @@
-# Template for deploying k3s backed by Flux
+# Flux Infrastructure
 
 Highly opinionated template for deploying a single [k3s](https://k3s.io) cluster with [Ansible](https://www.ansible.com) and [Terraform](https://www.terraform.io) backed by [Flux](https://toolkit.fluxcd.io/) and [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/).
 
@@ -10,7 +10,6 @@ The purpose here is to showcase how you can deploy an entire Kubernetes cluster 
 - [Prerequisites](https://github.com/k8s-at-home/template-cluster-k3s#-prerequisites)
 - [Repository structure](https://github.com/k8s-at-home/template-cluster-k3s#-repository-structure)
 - [Lets go!](https://github.com/k8s-at-home/template-cluster-k3s#-lets-go)
-- [Post installation](https://github.com/k8s-at-home/template-cluster-k3s#-installation)
 - [Thanks](https://github.com/k8s-at-home/template-cluster-k3s#-thanks)
 
 ## 👋 Introduction
@@ -53,7 +52,7 @@ For provisioning the following tools will be used:
 #### Required
 
 | Tool                                               | Purpose                                                                                                                                 |
-|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | [ansible](https://www.ansible.com)                 | Preparing Ubuntu for Kubernetes and installing k3s                                                                                      |
 | [direnv](https://github.com/direnv/direnv)         | Exports env vars based on present working directory                                                                                     |
 | [flux](https://toolkit.fluxcd.io/)                 | Operator that manages your k8s cluster based on your Git repository                                                                     |
@@ -68,7 +67,7 @@ For provisioning the following tools will be used:
 #### Optional
 
 | Tool                                                   | Purpose                                                  |
-|--------------------------------------------------------|----------------------------------------------------------|
+| ------------------------------------------------------ | -------------------------------------------------------- |
 | [helm](https://helm.sh/)                               | Manage Kubernetes applications                           |
 | [kustomize](https://kustomize.io/)                     | Template-free way to customize application configuration |
 | [pre-commit](https://github.com/pre-commit/pre-commit) | Runs checks pre `git commit`                             |
@@ -85,15 +84,19 @@ After pre-commit is installed on your machine run:
 ```sh
 task pre-commit:init
 ```
+
 **Remember to run this on each new clone of the repository for it to have effect.**
 
 Commands are of interest, for learning purposes:
 
 This command makes it so pre-commit runs on `git commit`, and also installs environments per the config file.
+
 ```
 pre-commit install --install-hooks
 ```
+
 This command checks for new versions of hooks, though it will occasionally make mistakes, so verify its results.
+
 ```
 pre-commit autoupdate
 ```
@@ -258,7 +261,7 @@ cat ~/.config/sops/age/keys.txt |
 
 5. If you verified all the secrets are encrypted, you can delete the `tmpl` directory now
 
-6.  Push you changes to git
+6. Push you changes to git
 
 ```sh
 git add -A
@@ -266,7 +269,26 @@ git commit -m "initial commit"
 git push
 ```
 
-7. Install Flux
+7. Add a Github SSH key for Flux
+
+   1. Create a new ssh key for Flux to use exclusively.
+
+   ```sh
+   ssh-keygen -t ed25519 -C "<computername>@hello@iwrite.software"
+   ```
+
+   2. Add the key to your Github SSH Keystore
+
+   3. Provide flux with the SSH key.
+
+   ```sh
+   flux -n flux-system create secret git flux-system \
+       --url=ssh://git@github.com/sparksd2145/flux-infra \
+       ---ssh-key-algorithm=ed25519 \
+       --private-key-file=./private.key
+   ```
+
+8. Install Flux
 
 📍 Due to race conditions with the Flux CRDs you will have to run the below command twice. There should be no errors on this second run.
 
@@ -293,36 +315,6 @@ kubectl --kubeconfig=./provision/kubeconfig get pods -n flux-system
 # notification-controller-7c46575844-k4bvr   1/1     Running   0          1h
 # source-controller-7d6875bcb4-zqw9f         1/1     Running   0          1h
 ```
-
-🎉 **Congratulations** you have a Kubernetes cluster managed by Flux, your Git repository is driving the state of your cluster.
-
-### ☁️ Configure Cloudflare DNS with Terraform
-
-📍 Review the Terraform scripts under `./terraform/cloudflare/` and make sure you understand what it's doing (no really review it). If your domain already has existing DNS records be sure to export those DNS settings before you continue. Ideally you can update the terraform script to manage DNS for all records if you so choose to.
-
-1. Pull in the Terraform deps by running `task terraform:init:cloudflare`
-
-2. Review the changes Terraform will make to your Cloudflare domain by running `task terraform:plan:cloudflare`
-
-3. Finally have Terraform execute the task by running `task terraform:apply:cloudflare`
-
-If Terraform was ran successfully and you have port forwarded `80` and `443` in your router to the `${BOOTSTRAP_METALLB_TRAEFIK_ADDR}` IP, head over to your browser and you _should_ be able to access `https://hajimari.${BOOTSTRAP_CLOUDFLARE_DOMAIN}`!
-
-## 📣 Post installation
-
-### 👉 Troubleshooting
-
-Our [wiki](https://github.com/k8s-at-home/template-cluster-k3s/wiki) is a good place to start troubleshooting issues. If that doesn't cover your issue, start a new thread in the #support channel on our [Discord](https://discord.gg/k8s-at-home).
-
-### 🤖 Integrations
-
-Our Check out our [wiki](https://github.com/k8s-at-home/template-cluster-k3s/wiki) (WIP) for more integrations!
-
-## ❔ What's next
-
-The world is your cluster, first thing you might want to do is to have storage backed by something other than local disk. If you have some sort of NAS and want storage back by that check out the helm charts for [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner), [democratic-csi](https://github.com/democratic-csi/democratic-csi), or [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs).
-
-Many people have shared their awesome repositories over at [awesome-home-kubernetes](https://github.com/k8s-at-home/awesome-home-kubernetes), be sure to check this out and click the `Search All Repos` icon if you are wondering how someone implemented or deployed an application.
 
 ## 🤝 Thanks
 

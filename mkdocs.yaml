@@ -1,13 +1,13 @@
 ---
 # Project information
-site_name: onedr0p | Home Cluster
+site_name: SparksD2145 | Home Cluster
 site_description: My home Kubernetes (k3s) cluster managed by GitOps (Flux2)
-site_author: Devin Buhl
-site_url: https://onedr0p.github.io/home-cluster/
+site_author: Thomas Ibarra
+site_url: https://SparksD2145.github.io/flux-infra/
 
 # Repository
-repo_name: onedr0p/home-cluster
-repo_url: https://github.com/onedr0p/home-cluster
+repo_name: SparksD2145/flux-infra
+repo_url: https://github.com/SparksD2145/flux-infra
 edit_uri: "edit/main/docs/"
 
 theme:
@@ -47,11 +47,7 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/onedr0p
-    - icon: fontawesome/brands/discord
-      link: https://discord.gg/sTMX7Vh
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/devinbuhl
+      link: https://github.com/SparksD2145
 
 # Plugins
 plugins:
