@@ -44,17 +44,6 @@ spec:
         ports:
           http:
             port: 6052
-      api:
-        enabled: true
-        primary: false
-        type: LoadBalancer
-        loadBalancerIP: 10.10.201.7
-        ports:
-          api:
-            enabled: true
-            primary: false
-            port: 6053
-            protocol: TCP
     ingress:
       main:
         enabled: true
@@ -62,7 +51,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-internal"
           hajimari.io/enable: "true"
           hajimari.io/appName: "ESPHome"
-          hajimari.io/icon: "wifi"
+          hajimari.io/icon: "simple-icons:esphome"
           # authentik.sparks.codes/enabled: "true"
         hosts:
           - host: esphome.sparks.codes
