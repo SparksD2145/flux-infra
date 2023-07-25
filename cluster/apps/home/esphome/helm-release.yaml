@@ -44,6 +44,17 @@ spec:
         ports:
           http:
             port: 6052
+      api:
+        enabled: true
+        primary: false
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.7
+        ports:
+          api:
+            enabled: true
+            primary: false
+            port: 6053
+            protocol: TCP
     ingress:
       main:
         enabled: true

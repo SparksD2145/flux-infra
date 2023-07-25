@@ -61,6 +61,15 @@ resource "opnsense_unbound_host_override" "lb-s2s-dns" {
   server   = "10.10.201.6"
 }
 
+resource "opnsense_unbound_host_override" "lb-esphome" {
+  enabled     = true
+  description = "ESPHome API"
+
+  hostname = "esphome-api"
+  domain   = "sparks.codes"
+  server   = "10.10.201.7"
+}
+
 resource "opnsense_unbound_host_override" "lb-influxdb" {
   enabled     = true
   description = "Influxdb loadbalancer"
