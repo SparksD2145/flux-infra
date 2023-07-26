@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-ntfy-cache-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/local/notify.sparks.codes/cache
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - romeo
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-ntfy-cache-pvc
+  namespace: tools
+spec:
+  volumeName: local-ntfy-cache-pv
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 1Gi

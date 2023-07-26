@@ -48,13 +48,9 @@ spec:
     persistence:
       cache:
         enabled: true
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
-        size: 1Gi
-        retain: true
+        existingClaim: local-ntfy-cache-pvc
+        accessMode: ReadWriteOnce
       config:
         enabled: true
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
-        size: 1Gi
-        retain: true
+        existingClaim: local-ntfy-config-pvc
+        accessMode: ReadWriteOnce
