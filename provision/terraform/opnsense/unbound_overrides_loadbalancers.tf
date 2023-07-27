@@ -96,3 +96,12 @@ resource "opnsense_unbound_host_override" "lb-piper" {
   domain   = "sparks.codes"
   server   = "10.10.201.11"
 }
+
+resource "opnsense_unbound_host_override" "lb-minecraft" {
+  enabled     = true
+  description = "Minecraft loadbalancer"
+
+  hostname = "mc"
+  domain   = "sparks.codes"
+  server   = "10.10.202.1"
+}
