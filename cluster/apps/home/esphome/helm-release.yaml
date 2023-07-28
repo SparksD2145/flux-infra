@@ -68,3 +68,22 @@ spec:
           value: "1"
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
+    addons:
+      codeserver:
+        enabled: true
+      volumeMounts:
+        - name: config
+          mountPath: /config
+      ingress:
+        enabled: true
+        annotations:
+          hajimari.io/enable: "false"
+        hosts:
+          - host: codeserver-esphome.sparks.codes
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
+              - codeserver-esphome.sparks.codes
