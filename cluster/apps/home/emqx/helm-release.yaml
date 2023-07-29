@@ -41,6 +41,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Emqx Dashboard"
           hajimari.io/icon: "home-automation"
+          hajimari.io/info: MQTT Broker
         path: /
         pathType: Prefix
         hosts:

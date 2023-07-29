@@ -46,6 +46,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-external"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Home Assistant"
+          hajimari.io/info: Home management system
           hajimari.io/icon: "home-assistant"
           # authentik.sparks.codes/enabled: "true"
         hosts:

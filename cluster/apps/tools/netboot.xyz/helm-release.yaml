@@ -57,6 +57,7 @@ spec:
           kubernetes.io/ingress.class: nginx-internal
           hajimari.io/enable: "true"
           hajimari.io/appName: "Netboot.xyz"
+          hajimari.io/info: "Network boot system"
           hajimari.io/icon: "refresh-auto"
         hosts:
           - host: netboot.sparks.codes

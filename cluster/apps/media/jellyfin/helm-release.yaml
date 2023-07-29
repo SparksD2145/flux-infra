@@ -28,6 +28,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-external"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Jellyfin"
+          hajimari.io/info: "Media library"
           hajimari.io/icon: "play-network"
         hosts:
           - host: media.sparks.codes

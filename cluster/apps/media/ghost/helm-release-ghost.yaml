@@ -41,6 +41,7 @@ spec:
           nginx.ingress.kubernetes.io/proxy-body-size: 2G
           hajimari.io/enable: "true"
           hajimari.io/appName: "Journal (Ghost)"
+          hajimari.io/info: "Blogging software"
           hajimari.io/icon: "image-multiple"
         hosts:
           - host: journal.imake.software

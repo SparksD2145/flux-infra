@@ -34,12 +34,12 @@ resource "opnsense_unbound_host_alias" "svc-codeserver-home-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-crm-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-monica-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
   description = "Monica personal CRM"
-  hostname    = "crm"
+  hostname    = "monica"
   domain      = "sparks.codes"
 }
 

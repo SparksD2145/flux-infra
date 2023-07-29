@@ -79,6 +79,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-external"
           hajimari.io/enable: "true"
           hajimari.io/appname: "links"
+          hajimari.io/info: "Personal Links"
           hajimari.io/icon: "link"
         hosts:
           - host: imake.software

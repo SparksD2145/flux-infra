@@ -42,6 +42,7 @@ spec:
       annotations:
         hajimari.io/enable: "true"
         hajimari.io/appName: "InfluxDB"
+        hajimari.io/info: "Time-series Database"
         hajimari.io/icon: "database-clock"
       extraTls:
         - secretName: acme-crt-secret-sparks-codes

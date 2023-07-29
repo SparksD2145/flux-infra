@@ -44,6 +44,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Zigbee2MQTT"
+          hajimari.io/info: "Zigbee device dashboard"
           hajimari.io/icon: "zigbee"
         hosts:
           - host: zigbee2mqtt.sparks.codes

@@ -35,6 +35,7 @@ spec:
           kubernetes.io/ingress.class: nginx-external
           hajimari.io/enable: "true"
           hajimari.io/appName: "Notify"
+          hajimari.io/info: "Notification system"
           hajimari.io/icon: "bell-ring"
         hosts:
           - host: notify.sparks.codes

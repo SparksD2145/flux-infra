@@ -36,6 +36,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-internal"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Inventory"
+          hajimari.io/info: "Inventory management system"
           hajimari.io/icon: "devices"
         hosts:
           - host: inventory.sparks.codes

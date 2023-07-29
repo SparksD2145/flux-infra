@@ -51,6 +51,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-internal"
           hajimari.io/enable: "true"
           hajimari.io/appName: "ESPHome"
+          hajimari.io/info: ESPHome Device Dashboard
           hajimari.io/icon: "simple-icons:esphome"
           # authentik.sparks.codes/enabled: "true"
         hosts:

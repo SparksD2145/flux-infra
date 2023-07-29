@@ -34,6 +34,7 @@ spec:
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
           hajimari.io/enable: "true"
           hajimari.io/appName: "Books"
+          hajimari.io/info: "Book storage and E-reader"
           hajimari.io/icon: "book"
         hosts:
           - host: "books.sparks.codes"

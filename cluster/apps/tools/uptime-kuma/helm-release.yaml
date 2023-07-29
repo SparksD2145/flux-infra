@@ -46,6 +46,7 @@ spec:
             }
           hajimari.io/enable: "true"
           hajimari.io/appName: "Uptime"
+          hajimari.io/info: "System uptime monitoring"
           hajimari.io/icon: "update"
         hosts:
           - host: uptime.sparks.codes

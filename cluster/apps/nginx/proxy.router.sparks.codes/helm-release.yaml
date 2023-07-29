@@ -46,6 +46,7 @@ spec:
         ingress.kubernetes.io/force-ssl-redirect: "true"
         hajimari.io/enable: "true"
         hajimari.io/appName: "Router"
+        hajimari.io/info: "Opnsense router dashboard"
         hajimari.io/icon: "router-network"
       hostname: "router.sparks.codes"
       extraTls:

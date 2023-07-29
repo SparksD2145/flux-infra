@@ -35,6 +35,7 @@ spec:
           kubernetes.io/ingress.class: nginx-internal
           hajimari.io/enable: "true"
           hajimari.io/appName: "Time Tracking"
+          hajimari.io/info: "Timesheet software"
           hajimari.io/icon: "briefcase-clock-outline"
           authentik.sparks.codes/enabled: "true"
         hosts:

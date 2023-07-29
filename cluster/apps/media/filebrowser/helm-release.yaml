@@ -33,6 +33,7 @@ spec:
           kubernetes.io/ingress.class: "nginx-external"
           hajimari.io/enable: "true"
           hajimari.io/appName: "File Browser"
+          hajimari.io/info: "Shared file storage"
           hajimari.io/icon: "file-download"
           nginx.ingress.kubernetes.io/client-body-buffer-size: "10g"
           nginx.ingress.kubernetes.io/proxy-body-size: "10g"

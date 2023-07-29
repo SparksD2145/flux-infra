@@ -111,6 +111,7 @@ spec:
       annotations:
         hajimari.io/enable: "true"
         hajimari.io/appName: "Pihole"
+        hajimari.io/info: "Adblock system"
         hajimari.io/icon: "card-off"
       hosts:
         - adblock.sparks.codes
