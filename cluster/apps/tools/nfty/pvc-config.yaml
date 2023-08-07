@@ -10,7 +10,7 @@ spec:
     storage: 1Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/local/notify.sparks.codes/config
+    path: /opt/notify.sparks.codes/config
   nodeAffinity:
     required:
       nodeSelectorTerms:

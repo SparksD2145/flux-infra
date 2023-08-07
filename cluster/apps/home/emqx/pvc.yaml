@@ -10,7 +10,7 @@ spec:
     storage: 1Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/local/emqx.sparks.codes
+    path: /opt/emqx.sparks.codes
   nodeAffinity:
     required:
       nodeSelectorTerms:
