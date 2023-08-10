@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources: []
-  #- games
-  #- gitlab
-  #- home
-  #- kube-system
-  #- media
-  #- networking
-  #- nginx
-  ##- system-upgrade
-  #- tools
+resources:
+  - games
+  - gitlab
+  - home
+  - kube-system
+  - media
+  - networking
+  - nginx
+  #- system-upgrade
+  - tools
