@@ -42,15 +42,14 @@ all:
 
     linux_servers:
       hosts:
-        whiskey.sparks.codes:
         tango.sparks.codes:
-        foxtrot.sparks.codes:
         omega.sparks.codes:
         lambda.sparks.codes:
         rpi4-poe-1.sparks.codes:
         rpi4-poe-2.sparks.codes:
         sierra.sparks.codes:
         romeo.sparks.codes:
+        xray.sparks.codes:
         beta.sparks.codes:
 
     # -------------------------------------------
@@ -105,5 +104,4 @@ all:
     storage:
       hosts:
         omega.sparks.codes:
-        whiskey.sparks.codes:
         tango.sparks.codes:

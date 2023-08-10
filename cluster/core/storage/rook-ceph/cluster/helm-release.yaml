@@ -58,6 +58,15 @@ spec:
           metadataDevice:
           osdsPerDevice: "1"
         nodes:
+          - name: sierra
+            devices:
+              - name: /dev/disk/by-id/ata-ST2000VN004-2E4164_Z5278FMJ
+          - name: romeo
+            devices:
+              - name: /dev/disk/by-id/ata-ST2000VN004-2E4164_Z5278FQG
+          - name: xray
+            devices:
+              - name: /dev/disk/by-id/ata-ST2000DM006-2DM164_Z4ZBHPQB
           # - name: foxtrot
           #   devices:
           #     - name: /dev/disk/by-id/scsi-3500000e01f06b880
@@ -68,22 +77,14 @@ spec:
           # - name: lambda
           #   devices:
           #     - name: sdb
-          - name: whiskey
-            devices:
-              - name: /dev/disk/by-id/scsi-35000c500b28f2de8
-              - name: /dev/disk/by-id/scsi-35000c500b1bf1be2
-              - name: /dev/disk/by-id/scsi-35000c500b4e03ac2
-              - name: /dev/disk/by-id/scsi-35000c500db4276d7
-              - name: /dev/disk/by-id/scsi-35000c500b1a1d44d
-              - name: /dev/disk/by-id/scsi-35000c500b1a31fd9
-          - name: omega
-            devices:
-              - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
-          - name: tango
-            devices:
-              - name: /dev/disk/by-id/scsi-35000c500506f96e1
-              - name: /dev/disk/by-id/scsi-35000c5004f8b248c
-              - name: /dev/disk/by-id/scsi-35000c5004e5c29e4
+          # - name: omega
+          #   devices:
+          #     - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
+          # - name: tango
+          #   devices:
+          #     - name: /dev/disk/by-id/scsi-35000c500506f96e1
+          #     - name: /dev/disk/by-id/scsi-35000c5004f8b248c
+          #     - name: /dev/disk/by-id/scsi-35000c5004e5c29e4
 
     cephBlockPools:
       - name: ceph-blockpool
