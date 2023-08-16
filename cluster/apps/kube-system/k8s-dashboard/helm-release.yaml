@@ -16,6 +16,12 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    cert-manager:
+      enabled: false
+    nginx:
+      enabled: false
+    metrics-server:
+      enabled: false
     ingress:
       enabled: true
       className: nginx-internal
