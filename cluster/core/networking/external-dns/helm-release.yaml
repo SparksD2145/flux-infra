@@ -29,6 +29,7 @@ spec:
       - ExternalName
     domainFilters:
       - imake.software
+      - iwrite.software
       - sparks.codes
       - sprk.sh
     txtPrefix: sparks-txt-
