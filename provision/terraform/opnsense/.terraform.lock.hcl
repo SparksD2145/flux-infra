@@ -19,6 +19,21 @@ provider "registry.terraform.io/browningluke/opnsense" {
     "h1:mtn2qrJi2yXjuMZouv/M/zJ4uQZL2e3czHJ0qoYhlL0=",
     "h1:xhitTZqoG6aLYGjFTpODrL87ETVQUR+x1PgDlv5mRlw=",
     "h1:zUmj1gfigz/xy0PuZRNCZFTXHbbzijGr2UfZwrn3Ats=",
+    "zh:0a3a18838134de1b60d3ae3de9c41857caa9d6c2f4e5af20e19f7864be3c0adc",
+    "zh:1040b0943e0ba9e1a5f4ebd197730a10abc280fddc10dbfe99be3d2c20055815",
+    "zh:2e87bcff89c11175be801cbbf332a8e5d2c44c389cf3e6da145bb6e5bf333b67",
+    "zh:45a671423c1269d9a396162fa685244d6eb6ca705e651a2714c21e28dedf476c",
+    "zh:4fb4a37121f7a572cf8157239aef00d5f9dc732ba6e7d6f6ccc2726cd6dc0995",
+    "zh:50c6832d7e421e02715313b4855f04aadc10ce23a5ef25ad707184a3d372ce81",
+    "zh:52c9cd925aaaac54d4af12503e9849883ef4f826d728c9651fcec75aa9ff2f10",
+    "zh:5428aea6628cbeb8c7de9c53dfe28e865fdabb72f6752044dce1a11ac94d7d66",
+    "zh:5701a83cff0d9dbe442641b13b7efe7d87ce66e25a6e2d9ce1d873d838cd6136",
+    "zh:5974c92811f847819094fc2b0fb75e63fe9c403f1475732c9e882c29a325c917",
+    "zh:6f0f8d4f335206afb4c5c71122907c59f2445ebac446109988f96ab1ef9b5146",
+    "zh:7b9be74109204f0a86547caa1d2dc876efab01969e1e4371c60c17aa36c78b64",
+    "zh:86185cda6a10677e3294a539aa04db87423001372f9dee2ee5b65c16e19ea5fe",
+    "zh:add2563b1eebc299af32d9b1675c7c3222265f5d517d8fcdf46651c9dce3dc34",
+    "zh:b97ba7d0c0c2490e1719b4a6d950d82086377273506ed43e62194e67dfdbebbf",
   ]
 }
 
