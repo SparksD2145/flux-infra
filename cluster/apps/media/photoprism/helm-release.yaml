@@ -77,7 +77,7 @@ spec:
         retain: true
 
       import:
-        enabled: true
+        enabled: false
         mountPath: /photoprism/import
         accessMode: ReadWriteOnce
         existingClaim: local-photoprism-imports
