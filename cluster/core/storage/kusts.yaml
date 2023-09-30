@@ -12,7 +12,6 @@ spec:
     name: flux-system
   path: ./cluster/core/storage/rook-ceph/operator
   prune: true
-  validation: client
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -30,7 +29,6 @@ spec:
     name: flux-system
   path: ./cluster/core/storage/rook-ceph/cluster
   prune: true
-  validation: client
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 # kind: Kustomization
