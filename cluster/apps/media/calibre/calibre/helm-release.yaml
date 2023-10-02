@@ -9,24 +9,28 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: linuxserver/calibre
-      tag: version-v5.21.0
-    env:
-      TZ: America/Chicago
-      GUAC_USER: calibre
-      GUAC_PASS: "${MEDIA_CALIBRE_GUAC_PASSWORD}"
-      PUID: "1001"
-      PGID: "1001"
-      UMASK_SET: "022"
-      CLI_ARGS:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: linuxserver/calibre
+              tag: version-v5.21.0
+            env:
+              TZ: America/Chicago
+              GUAC_USER: calibre
+              GUAC_PASS: "${MEDIA_CALIBRE_GUAC_PASSWORD}"
+              PUID: "1001"
+              PGID: "1001"
+              UMASK_SET: "022"
+              CLI_ARGS:
     service:
       main:
         ports:
@@ -44,8 +48,8 @@ spec:
     ingress:
       main:
         enabled: true
+        className: "nginx-internal"
         annotations:
-          kubernetes.io/ingress.class: "nginx-internal"
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
           hajimari.io/enable: "false"
         hosts:
