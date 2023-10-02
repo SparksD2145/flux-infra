@@ -9,18 +9,22 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: linuxserver/calibre-web
-      tag: version-0.6.12
-    env:
-      TZ: America/Chicago
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: linuxserver/calibre-web
+              tag: version-0.6.12
+            env:
+              TZ: America/Chicago
     service:
       main:
         ports:
@@ -29,8 +33,8 @@ spec:
     ingress:
       main:
         enabled: true
+        className: "nginx-internal"
         annotations:
-          kubernetes.io/ingress.class: "nginx-internal"
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
           hajimari.io/enable: "true"
           hajimari.io/appName: "Books"
@@ -48,7 +52,11 @@ spec:
     persistence:
       config:
         enabled: true
+        globalMounts:
+          - path: /config
         existingClaim: local-calibre-config
       books:
         enabled: true
+        globalMounts:
+          - path: /books
         existingClaim: local-calibre-books

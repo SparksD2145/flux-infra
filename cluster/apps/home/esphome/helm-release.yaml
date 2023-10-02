@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
@@ -19,24 +19,36 @@ spec:
     - name: emqx
       namespace: home
   values:
-    node-selector: rpi4-poe-1
-    tolerations:
-      - key: "iot-control"
-        operator: "Equal"
-        value: "active"
-        effect: "NoSchedule"
-    image:
-      repository: ghcr.io/esphome/esphome
-      tag: "2023.9.2"
-    env:
-      TZ: "America/Chicago"
-      ESPHOME_DASHBOARD_USE_PING: "true"
-      ESPHOME_DASHBOARD_RELATIVE_URL: "/"
+    defaultPodOptions:
+      nodeSelector: rpi4-poe-1
+      tolerations:
+        - key: "iot-control"
+          operator: "Equal"
+          value: "active"
+          effect: "NoSchedule"
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/esphome/esphome
+              tag: "2023.9.2"
+            env:
+              TZ: "America/Chicago"
+              ESPHOME_DASHBOARD_USE_PING: "true"
+              ESPHOME_DASHBOARD_RELATIVE_URL: "/"
     persistence:
       config:
         enabled: true
         existingClaim: local-esphome-pvc
-        mountPath: /config
+        globalMounts:
+          - path: /config
         accessMode: "ReadWriteOnce"
         size: 5Gi
     service:
@@ -47,8 +59,8 @@ spec:
     ingress:
       main:
         enabled: true
+        className: "nginx-internal"
         annotations:
-          kubernetes.io/ingress.class: "nginx-internal"
           hajimari.io/enable: "true"
           hajimari.io/appName: "ESPHome"
           hajimari.io/info: ESPHome Device Dashboard
@@ -63,9 +75,3 @@ spec:
           - secretName: acme-crt-secret-sparks-codes
             hosts:
               - esphome.sparks.codes
-    dnsConfig:
-      options:
-        - name: ndots
-          value: "1"
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet

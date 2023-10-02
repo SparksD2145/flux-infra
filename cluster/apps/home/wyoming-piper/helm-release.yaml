@@ -9,27 +9,37 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
-    image:
-      repository: rhasspy/wyoming-piper
-      tag: latest
-    args:
-      - --voice
-      - en-us-ryan-medium
-    env:
-      TZ: "America/Chicago"
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: rhasspy/wyoming-piper
+              tag: latest
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+            args:
+              - --voice
+              - en-us-ryan-medium
+            env:
+              TZ: "America/Chicago"
     persistence:
       config:
         enabled: false
       data:
         enabled: true
-        mountPath: /data
+        globalMounts:
+          - path: /data
         size: 15Gi
         accessMode: "ReadWriteMany"
     service:
@@ -45,8 +55,3 @@ spec:
             primary: true
             port: 10200
             protocol: TCP
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false

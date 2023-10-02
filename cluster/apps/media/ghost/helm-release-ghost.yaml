@@ -9,25 +9,29 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
-    image:
-      repository: ghost
-      tag: 5.66.0
-    env:
-      TZ: "America/Chicago"
-      url: "http://journal.imake.software"
-      database__client: mysql
-      database__connection__host: ghost-mariadb.media.svc.cluster.local
-      database__connection__user: ${MEDIA_GHOST_DB_USER}
-      database__connection__password: ${MEDIA_GHOST_DB_PASSWORD}
-      database__connection__database: ${MEDIA_GHOST_DB_DB}
-      NODE_ENV: production
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghost
+              tag: 5.66.0
+            env:
+              TZ: "America/Chicago"
+              url: "http://journal.imake.software"
+              database__client: mysql
+              database__connection__host: ghost-mariadb.media.svc.cluster.local
+              database__connection__user: ${MEDIA_GHOST_DB_USER}
+              database__connection__password: ${MEDIA_GHOST_DB_PASSWORD}
+              database__connection__database: ${MEDIA_GHOST_DB_DB}
+              NODE_ENV: production
     service:
       main:
         ports:
@@ -36,8 +40,8 @@ spec:
     ingress:
       main:
         enabled: true
+        className: nginx-external
         annotations:
-          kubernetes.io/ingress.class: nginx-external
           nginx.ingress.kubernetes.io/proxy-body-size: 2G
           hajimari.io/enable: "true"
           hajimari.io/appName: "Journal (Ghost)"
@@ -55,5 +59,6 @@ spec:
     persistence:
       content:
         enabled: true
-        mountPath: /var/lib/ghost/content
+        globalMounts:
+          - path: /var/lib/ghost/content
         existingClaim: ghost-content-pvc
