@@ -27,7 +27,7 @@ spec:
         effect: "NoSchedule"
     image:
       repository: ghcr.io/esphome/esphome
-      tag: "2023.9.1"
+      tag: "2023.9.2"
     env:
       TZ: "America/Chicago"
       ESPHOME_DASHBOARD_USE_PING: "true"
