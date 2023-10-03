@@ -41,6 +41,13 @@ spec:
           - path: /config
         accessMode: "ReadWriteOnce"
         size: 30Gi
+      media:
+        enabled: true
+        existingClaim: home-assistant-pvc-media
+        globalMounts:
+          - path: /media
+        accessMode: "ReadWriteOnce"
+        size: 32Gi
     service:
       main:
         ports:
