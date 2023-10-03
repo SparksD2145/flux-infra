@@ -41,14 +41,11 @@ spec:
           hajimari.io/appName: "Notify"
           hajimari.io/info: "Notification system"
           hajimari.io/icon: "bell-ring"
-          hajimari.io/targetBlank: "true"
         hosts:
           - host: notify.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
-                service:
-                  name: main
         tls:
           - hosts:
               - notify.sparks.codes
