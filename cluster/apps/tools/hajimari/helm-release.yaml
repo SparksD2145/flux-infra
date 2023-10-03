@@ -94,16 +94,24 @@ spec:
               url: "https://github.com/sparksd2145/flux-infra"
             - name: christianmetal3/home-infra
               url: https://github.com/christianmetal3/home-infra
-            - name: k8s-at-home Charts
-              url: "https://github.com/k8s-at-home/charts/tree/master/charts"
+        - group: Media
+          bookmarks:
+            - name: YouTube
+              url: "https://youtube.com/"
+            - name: Google Drive
+              url: "https://drive.google.com"
+            - name: Google Photos
+              url: "https://photos.google.com"
+            - name: YouTube Music
+              url: "https://music.youtube.com"
+            - name: My Soundcloud
+              url: "https://soundcloud.com/SparksD2145"
         - group: Services
           bookmarks:
             - name: Cloudflare
               url: "https://dash.cloudflare.com"
             - name: Namecheap
               url: "https://namecheap.com"
-            - name: Drive
-              url: "https://drive.google.com"
         - group: Finance
           bookmarks:
             - name: Mint
@@ -119,19 +127,15 @@ spec:
         - group: Shopping
           bookmarks:
             - name: eBay
-              url: "https://ebay.com/"
-            - name: Craigslist
-              url: "https://sanantonio.craigslist.com/"
+              url: "https://ebay.com"
+            - name: Craigslist (San Antonio)
+              url: "https://sanantonio.craigslist.org"
+            - name: Craigslist (Austin)
+              url: "https://sanantonio.craigslist.org"
+            - name: Craigslist (Dallas)
+              url: "https://dallas.craigslist.org"
             - name: FB Marketplace
               url: "https://facebook.com/marketplace"
-        - group: Media
-          bookmarks:
-            - name: YouTube
-              url: "https://youtube.com/"
-            - name: YouTube Music
-              url: "https://music.youtube.com/"
-            - name: My Soundcloud
-              url: "https://soundcloud.com/SparksD2145"
 
     ingress:
       main:
