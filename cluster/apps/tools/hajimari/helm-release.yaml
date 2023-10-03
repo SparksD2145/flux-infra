@@ -34,7 +34,7 @@ spec:
       name: "Sparks"
       title: "Dashboard"
       showGreeting: true
-      showAppGroups: true
+      showAppGroups: false
       showAppUrls: true
       showAppInfo: true
       showAppStatus: true
