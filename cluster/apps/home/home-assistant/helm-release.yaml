@@ -17,7 +17,8 @@ spec:
       interval: 15m
   values:
     defaultPodOptions:
-      nodeSelector: romeo
+      nodeSelector:
+        kubernetes.io/hostname: romeo
       dnsConfig:
         options:
           - name: ndots
@@ -41,6 +42,13 @@ spec:
           - path: /config
         accessMode: "ReadWriteOnce"
         size: 30Gi
+      media:
+        enabled: true
+        existingClaim: home-assistant-pvc-media
+        globalMounts:
+          - path: /media
+        accessMode: "ReadWriteOnce"
+        size: 32Gi
     service:
       main:
         ports:
