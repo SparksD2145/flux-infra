@@ -43,11 +43,15 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Whiskey IDRAC Console"
           hajimari.io/icon: "console-network"
+          hajimari.io/group: 'Tools'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: idrac-whiskey-console.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - idrac-whiskey-console.sparks.codes

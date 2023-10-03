@@ -43,11 +43,15 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Foxtrot IDRAC Console"
           hajimari.io/icon: "console-network"
+          hajimari.io/group: 'Tools'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: idrac-foxtrot-console.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - idrac-foxtrot-console.sparks.codes

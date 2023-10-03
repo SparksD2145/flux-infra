@@ -58,11 +58,15 @@ spec:
           hajimari.io/appName: "Uptime"
           hajimari.io/info: "System uptime monitoring"
           hajimari.io/icon: "update"
+          hajimari.io/group: 'Tools'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: uptime.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - uptime.sparks.codes

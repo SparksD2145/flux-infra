@@ -55,12 +55,16 @@ spec:
           hajimari.io/appName: "Home Assistant"
           hajimari.io/info: Home management system
           hajimari.io/icon: "home-assistant"
+          hajimari.io/group: 'Home Automation'
+          hajimari.io/targetBlank: "true"
           # authentik.sparks.codes/enabled: "true"
         hosts:
           - host: home.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - secretName: acme-crt-secret-sparks-codes
             hosts:

@@ -48,11 +48,15 @@ spec:
           hajimari.io/appName: "Inventory"
           hajimari.io/info: "Inventory management system"
           hajimari.io/icon: "devices"
+          hajimari.io/group: 'Tools'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: inventory.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - inventory.sparks.codes

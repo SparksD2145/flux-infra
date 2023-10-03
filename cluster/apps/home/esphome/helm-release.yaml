@@ -65,12 +65,16 @@ spec:
           hajimari.io/appName: "ESPHome"
           hajimari.io/info: ESPHome Device Dashboard
           hajimari.io/icon: "simple-icons:esphome"
+          hajimari.io/group: 'Home Automation'
+          hajimari.io/targetBlank: "true"
           # authentik.sparks.codes/enabled: "true"
         hosts:
           - host: esphome.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - secretName: acme-crt-secret-sparks-codes
             hosts:

@@ -35,6 +35,7 @@ spec:
         primary: false
         type: LoadBalancer
         loadBalancerIP: 10.10.201.9
+        controller: main
         annotations:
           metallb.universe.tf/allow-shared-ip: pxe-svc
         ports:
@@ -47,6 +48,7 @@ spec:
       tftp:
         enabled: true
         primary: false
+        controller: main
         type: NodePort
         ports:
           tftp:
@@ -69,6 +71,8 @@ spec:
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - netboot.sparks.codes

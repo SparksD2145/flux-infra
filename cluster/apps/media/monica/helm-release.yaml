@@ -28,6 +28,8 @@ spec:
           hajimari.io/appName: "Monica"
           hajimari.io/info: "Personal relationship manager"
           hajimari.io/icon: "account-group"
+          hajimari.io/group: 'Media'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: monica.sparks.codes
             paths:

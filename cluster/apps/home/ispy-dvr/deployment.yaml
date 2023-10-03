@@ -169,6 +169,8 @@ metadata:
     hajimari.io/info: Camera system
     hajimari.io/icon: "video"
     hajimari.io/url: "http://nvr-actual.sparks.codes"
+    hajimari.io/group: 'Home Automation'
+    hajimari.io/targetBlank: "true"
 spec:
   rules:
     - host: nvr.sparks.codes

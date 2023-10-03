@@ -41,11 +41,15 @@ spec:
           hajimari.io/appName: "Jellyfin"
           hajimari.io/info: "Media library"
           hajimari.io/icon: "play-network"
+          hajimari.io/group: 'Media'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: media.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - media.sparks.codes
@@ -53,11 +57,11 @@ spec:
     persistence:
       config:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         existingClaim: local-jellyfin-config
       media:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         existingClaim: local-jellyfin-media
         retain: true
     service:

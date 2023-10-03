@@ -53,11 +53,15 @@ spec:
           hajimari.io/appName: "Zigbee2MQTT"
           hajimari.io/info: "Zigbee device dashboard"
           hajimari.io/icon: "zigbee"
+          hajimari.io/group: 'Home Automation'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: zigbee2mqtt.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - zigbee2mqtt.sparks.codes

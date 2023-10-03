@@ -61,12 +61,15 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: cloud-search
           hajimari.io/info: Media Search
-          hajimari.io/group: media
+          hajimari.io/group: "Media"
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: &host "prowlarr.sparks.codes"
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
         tls:
           - secretName: acme-crt-secret-sparks-codes
             hosts:

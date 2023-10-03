@@ -39,6 +39,8 @@ spec:
           hajimari.io/appName: "File Browser"
           hajimari.io/info: "Shared file storage"
           hajimari.io/icon: "file-download"
+          hajimari.io/group: 'Media'
+          hajimari.io/targetBlank: "true"
           nginx.ingress.kubernetes.io/client-body-buffer-size: "10g"
           nginx.ingress.kubernetes.io/proxy-body-size: "10g"
         hosts:
@@ -46,6 +48,8 @@ spec:
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - data.sparks.codes

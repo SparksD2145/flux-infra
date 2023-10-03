@@ -53,12 +53,16 @@ spec:
           hajimari.io/appName: "Photos"
           hajimari.io/info: "Photo library"
           hajimari.io/icon: "image-multiple"
+          hajimari.io/group: 'Media'
+          hajimari.io/targetBlank: "true"
           # authentik.sparks.codes/enabled: "true"
         hosts:
           - host: photos.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - photos.sparks.codes

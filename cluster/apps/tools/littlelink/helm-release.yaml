@@ -86,11 +86,15 @@ spec:
           hajimari.io/appname: "links"
           hajimari.io/info: "Personal Links"
           hajimari.io/icon: "link"
+          hajimari.io/group: 'Tools'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: imake.software
             paths:
               - path: "/"
                 pathtype: "prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - imake.software
@@ -107,6 +111,8 @@ spec:
             paths:
               - path: "/"
                 pathtype: "prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - iwrite.software
@@ -123,6 +129,8 @@ spec:
             paths:
               - path: "/"
                 pathtype: "prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - sparks.codes

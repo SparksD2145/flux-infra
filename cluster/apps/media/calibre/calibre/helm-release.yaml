@@ -36,15 +36,15 @@ spec:
         ports:
           http:
             port: 8080
-      webserver:
-        enabled: false
-        type: ClusterIP
-        ports:
-          webserver:
-            enabled: true
-            port: 8081
-            protocol: TCP
-            targetPort: 8081
+      # webserver:
+      #   enabled: false
+      #   type: ClusterIP
+      #   ports:
+      #     webserver:
+      #       enabled: true
+      #       port: 8081
+      #       protocol: TCP
+      #       targetPort: 8081
     ingress:
       main:
         enabled: true
@@ -52,11 +52,15 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
           hajimari.io/enable: "false"
+          hajimari.io/group: 'Media'
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: "books-backend.sparks.codes"
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
         tls:
           - hosts:
               - "books-backend.sparks.codes"
