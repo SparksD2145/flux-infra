@@ -40,7 +40,6 @@ spec:
           hajimari.io/appName: "Books"
           hajimari.io/info: "Book storage and E-reader"
           hajimari.io/icon: "book"
-          hajimari.io/group: 'Media'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: "books.sparks.codes"

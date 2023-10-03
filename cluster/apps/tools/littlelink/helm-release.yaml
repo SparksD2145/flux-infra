@@ -86,7 +86,6 @@ spec:
           hajimari.io/appname: "links"
           hajimari.io/info: "Personal Links"
           hajimari.io/icon: "link"
-          hajimari.io/group: 'Tools'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: imake.software

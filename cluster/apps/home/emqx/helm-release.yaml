@@ -40,7 +40,6 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Emqx Dashboard"
-          hajimari.io/group: 'Home Automation'
           hajimari.io/icon: "home-automation"
           hajimari.io/info: MQTT Broker
           hajimari.io/targetBlank: "true"

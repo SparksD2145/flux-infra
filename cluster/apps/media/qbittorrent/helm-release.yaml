@@ -40,7 +40,6 @@ spec:
           hajimari.io/appName: "qBittorrent"
           hajimari.io/info: "Bittorrent client"
           hajimari.io/icon: "file-arrow-up-down"
-          hajimari.io/group: 'Media'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: torrents.sparks.codes

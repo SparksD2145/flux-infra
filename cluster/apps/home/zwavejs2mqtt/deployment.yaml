@@ -113,7 +113,6 @@ metadata:
     hajimari.io/appName: "ZwaveJS2MQTT"
     hajimari.io/info: "Z-Wave device dashboard"
     hajimari.io/icon: "z-wave"
-    hajimari.io/group: 'Home Automation'
     hajimari.io/targetBlank: "true"
 spec:
   rules:

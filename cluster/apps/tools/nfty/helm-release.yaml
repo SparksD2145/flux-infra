@@ -41,7 +41,6 @@ spec:
           hajimari.io/appName: "Notify"
           hajimari.io/info: "Notification system"
           hajimari.io/icon: "bell-ring"
-          hajimari.io/group: 'Tools'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: notify.sparks.codes

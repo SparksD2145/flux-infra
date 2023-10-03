@@ -27,7 +27,6 @@ spec:
           hajimari.io/appName: "Rook"
           hajimari.io/info: "Ceph distributed storage"
           hajimari.io/icon: "database"
-          hajimari.io/group: 'Tools'
           hajimari.io/targetBlank: "true"
         host:
           name: rook.sparks.codes

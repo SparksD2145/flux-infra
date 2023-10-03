@@ -87,7 +87,6 @@ spec:
           hajimari.io/appName: "Sonarr"
           hajimari.io/icon: mdi:television-classic
           hajimari.io/info: Show discovery agent
-          hajimari.io/group: 'Media'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: &host "sonarr.sparks.codes"

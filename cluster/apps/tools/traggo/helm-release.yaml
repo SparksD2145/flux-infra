@@ -42,7 +42,6 @@ spec:
           hajimari.io/info: "Timesheet software"
           hajimari.io/icon: "briefcase-clock-outline"
           authentik.sparks.codes/enabled: "true"
-          hajimari.io/group: 'Tools'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: timesheets.sparks.codes

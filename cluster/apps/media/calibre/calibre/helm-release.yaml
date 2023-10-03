@@ -52,7 +52,6 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
           hajimari.io/enable: "false"
-          hajimari.io/group: 'Media'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: "books-backend.sparks.codes"

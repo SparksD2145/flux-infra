@@ -43,7 +43,6 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Whiskey IDRAC Console"
           hajimari.io/icon: "console-network"
-          hajimari.io/group: 'Tools'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: idrac-whiskey-console.sparks.codes

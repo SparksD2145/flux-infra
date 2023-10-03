@@ -41,7 +41,6 @@ spec:
           hajimari.io/appName: "Jellyfin"
           hajimari.io/info: "Media library"
           hajimari.io/icon: "play-network"
-          hajimari.io/group: 'Media'
           hajimari.io/targetBlank: "true"
         hosts:
           - host: media.sparks.codes

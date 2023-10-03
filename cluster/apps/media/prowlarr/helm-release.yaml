@@ -61,7 +61,6 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: cloud-search
           hajimari.io/info: Media Search
-          hajimari.io/group: "Media"
           hajimari.io/targetBlank: "true"
         hosts:
           - host: &host "prowlarr.sparks.codes"
