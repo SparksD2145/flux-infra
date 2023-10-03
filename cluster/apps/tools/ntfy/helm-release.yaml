@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nfty-push-notifications
+  name: ntfy-push-notifications
   namespace: tools
 spec:
   interval: 15m
@@ -46,22 +46,24 @@ spec:
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  name: main
         tls:
           - hosts:
               - notify.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      cache:
-        enabled: true
-        type: persistentVolumeClaim
-        existingClaim: local-ntfy-cache-pvc
-        accessMode: ReadWriteOnce
-        globalMounts:
-          - path: /etc/ntfy
       config:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: local-ntfy-config-pvc
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /etc/ntfy
+      cache:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: local-ntfy-cache-pvc
         accessMode: ReadWriteOnce
         globalMounts:
           - path: /var/cache/ntfy
