@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nfty-push-notifications
+  name: ntfy-push-notifications
   namespace: tools
 spec:
   interval: 15m
@@ -51,10 +51,6 @@ spec:
               - notify.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      cache:
-        enabled: true
-        existingClaim: local-ntfy-cache-pvc
-        accessMode: ReadWriteOnce
       config:
         enabled: true
         existingClaim: local-ntfy-config-pvc
