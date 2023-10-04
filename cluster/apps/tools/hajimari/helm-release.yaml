@@ -131,7 +131,7 @@ spec:
             - name: Craigslist (San Antonio)
               url: "https://sanantonio.craigslist.org"
             - name: Craigslist (Austin)
-              url: "https://sanantonio.craigslist.org"
+              url: "https://austin.craigslist.org"
             - name: Craigslist (Dallas)
               url: "https://dallas.craigslist.org"
             - name: FB Marketplace
