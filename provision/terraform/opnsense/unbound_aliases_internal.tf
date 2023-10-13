@@ -145,7 +145,7 @@ resource "opnsense_unbound_host_alias" "svc-netboot-sparks-codes" {
 resource "opnsense_unbound_host_alias" "svc-nvr-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
-  enabled     = false
+  enabled     = true
   description = "Network video recorder"
   hostname    = "nvr"
   domain      = "sparks.codes"
