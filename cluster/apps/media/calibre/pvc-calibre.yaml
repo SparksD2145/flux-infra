@@ -10,7 +10,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/books.sparks.codes/config
+    path: /mnt/local/books.sparks.codes/config
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - omega
+                - romeo
 
 ---
 apiVersion: v1
@@ -45,7 +45,7 @@ spec:
   accessModes:
     - ReadWriteMany
   local:
-    path: /mnt/static/books.sparks.codes/books
+    path: /mnt/local/books.sparks.codes/books
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -53,7 +53,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - omega
+                - romeo
 
 ---
 apiVersion: v1
