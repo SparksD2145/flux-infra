@@ -77,8 +77,6 @@ spec:
       usb:
         enabled: true
         type: hostPath
-        globalMounts:
-          - path: /dev/ttyUSB0
         hostPath: /dev/ttyUSB0
 
     config:
