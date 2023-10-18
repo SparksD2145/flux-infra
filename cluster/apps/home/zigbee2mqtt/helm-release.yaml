@@ -36,6 +36,8 @@ spec:
               tag: latest
             env:
               TZ: "America/Chicago"
+            securityContext:
+              privileged: true
     service:
       main:
         ports:
@@ -78,6 +80,12 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /dev/ttyUSB0
+
+        advancedMounts:
+          main:
+            main:
+              - path: /dev/ttyUSB0
+                readOnly: false
 
     config:
       # These will be applied ONLY on first run
