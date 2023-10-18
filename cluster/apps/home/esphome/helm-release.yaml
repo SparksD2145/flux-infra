@@ -20,7 +20,8 @@ spec:
       namespace: home
   values:
     defaultPodOptions:
-      nodeSelector: rpi4-poe-1
+      nodeSelector:
+        kubernetes.io/hostname: rpi4-poe-1
       tolerations:
         - key: "iot-control"
           operator: "Equal"
