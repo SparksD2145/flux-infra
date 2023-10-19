@@ -1,22 +1,22 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: external-gitlab-imake-software
+  name: external-gitlab-iwrite-software
   namespace: gitlab
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: gitlab.imake.software
+    external-dns.alpha.kubernetes.io/hostname: gitlab.iwrite.software
 spec:
   type: ExternalName
-  externalName: imake.software
+  externalName: iwrite.software
 
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: external-registry-imake-software
+  name: external-registry-iwrite-software
   namespace: gitlab
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: registry.imake.software
+    external-dns.alpha.kubernetes.io/hostname: registry.iwrite.software
 spec:
   type: ExternalName
-  externalName: imake.software
+  externalName: iwrite.software

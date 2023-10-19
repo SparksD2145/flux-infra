@@ -67,7 +67,7 @@ spec:
               url: http://alpha.sparks.codes
               icon: "desktop-classic"
             - name: Gitlab
-              url: https://gitlab.imake.software
+              url: https://gitlab.iwrite.software
               icon: "gitlab"
             - name: Whiskey iDRAC
               url: https://idrac-whiskey.sparks.codes

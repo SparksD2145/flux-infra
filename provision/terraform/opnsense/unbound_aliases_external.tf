@@ -7,22 +7,22 @@ resource "opnsense_unbound_host_alias" "svc-data-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-gitlab-imake-software" {
+resource "opnsense_unbound_host_alias" "svc-gitlab-iwrite-software" {
   override = opnsense_unbound_host_override.lb-external-services.id
 
   enabled     = true
   description = "Gitlab"
   hostname    = "gitlab"
-  domain      = "imake.software"
+  domain      = "iwrite.software"
 }
 
-resource "opnsense_unbound_host_alias" "svc-helm-imake-software" {
+resource "opnsense_unbound_host_alias" "svc-helm-iwrite-software" {
   override = opnsense_unbound_host_override.lb-external-services.id
 
   enabled     = true
   description = "Helm repository"
   hostname    = "helm"
-  domain      = "imake.software"
+  domain      = "iwrite.software"
 }
 
 resource "opnsense_unbound_host_alias" "svc-home-sparks-codes" {
@@ -52,13 +52,13 @@ resource "opnsense_unbound_host_alias" "svc-notify-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-registry-imake-software" {
+resource "opnsense_unbound_host_alias" "svc-registry-iwrite-software" {
   override = opnsense_unbound_host_override.lb-external-services.id
 
   enabled     = true
   description = "Gitlab Container Registry"
   hostname    = "registry"
-  domain      = "imake.software"
+  domain      = "iwrite.software"
 }
 
 resource "opnsense_unbound_host_alias" "svc-uptime-sparks-codes" {

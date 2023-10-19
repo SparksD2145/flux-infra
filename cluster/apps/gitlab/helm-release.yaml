@@ -28,19 +28,19 @@ spec:
                     values:
                       - amd64
       hosts:
-        domain: imake.software
+        domain: iwrite.software
       ingress:
         configureCertmanager: false
         class: nginx-external
         tls:
           enabled: true
-          secretName: acme-crt-secret-imake-software
+          secretName: acme-crt-secret-iwrite-software
       initialRootPassword:
         secret: gitlab-initial-root-password
         key: password
       time_zone: America/Chicago
       email:
-        from: "no-reply@gitlab.imake.software"
+        from: "no-reply@gitlab.iwrite.software"
         display_name: GitLab
         reply_to: ""
         subject_suffix: ""
