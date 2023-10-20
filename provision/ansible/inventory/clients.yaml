@@ -85,7 +85,7 @@ all:
     k3s_masters:
       hosts:
         romeo.sparks.codes:
-          ansible_host: 10.10.10.0
+          ansible_host: 10.10.10.1
         whiskey.sparks.codes:
           ansible_host: 10.10.1.1
         rpi4-poe-2.sparks.codes:
