@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: gitlab-imake-software
+  name: gitlab-iwrite-software
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://helm.imake.software
+  url: https://helm.iwrite.software
   timeout: 3m

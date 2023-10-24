@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx-helm-repo
-          image: registry.imake.software/sparks/helm-repo:1.0.5
+          image: registry.iwrite.software/sparks/helm-repo:1.0.5
           ports:
             - containerPort: 8080
           resources:
@@ -56,10 +56,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - helm.imake.software
-      secretName: acme-crt-secret-imake-software
+        - helm.iwrite.software
+      secretName: acme-crt-secret-iwrite-software
   rules:
-    - host: helm.imake.software
+    - host: helm.iwrite.software
       http:
         paths:
           - path: /
