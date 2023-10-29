@@ -22,17 +22,18 @@ spec:
       enabled: false
     metrics-server:
       enabled: false
-    ingress:
-      enabled: true
-      className: nginx-internal
-      annotations:
-        hajimari.io/enable: "true"
-        hajimari.io/appName: "K8s Dashboard"
-        hajimari.io/info: "Kubernetes system information"
-        hajimari.io/icon: "kubernetes"
-      hosts:
-        - k8s-dashboard.sparks.codes
-      tls:
-        - secretName: acme-crt-secret-sparks-codes
-          hosts:
-            - k8s-dashboard.sparks.codes
+    app:
+      ingress:
+        enabled: true
+        className: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "K8s Dashboard"
+          hajimari.io/info: "Kubernetes system information"
+          hajimari.io/icon: "kubernetes"
+        hosts:
+          - k8s-dashboard.sparks.codes
+        tls:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
+              - k8s-dashboard.sparks.codes
