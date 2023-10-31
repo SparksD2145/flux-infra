@@ -97,6 +97,15 @@ resource "opnsense_unbound_host_override" "lb-piper" {
   server   = "10.10.201.11"
 }
 
+resource "opnsense_unbound_host_override" "lb-mailserver" {
+  enabled     = true
+  description = "Mail Server"
+
+  hostname = "mail"
+  domain   = "sparks.codes"
+  server   = "10.10.201.12"
+}
+
 resource "opnsense_unbound_host_override" "lb-minecraft" {
   enabled     = true
   description = "Minecraft loadbalancer"

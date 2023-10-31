@@ -1,0 +1,107 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mailserver
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.0.3
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/docker-mailserver/docker-mailserver
+              tag: latest
+            env:
+              ENABLE_RSPAMD: 1
+              ENABLE_CLAMAV: 1
+              ENABLE_FAIL2BAN: 1
+              OVERRIDE_HOSTNAME: mail.sparks.codes
+              TZ: America/Chicago
+    defaultPodOptions:
+      securityContext:
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
+    service:
+      main:
+        enabled: true
+        primary: true
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.12
+        annotations:
+          metallb.universe.tf/allow-shared-ip: mail-svc
+        controller: main
+        ports:
+          http:
+            enabled: false
+          smtp:
+            enabled: true
+            primary: true
+            port: 25
+            targetPort: 25
+            protocol: TCP
+          secure-smtp1:
+            enabled: true
+            primary: false
+            port: 465
+            targetPort: 465
+            protocol: TCP
+          secure-stmp2:
+            enabled: true
+            primary: false
+            port: 587
+            targetPort: 587
+            protocol: TCP
+          secure-imap:
+            enabled: true
+            primary: false
+            port: 993
+            targetPort: 993
+            protocol: TCP
+    ingress:
+      main:
+        enabled: false
+    persistence:
+      mail-data:
+        enabled: true
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 2Gi
+        globalMounts:
+          - path: /var/mail
+        retain: false
+      mail-state:
+        enabled: true
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 2Gi
+        globalMounts:
+          - path: /var/mail-state
+        retain: false
+      mail-logs:
+        enabled: true
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 5Gi
+        globalMounts:
+          - path: /var/log/mail
+        retain: false
+      mail-config:
+        enabled: true
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 2Gi
+        globalMounts:
+          - path: /tmp/docker-mailserver
+        retain: false
