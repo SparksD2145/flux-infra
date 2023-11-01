@@ -31,7 +31,7 @@ spec:
           main:
             image:
               repository: homeassistant/home-assistant
-              tag: "2023.10"
+              tag: "2023.11"
             env:
               TZ: "America/Chicago"
     persistence:
