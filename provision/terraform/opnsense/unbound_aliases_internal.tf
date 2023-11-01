@@ -151,6 +151,15 @@ resource "opnsense_unbound_host_alias" "svc-nvr-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-passbolt-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Password manager"
+  hostname    = "passbolt"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-photos-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 

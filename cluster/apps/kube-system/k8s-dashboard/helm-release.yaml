@@ -25,12 +25,13 @@ spec:
     app:
       ingress:
         enabled: true
-        className: nginx-internal
+        # className: nginx-internal
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "K8s Dashboard"
           hajimari.io/info: "Kubernetes system information"
           hajimari.io/icon: "kubernetes"
+          kubernetes.io/ingress.class: "nginx-internal"
         hosts:
           - k8s-dashboard.sparks.codes
         tls:

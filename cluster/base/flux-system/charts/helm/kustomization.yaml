@@ -49,6 +49,7 @@ resources:
   - node-feature-discovery-charts.yaml
   - openebs-charts.yaml
   - openldap-charts.yaml
+  - passbolt-charts.yaml
   - pihole-charts.yaml
   - projectcalico-charts.yaml
   - prometheus-community-charts.yaml
