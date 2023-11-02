@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - cert-manager
   - external-dns
-  - kube-router
   - metallb
   - nginx-ingress-external
   - nginx-ingress-internal
