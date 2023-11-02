@@ -78,9 +78,9 @@ spec:
             - name: Lambda iDRAC
               url: https://idrac-lambda.sparks.codes
               icon: "remote-desktop"
-            - name: Omega iDRAC
-              url: https://idrac-omega.sparks.codes
-              icon: "remote-desktop"
+            # - name: Omega iDRAC
+            #   url: https://idrac-omega.sparks.codes
+            #   icon: "remote-desktop"
             - name: Dome Camera 1
               url: http://dome-camera-1.sparks.codes:8080
               icon: "webcam"

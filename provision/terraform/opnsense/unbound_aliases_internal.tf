@@ -205,6 +205,15 @@ resource "opnsense_unbound_host_alias" "svc-router" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-idrac-omega" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "iDRAC Omega proxy service"
+  hostname    = "idrac-omega"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-sonarr" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
