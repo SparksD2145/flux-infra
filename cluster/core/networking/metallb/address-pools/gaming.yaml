@@ -2,7 +2,7 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: minecraft
+  name: gaming
   namespace: metallb-system
 spec:
   addresses:
@@ -14,9 +14,9 @@ status: {}
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
-  name: minecraft
+  name: gaming
   namespace: metallb-system
 spec:
   ipAddressPools:
-    - minecraft
+    - gaming
 status: {}

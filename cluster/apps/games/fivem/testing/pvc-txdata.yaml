@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-fivem-testing-txdata
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 15Gi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /opt/fivem/testing/txdata
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - beta
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-fivem-testing-txdata
+  namespace: games
+spec:
+  volumeName: local-fivem-testing-txdata
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 15Gi
