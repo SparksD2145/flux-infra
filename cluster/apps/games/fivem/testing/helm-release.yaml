@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: spritsail/fivem
-              tag: 7061
+              tag: 7075
             env:
               TZ: "America/Chicago"
               NO_LICENSE_KEY: true
