@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: louislam/uptime-kuma
-              tag: 1.23.5
+              tag: 1.23.6
             env:
               TZ: "America/Chicago"
             resources:
