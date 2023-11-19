@@ -249,12 +249,3 @@ resource "opnsense_unbound_host_alias" "svc-zwavejs2mqtt-sparks-codes" {
   hostname    = "zwavejs2mqtt"
   domain      = "sparks.codes"
 }
-
-resource "opnsense_unbound_host_alias" "svc-testing-fivem-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "FiveM Testing txAdmin"
-  hostname    = "testing"
-  domain      = "fivem.sparks.codes"
-}
