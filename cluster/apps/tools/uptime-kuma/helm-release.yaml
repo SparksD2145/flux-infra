@@ -77,5 +77,5 @@ spec:
           - path: /app/data
         storageClass: ceph-filesystem
         accessMode: ReadWriteMany
-        size: 3Gi
+        size: 30Gi
         retain: true
