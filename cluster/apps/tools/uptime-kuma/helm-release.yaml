@@ -25,12 +25,6 @@ spec:
               tag: 1.23.6
             env:
               TZ: "America/Chicago"
-            resources:
-              requests:
-                cpu: 100m
-                memory: 52M
-              limits:
-                memory: 128M
     service:
       main:
         ports:
