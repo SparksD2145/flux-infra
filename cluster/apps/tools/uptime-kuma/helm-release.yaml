@@ -75,7 +75,7 @@ spec:
         enabled: true
         globalMounts:
           - path: /app/data
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
+        storageClass: ceph-block
+        accessMode: ReadWriteOnce
         size: 30Gi
         retain: true
