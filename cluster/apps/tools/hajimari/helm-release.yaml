@@ -46,17 +46,19 @@ spec:
       alwaysTargetBlank: true
       namespaceSelector:
         matchNames:
+          - auth
+          - databases
+          - finance
+          - games
+          - gitlab
           - kube-system
           - home
           - media
           - monitoring
           - networking
-          - gitlab
-          - games
           - nginx
           - rook-ceph
           - tools
-          - velero
       customApps:
         - group: LAN
           apps:
