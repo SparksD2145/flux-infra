@@ -151,6 +151,15 @@ resource "opnsense_unbound_host_alias" "svc-nvr-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-octobot-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Crypto-based finance service"
+  hostname    = "octobot"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-passbolt-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
