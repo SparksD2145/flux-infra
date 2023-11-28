@@ -4,6 +4,7 @@ resources:
   - emqx
   - esphome
   - ispy-dvr
+  - kitchenowl
   - home-assistant
   # - wyoming-piper
   # - wyoming-whisper
