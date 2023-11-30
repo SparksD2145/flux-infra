@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: tombursch/kitchenowl
-              tag: v88
+              tag: v89
             env:
               TZ: "America/Chicago"
               JWT_SECRET_KEY: ${HOME_KITCHENOWL_JWT_KEY}
