@@ -116,6 +116,8 @@ spec:
               url: "https://namecheap.com"
         - group: Finance
           bookmarks:
+            - name: Monarch
+              url: "https://app.monarchmoney.com/dashboard"
             - name: Mint
               url: "https://mint.com"
             - name: Credit Karma
