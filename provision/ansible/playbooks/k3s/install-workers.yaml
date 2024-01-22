@@ -18,4 +18,4 @@
           - nfs-common
 
     - name: Start K3s Worker
-      shell: curl -sfL https://get.k3s.io | K3S_URL='https://10.10.9.1:6443' K3S_TOKEN='K10e39d0d9ea0fcee1ca72295606f2cb925f257aef61d1fe65e0138cd5919294b01::server:c773d1b6edfabcf18ccb89711c095f16' sh -
+      shell: curl -sfL https://get.k3s.io | K3S_URL='https://10.10.9.1:6443' K3S_TOKEN='' sh -
