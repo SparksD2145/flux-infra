@@ -47,7 +47,7 @@ spec:
               repository: ghcr.io/coder/code-server
               # -- image tag
               # this example is not automatically updated, so be sure to use the latest image
-              tag: 4.20.0
+              tag: 4.20.1
             args:
               - --auth
               - "none"
