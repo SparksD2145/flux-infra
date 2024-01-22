@@ -50,7 +50,6 @@ all:
         sierra.sparks.codes:
         romeo.sparks.codes:
         xray.sparks.codes:
-        beta.sparks.codes:
 
     # -------------------------------------------
     # All Windows Machines ----------------------
