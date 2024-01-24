@@ -10,4 +10,5 @@ resources:
   # - passbolt
   - hajimari
   - homebox
+  - snapp
   - uptime-kuma
