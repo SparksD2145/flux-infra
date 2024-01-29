@@ -25,7 +25,7 @@ spec:
           main:
             image:
               repository: ghcr.io/shlinkio/shlink
-              tag: latest3.7.3-non-root@sha256:1e7906bd2e67f0f5424465138658739ac21c704ad8f1e582c037cc4e0ecc32e3
+              tag: latest
             env:
               TIMEZONE: America/Chicago
               DEFAULT_DOMAIN: &host sprk.sh
@@ -35,15 +35,12 @@ spec:
               PORT: &port 80
               WEB_WORKER_NUM: 1
               GEOLITE_LISCENSE_KEY: ${TOOLS_SHLINK_GEOIP_LICENSE}
+              SHELL_VERBOSITY: 3
               DB_DRIVER: maria
               DB_NAME: ${TOOLS_SHLINK_DB_DB}
               DB_USER: ${TOOLS_SHLINK_DB_USER}
               DB_PASSWORD: ${TOOLS_SHLINK_DB_PASSWORD}
               DB_HOST: 'shlink-mariadb.tools.svc.cluster.local'
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
             resources:
               requests:
                 cpu: 10m
@@ -75,11 +72,9 @@ spec:
               - *host
             secretName: acme-crt-secret-sprk-sh
     persistence:
-      config:
-        enabled: true
-        type: persistentVolumeClaim
-        size: 2Gi
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteOnce
+      tmp:
+        type: emptyDir
+      tmp-data:
+        type: emptyDir
         globalMounts:
-          - path: /app/config_persistent
+          - path: /etc/shlink/data
