@@ -21,5 +21,7 @@ spec:
       username: ${TOOLS_SHLINK_DB_USER}
       password: ${TOOLS_SHLINK_DB_PASSWORD}
       database: ${TOOLS_SHLINK_DB_DB}
-    persistence:
-      existingClaim: shlink-db-pvc
+    primary:
+      persistence:
+        enabled: true
+        existingClaim: shlink-db-pvc
