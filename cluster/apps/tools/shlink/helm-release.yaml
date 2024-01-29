@@ -1,0 +1,85 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: shlink
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  dependsOn:
+    - name: shlink-mariadb
+      namespace: tools
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/shlinkio/shlink
+              tag: latest3.7.3-non-root@sha256:1e7906bd2e67f0f5424465138658739ac21c704ad8f1e582c037cc4e0ecc32e3
+            env:
+              TIMEZONE: America/Chicago
+              DEFAULT_DOMAIN: &host sprk.sh
+              DISABLE_TRACKING_FROM: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+              ENABLE_PERIODIC_VISIT_LOCATE: "true"
+              IS_HTTPS_ENABLED: "true"
+              PORT: &port 80
+              WEB_WORKER_NUM: 1
+              GEOLITE_LISCENSE_KEY: ${TOOLS_SHLINK_GEOIP_LICENSE}
+              DB_DRIVER: maria
+              DB_NAME: ${TOOLS_SHLINK_DB_DB}
+              DB_USER: ${TOOLS_SHLINK_DB_USER}
+              DB_PASSWORD: ${TOOLS_SHLINK_DB_PASSWORD}
+              DB_HOST: 'shlink-mariadb.tools.svc.cluster.local'
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 512Mi
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        className: nginx-external
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Shlink"
+          hajimari.io/info: "Link Shortener"
+          hajimari.io/icon: "link"
+        hosts:
+          - host: *host
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  name: main
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sprk-sh
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+        size: 2Gi
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /app/config_persistent
