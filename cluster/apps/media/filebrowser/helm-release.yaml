@@ -56,14 +56,19 @@ spec:
     persistence:
       config:
         enabled: true
-        type: pvc
-        existingClaim: local-data-sparks-codes-config
+        type: persistentVolumeClaim
+        accessMode: ReadWriteMany
+        storageClass: ceph-filesystem
+        size: 8Gi
+        retain: true
         globalMounts:
           - path: /config
       data:
         enabled: true
-        type: pvc
-        existingClaim: local-data-sparks-codes-data
+        type: persistentVolumeClaim
+        accessMode: ReadWriteMany
+        storageClass: ceph-filesystem
+        size: 8Gi
         retain: true
         globalMounts:
           - path: /srv
