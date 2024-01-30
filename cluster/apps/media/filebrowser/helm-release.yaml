@@ -18,18 +18,44 @@ spec:
   values:
     controllers:
       main:
+        pod:
+          securityContext:
+            runAsUser: 2000
+            runAsGroup: 2000
+            fsGroup: 2000
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups: [10000]
         containers:
           main:
             image:
               repository: filebrowser/filebrowser
-              tag: v2.27.0-s6
+              tag: v2.27.0
             env:
               TZ: "America/Chicago"
+              FB_DATABASE: /config/filebrowser.db
+              FB_ROOT: /data
+              FB_LOG: stdout
+            FB_PORT: &port 80
+            probes:
+              startup:
+                enabled: false
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
     service:
       main:
         ports:
           http:
-            port: 8080
+            port: *port
     ingress:
       main:
         enabled: true
@@ -54,15 +80,15 @@ spec:
               - data.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      database:
+      config:
         enabled: true
         type: persistentVolumeClaim
         accessMode: ReadWriteMany
         storageClass: ceph-filesystem
-        size: 4Gi
+        size: 8Gi
         retain: true
         globalMounts:
-          - path: /database
+          - path: /config
       data:
         enabled: true
         type: persistentVolumeClaim
@@ -71,12 +97,4 @@ spec:
         size: 175Gi
         retain: true
         globalMounts:
-          - path: /srv
-      settings:
-        enabled: true
-        globalMounts:
-          - path: "/config/settings.json"
-        type: "custom"
-        volumeSpec:
-          configMap:
-            name: filebrowser-settings
+          - path: /data
