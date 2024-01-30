@@ -54,21 +54,21 @@ spec:
               - data.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      config:
+      database:
         enabled: true
         type: persistentVolumeClaim
         accessMode: ReadWriteMany
         storageClass: ceph-filesystem
-        size: 8Gi
+        size: 4Gi
         retain: true
         globalMounts:
-          - path: /config
+          - path: /database
       data:
         enabled: true
         type: persistentVolumeClaim
         accessMode: ReadWriteMany
         storageClass: ceph-filesystem
-        size: 8Gi
+        size: 175i
         retain: true
         globalMounts:
           - path: /srv
@@ -76,7 +76,6 @@ spec:
         enabled: true
         globalMounts:
           - path: "/config/settings.json"
-        subPath: ".filebrowser.json"
         type: "custom"
         volumeSpec:
           configMap:
