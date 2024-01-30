@@ -68,7 +68,7 @@ spec:
         type: persistentVolumeClaim
         accessMode: ReadWriteMany
         storageClass: ceph-filesystem
-        size: 175i
+        size: 175Gi
         retain: true
         globalMounts:
           - path: /srv
