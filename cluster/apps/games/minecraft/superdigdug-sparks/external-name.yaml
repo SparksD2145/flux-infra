@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: external-superdigdug-mc-sparks-codes
-  namespace: gitlab
+  name: external-superdigdug-sparks-mc-sparks-codes
+  namespace: games
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: superdigdug.mc.sparks.codes
+    external-dns.alpha.kubernetes.io/hostname: superdigdug-sparks.mc.sparks.codes
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
 spec:
   type: ExternalName
