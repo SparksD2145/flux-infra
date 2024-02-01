@@ -24,7 +24,7 @@ spec:
       services/minecraft: active
     resources:
       requests:
-        memory: 8192Mi
+        memory: 4096Mi
         cpu: 600m
     minecraftServer:
       eula: "TRUE"
@@ -40,7 +40,7 @@ spec:
       gameMode: survival
       pvp: true
       onlineMode: false
-      memory: 8192M
+      memory: 4096M
       serviceType: LoadBalancer
       loadBalancerIP: 10.10.202.4
       rcon:
