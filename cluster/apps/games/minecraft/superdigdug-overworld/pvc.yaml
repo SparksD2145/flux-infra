@@ -10,7 +10,7 @@ spec:
     storage: 25Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mc.sparks.codes/superdigdug-overworld
+    path: /mnt/static/mc.sparks.codes/superdigdug_overworld
   nodeAffinity:
     required:
       nodeSelectorTerms:
