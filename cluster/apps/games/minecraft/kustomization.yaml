@@ -4,7 +4,8 @@ resources:
   - bungeecord
   - cwh11
   - cwh11-archive
-  - superdigdug
+  # - superdigdug
+  - superdigdug-overworld
   - superdigdug-sparks
   - superdigdug-rectify
   - superdigdug-newlands

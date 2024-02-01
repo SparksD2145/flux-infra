@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-superdigdug-overworld-mc-sparks-codes
+  namespace: gitlab
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: superdigdug-overworld.mc.sparks.codes
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+spec:
+  type: ExternalName
+  externalName: sparks.codes
