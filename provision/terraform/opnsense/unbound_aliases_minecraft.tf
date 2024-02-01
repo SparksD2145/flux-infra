@@ -25,6 +25,15 @@ resource "opnsense_unbound_host_alias" "superdigdug-mc-sparks-codes" {
   domain      = "mc.sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "superdigdug-overworld-mc-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-minecraft.id
+
+  enabled     = true
+  description = "SuperDigDug's Minecraft Server (Overworld)"
+  hostname    = "superdigdug-overworld"
+  domain      = "mc.sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "superdigdug-sparks-mc-sparks-codes" {
   override = opnsense_unbound_host_override.lb-minecraft.id
 
