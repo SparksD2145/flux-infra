@@ -49,4 +49,4 @@ spec:
     persistence:
       dataDir:
         enabled: true
-        existingClaim: local-mc-superdigdug
+        existingClaim: local-mc-superdigdug-overworld
