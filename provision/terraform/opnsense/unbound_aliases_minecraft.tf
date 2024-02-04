@@ -7,12 +7,12 @@ resource "opnsense_unbound_host_alias" "cwh11-mc-sparks-codes" {
   domain      = "mc.sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "archive-cwh11-mc-sparks-codes" {
+resource "opnsense_unbound_host_alias" "cwh11-archive-mc-sparks-codes" {
   override = opnsense_unbound_host_override.lb-minecraft.id
 
   enabled     = true
   description = "Arcived CWH11 Minecraft Server"
-  hostname    = "archive-cwh11"
+  hostname    = "cwh11-archive"
   domain      = "mc.sparks.codes"
 }
 

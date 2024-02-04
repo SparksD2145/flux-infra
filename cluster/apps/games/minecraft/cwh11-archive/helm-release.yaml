@@ -30,7 +30,7 @@ spec:
       eula: "TRUE"
       version: "1.19.4"
       type: SPIGOT
-      motd: "archive-cwh11.mc.sparks.codes"
+      motd: "cwh11-archive.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
       worldSaveName: world_cwh11
