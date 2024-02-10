@@ -232,21 +232,21 @@ resource "opnsense_unbound_host_alias" "svc-sonarr" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-timesheets-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Timekeeping utility"
-  hostname    = "timesheets"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-torrents-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
   description = "Qbittorrent frontend"
   hostname    = "torrents"
+  domain      = "sparks.codes"
+}
+
+resource "opnsense_unbound_host_alias" "svc-tubesync-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Youtube Synchronizer"
+  hostname    = "tubesync"
   domain      = "sparks.codes"
 }
 

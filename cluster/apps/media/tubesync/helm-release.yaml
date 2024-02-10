@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: qbittorrent
+  name: tubesync
   namespace: media
 spec:
   interval: 15m
@@ -21,28 +21,22 @@ spec:
         containers:
           main:
             image:
-              repository: linuxserver/qbittorrent
-              tag: 20.04.1
+              repository: ghcr.io/meeb/tubesync
+              tag: latest
             env:
               TZ: "America/Chicago"
-              RUTORRENT_PORT: 8080
-    service:
-      main:
-        ports:
-          http:
-            port: 8080
     ingress:
       main:
         enabled: true
-        className: nginx-internal
+        className: "nginx-internal"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/appName: "qBittorrent"
-          hajimari.io/info: "Bittorrent client"
-          hajimari.io/icon: "file-arrow-up-down"
+          hajimari.io/appName: "TubeSync"
+          hajimari.io/info: "Youtube synchronizer"
+          hajimari.io/icon: "play-speed"
           hajimari.io/targetBlank: "true"
         hosts:
-          - host: torrents.sparks.codes
+          - host: tubesync.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
@@ -50,17 +44,20 @@ spec:
                   name: main
         tls:
           - hosts:
-              - torrents.sparks.codes
+              - tubesync.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
       config:
         enabled: true
-        size: 1Gi
-        storageClass: ceph-block
-        accessMode: ReadWriteOnce
-        globalMounts:
-          - path: /config
+        type: persistentVolumeClaim
+        existingClaim: local-tubesync-config
       downloads:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: torrents-downloads
+        existingClaim: local-tubesync-downloads
+        retain: true
+    service:
+      main:
+        ports:
+          http:
+            port: 4848

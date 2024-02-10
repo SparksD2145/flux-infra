@@ -9,5 +9,6 @@ resources:
   - monica
   - photoprism
   - prowlarr
-  # - qbittorrent
+  - qbittorrent
   - sonarr
+  - tubesync
