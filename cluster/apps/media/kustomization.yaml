@@ -11,4 +11,4 @@ resources:
   - prowlarr
   - qbittorrent
   - sonarr
-  - tubesync
+  # - tubesync
