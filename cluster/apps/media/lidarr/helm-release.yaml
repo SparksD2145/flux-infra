@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: overseerr
+  name: lidarr
   namespace: media
 spec:
   interval: 5m
@@ -22,12 +22,15 @@ spec:
         containers:
           main:
             image:
-              repository: sctx/overseerr
+              repository: ghcr.io/hotio/lidarr
               tag: latest
 
             env:
               TZ: "America/Chicago"
-              PORT: &port 5055
+              PORT: &port '8686'
+              PUID: '1000'
+              PGID: '1000'
+              UMASK: '002'
 
             resources:
               requests:
@@ -49,10 +52,10 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: cloud-search
-          hajimari.io/info: Overseerr Media Search
+          hajimari.io/info: Lidarr Audio search
           hajimari.io/targetBlank: "true"
         hosts:
-          - host: &host "overseerr.sparks.codes"
+          - host: &host "lidarr.sparks.codes"
             paths:
               - path: /
                 pathType: Prefix
@@ -70,4 +73,12 @@ spec:
         size: 2Gi
         retain: false
         globalMounts:
-          - path: /app/config
+          - path: /config
+      data:
+        enabled: true
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 6Gi
+        retain: false
+        globalMounts:
+          - path: /data

@@ -6,8 +6,8 @@ resources:
   - filebrowser
   # - ghost
   - jellyfin
+  - lidarr
   - monica
-  - overseerr
   - photoprism
   - prowlarr
   - qbittorrent

@@ -160,12 +160,12 @@ resource "opnsense_unbound_host_alias" "svc-nvr-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-overseerr-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-lidarr-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "Overseerr media discovery"
-  hostname    = "overseerr"
+  description = "Lidarr audio discovery"
+  hostname    = "lidarr"
   domain      = "sparks.codes"
 }
 
