@@ -18,6 +18,7 @@ spec:
   values:
     defaultPodOptions:
       hostNetwork: true
+      runtimeClassName: nvidia
     controllers:
       main:
         containers:
@@ -27,6 +28,8 @@ spec:
               tag: latest
             env:
               TZ: "America/Chicago"
+              NVIDIA_VISIBLE_DEVICES: "all"
+              NVIDIA_DRIVER_CAPABILITIES: "all"
             resources:
               requests:
                 nvidia.com/gpu: 1

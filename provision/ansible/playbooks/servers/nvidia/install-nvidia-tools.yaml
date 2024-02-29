@@ -17,8 +17,8 @@
           - tmux
           - python3
           - python3-pip
-          - nvidia-headless-515-server
-          - nvidia-utils-515-server
+          - nvidia-headless-535-server
+          - nvidia-utils-535-server
           - nvidia-docker2
           - nvidia-container-runtime
 
