@@ -4,7 +4,23 @@ resources:
   - gotk-components.yaml
   - gotk-sync.yaml
   - charts
-# patches:
+patches:
+  - patch: |
+      # Enable OOM watch feature
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --feature-gates=OOMWatch=true
+      # Threshold at which to trigger a graceful shutdown (optional, default 95%)
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --oom-watch-memory-threshold=95
+      # Interval at which to check memory usage (optional, default 500ms)
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --oom-watch-interval=500ms
+    target:
+      kind: Deployment
+      name: helm-controller
   # # This patch adds decryption and postBuild configurations to the Kustomization resource.
   # - patch: |
   #     - op: add
@@ -26,40 +42,40 @@ resources:
   #     kind: Kustomization
   #     name: flux-system
   #     namespace: flux-system
-  # # This patch adds more fine-tuned control of the Kubernetes PI server for the specified controllers.
-  # - patch: |
-  #     - op: add
-  #       path: /spec/template/spec/containers/0/args/-
-  #       value: --concurrent=20
-  #     - op: add
-  #       path: /spec/template/spec/containers/0/args/-
-  #       value: --kube-api-qps=500
-  #     - op: add
-  #       path: /spec/template/spec/containers/0/args/-
-  #       value: --kube-api-burst=1000
-  #     - op: add
-  #       path: /spec/template/spec/containers/0/args/-
-  #       value: --requeue-dependency=5s
-  #   target:
-  #     kind: Deployment
-  #     name: "(kustomize-controller|helm-controller|source-controller)"
-  # # This patch increases the CPU and memory limits of the specified controllers.
-  # - patch: |
-  #     apiVersion: apps/v1
-  #     kind: Deployment
-  #     metadata:
-  #       name: all
-  #     spec:
-  #       template:
-  #         spec:
-  #           containers:
-  #             - name: manager
-  #               resources:
-  #                 limits:
-  #                   cpu: 2000m
-  #                   memory: 2Gi
-  # target:
-  #   kind: Deployment
-  #   name: "(kustomize-controller|helm-controller|source-controller)"
+  # This patch adds more fine-tuned control of the Kubernetes PI server for the specified controllers.
+  - patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --concurrent=20
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --kube-api-qps=500
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --kube-api-burst=1000
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --requeue-dependency=5s
+    target:
+      kind: Deployment
+      name: "(kustomize-controller|helm-controller|source-controller)"
+  # This patch increases the CPU and memory limits of the specified controllers.
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: all
+      spec:
+        template:
+          spec:
+            containers:
+              - name: manager
+                resources:
+                  limits:
+                    cpu: 2000m
+                    memory: 2Gi
+    target:
+      kind: Deployment
+      name: "(kustomize-controller|helm-controller|source-controller)"
 patchesStrategicMerge:
   - ./gotk-patches.yaml
