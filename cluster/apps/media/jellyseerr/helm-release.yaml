@@ -1,0 +1,76 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: jellyseerr
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.6.0
+      interval: 15m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: fallenbagel/jellyseerr
+              tag: latest
+
+            env:
+              TZ: "America/Chicago"
+              PORT: &port '5055'
+              PUID: '1000'
+              PGID: '1000'
+              UMASK: '002'
+
+            resources:
+              requests:
+                memory: 250Mi
+                cpu: 500m
+              limits:
+                memory: 1500Mi
+
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+
+    ingress:
+      main:
+        enabled: true
+        className: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: cloud-search
+          hajimari.io/info: jellyseerr Media Discovery
+          hajimari.io/targetBlank: "true"
+        hosts:
+          - host: &host "jellyseerr.sparks.codes"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: main
+        tls:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
+              - *host
+    persistence:
+      config:
+        enabled: true
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 2Gi
+        retain: false
+        globalMounts:
+          - path: /app/config

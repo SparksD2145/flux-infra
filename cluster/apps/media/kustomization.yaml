@@ -6,6 +6,7 @@ resources:
   - filebrowser
   # - ghost
   - jellyfin
+  - jellyseerr
   - lidarr
   - monica
   - photoprism

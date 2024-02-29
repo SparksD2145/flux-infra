@@ -169,6 +169,15 @@ resource "opnsense_unbound_host_alias" "svc-lidarr-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-jellyseerr-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Jellyseerr media discovery"
+  hostname    = "jellyseerr"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-passbolt-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
