@@ -36,6 +36,7 @@ spec:
               BACK_URL: "localhost:5000"
     service:
       main:
+        controller: main
         ports:
           http:
             port: 5000
@@ -60,7 +61,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - kitchenowl-backend.sparks.codes

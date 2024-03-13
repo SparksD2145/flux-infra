@@ -34,6 +34,7 @@ spec:
               NODE_ENV: production
     service:
       main:
+        controller: main
         ports:
           http:
             port: 2368

@@ -40,6 +40,7 @@ spec:
               # PHOTOPRISM_AUTH_MODE: public
     service:
       main:
+        controller: main
         ports:
           http:
             port: 2342
@@ -61,7 +62,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - photos.sparks.codes

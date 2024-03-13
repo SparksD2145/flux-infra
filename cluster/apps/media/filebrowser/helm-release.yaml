@@ -35,7 +35,7 @@ spec:
               FB_DATABASE: /config/filebrowser.db
               FB_ROOT: /data
               FB_LOG: stdout
-            FB_PORT: &port 80
+              FB_PORT: &port 80
             probes:
               startup:
                 enabled: false
@@ -53,6 +53,7 @@ spec:
               readiness: *probes
     service:
       main:
+        controller: main
         ports:
           http:
             port: *port
@@ -74,7 +75,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - data.sparks.codes

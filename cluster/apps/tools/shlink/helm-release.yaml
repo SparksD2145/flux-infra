@@ -48,6 +48,7 @@ spec:
                 memory: 512Mi
     service:
       main:
+        controller: main
         ports:
           http:
             port: *port
@@ -66,7 +67,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - *host

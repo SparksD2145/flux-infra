@@ -27,6 +27,7 @@ spec:
               TZ: America/Chicago
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8083
@@ -47,7 +48,8 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - "books.sparks.codes"

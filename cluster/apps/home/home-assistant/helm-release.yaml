@@ -75,6 +75,7 @@ spec:
         size: 32Gi
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8123
@@ -101,7 +102,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - secretName: acme-crt-secret-sparks-codes
             hosts:

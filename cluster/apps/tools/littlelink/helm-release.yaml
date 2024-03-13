@@ -82,6 +82,7 @@ spec:
                     operator: Exists
     service:
       main:
+        controller: main
         ports:
           http:
             port: 3000
@@ -101,7 +102,8 @@ spec:
               - path: "/"
                 pathtype: "prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - imake.software
@@ -119,7 +121,8 @@ spec:
               - path: "/"
                 pathtype: "prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - iwrite.software
@@ -137,7 +140,8 @@ spec:
               - path: "/"
                 pathtype: "prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - sparks.codes

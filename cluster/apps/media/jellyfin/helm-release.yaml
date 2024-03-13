@@ -51,7 +51,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - media.sparks.codes
@@ -68,6 +69,7 @@ spec:
         retain: true
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8096

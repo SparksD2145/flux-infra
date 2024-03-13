@@ -31,6 +31,7 @@ spec:
                   name: idrac-secret
     service:
       main:
+        controller: main
         ports:
           http:
             port: 5800
@@ -50,7 +51,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - idrac-whiskey-console.sparks.codes

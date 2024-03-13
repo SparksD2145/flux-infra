@@ -29,6 +29,7 @@ spec:
               - serve
     service:
       main:
+        controller: main
         ports:
           http:
             port: 80
@@ -47,7 +48,8 @@ spec:
               - path: "/"
                 pathType: "Prefix"
                 service:
-                  name: main
+                  identifier: main
+                  port: http
         tls:
           - hosts:
               - notify.sparks.codes
