@@ -86,11 +86,3 @@ spec:
         accessMode: ReadWriteOnce
         size: 1536Gi
         retain: true
-
-      import:
-        enabled: false
-        globalMounts:
-          - path: /photoprism/import
-        accessMode: ReadWriteOnce
-        existingClaim: local-photoprism-imports
-        size: 55Gi
