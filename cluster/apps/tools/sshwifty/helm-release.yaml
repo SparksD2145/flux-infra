@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: guacamole
+  name: sshwifty
   namespace: tools
 spec:
   interval: 15m
@@ -21,20 +21,10 @@ spec:
         containers:
           main:
             image:
-              repository: jasonbean/guacamole
-              tag: latest-nomariadb
+              repository: niruix/sshwifty
+              tag:
             env:
               TZ: "America/Chicago"
-              OPT_MYSQL: Y
-              OPT_SQLSERVER: N
-              OPT_OPENID: N
-              OPT_LDAP: N
-              OPT_DUO: N
-              OPT_CAS: N
-              OPT_TOTP: N
-              OPT_QUICKCONNECT: N
-              OPT_HEADER: N
-              OPT_SAML: N
             resources:
               requests:
                 cpu: 100m
@@ -46,7 +36,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 8080
+            port: 8182
     ingress:
       main:
         enabled: true
@@ -54,7 +44,7 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Remote Access"
-          hajimari.io/info: "Guacamole remote access jumpbox"
+          hajimari.io/info: "sshwifty remote access jumpbox"
           hajimari.io/icon: "remote-desktop"
           hajimari.io/targetBlank: "true"
         hosts:
@@ -69,12 +59,3 @@ spec:
           - hosts:
               - remote.sparks.codes
             secretName: acme-crt-secret-sparks-codes
-    persistence:
-      config:
-        enabled: true
-        globalMounts:
-          - path: /config
-        storageClass: ceph-filesystem
-        accessMode: ReadWriteMany
-        size: 1Gi
-        retain: true
