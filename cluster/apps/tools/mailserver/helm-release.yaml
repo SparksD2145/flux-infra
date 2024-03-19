@@ -69,9 +69,6 @@ spec:
             port: 993
             targetPort: 993
             protocol: TCP
-    ingress:
-      main:
-        enabled: false
     persistence:
       mail-data:
         enabled: true

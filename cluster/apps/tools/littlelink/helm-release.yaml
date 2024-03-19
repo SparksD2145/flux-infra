@@ -72,14 +72,6 @@ spec:
               # GOODREADS: https://www.goodreads.com/
               # SKOOB: https://www.skoob.com.br/
               FOOTER: Thanks for stopping by!
-    defaultPodOptions:
-      affinity:
-        nodeAffinity:
-          required:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: services/lightweight
-                    operator: Exists
     service:
       main:
         controller: main

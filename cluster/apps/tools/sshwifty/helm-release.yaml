@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: niruix/sshwifty
-              tag:
+              tag: latest
             env:
               TZ: "America/Chicago"
             resources:
