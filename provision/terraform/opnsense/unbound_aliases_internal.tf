@@ -214,6 +214,15 @@ resource "opnsense_unbound_host_alias" "svc-pxe-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-remote-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Guacamole remote access"
+  hostname    = "remote"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-rook-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
