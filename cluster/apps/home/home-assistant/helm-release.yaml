@@ -43,10 +43,7 @@ spec:
           code:
             dependsOn: main
             image:
-              # -- image repository
               repository: ghcr.io/coder/code-server
-              # -- image tag
-              # this example is not automatically updated, so be sure to use the latest image
               tag: 4.22.1
             args:
               - --auth
@@ -117,7 +114,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: code
+                  identifier: code
                   port: http
         tls:
           - secretName: acme-crt-secret-sparks-codes

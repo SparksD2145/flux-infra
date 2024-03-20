@@ -50,8 +50,6 @@ spec:
         existingClaim: local-esphome-pvc
         globalMounts:
           - path: /config
-        accessMode: "ReadWriteOnce"
-        size: 5Gi
     service:
       main:
         controller: main
