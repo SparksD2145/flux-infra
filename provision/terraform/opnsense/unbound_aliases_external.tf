@@ -25,15 +25,6 @@ resource "opnsense_unbound_host_alias" "svc-helm-iwrite-software" {
   domain      = "iwrite.software"
 }
 
-resource "opnsense_unbound_host_alias" "svc-groceries-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-external-services.id
-
-  enabled     = true
-  description = "Kitchenowl grocery management"
-  hostname    = "groceries"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-home-sparks-codes" {
   override = opnsense_unbound_host_override.lb-external-services.id
 

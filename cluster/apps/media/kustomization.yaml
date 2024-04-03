@@ -8,7 +8,6 @@ resources:
   - jellyfin
   - jellyseerr
   - lidarr
-  - monica
   - photoprism
   - prowlarr
   - qbittorrent
