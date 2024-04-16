@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: ghost
-              tag: 5.81.1
+              tag: 5.82.2
             env:
               TZ: "America/Chicago"
               url: "http://journal.imake.software"
