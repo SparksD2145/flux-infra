@@ -71,12 +71,6 @@ spec:
             - name: Gitlab
               url: https://gitlab.iwrite.software
               icon: "gitlab"
-            - name: Whiskey iDRAC
-              url: https://idrac-whiskey.sparks.codes
-              icon: "remote-desktop"
-            - name: Foxtrot iDRAC
-              url: https://idrac-foxtrot.sparks.codes
-              icon: "remote-desktop"
             - name: Lambda iDRAC
               url: https://idrac-lambda.sparks.codes
               icon: "remote-desktop"
