@@ -68,24 +68,12 @@ spec:
           - name: xray
             devices:
               - name: /dev/disk/by-id/ata-ST2000DM006-2DM164_Z4ZBHPQB
-          # - name: foxtrot
-          #   devices:
-          #     - name: /dev/disk/by-id/scsi-3500000e01f06b880
-          #     - name: /dev/disk/by-id/scsi-35000c5003609f44d
-          #     - name: /dev/disk/by-id/scsi-35000c5004d032bcf
-          #     - name: /dev/disk/by-id/scsi-35000c500b40310fb
-          #     - name: /dev/disk/by-id/scsi-35000c500b4031499
           # - name: lambda
           #   devices:
           #     - name: sdb
           # - name: omega
           #   devices:
           #     - name: /dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d-part1
-          # - name: tango
-          #   devices:
-          #     - name: /dev/disk/by-id/scsi-35000c500506f96e1
-          #     - name: /dev/disk/by-id/scsi-35000c5004f8b248c
-          #     - name: /dev/disk/by-id/scsi-35000c5004e5c29e4
 
     cephBlockPools:
       - name: ceph-blockpool
