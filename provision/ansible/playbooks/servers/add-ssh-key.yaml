@@ -1,0 +1,9 @@
+---
+- name: Copy SSH key to Hosts
+  hosts: servers
+  tasks:
+    - name: Install Keys
+      ansible.posix.authorized_key:
+        user: sparks
+        state: present
+        key: https://github.com/SparksD2145.keys

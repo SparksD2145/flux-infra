@@ -15,6 +15,7 @@ kubeconfig
 
 # Ansible
 xanmanning.k3s*
+.dependencies
 
 # Terraform
 .terraform
