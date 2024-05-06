@@ -1,6 +1,7 @@
 ---
 - hosts: servers_with_idracs
   gather_facts: false
+  connection: local
   become: false
   vars_prompt:
     - name: ipmi_password
