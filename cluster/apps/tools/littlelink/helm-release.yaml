@@ -92,7 +92,7 @@ spec:
           - host: imake.software
             paths:
               - path: "/"
-                pathtype: "prefix"
+                pathType: "prefix"
                 service:
                   identifier: main
                   port: http
@@ -111,7 +111,7 @@ spec:
           - host: iwrite.software
             paths:
               - path: "/"
-                pathtype: "prefix"
+                pathType: "prefix"
                 service:
                   identifier: main
                   port: http
@@ -130,7 +130,7 @@ spec:
           - host: sparks.codes
             paths:
               - path: "/"
-                pathtype: "prefix"
+                pathType: "prefix"
                 service:
                   identifier: main
                   port: http

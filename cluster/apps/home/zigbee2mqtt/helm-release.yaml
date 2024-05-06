@@ -19,14 +19,14 @@ spec:
     - name: emqx
       namespace: home
   values:
+    # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/library/common/values.schema.json
     defaultPodOptions:
       tolerations:
         - key: "iot-control"
           operator: "Equal"
           value: "active"
           effect: "NoSchedule"
-      securityContext:
-        privileged: true
+
     controllers:
       main:
         containers:
@@ -73,10 +73,9 @@ spec:
     persistence:
       data:
         enabled: true
+        type: persistentVolumeClaim
         globalMounts:
           - path: /app/data
-        accessMode: "ReadWriteOnce"
-        size: 2Gi
         existingClaim: zigbee2mqtt-data-pvc
       usb:
         enabled: true

@@ -59,13 +59,11 @@ spec:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: local-ntfy-config-pvc
-        accessMode: ReadWriteOnce
         globalMounts:
           - path: /etc/ntfy
       cache:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: local-ntfy-cache-pvc
-        accessMode: ReadWriteOnce
         globalMounts:
           - path: /var/cache/ntfy

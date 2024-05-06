@@ -30,10 +30,9 @@ spec:
               ENABLE_FAIL2BAN: 1
               OVERRIDE_HOSTNAME: mail.sparks.codes
               TZ: America/Chicago
-    defaultPodOptions:
-      securityContext:
-        capabilities:
-          add: ["NET_ADMIN", "SYS_TIME"]
+            securityContext:
+              capabilities:
+                add: ["NET_ADMIN", "SYS_TIME"]
     service:
       main:
         enabled: true
@@ -46,6 +45,7 @@ spec:
         ports:
           http:
             enabled: false
+            port: 80
           smtp:
             enabled: true
             primary: true
