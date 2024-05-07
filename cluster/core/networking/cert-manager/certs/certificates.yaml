@@ -9,8 +9,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-imake-software
   issuerRef:
     name: letsencrypt-prod
@@ -30,8 +30,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-sparks-codes
   issuerRef:
     name: letsencrypt-prod
@@ -72,8 +72,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-sprk-sh
   issuerRef:
     name: letsencrypt-prod
@@ -93,8 +93,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,tools"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-iwrite-software
   issuerRef:
     name: letsencrypt-prod

@@ -9,5 +9,6 @@ resources:
   - media
   - networking
   - nginx
+  - security
   - system-upgrade
   - tools

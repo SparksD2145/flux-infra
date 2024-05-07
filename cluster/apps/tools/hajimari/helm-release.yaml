@@ -58,6 +58,7 @@ spec:
           - networking
           - nginx
           - rook-ceph
+          - security
           - tools
       customApps:
         - group: LAN

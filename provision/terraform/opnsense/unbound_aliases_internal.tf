@@ -1,3 +1,12 @@
+resource "opnsense_unbound_host_alias" "svc-authcodes-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "2-Factor Auth service"
+  hostname    = "authcodes"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-alertmanager-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -67,15 +76,6 @@ resource "opnsense_unbound_host_alias" "svc-emqx-dashboard-sparks-codes" {
   enabled     = true
   description = "EMQX dashboard"
   hostname    = "emqx-dashboard"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-kitchenowl-backend-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "KitchenOwl Backend"
-  hostname    = "kitchenowl-backend"
   domain      = "sparks.codes"
 }
 
@@ -247,15 +247,6 @@ resource "opnsense_unbound_host_alias" "svc-torrents-sparks-codes" {
   enabled     = true
   description = "Qbittorrent frontend"
   hostname    = "torrents"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-tubesync-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Youtube Synchronizer"
-  hostname    = "tubesync"
   domain      = "sparks.codes"
 }
 
