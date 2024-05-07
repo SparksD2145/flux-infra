@@ -16,4 +16,5 @@ resources:
   - nginx.yaml
   - rook-ceph.yaml
   - tools.yaml
+  - security.yaml
   - system-upgrade.yaml
