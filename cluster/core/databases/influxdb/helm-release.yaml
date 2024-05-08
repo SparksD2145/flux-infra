@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: influxdb
-      version: 6.0.10
+      version: 6.0.11
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
