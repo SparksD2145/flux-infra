@@ -18,6 +18,20 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          chown-directory:
+            image:
+              repository: alpine
+              tag: 3.19.1
+            # This is where the magic hapens, find files with old UID (1004) and chown with new UID (1005) and GID (2005)
+            command: ["chown", "-R", "1000:1000", "/2fauth"]
+            securityContext:
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["all"]
+                add: ["CHOWN"]
+              runAsUser: 0
+              runAsNonRoot: false
         containers:
           main:
             image:
@@ -28,6 +42,7 @@ spec:
               runAsUser: 1000
               fsGroup: 1000
               fsGroupChangePolicy: "OnRootMismatch"
+              runAsNonRoot: true
             env:
               TZ: "America/Chicago"
               # You can change the name of the app
