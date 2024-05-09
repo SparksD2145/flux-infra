@@ -241,6 +241,15 @@ resource "opnsense_unbound_host_alias" "svc-sonarr" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-sterling-pdf" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "PDF Tools"
+  hostname    = "pdf-tools"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-torrents-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 

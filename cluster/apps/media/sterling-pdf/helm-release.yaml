@@ -1,0 +1,67 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: sterling-pdf
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: frooodle/s-pdf
+              tag: latest
+            env:
+              TZ: America/Chicago
+              DOCKER_ENABLE_SECURITY: false
+              LANGS: en_US
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "PDF Tools"
+          hajimari.io/icon: mdi:file-pdf-box
+          hajimari.io/info: PDF Tools as a Service
+          hajimari.io/targetBlank: "true"
+        hosts:
+          - host: &host "pdf-tools.sparks.codes"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sparks-codes
