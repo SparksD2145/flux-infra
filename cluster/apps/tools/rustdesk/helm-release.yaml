@@ -1,0 +1,97 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: rustdesk
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      hbbr:
+        containers:
+          hbbr:
+            image:
+              repository: rustdesk/rustdesk-server
+              tag: 1.1.10-3
+            env:
+              TZ: "America/Chicago"
+            command: ["hbbr"]
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              statup:
+                enabled: false
+      hbbs:
+        containers:
+          hbbs:
+            image:
+              repository: rustdesk/rustdesk-server
+              tag: 1.1.10-3
+            env:
+              TZ: "America/Chicago"
+              DB_URL: /db/db_v2.sqlite3
+              RELAY: "${TOOLS_RUSTDESK_RELAY}:21117"
+            command: ["hbbs", "-r ${TOOLS_RUSTDESK_RELAY}:21117"]
+            dependsOn: ["hbbr"]
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              statup:
+                enabled: false
+    service:
+      hbbr:
+        controller: hbbr
+        ports:
+          first:
+            enabled: true
+            port: 21117
+            protocol: "TCP"
+          second:
+            enabled: true
+            port: 21119
+            protocol: "TCP"
+      hbbs:
+        controller: hbbs
+        ports:
+          first:
+            enabled: true
+            port: 21115
+            protocol: "TCP"
+          second:
+            enabled: true
+            port: 21116
+            protocol: "TCP"
+          third:
+            enabled: true
+            port: 21116
+            protocol: "UDP"
+          fourth:
+            enabled: true
+            port: 21118
+            protocol: "TCP"
+    ingress:
+      main:
+        enabled: false
+    persistence:
+      data:
+        enabled: true
+        globalMounts:
+          - path: /db
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        size: 20Gi
+        retain: true
