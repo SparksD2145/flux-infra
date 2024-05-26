@@ -17,7 +17,7 @@ spec:
       interval: 15m
   values:
     controllers:
-      hbbr:
+      main:
         containers:
           hbbr:
             image:
@@ -31,10 +31,8 @@ spec:
                 enabled: false
               readiness:
                 enabled: false
-              statup:
+              startup:
                 enabled: false
-      hbbs:
-        containers:
           hbbs:
             image:
               repository: rustdesk/rustdesk-server
@@ -50,11 +48,11 @@ spec:
                 enabled: false
               readiness:
                 enabled: false
-              statup:
+              startup:
                 enabled: false
     service:
       hbbr:
-        controller: hbbr
+        controller: main
         ports:
           first:
             enabled: true
@@ -65,7 +63,7 @@ spec:
             port: 21119
             protocol: "TCP"
       hbbs:
-        controller: hbbs
+        controller: main
         ports:
           first:
             enabled: true
@@ -83,9 +81,7 @@ spec:
             enabled: true
             port: 21118
             protocol: "TCP"
-    ingress:
-      main:
-        enabled: false
+    ingress: {}
     persistence:
       data:
         enabled: true

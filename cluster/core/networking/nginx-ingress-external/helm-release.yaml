@@ -46,3 +46,10 @@ spec:
         enabled: true
     tcp:
       "22": "gitlab/gitlab-gitlab-shell:22"
+      "21115": "tools/rustdesk-hbbs:21115"
+      "21116": "tools/rustdesk-hbbs:21116"
+      "21117": "tools/rustdesk-hbbr:21117"
+      "21118": "tools/rustdesk-hbbs:21118"
+      "21119": "tools/rustdesk-hbbr:21119"
+    udp:
+      "21116": "tools/rustdesk-hbbs:21116"
