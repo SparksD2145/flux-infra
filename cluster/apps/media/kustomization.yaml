@@ -5,7 +5,7 @@ resources:
   - calibre
   - linkding
   - filebrowser
-  # - ghost
+  - ghost
   - jellyfin
   - jellyseerr
   - lidarr

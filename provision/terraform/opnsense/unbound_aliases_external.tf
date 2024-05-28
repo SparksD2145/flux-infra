@@ -34,6 +34,15 @@ resource "opnsense_unbound_host_alias" "svc-home-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-journal-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-external-services.id
+
+  enabled     = true
+  description = "Journal/blog"
+  hostname    = "journal"
+  domain      = "iwrite.software"
+}
+
 resource "opnsense_unbound_host_alias" "svc-media-sparks-codes" {
   override = opnsense_unbound_host_override.lb-external-services.id
 

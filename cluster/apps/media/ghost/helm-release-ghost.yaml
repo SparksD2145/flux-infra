@@ -25,7 +25,7 @@ spec:
               tag: 5.82.11
             env:
               TZ: "America/Chicago"
-              url: "http://journal.imake.software"
+              url: "https://journal.iwrite.software"
               database__client: mysql
               database__connection__host: ghost-mariadb.media.svc.cluster.local
               database__connection__user: ${MEDIA_GHOST_DB_USER}
@@ -49,14 +49,17 @@ spec:
           hajimari.io/info: "Blogging software"
           hajimari.io/icon: "image-multiple"
         hosts:
-          - host: journal.imake.software
+          - host: journal.iwrite.software
             paths:
               - path: "/"
                 pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
         tls:
           - hosts:
-              - journal.imake.software
-            secretName: acme-crt-secret-imake-software
+              - journal.iwrite.software
+            secretName: acme-crt-secret-iwrite-software
     persistence:
       content:
         enabled: true
