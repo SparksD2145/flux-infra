@@ -35,7 +35,7 @@ spec:
               AVATAR_ALT: Thomas Ibarra <hello@imake.software>
               NAME: Thomas Ibarra
               BIO: Chip-to-Ship, Super-heroic Software Engineer.
-              BUTTON_ORDER: JOURNAL,GITHUB,GITLAB,LINKED_IN,SOUND_CLOUD,TUMBLR,YOUTUBE
+              BUTTON_ORDER: GITHUB,GITLAB,LINKED_IN,JOURNAL,SOUND_CLOUD,TUMBLR,YOUTUBE
               CUSTOM_BUTTON_TEXT: Journal,Personal Gitlab
               CUSTOM_BUTTON_URL: https://sprk.sh/journal,https://sprk.sh/gitlab
               CUSTOM_BUTTON_COLOR: "#71CDF9,#000000"
