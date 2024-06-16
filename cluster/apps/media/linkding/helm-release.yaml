@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: sissbruecker/linkding
-              tag: 1.30.0-plus
+              tag: 1.31.0-plus
             env:
               TZ: "America/Chicago"
     service:
