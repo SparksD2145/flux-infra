@@ -22,13 +22,6 @@ all:
         lambda.sparks.codes:
 
     # -------------------------------------------
-    # Unraid Workstation ------------------------
-    # -------------------------------------------
-    workstation:
-      hosts:
-        alpha.sparks.codes:
-
-    # -------------------------------------------
     # All Linux Machines ------------------------
     # -------------------------------------------
     linux:
@@ -39,6 +32,7 @@ all:
     linux_workstations:
       hosts:
         gamma.sparks.codes:
+        zeta.sparks.codes:
 
     linux_servers:
       hosts:

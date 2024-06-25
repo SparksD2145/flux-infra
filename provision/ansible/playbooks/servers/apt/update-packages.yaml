@@ -1,5 +1,5 @@
 ---
-- hosts: servers
+- hosts: linux
   become: true
   tasks:
     - name: Update Packages
