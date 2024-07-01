@@ -79,24 +79,6 @@ resource "opnsense_unbound_host_override" "lb-netboot-tftp" {
   server   = "10.10.201.9"
 }
 
-resource "opnsense_unbound_host_override" "lb-whisper" {
-  enabled     = true
-  description = "Whisper STT"
-
-  hostname = "whisper"
-  domain   = "sparks.codes"
-  server   = "10.10.201.10"
-}
-
-resource "opnsense_unbound_host_override" "lb-piper" {
-  enabled     = true
-  description = "Piper TTS"
-
-  hostname = "piper-tts"
-  domain   = "sparks.codes"
-  server   = "10.10.201.11"
-}
-
 resource "opnsense_unbound_host_override" "lb-mailserver" {
   enabled     = true
   description = "Mail Server"
