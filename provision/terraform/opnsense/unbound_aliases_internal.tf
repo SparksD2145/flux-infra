@@ -34,15 +34,6 @@ resource "opnsense_unbound_host_alias" "svc-books-backend-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-bookmarks-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Bookmarks organizer"
-  hostname    = "bookmarks"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-codeserver-home-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -160,24 +151,6 @@ resource "opnsense_unbound_host_alias" "svc-nvr-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-lidarr-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Lidarr audio discovery"
-  hostname    = "lidarr"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-jellyseerr-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Jellyseerr media discovery"
-  hostname    = "jellyseerr"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-passbolt-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -193,15 +166,6 @@ resource "opnsense_unbound_host_alias" "svc-photos-sparks-codes" {
   enabled     = true
   description = "Photoprism photo storage server"
   hostname    = "photos"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-prowlarr-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Prowlarr indexing service"
-  hostname    = "prowlarr"
   domain      = "sparks.codes"
 }
 
