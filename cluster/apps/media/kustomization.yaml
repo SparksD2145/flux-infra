@@ -6,6 +6,7 @@ resources:
   - filebrowser
   - ghost
   - jellyfin
+  - music-assistant
   - photoprism
   - qbittorrent
   - sterling-pdf

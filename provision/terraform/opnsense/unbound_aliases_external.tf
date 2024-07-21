@@ -52,6 +52,15 @@ resource "opnsense_unbound_host_alias" "svc-media-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-music-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-external-services.id
+
+  enabled     = true
+  description = "Music server"
+  hostname    = "music"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-notify-sparks-codes" {
   override = opnsense_unbound_host_override.lb-external-services.id
 

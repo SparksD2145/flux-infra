@@ -1,0 +1,11 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-music-sparks-codes
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: music.sparks.codes
+spec:
+  type: ExternalName
+  externalName: sparks.codes
