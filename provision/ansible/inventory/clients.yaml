@@ -3,7 +3,6 @@ all:
   hosts:
     localhost:
   children:
-
     # -------------------------------------------
     # Servers found in the server room
     # -------------------------------------------
@@ -32,7 +31,6 @@ all:
     linux_workstations:
       hosts:
         gamma.sparks.codes:
-        zeta.sparks.codes:
 
     linux_servers:
       hosts:
