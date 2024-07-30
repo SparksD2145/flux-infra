@@ -17,6 +17,7 @@ resources:
   - external-dns-charts.yaml
   - emberstack-charts.yaml
   - falco-security-charts.yaml
+  - fission-charts.yaml
   - gabe565-charts.yaml
   - gitlab-charts.yaml
   - glauth-charts.yaml
