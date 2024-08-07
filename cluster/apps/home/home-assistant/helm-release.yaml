@@ -37,7 +37,7 @@ spec:
           main:
             image:
               repository: homeassistant/home-assistant
-              tag: "2024.7"
+              tag: "2024.8"
             env:
               TZ: "America/Chicago"
           code:
