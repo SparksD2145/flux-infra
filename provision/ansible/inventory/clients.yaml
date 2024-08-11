@@ -26,11 +26,11 @@ all:
     linux:
       children:
         linux_servers:
-        linux_workstations:
+        # linux_workstations:
 
-    linux_workstations:
-      hosts:
-        gamma.sparks.codes:
+    # linux_workstations:
+    #   hosts:
+    #     gamma.sparks.codes:
 
     linux_servers:
       hosts:
