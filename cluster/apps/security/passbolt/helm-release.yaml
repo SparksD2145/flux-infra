@@ -100,7 +100,7 @@ spec:
         client: mariadb
       image:
         repository: passbolt/passbolt
-        tag: 4.9.0-1-ce
+        tag: 4.9.1-1-ce
       cache:
         # Use CACHE_CAKE_DEFAULT_* variables to configure the connection to redis instance
         # on the passboltEnv configuration section
