@@ -1,3 +1,12 @@
+resource "opnsense_unbound_host_alias" "svc-auth-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Authentik auth service"
+  hostname    = "auth"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-authcodes-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
