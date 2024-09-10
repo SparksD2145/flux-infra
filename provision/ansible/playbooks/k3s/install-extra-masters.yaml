@@ -18,4 +18,4 @@
           - nfs-common
 
     - name: Start K3s Master
-      shell: curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - server --write-kubeconfig-mode=644 --disable=traefik,servicelb,local-storage --tls-san=k8s-control.sparks.codes --token='' --server='https://10.10.0.100:6443'
+      shell: curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - server --write-kubeconfig-mode=644 --disable=traefik,servicelb,local-storage --token='' --server='https://SERVERHERE:6443'

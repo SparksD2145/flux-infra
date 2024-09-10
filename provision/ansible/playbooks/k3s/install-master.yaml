@@ -18,4 +18,4 @@
           - nfs-common
 
     - name: Start K3s Master
-      shell: 'curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - server --write-kubeconfig-mode=644 --disable=traefik,servicelb,local-storage'
+      shell: "curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -s - server --cluster-init --write-kubeconfig-mode=644 --disable=traefik,servicelb,local-storage"
