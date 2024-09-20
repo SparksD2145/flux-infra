@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: paperless-ngx-smb
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: dperson/samba
+              tag: latest
+            env:
+              TZ: "America/Chicago"
+              USER: "${MEDIA_PAPERLESS_SMB_USERS};1000"
+            args:
+              - -s
+              - "paperless;/smb;no;no;no;all;paperless-uploader;paperless-uploader;Paperless Import Directory"
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+
+    service:
+      main:
+        enabled: true
+        controller: main
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.13
+        ports:
+          smb1:
+            port: 139
+            protocol: UDP
+          smb2:
+            port: 445
+            protocol: TCP
+    persistence:
+      data:
+        existingClaim: paperless-ngx-data
+        advancedMounts:
+          main:
+            main:
+              - path: /smb
+                readOnly: false
+                subPath: consume

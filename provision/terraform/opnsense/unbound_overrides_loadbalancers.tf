@@ -88,6 +88,15 @@ resource "opnsense_unbound_host_override" "lb-mailserver" {
   server   = "10.10.201.12"
 }
 
+resource "opnsense_unbound_host_override" "lb-paperless-dropbox" {
+  enabled     = true
+  description = "Paperless-NGX Dropbox"
+
+  hostname = "paperless-dropbox"
+  domain   = "sparks.codes"
+  server   = "10.10.201.13"
+}
+
 resource "opnsense_unbound_host_override" "lb-minecraft" {
   enabled     = true
   description = "Minecraft loadbalancer"

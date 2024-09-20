@@ -1,0 +1,88 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: paperless-ngx
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/paperless-ngx/paperless-ngx
+              tag: 2.12.1@sha256:217cec76128c2545872cf356694f2ffd4524cb84892d0333e654795dec255633
+            env:
+              COMPOSE_PROJECT_NAME: paperless-ngx
+              PAPERLESS_TIME_ZONE: "America/Chicago"
+              PAPERLESS_URL: "https://paperless.sparks.codes"
+              USERMAP_UID: 1000
+              PAPERLESS_DBHOST: paperless-ngx-postgresql
+              PAPERLESS_DBNAME: paperless-ngx
+              PAPERLESS_DBUSER: paperless-ngx
+              PAPERLESS_DBPASS: ${MEDIA_PAPERLESS_DB_PASSWORD}
+              PAPERLESS_REDIS: redis://paperless-ngx-redis-master:6379
+              PAPERLESS_CONSUMPTION_DIR: /paperless/consume
+              PAPERLESS_DATA_DIR: /paperless/data
+              PAPERLESS_MEDIA_ROOT: /paperless/media
+              PAPERLESS_FILENAME_FORMAT: "{created_year}/{correspondent}/{title}"
+              PAPERLESS_FILENAME_FORMAT_REMOVE_NONE: true
+              PAPERLESS_CONSUMER_POLLING: 60
+              PAPERLESS_CONSUMER_DELETE_DUPLICATES: true
+              PAPERLESS_CONSUMER_RECURSIVE: true
+              PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: true
+              PAPERLESS_OCR_LANGUAGE: eng
+              PAPERLESS_SECRET_KEY: ${MEDIA_PAPERLESS_SECRET_KEY}
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8000
+    ingress:
+      main:
+        className: nginx-internal
+        annotations:
+          nginx.ingress.kubernetes.io/proxy-body-size: 2G
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Documents"
+          hajimari.io/info: "Document storage"
+          hajimari.io/icon: "file-document-multiple"
+          hajimari.io/targetBlank: "true"
+        hosts:
+          - host: paperless.sparks.codes
+            paths:
+              - path: /
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - paperless.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      data:
+        existingClaim: paperless-ngx-data
+        globalMounts:
+          - path: /paperless
