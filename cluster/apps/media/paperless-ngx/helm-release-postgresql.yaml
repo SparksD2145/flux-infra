@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      tag: 16.4.0-debian-12-r14
     auth:
       username: paperless-ngx
       password: ${MEDIA_PAPERLESS_DB_PASSWORD}
