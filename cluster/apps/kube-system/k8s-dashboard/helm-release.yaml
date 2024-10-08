@@ -239,7 +239,7 @@ spec:
       role: metrics-scraper
       image:
         repository: docker.io/kubernetesui/dashboard-metrics-scraper
-        tag: 1.1.1
+        tag: 1.2.0
       scaling:
         replicas: 1
         revisionHistoryLimit: 10
