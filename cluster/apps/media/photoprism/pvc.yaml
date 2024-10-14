@@ -5,7 +5,7 @@ metadata:
   name: local-photoprism-imports
 spec:
   capacity:
-    storage: 55Gi
+    storage: 200Gi
   accessModes:
     - ReadWriteOnce
   local:
@@ -26,9 +26,10 @@ metadata:
   name: local-photoprism-imports
   namespace: media
 spec:
+  volumeName: local-photoprism-imports
   accessModes:
     - ReadWriteOnce
   storageClassName: ""
   resources:
     requests:
-      storage: 55Gi
+      storage: 200Gi
