@@ -8,5 +8,5 @@ resources:
   - jellyfin
   - paperless-ngx
   - photoprism
-  - qbittorrent
+  # - qbittorrent
   - sterling-pdf
