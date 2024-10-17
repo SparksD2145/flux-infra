@@ -15,8 +15,6 @@ all:
     # -------------------------------------------
     servers_with_idracs:
       hosts:
-        whiskey.sparks.codes:
-        foxtrot.sparks.codes:
         omega.sparks.codes:
         lambda.sparks.codes:
 
@@ -39,6 +37,7 @@ all:
         lambda.sparks.codes:
         rpi4-poe-1.sparks.codes:
         rpi4-poe-2.sparks.codes:
+        rpi4-poe-3.sparks.codes:
         sierra.sparks.codes:
         romeo.sparks.codes:
         xray.sparks.codes:
@@ -75,12 +74,6 @@ all:
 
     k3s_masters:
       hosts:
-        romeo.sparks.codes:
-          ansible_host: 10.10.10.1
-        whiskey.sparks.codes:
-          ansible_host: 10.10.1.1
-        rpi4-poe-2.sparks.codes:
-          ansible_host: 10.10.7.4
 
     # -------------------------------------------
     # Virtual Machine Hypervisors ---------------
