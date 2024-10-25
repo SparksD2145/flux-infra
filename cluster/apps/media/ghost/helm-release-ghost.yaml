@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: ghost
-              tag: 5.97.1
+              tag: 5.97.3
             env:
               TZ: "America/Chicago"
               url: "https://journal.iwrite.software"
