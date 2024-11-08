@@ -223,12 +223,12 @@ resource "opnsense_unbound_host_alias" "svc-router" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-sonarr" {
+resource "opnsense_unbound_host_alias" "svc-scrutiny" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "Music indexing service"
-  hostname    = "sonarr"
+  description = "Harddrive Health Monitoring"
+  hostname    = "scrutiny"
   domain      = "sparks.codes"
 }
 
