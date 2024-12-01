@@ -31,6 +31,7 @@ spec:
               DEFAULT_DOMAIN: &host sprk.sh
               DISABLE_TRACKING_FROM: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
               ENABLE_PERIODIC_VISIT_LOCATE: "true"
+              DEFAULT_BASE_URL_REDIRECT: https://iwrite.software
               IS_HTTPS_ENABLED: "true"
               PORT: &port 80
               WEB_WORKER_NUM: 1
@@ -40,7 +41,7 @@ spec:
               DB_NAME: ${TOOLS_SHLINK_DB_DB}
               DB_USER: ${TOOLS_SHLINK_DB_USER}
               DB_PASSWORD: ${TOOLS_SHLINK_DB_PASSWORD}
-              DB_HOST: 'shlink-mariadb.tools.svc.cluster.local'
+              DB_HOST: "shlink-mariadb.tools.svc.cluster.local"
             resources:
               requests:
                 cpu: 10m
