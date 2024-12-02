@@ -115,6 +115,8 @@ spec:
               url: "https://app.monarchmoney.com/dashboard"
             - name: Credit Karma
               url: "https://creditkarma.com"
+            - name: Ally Bank
+              url: "https://ally.com"
             - name: Chase
               url: "https://chase.com"
             - name: PayPal
