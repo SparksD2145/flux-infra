@@ -2,17 +2,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-mc-cwh11-broville
-  labels:
-    app: minecraft-cwh11-broville-minecraft
+  name: local-mc-cwh11-perfect-world
 spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 20Gi
+    storage: 45Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mc.sparks.codes/cwh11-broville
+    path: /mnt/static/mc.sparks.codes/cwh11-perfect-world
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -26,15 +24,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: local-mc-cwh11-broville
+  name: local-mc-cwh11-perfect-world
   namespace: games
-  labels:
-    app: minecraft-cwh11-broville-minecraft
 spec:
-  volumeName: local-mc-cwh11-broville
+  volumeName: local-mc-cwh11-perfect-world
   accessModes:
     - ReadWriteOnce
   storageClassName: ""
   resources:
     requests:
-      storage: 20Gi
+      storage: 45Gi
