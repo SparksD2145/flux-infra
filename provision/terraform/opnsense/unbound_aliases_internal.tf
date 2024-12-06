@@ -88,21 +88,21 @@ resource "opnsense_unbound_host_alias" "svc-emqx-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-idrac-foxtrot-console-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-idrac-lambda-console-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "idrac-foxtrot-console"
-  hostname    = "idrac-foxtrot-console"
+  description = "idrac-lambda-console"
+  hostname    = "idrac-lambda-console"
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-idrac-whiskey-console-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-idrac-omega-console-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "idrac-whiskey-console"
-  hostname    = "idrac-whiskey-console"
+  description = "idrac-omega-console"
+  hostname    = "idrac-omega-console"
   domain      = "sparks.codes"
 }
 
