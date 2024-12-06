@@ -8,8 +8,5 @@ resources:
   - ntfy
   - hajimari
   - homebox
-  - idrac6
-  - rustdesk
   - shlink
-  - sshwifty
   - uptime-kuma
