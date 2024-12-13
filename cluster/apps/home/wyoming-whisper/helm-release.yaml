@@ -36,8 +36,6 @@ spec:
               readiness:
                 enabled: false
     persistence:
-      config:
-        enabled: false
       data:
         enabled: true
         globalMounts:

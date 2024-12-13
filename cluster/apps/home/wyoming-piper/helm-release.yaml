@@ -34,8 +34,6 @@ spec:
             env:
               TZ: "America/Chicago"
     persistence:
-      config:
-        enabled: false
       data:
         enabled: true
         globalMounts:
