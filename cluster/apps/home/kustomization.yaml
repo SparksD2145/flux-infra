@@ -3,7 +3,9 @@ kind: Kustomization
 resources:
   - emqx
   - esphome
-  # - ispy-dvr
   - home-assistant
+  # - ispy-dvr
+  - wyoming-piper
+  - wyoming-whisper
   - zigbee2mqtt
   - zwavejs2mqtt
