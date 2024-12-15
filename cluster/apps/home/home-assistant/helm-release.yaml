@@ -52,12 +52,6 @@ spec:
         ports:
           http:
             port: 8123
-      code:
-        type: ClusterIP
-        controller: main
-        ports:
-          http:
-            port: 8081
     ingress:
       main:
         enabled: true

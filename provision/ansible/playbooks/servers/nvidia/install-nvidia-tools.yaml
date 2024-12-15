@@ -4,11 +4,10 @@
   tasks:
     - name: Add Nvidia Repo
       shell: |
-        distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-        && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
-        && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
-              sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
-              sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+        curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+        && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+          sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+          sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
     - name: Install Packages
       apt:
@@ -17,9 +16,8 @@
           - tmux
           - python3
           - python3-pip
-          - nvidia-headless-535-server
-          - nvidia-utils-535-server
-          - nvidia-docker2
+          - nvidia-headless-565-server
+          - nvidia-utils-565-server
           - nvidia-container-runtime
 
     - name: Set text target
@@ -31,15 +29,4 @@
     #     dest: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
     - name: Install Docker Config
-      copy:
-        dest: /etc/docker/daemon.json
-        content: |
-          {
-              "default-runtime": "nvidia",
-              "runtimes": {
-                  "nvidia": {
-                      "path": "nvidia-container-runtime",
-                      "runtimeArgs": []
-                  }
-              }
-          }
+      shell: nvidia-ctk runtime configure --runtime=containerd

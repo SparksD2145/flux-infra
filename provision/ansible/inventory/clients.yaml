@@ -41,6 +41,7 @@ all:
         sierra.sparks.codes:
         romeo.sparks.codes:
         xray.sparks.codes:
+        kappa.sparks.codes:
 
     # -------------------------------------------
     # All Windows Machines ----------------------

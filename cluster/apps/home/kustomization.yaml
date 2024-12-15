@@ -5,6 +5,7 @@ resources:
   - esphome
   - home-assistant
   # - ispy-dvr
+  - ollama
   - wyoming-piper
   - wyoming-whisper
   - zigbee2mqtt
