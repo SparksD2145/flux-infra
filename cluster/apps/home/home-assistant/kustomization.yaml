@@ -6,3 +6,4 @@ resources:
   - pvc-media.yaml
   - helm-release.yaml
   - external-name.yaml
+  - codeserver-auth-secret.sops.yaml

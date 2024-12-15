@@ -26,6 +26,11 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       hostNetwork: true
       automountServiceAccountToken: false
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
     controllers:
       main:
         containers:
@@ -35,6 +40,22 @@ spec:
               tag: "2024.12"
             env:
               TZ: "America/Chicago"
+      code:
+        containers:
+          code:
+            image:
+              repository: ghcr.io/coder/code-server
+              tag: 4.95.3
+            args:
+              - --auth
+              - "none"
+              - --user-data-dir
+              - "/config/.vscode"
+              - --extensions-dir
+              - "/config/.vscode"
+              - --port
+              - "8081"
+              - "/config"
     persistence:
       config:
         enabled: true
@@ -52,6 +73,12 @@ spec:
         ports:
           http:
             port: 8123
+      code:
+        type: ClusterIP
+        controller: code
+        ports:
+          http:
+            port: 8081
     ingress:
       main:
         enabled: true
@@ -75,3 +102,22 @@ spec:
           - secretName: acme-crt-secret-sparks-codes
             hosts:
               - home.sparks.codes
+      code:
+        enabled: true
+        className: nginx-internal
+        annotations:
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: codeserver-auth-secret
+          nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+        hosts:
+          - host: &host "codeserver-home.sparks.codes"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: code
+                  port: http
+        tls:
+          - secretName: acme-crt-secret-sparks-codes
+            hosts:
+              - *host
