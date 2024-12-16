@@ -205,12 +205,12 @@ resource "opnsense_unbound_host_alias" "svc-router" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-scrutiny" {
+resource "opnsense_unbound_host_alias" "svc-ollama-webui" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "Harddrive Health Monitoring"
-  hostname    = "scrutiny"
+  description = "Ollama frontend"
+  hostname    = "ollama-webui"
   domain      = "sparks.codes"
 }
 
