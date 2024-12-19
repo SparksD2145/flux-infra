@@ -45,7 +45,7 @@ spec:
           code:
             image:
               repository: ghcr.io/coder/code-server
-              tag: 4.95.3
+              tag: 4.96.1
             args:
               - --auth
               - "none"
