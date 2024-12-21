@@ -29,6 +29,7 @@ spec:
               tag: "main"
             env:
               TZ: "America/Chicago"
+              ENV: dev
               OLLAMA_BASE_URL: "http://ollama.sparks.codes:11434"
     persistence:
       config:
