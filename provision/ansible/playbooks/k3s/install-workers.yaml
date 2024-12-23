@@ -18,4 +18,4 @@
           - nfs-common
 
     - name: Start K3s Worker
-      shell: curl -sfL https://get.k3s.io | K3S_URL='https://10.10.9.1:6443' K3S_TOKEN='' sh -
+      shell: curl -sfL https://get.k3s.io | K3S_URL='https://sierra.sparks.codes:6443' K3S_TOKEN='' sh -

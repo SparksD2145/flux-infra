@@ -14,11 +14,6 @@ spec:
       labels:
         run: zwavejs2mqtt
     spec:
-      tolerations:
-        - key: "iot-control"
-          operator: "Equal"
-          value: "active"
-          effect: "NoSchedule"
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwave-js-ui:latest

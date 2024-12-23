@@ -22,11 +22,6 @@ spec:
     defaultPodOptions:
       nodeSelector:
         kubernetes.io/hostname: rpi4-poe-1
-      tolerations:
-        - key: "iot-control"
-          operator: "Equal"
-          value: "active"
-          effect: "NoSchedule"
       dnsConfig:
         options:
           - name: ndots
