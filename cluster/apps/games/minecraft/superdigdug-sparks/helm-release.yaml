@@ -29,7 +29,7 @@ spec:
     minecraftServer:
       eula: "TRUE"
       version: "1.20.4"
-      type: SPIGOT
+      type: PAPER
       motd: "superdigdug-sparks.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"

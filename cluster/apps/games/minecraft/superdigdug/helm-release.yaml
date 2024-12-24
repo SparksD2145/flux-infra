@@ -29,14 +29,14 @@ spec:
     minecraftServer:
       eula: "TRUE"
       version: "1.20.4"
-      type: SPIGOT
+      type: PAPER
       motd: "superdigdug.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
       worldSaveName: flux
       maxPlayers: 20
       viewDistance: 14
-      levelSeed: '1123197228000674286'
+      levelSeed: "1123197228000674286"
       gameMode: survival
       pvp: true
       onlineMode: false

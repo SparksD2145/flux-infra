@@ -29,14 +29,14 @@ spec:
     minecraftServer:
       eula: "TRUE"
       version: "1.19.4"
-      type: SPIGOT
+      type: PAPER
       motd: "cwh11.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
       worldSaveName: world_rex
       maxPlayers: 20
       viewDistance: 14
-      levelSeed: '-0711199949401119192'
+      levelSeed: "-0711199949401119192"
       gameMode: survival
       pvp: true
       onlineMode: false

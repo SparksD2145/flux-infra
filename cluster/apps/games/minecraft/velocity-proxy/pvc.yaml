@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-mc-velocity
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 512Mi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/static/mc.sparks.codes/velocity-proxy
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - omega
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-mc-velocity
+  namespace: games
+spec:
+  volumeName: local-mc-velocity
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 512Mi
