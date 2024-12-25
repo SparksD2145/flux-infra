@@ -4,4 +4,3 @@ resources:
   - helm-release.yaml
   - pvc-config.yaml
   - pvc-media.yaml
-  - external-name.yaml
