@@ -15,6 +15,7 @@ resources:
   - networking.yaml
   - nginx.yaml
   - rook-ceph.yaml
-  - tools.yaml
   - security.yaml
   - system-upgrade.yaml
+  - tools.yaml
+  - velero.yaml
