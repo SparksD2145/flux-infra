@@ -124,6 +124,15 @@ resource "opnsense_unbound_host_override" "lb-ollama" {
   server   = "10.10.201.14"
 }
 
+resource "opnsense_unbound_host_override" "lb-velero-minio-api" {
+  enabled     = true
+  description = "Velero Minio API"
+
+  hostname = "velero-minio-api"
+  domain   = "sparks.codes"
+  server   = "10.10.201.15"
+}
+
 resource "opnsense_unbound_host_override" "lb-minecraft" {
   enabled     = true
   description = "Minecraft loadbalancer"
