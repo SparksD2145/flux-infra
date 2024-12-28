@@ -6,8 +6,8 @@
       apt:
         state: absent
         pkg:
-          - nvidia-headless-470-server
-          - nvidia-utils-470-server
+          - nvidia-headless-565-server
+          - nvidia-utils-565-server
           - nvidia-cuda-toolkit
           - nvidia-container-toolkit
 
