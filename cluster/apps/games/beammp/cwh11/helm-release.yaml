@@ -1,0 +1,57 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cwh11-beammp
+  namespace: games
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: rouhim/beammp-server
+              tag: latest
+            env:
+              TZ: "America/Chicago"
+              BEAMMP_AUTH_KEY: ${GAMES_BEAMMP_AUTH_KEY}
+              BEAMMP_DEBUG: FALSE
+              BEAMMP_PRIVATE: TRUE
+              BEAMMP_MAX_CARS: 1
+              BEAMMP_MAX_PLAYERS: 10
+              BEAMMP_MAP: /levels/gridmap_v2/info.json
+              BEAMMP_NAME: "CWH11's Server"
+              BEAMMP_DESCRIPTION: "Chaos abounds"
+              BEAMMP_PORT: 30814
+            resources:
+              requests:
+                memory: 4096Mi
+                cpu: 800m
+              limits:
+                memory: 8192Mi
+                cpu: 800m
+    persistence:
+      main:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: local-beammp-cwh11
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: "10.10.202.100"
+        controller: main
+        ports:
+          gameserver:
+            protocol: TCP
+            port: 30814

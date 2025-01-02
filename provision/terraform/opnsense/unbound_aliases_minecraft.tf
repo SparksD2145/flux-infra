@@ -16,15 +16,6 @@ resource "opnsense_unbound_host_alias" "cwh11-archive-mc-sparks-codes" {
   domain      = "mc.sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "cwh11-perfect-world-mc-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-minecraft.id
-
-  enabled     = true
-  description = "Perfect World CWH11 Minecraft Server"
-  hostname    = "cwh11-perfect-world"
-  domain      = "mc.sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "superdigdug-mc-sparks-codes" {
   override = opnsense_unbound_host_override.lb-minecraft.id
 

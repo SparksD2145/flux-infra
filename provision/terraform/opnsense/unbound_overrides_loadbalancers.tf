@@ -126,9 +126,18 @@ resource "opnsense_unbound_host_override" "lb-ollama" {
 
 resource "opnsense_unbound_host_override" "lb-minecraft" {
   enabled     = true
-  description = "Minecraft loadbalancer"
+  description = "minecraft loadbalancer"
 
   hostname = "mc"
   domain   = "sparks.codes"
   server   = "10.10.202.1"
+}
+
+resource "opnsense_unbound_host_override" "lb-cwh11-beammp" {
+  enabled     = true
+  description = "CWH11 BeamMP loadbalancer"
+
+  hostname = "cwh11"
+  domain   = "beammp.sparks.codes"
+  server   = "10.10.202.100"
 }
