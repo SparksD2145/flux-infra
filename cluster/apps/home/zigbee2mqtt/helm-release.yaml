@@ -74,7 +74,6 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /dev/ttyUSB0
-
         advancedMounts:
           main:
             main:
@@ -84,7 +83,10 @@ spec:
     config:
       # These will be applied ONLY on first run
       # Home Assistant integration (MQTT discovery)
-      homeassistant: true
+      homeassistant:
+        enabled: true
+        discovery_topic: "homeassistant"
+        status_topic: "homeassistant/status"
 
       # allow new devices to join
       # WARNING: Disable this after all devices have been paired! (default: false)
@@ -113,7 +115,7 @@ spec:
         # Location of your zigbee device
         port: /dev/ttyUSB0
         # Optional: adapter type, not needed unless you are experiencing problems (options: zstack, deconz)
-        # adapter: deconz
+        adapter: zstack
 
       advanced:
         network_key: ${HOME_ZIGBEE2MQTT_NETWORK_KEY}
@@ -136,11 +138,9 @@ spec:
         # possible values are: disable (default), ISO_8601, ISO_8601_local, epoch (default: disable)
         last_seen: "ISO_8601"
 
-        homeassistant_discovery_topic: "homeassistant"
-        homeassistant_status_topic: "homeassistant/status"
-
         # Optional: Enables report feature (see information -> report for more details) (default: false)
         # report: true
+
         # Optional: Add an elapsed attribute to MQTT messages, contains milliseconds since the previous msg (default: false)
         # elapsed: true
 
