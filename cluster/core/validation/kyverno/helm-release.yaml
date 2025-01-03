@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kyverno
-  namespace: default
+  namespace: kyverno
 spec:
   interval: 5m
   chart:
@@ -19,7 +19,7 @@ spec:
     timeout: 10m
     replace: true
     crds: CreateReplace
-    createNamespace: true
+    createNamespace: false
     remediation:
       retries: 3
   upgrade:

@@ -9,4 +9,4 @@ resources:
   - monitoring
   - networking
   - storage
-  # - validation
+  - validation
