@@ -8,7 +8,7 @@ metadata:
     policies.kyverno.io/subject: Ingress
     policies.kyverno.io/description: >-
       This policy creates auth annotations on ingresses. When
-      the `authentik.home.arpa/enabled` annotation is `true` it
+      the `authentik.sparks.codes/enabled` annotation is `true` it
       applies the nginx auth annotations for use with Authentik.
 spec:
   mutateExistingOnPolicyUpdate: true
