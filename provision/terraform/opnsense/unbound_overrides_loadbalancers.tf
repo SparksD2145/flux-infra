@@ -115,15 +115,6 @@ resource "opnsense_unbound_host_override" "lb-paperless-dropbox" {
   server   = "10.10.201.13"
 }
 
-resource "opnsense_unbound_host_override" "lb-ollama" {
-  enabled     = true
-  description = "Ollama Endpoint"
-
-  hostname = "ollama"
-  domain   = "sparks.codes"
-  server   = "10.10.201.14"
-}
-
 resource "opnsense_unbound_host_override" "lb-minecraft" {
   enabled     = true
   description = "minecraft loadbalancer"
