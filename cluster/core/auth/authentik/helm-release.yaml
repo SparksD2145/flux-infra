@@ -20,7 +20,7 @@ spec:
   values:
     authentik:
       secret_key: "${AUTH_AUTHENTIK_SECRET_KEY}"
-      log_level: debug
+      # log_level: debug
       postgresql:
         password: "${AUTH_AUTHENTIK_POSTGRESQL_PASSWORD}"
 
@@ -30,12 +30,6 @@ spec:
 
     redis:
       enabled: true
-
-    prometheus:
-      rules:
-        create: true
-      serviceMonitor:
-        create: true
 
     ingress:
       enabled: true
