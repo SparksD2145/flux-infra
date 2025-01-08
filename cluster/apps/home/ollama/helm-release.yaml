@@ -51,6 +51,7 @@ spec:
         enabled: true
         className: nginx-internal
         annotations:
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "240"
           hajimari.io/enable: "false"
           hajimari.io/icon: cloud-search
           hajimari.io/info: "Ollama Runner"
