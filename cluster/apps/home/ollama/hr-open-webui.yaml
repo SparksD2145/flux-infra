@@ -27,6 +27,7 @@ spec:
             image:
               repository: ghcr.io/open-webui/open-webui
               tag: "main"
+              pullPolicy: Always
             env:
               TZ: "America/Chicago"
               ENV: dev
