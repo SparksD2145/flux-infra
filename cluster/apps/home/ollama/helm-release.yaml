@@ -31,12 +31,8 @@ spec:
               TZ: "America/Chicago"
             resources:
               requests:
-                cpu: 800m
-                memory: 12Gi
                 nvidia.com/gpu: 1
               limits:
-                cpu: 1000m
-                memory: 12Gi
                 nvidia.com/gpu: 1
     persistence:
       config:
