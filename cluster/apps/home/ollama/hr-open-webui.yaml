@@ -17,9 +17,9 @@ spec:
       interval: 15m
   values:
     defaultPodOptions:
-      runtimeClassName: nvidia
+      # runtimeClassName: nvidia
       nodeSelector:
-        kubernetes.io/hostname: kappa
+        kubernetes.io/hostname: beta
     controllers:
       main:
         containers:

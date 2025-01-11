@@ -32,6 +32,7 @@ all:
 
     linux_servers:
       hosts:
+        beta.sparks.codes:
         tango.sparks.codes:
         omega.sparks.codes:
         lambda.sparks.codes:

@@ -19,7 +19,7 @@ spec:
     defaultPodOptions:
       runtimeClassName: nvidia
       nodeSelector:
-        kubernetes.io/hostname: kappa
+        kubernetes.io/hostname: beta
     controllers:
       main:
         containers:
@@ -31,9 +31,13 @@ spec:
               TZ: "America/Chicago"
             resources:
               requests:
-                nvidia.com/gpu: 2
+                cpu: 800m
+                memory: 12Gi
+                nvidia.com/gpu: 1
               limits:
-                nvidia.com/gpu: 2
+                cpu: 1000m
+                memory: 12Gi
+                nvidia.com/gpu: 1
     persistence:
       config:
         enabled: true
