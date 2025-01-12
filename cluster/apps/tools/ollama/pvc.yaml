@@ -25,7 +25,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ollama-pvc
-  namespace: home
+  namespace: tools
 spec:
   volumeName: ollama-pv
   accessModes:

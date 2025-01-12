@@ -6,6 +6,7 @@ resources:
   - mailserver
   - netboot.xyz
   - ntfy
+  - ollama
   - hajimari
   - homebox
   - shlink

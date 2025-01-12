@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: ollama-webui
-  namespace: home
+  name: ollama
+  namespace: tools
 spec:
   interval: 15m
   chart:
@@ -17,7 +17,7 @@ spec:
       interval: 15m
   values:
     defaultPodOptions:
-      # runtimeClassName: nvidia
+      runtimeClassName: nvidia
       nodeSelector:
         kubernetes.io/hostname: beta
     controllers:
@@ -25,37 +25,41 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/open-webui/open-webui
-              tag: "main"
-              pullPolicy: Always
+              repository: ollama/ollama
+              tag: "0.5.5"
             env:
               TZ: "America/Chicago"
-              ENV: dev
-              OLLAMA_BASE_URL: "https://ollama.sparks.codes"
+              CUDA_ERROR_LEVEL: "50"
+              OLLAMA_DEBUG: 1
+            resources:
+              requests:
+                nvidia.com/gpu: 2
+              limits:
+                nvidia.com/gpu: 2
     persistence:
       config:
         enabled: true
-        existingClaim: ollama-web-pvc
+        existingClaim: ollama-pvc
         globalMounts:
-          - path: /app/backend/data
+          - path: /root/.ollama
     service:
       main:
         controller: main
-        type: ClusterIP
         ports:
           http:
-            port: 8080
+            port: 11434
     ingress:
       main:
         enabled: true
         className: nginx-internal
         annotations:
-          hajimari.io/enable: "true"
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "240"
+          hajimari.io/enable: "false"
           hajimari.io/icon: cloud-search
-          hajimari.io/info: "Ollama frontend"
+          hajimari.io/info: "Ollama Runner"
           hajimari.io/targetBlank: "true"
         hosts:
-          - host: &host "ollama-webui.sparks.codes"
+          - host: &host "ollama.sparks.codes"
             paths:
               - path: /
                 pathType: Prefix
