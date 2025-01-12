@@ -23,35 +23,24 @@ spec:
             image:
               repository: ghcr.io/netbootxyz/netbootxyz
               tag: latest
-    defaultPodOptions:
-      hostNetwork: true
+            env:
+              - TFTPD_OPTS: "--tftp-single-port"
     service:
       main:
         controller: main
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.9
+        annotations:
+          metallb.universe.tf/allow-shared-ip: "netboot-ip"
         ports:
           http:
             port: 3000
-      web:
-        enabled: true
-        primary: false
-        type: LoadBalancer
-        loadBalancerIP: 10.10.201.9
-        controller: main
-        annotations:
-          metallb.universe.tf/allow-shared-ip: pxe-svc
-        ports:
           web:
             enabled: true
             primary: false
             port: 80
             targetPort: 80
             protocol: HTTP
-      tftp:
-        enabled: true
-        primary: false
-        controller: main
-        type: NodePort
-        ports:
           tftp:
             enabled: true
             primary: false
