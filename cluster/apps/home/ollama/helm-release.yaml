@@ -31,9 +31,9 @@ spec:
               TZ: "America/Chicago"
             resources:
               requests:
-                nvidia.com/gpu: 1
+                nvidia.com/gpu: 2
               limits:
-                nvidia.com/gpu: 1
+                nvidia.com/gpu: 2
     persistence:
       config:
         enabled: true
