@@ -24,7 +24,7 @@ spec:
               repository: ghcr.io/netbootxyz/netbootxyz
               tag: latest
             env:
-              - TFTPD_OPTS: "--tftp-single-port"
+              TFTPD_OPTS: "--tftp-single-port"
     service:
       main:
         controller: main
