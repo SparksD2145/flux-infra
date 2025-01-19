@@ -35,14 +35,14 @@ all:
         beta.sparks.codes:
         tango.sparks.codes:
         omega.sparks.codes:
-        lambda.sparks.codes:
+        # lambda.sparks.codes:
         rpi4-poe-1.sparks.codes:
         rpi4-poe-2.sparks.codes:
         rpi4-poe-3.sparks.codes:
         sierra.sparks.codes:
         romeo.sparks.codes:
         xray.sparks.codes:
-        kappa.sparks.codes:
+        # kappa.sparks.codes:
 
     # -------------------------------------------
     # All Windows Machines ----------------------
