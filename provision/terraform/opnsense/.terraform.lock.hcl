@@ -1,24 +1,11 @@
-# This file is maintained automatically by "tofu init".
+# This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
-provider "registry.opentofu.org/browningluke/opnsense" {
+provider "registry.terraform.io/browningluke/opnsense" {
   version     = "0.11.0"
   constraints = "0.11.0"
   hashes = [
-    "h1:/neqg7RtjDK6+6lJYC6wa8BzAd259jnCRObEjVy86bQ=",
-    "h1:6Sy/3hKuGL/oJ1nWIdiwBIl04gQqgHW99NhIIYHQUQA=",
-    "h1:8VJED69mLhib7l9vBEnORKphspMs4daTgl+i9iOdfz0=",
-    "h1:CQZFmkqUNuT9ILadyljgrbGueow5wAh7K5S4a8xNKIA=",
     "h1:Euvr5teHyc6AVQhTQZXkwwJcaQ+0qwKMnzH9pMu2CbY=",
-    "h1:NP39FsNf0eN4xZzgEHsuvusjpuPVt6mZG7mvXSnidQw=",
-    "h1:SIWyWWAmDGCZVVqR7Z1Cp7TVn4i/i9Joxsp26SA5sFM=",
-    "h1:cpve0N6SM4GNceOGdN5nhXVFZBpPZsyCb8IOkS8Qsmk=",
-    "h1:gp/T1U4PeWH3tlBpC71jWSochf91LRl8sm064kKUCG4=",
-    "h1:i6h+VowPdc2+cXFNnmPqK6h5dhK1+f1k+4ImwLX3ZYs=",
-    "h1:miRVko3JsSkxJ4KtuJcJjAU9AKUfUrMWQY4nInKDpZE=",
-    "h1:p4xN4XinLnBFo9rfe+CzzdXdf095LM4gkYTkCLC0vJo=",
-    "h1:wH1knqyudCh5fUAPl77wB+qz0dUDo0DGbSkESXvR0mE=",
-    "h1:xt0mv7qFyTyWClO+RhqFNQMxTkFyiD8Hcg9tC+1/sP4=",
     "zh:24dfb6cb8d699705dcf08b7e073e72a0b980a8ac9f55331e025db96ca9ae53f7",
     "zh:2544dbf1a274824940288e2e515fb5edb22250947a0f7354c971faaf32ee0003",
     "zh:2d78fa29aaebf2aaa68517507af9ae470a794dbc5705e8f7af7d2bf898396ff4",
@@ -37,17 +24,11 @@ provider "registry.opentofu.org/browningluke/opnsense" {
   ]
 }
 
-provider "registry.opentofu.org/carlpett/sops" {
+provider "registry.terraform.io/carlpett/sops" {
   version     = "1.1.1"
   constraints = "1.1.1"
   hashes = [
-    "h1:0lv+4VCaIRTkBAMXmCxSJC1dsYPuoyBAvnrLsofcseA=",
-    "h1:AM1mG6OjcEL8hIr0PPel85i0HUlLZH8BZer5Dq7uiOM=",
-    "h1:FDG2jSsAr/tWk/w5zuPGovEtCqKxxosCYPlA5msBhec=",
-    "h1:WCfQL+3Nf73jZ40NkduHIBze7vOtYeyXb4t1xoa/3as=",
-    "h1:cl4VtE/cu7gL2DmwXEiNfD9xpv66Xzr4IeUzlGgfMZ0=",
     "h1:hqyownSt8teS7g0+XDOxmAtuAHB5kDNQkW1voBhLmZU=",
-    "h1:iKoZfVYPK2awiHuf2k0F9CyDjfnYYwoaNC9/pxINU8E=",
     "zh:175ec198e1b4d1cad1ae559ebe8cdf574617805010c22dfb8af93a2057ba8332",
     "zh:2b550b2372f71408e7b47b099f314d981bbb82b263cb55248a36a9af8afd44a1",
     "zh:684544ed3460c34585b090b5de1d4e0caf8eba8e6ba50ad0734cda818a6c86f0",

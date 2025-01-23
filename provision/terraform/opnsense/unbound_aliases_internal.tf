@@ -124,6 +124,15 @@ resource "opnsense_unbound_host_alias" "svc-monitoring-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-ml-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Machine Learning Workspace"
+  hostname    = "ml"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-netboot-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 

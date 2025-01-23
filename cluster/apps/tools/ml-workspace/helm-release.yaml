@@ -1,0 +1,68 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ml-workspace
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: mltooling/ml-workspace
+              tag: 0.13.2
+            env:
+              TZ: "America/Chicago"
+              SHUTDOWN_INACTIVE_KERNELS: "true"
+            envFrom:
+              - secret: ml-workspace-creds
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: "nginx-internal"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "ML Workspace"
+          hajimari.io/info: "Machine Learning Workspace"
+          hajimari.io/icon: "brain"
+          hajimari.io/targetBlank: "true"
+        hosts:
+          - host: &host ml.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      workspace:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteMany
+        storageClass: ceph-filesystem
+        size: 150Gi
+        retain: true
+        globalMounts:
+          - path: /workspace
