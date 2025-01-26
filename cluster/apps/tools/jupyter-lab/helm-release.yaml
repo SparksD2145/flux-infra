@@ -17,6 +17,7 @@ spec:
       interval: 15m
   values:
     defaultPodOptions:
+      runtimeClassName: "nvidia"
       securityContext:
         runAsUser: 0
         runAsGroup: 0
@@ -77,3 +78,10 @@ spec:
         retain: true
         globalMounts:
           - path: /home/jovyan/Notebooks
+      shm:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 8Gi
+        globalMounts:
+          - path: /dev/shm
