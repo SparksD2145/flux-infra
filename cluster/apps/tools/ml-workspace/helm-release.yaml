@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: ml-workspace
+  name: jupyter-notebook
   namespace: tools
 spec:
   interval: 15m
@@ -16,31 +16,42 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
     controllers:
       main:
         containers:
           main:
             image:
-              repository: mltooling/ml-workspace
-              tag: 0.13.2
+              repository: cschranz/gpu-jupyter
+              tag: v1.8_cuda-12.5_ubuntu-22.04
             env:
               TZ: "America/Chicago"
               SHUTDOWN_INACTIVE_KERNELS: "true"
+              GRANT_SUDO: "yes"
+              JUPYTER_ENABLE_LAB: "yes"
             envFrom:
               - secret: ml-workspace-creds
+            resources:
+              requests:
+                nvidia.com/gpu: 1
+              limits:
+                nvidia.com/gpu: 1
     service:
       main:
         controller: main
         ports:
           http:
-            port: 8080
+            port: 8888
     ingress:
       main:
         enabled: true
         className: "nginx-internal"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/appName: "ML Workspace"
+          hajimari.io/appName: "Jupyter Notebook"
           hajimari.io/info: "Machine Learning Workspace"
           hajimari.io/icon: "brain"
           hajimari.io/targetBlank: "true"
@@ -65,4 +76,4 @@ spec:
         size: 150Gi
         retain: true
         globalMounts:
-          - path: /workspace
+          - path: /home/jovyan/Notebooks
