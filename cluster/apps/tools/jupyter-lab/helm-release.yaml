@@ -17,6 +17,7 @@ spec:
       interval: 15m
   values:
     defaultPodOptions:
+      runtimeClassName: "nvidia"
       securityContext:
         runAsUser: 0
         runAsGroup: 0
@@ -32,6 +33,7 @@ spec:
               SHUTDOWN_INACTIVE_KERNELS: "true"
               GRANT_SUDO: "yes"
               JUPYTER_ENABLE_LAB: "yes"
+              NVIDIA_VISIBLE_DEVICES: "1"
             envFrom:
               - secret: ml-workspace-creds
             resources:
@@ -77,3 +79,10 @@ spec:
         retain: true
         globalMounts:
           - path: /home/jovyan/Notebooks
+      shm:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 8Gi
+        globalMounts:
+          - path: /dev/shm

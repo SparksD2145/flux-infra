@@ -4,10 +4,10 @@ kind: Kustomization
 resources:
   - littlelink
   - mailserver
-  # - ml-workspace
   - netboot.xyz
   - ntfy
   - ollama
+  - jupyter-lab
   - hajimari
   - homebox
   - shlink

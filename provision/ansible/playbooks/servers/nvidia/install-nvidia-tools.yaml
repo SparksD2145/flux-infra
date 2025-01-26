@@ -18,6 +18,7 @@
           - python3-pip
           - nvidia-headless-565-server
           - nvidia-utils-565-server
+          - libnvidia-compute-565-server
           - nvidia-container-runtime
 
     - name: Set text target
