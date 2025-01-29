@@ -33,6 +33,7 @@ spec:
               SHUTDOWN_INACTIVE_KERNELS: "true"
               GRANT_SUDO: "yes"
               JUPYTER_ENABLE_LAB: "yes"
+              NVIDIA_VISIBLE_DEVICES: "1"
             envFrom:
               - secret: ml-workspace-creds
             resources:
