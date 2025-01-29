@@ -18,4 +18,4 @@ resources:
   - security.yaml
   - system-upgrade.yaml
   - tools.yaml
-  - velero.yaml
+  # - velero.yaml
