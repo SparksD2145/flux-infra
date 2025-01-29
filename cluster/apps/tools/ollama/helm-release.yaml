@@ -31,12 +31,14 @@ spec:
               TZ: "America/Chicago"
               CUDA_ERROR_LEVEL: "50"
               OLLAMA_DEBUG: 1
-              NVIDIA_VISIBLE_DEVICES: "0"
+              NVIDIA_VISIBLE_DEVICES: "1"
             resources:
               requests:
-                nvidia.com/gpu: 1
+                # nvidia.com/gpu: 1
+                nvidia.com/gpu.shared: 1
               limits:
-                nvidia.com/gpu: 1
+                nvidia.com/gpu.shared: 1
+              #   nvidia.com/gpu: 1
     persistence:
       config:
         enabled: true

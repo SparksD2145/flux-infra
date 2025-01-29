@@ -38,9 +38,10 @@ spec:
               - secret: ml-workspace-creds
             resources:
               requests:
-                nvidia.com/gpu: 1
+                # nvidia.com/gpu: 1
+                nvidia.com/gpu.shared: 1
               limits:
-                nvidia.com/gpu: 1
+                nvidia.com/gpu.shared: 1
     service:
       main:
         controller: main
