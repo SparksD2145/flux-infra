@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - rpi4-poe-1
+                - rpi4-poe-3
 
 ---
 apiVersion: v1

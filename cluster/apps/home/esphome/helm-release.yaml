@@ -21,7 +21,7 @@ spec:
   values:
     defaultPodOptions:
       nodeSelector:
-        kubernetes.io/hostname: rpi4-poe-1
+        kubernetes.io/hostname: rpi4-poe-3
       dnsConfig:
         options:
           - name: ndots
