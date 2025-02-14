@@ -14,6 +14,8 @@ spec:
       labels:
         run: zwavejs2mqtt
     spec:
+      nodeSelector:
+        zwave-controller: "true"
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwave-js-ui:latest
@@ -58,11 +60,11 @@ spec:
             timeoutSeconds: 1
           resources:
             requests:
-              cpu: 300m
-              memory: 256Mi
+              cpu: 200m
+              memory: 64Mi
             limits:
-              cpu: 300m
-              memory: 512Mi
+              cpu: 200m
+              memory: 256Mi
       volumes:
         - name: data
           persistentVolumeClaim:
