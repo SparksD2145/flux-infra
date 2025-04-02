@@ -1,11 +1,11 @@
-resource "opnsense_unbound_host_override" "lb-external-services" {
-  enabled     = true
-  description = "External Services loadbalancer"
+# resource "opnsense_unbound_host_override" "lb-external-services" {
+#   enabled     = true
+#   description = "External Services loadbalancer"
 
-  hostname = "nginx-external"
-  domain   = "sparks.codes"
-  server   = "10.10.201.0"
-}
+#   hostname = "nginx-external"
+#   domain   = "sparks.codes"
+#   server   = "10.10.201.0"
+# }
 
 resource "opnsense_unbound_host_override" "lb-internal-services" {
   enabled     = true
