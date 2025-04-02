@@ -81,7 +81,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx-external"
+        className: "cloudflare-tunnel"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appname: "links"
@@ -102,7 +102,7 @@ spec:
             secretName: acme-crt-secret-imake-software
       additional-iwrite-software:
         enabled: true
-        className: "nginx-external"
+        className: "cloudflare-tunnel"
         annotations:
           hajimari.io/enable: "false"
           hajimari.io/appname: "links"
@@ -121,7 +121,7 @@ spec:
             secretName: acme-crt-secret-iwrite-software
       additional-sparks-codes:
         enabled: true
-        className: "nginx-external"
+        className: "cloudflare-tunnel"
         annotations:
           hajimari.io/enable: "false"
           hajimari.io/appname: "links"

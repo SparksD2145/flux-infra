@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - external-name.yaml
+  # - external-name.yaml
   - helm-release-ghost.yaml
   - helm-release-ghost-mariadb.yaml
   - content-pvc.yaml

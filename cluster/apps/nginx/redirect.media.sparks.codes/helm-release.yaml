@@ -29,7 +29,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: "nginx-external"
+        kubernetes.io/ingress.class: "cloudflare-tunnel"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hostname: "media.sparks.codes"
       extraHosts:

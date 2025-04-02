@@ -5,4 +5,4 @@ resources:
   - helm-release.yaml
   - pvc-config.yaml
   - pvc-cache.yaml
-  - external-name.yaml
+  # - external-name.yaml

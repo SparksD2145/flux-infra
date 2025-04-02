@@ -41,7 +41,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx-external
+        className: cloudflare-tunnel
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 2G
           hajimari.io/enable: "true"

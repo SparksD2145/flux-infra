@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - configmap.yaml
-  - external-name.yaml
+  # - external-name.yaml
