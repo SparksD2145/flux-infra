@@ -1,0 +1,117 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel-ingress
+  namespace: networking
+spec:
+  interval: 15m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: cloudflare-tunnel-ingress-controller
+      version: 0.0.18
+      sourceRef:
+        kind: HelmRepository
+        name: strrl-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    # Default values for cloudflare-tunnel-ingress-controller.
+    # This is a YAML-formatted file.
+    # Declare variables to be passed into your templates.
+
+    cloudflare:
+      # accountId: ""
+      # tunnelName: ""
+      # apiToken: ""
+
+      # Uncomment if you would like to use an existing secret instead of the creating a new one.
+      secretRef:
+        name: cloudflare-external-secret
+        accountIDKey: account_id
+        tunnelNameKey: tunnel_name
+        apiTokenKey: api_token
+
+    ingressClass:
+      name: cloudflare-tunnel
+      controllerValue: strrl.dev/cloudflare-tunnel-ingress-controller
+      isDefaultClass: false
+
+    replicaCount: 1
+
+    image:
+      repository: cr.strrl.dev/strrl/cloudflare-tunnel-ingress-controller
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: ""
+
+    imagePullSecrets: []
+    nameOverride: ""
+    fullnameOverride: ""
+
+    serviceAccount:
+      # Specifies whether a service account should be created
+      create: true
+      # Annotations to add to the service account
+      annotations: {}
+      # The name of the service account to use.
+      # If not set and create is true, a name is generated using the fullname template
+      name: ""
+
+    podAnnotations: {}
+
+    podSecurityContext:
+      {}
+      # fsGroup: 2000
+
+    securityContext:
+      {}
+      # capabilities:
+      #   drop:
+      #   - ALL
+      # readOnlyRootFilesystem: true
+      # runAsNonRoot: true
+      # runAsUser: 1000
+
+    resources:
+      # We usually recommend not to specify default resources and to leave this as a conscious
+      # choice for the user. This also increases chances charts run on environments with little
+      # resources, such as Minikube. If you do want to specify resources, uncomment the following
+      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+    nodeSelector: {}
+
+    tolerations: []
+
+    affinity: {}
+
+    cloudflared:
+      image:
+        repository: cloudflare/cloudflared
+        pullPolicy: IfNotPresent
+        tag: latest
+      replicaCount: 1
+      protocol: auto
+
+    cloudflaredServiceMonitor:
+      create: false
+      jobLabel: ""
+      interval: ""
+      scrapeTimeout: ""
+      honorLabels: false
+      metricRelabelings: []
+      relabelings: []
+      labels: {}
+      scheme: http

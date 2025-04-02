@@ -61,6 +61,7 @@ resources:
   - rook-charts.yaml
   - sparks-helm-repo.yaml
   - stakater-charts.yaml
+  - strrl-charts.yaml
   - traefik-charts.yaml
   - vernemq-charts.yaml
   - victoriametrics-charts.yaml
