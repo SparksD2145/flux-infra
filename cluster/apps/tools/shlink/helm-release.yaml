@@ -15,9 +15,9 @@ spec:
         name: bjw-s-charts
         namespace: flux-system
       interval: 15m
-  dependsOn:
-    - name: shlink-mariadb
-      namespace: tools
+  # dependsOn:
+  #   - name: shlink-mariadb
+  #     namespace: tools
   values:
     controllers:
       main:
