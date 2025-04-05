@@ -7,7 +7,7 @@ resources:
   - netboot.xyz
   - ntfy
   - ollama
-  - jupyter-lab
+  # - jupyter-lab
   - hajimari
   - homebox
   - shlink
