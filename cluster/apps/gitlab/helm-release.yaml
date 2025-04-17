@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.gitlab.io
       chart: gitlab
-      version: 8.10.4
+      version: 8.11.0
       sourceRef:
         kind: HelmRepository
         name: gitlab-charts
