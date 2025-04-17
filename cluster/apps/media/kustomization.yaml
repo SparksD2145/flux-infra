@@ -6,6 +6,7 @@ resources:
   - filebrowser
   - ghost
   - jellyfin
+  - metube
   - paperless-ngx
   - photoprism
   - qbittorrent

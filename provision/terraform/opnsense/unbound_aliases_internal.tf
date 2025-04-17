@@ -115,6 +115,15 @@ resource "opnsense_unbound_host_alias" "svc-k8s-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-metube-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Metube youtube video downloader"
+  hostname    = "metube"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-monitoring-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
