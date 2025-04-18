@@ -88,6 +88,15 @@ resource "opnsense_unbound_host_alias" "svc-emqx-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-data-sparks-cdes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Filebrowser"
+  hostname    = "data"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-gitlab-iwrite-software" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 

@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - configmap.yaml
+  - ingress.yaml
   # - external-name.yaml
