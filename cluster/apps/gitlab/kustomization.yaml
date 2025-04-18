@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   # - external-name.yaml
+  - ingress.yaml

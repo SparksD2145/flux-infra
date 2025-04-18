@@ -6,5 +6,5 @@ resources:
   - cloudflare-ingress
   - external-dns
   - metallb
-  - nginx-ingress-external
+  # - nginx-ingress-external
   - nginx-ingress-internal
