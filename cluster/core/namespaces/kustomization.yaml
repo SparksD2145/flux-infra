@@ -5,7 +5,6 @@ resources:
   - auth.yaml
   - cert-manager.yaml
   - databases.yaml
-  - finance.yaml
   - games.yaml
   - gitlab.yaml
   - home.yaml
