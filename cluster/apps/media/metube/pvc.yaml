@@ -7,7 +7,7 @@ spec:
   capacity:
     storage: 200Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   local:
     path: /mnt/media-vault/metube.sparks.codes
   nodeAffinity:
@@ -28,7 +28,7 @@ metadata:
 spec:
   volumeName: local-metube-downloads-pv
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: ""
   resources:
     requests:

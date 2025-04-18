@@ -66,6 +66,10 @@ spec:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: local-jellyfin-media
+      metube:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: local-metube-downloads-pvc
     service:
       main:
         controller: main
