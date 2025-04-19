@@ -21,7 +21,7 @@ data:
     max-ttl=120
     max-cache-ttl=120
 
-    ## SPARKS.CODES, SPRK.SH AND IMAKE.SOFTWARE
+    ## SPARKS.CODES, SPRK.SH IWRITE.SOFTWARE AND IMAKE.SOFTWARE
     # Reverse Lookups for 10.10.0.0/16 go to 10.10.0.1
     rev-server=10.10.0.0/16,10.10.0.1
 
@@ -33,6 +33,9 @@ data:
 
     # Use imake.software NS
     server=/imake.software/10.10.0.1
+
+    # Use iwrite.software NS
+    server=/iwrite.software/10.10.0.1
 
     ## CM3.CLOUD
     # Reverse Lookups for 10.0.0.0/24 go to 10.0.0.1
