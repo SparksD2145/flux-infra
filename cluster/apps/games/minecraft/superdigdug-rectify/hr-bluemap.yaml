@@ -31,7 +31,7 @@ spec:
               TZ: "America/Chicago"
             resources:
               limits:
-                cpu: 200m
+                cpu: 1000m
                 memory: 1Gi
               requests:
                 cpu: 200m
