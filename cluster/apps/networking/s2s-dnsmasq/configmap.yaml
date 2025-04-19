@@ -38,6 +38,11 @@ data:
     # Reverse Lookups for 10.0.0.0/24 go to 10.0.0.1
     rev-server=10.0.0.0/24,10.0.0.1
 
+    # Add records for missing dns server
+    address=/time.cm3.cloud/10.0.0.69
+    address=/truenas.cm3.cloud/10.0.0.80
+    address=/gitlab.cm3.cloud/10.0.0.250
+
     # Use cm3.cloud NS
     server=/cm3.cloud/10.0.0.10
 
