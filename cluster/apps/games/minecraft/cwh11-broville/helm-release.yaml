@@ -24,13 +24,13 @@ spec:
       services/minecraft: active
     resources:
       requests:
-        memory: 8192Mi
-        cpu: 600m
+        memory: 6144Mi
+        cpu: 200m
     minecraftServer:
       eula: "TRUE"
-      version: "1.21.3"
+      version: "1.21.4"
       type: PAPER
-      motd: "cwh11.mc.sparks.codes"
+      motd: "cwh11-broville.mc.sparks.codes"
       difficulty: normal
       ops: "superdigdug"
       worldSaveName: world
@@ -40,7 +40,7 @@ spec:
       gameMode: survival
       pvp: true
       onlineMode: false
-      memory: 8192M
+      memory: 6144M
       serviceType: LoadBalancer
       loadBalancerIP: 10.10.202.3
       rcon:

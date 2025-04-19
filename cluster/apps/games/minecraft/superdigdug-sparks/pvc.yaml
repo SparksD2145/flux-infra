@@ -5,7 +5,7 @@ metadata:
   name: local-mc-superdigdug-sparks
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   capacity:
     storage: 25Gi
   persistentVolumeReclaimPolicy: Retain
@@ -29,7 +29,7 @@ metadata:
 spec:
   volumeName: local-mc-superdigdug-sparks
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: ""
   resources:
     requests:

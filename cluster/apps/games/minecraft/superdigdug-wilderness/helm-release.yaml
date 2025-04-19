@@ -28,7 +28,7 @@ spec:
         cpu: 200m
     minecraftServer:
       eula: "TRUE"
-      version: "1.20.4"
+      version: "1.21.4"
       type: PAPER
       motd: "superdigdug-wilderness.mc.sparks.codes"
       difficulty: normal
@@ -42,7 +42,7 @@ spec:
       onlineMode: false
       memory: 4096M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.202.8
+      loadBalancerIP: 10.10.202.10
       rcon:
         enabled: true
         password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}

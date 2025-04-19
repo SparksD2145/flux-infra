@@ -5,10 +5,12 @@ resources:
   # - bungeecord
   # - cwh11
   # - cwh11-archive
-  - cwh11-broville
-  # - superdigdug
-  # - superdigdug-overworld
-  # - superdigdug-sparks
-  # - superdigdug-rectify
-  # - superdigdug-newlands
-  # - superdigdug-wilderness
+  - cwh11-original
+  # - cwh11-broville
+  - superdigdug
+  - superdigdug-overworld
+  - superdigdug-sparks
+  - superdigdug-rectify
+  - superdigdug-newlands
+  - superdigdug-wilderness
+  - bluemap-renderdata-pvc.yaml

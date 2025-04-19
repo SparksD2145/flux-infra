@@ -24,11 +24,11 @@ spec:
       services/minecraft: active
     resources:
       requests:
-        memory: 8192Mi
-        cpu: 2000m
+        memory: 6144Mi
+        cpu: 200m
     minecraftServer:
       eula: "TRUE"
-      version: "1.19.4"
+      version: "1.21.4"
       type: PAPER
       motd: "cwh11-archive.mc.sparks.codes"
       difficulty: normal
@@ -36,11 +36,11 @@ spec:
       worldSaveName: world_cwh11
       maxPlayers: 20
       viewDistance: 14
-      levelSeed: "-6121001965162030037"
+      levelSeed: "-0711199949401119192"
       gameMode: survival
       pvp: true
       onlineMode: false
-      memory: 8192M
+      memory: 6144M
       serviceType: LoadBalancer
       loadBalancerIP: 10.10.202.2
       rcon:

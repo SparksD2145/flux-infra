@@ -1,0 +1,159 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft-cwh11-rex-bluemap
+  namespace: games
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.3
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/bluemap-minecraft/bluemap
+              tag: v5.7
+            args:
+              - -r
+              - -u
+              - -w
+            env:
+              TZ: "America/Chicago"
+            resources:
+              limits:
+                cpu: 200m
+                memory: 1Gi
+              requests:
+                cpu: 200m
+                memory: 1Gi
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8100
+    ingress:
+      main:
+        enabled: true
+        className: "cloudflare-tunnel"
+        annotations:
+          hajimari.io/enable: "false"
+        hosts:
+          - host: &host cwh11-rex-map.mc.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-mc-sparks-codes
+    persistence:
+      worlddata:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: local-mc-cwh11-rex
+        globalMounts: []
+        advancedMounts:
+          main:
+            main:
+              - path: /app/world
+                subPath: cwh11_rex
+                readOnly: true
+              - path: /app/world_nether
+                subPath: cwh11_rex_nether
+                readOnly: true
+              - path: /app/world_the_end
+                subPath: cwh11_rex_the_end
+                readOnly: true
+      renderdata:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: local-mc-bluemap-renderdata
+        globalMounts: []
+        advancedMounts:
+          main:
+            main:
+              - path: /app/web/maps
+                subPath: cwh11_rex
+                readOnly: false
+      config-core:
+        enabled: true
+        type: configMap
+        name: minecraft-cwh11-rex-bluemap-config
+        advancedMounts:
+          main:
+            main:
+              - path: /app/config/core.conf
+                subPath: data
+                readOnly: true
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: minecraft-cwh11-rex-bluemap-config
+  namespace: games
+data:
+  data: |
+    ##                          ##
+    ##         BlueMap          ##
+    ##       Core-Config        ##
+    ##                          ##
+
+    # By changing the setting (accept-download) below to TRUE you are indicating that you have accepted mojang's EULA (https://account.mojang.com/documents/minecr❯ kubectl apply -f cluster/apps/games/minecraft/cwh11-sparks/hr-bluemap.yaml                                                                            │aft_eula),
+    # you confirm that you own a license to Minecraft (Java Edition)
+    # and you agree that BlueMap will download and use a minecraft-client file (depending on the minecraft-version) from mojangs servers (https://piston-meta.mojaerror: Internal error occurred: unable to upgrade connection: container not found ("main")                                                                    │ng.com/) for you.
+    # This file contains resources that belong to mojang and you must not redistribute it or do anything else that is not compliant with mojang's EULA.
+    # BlueMap uses resources in this file to generate the 3D-Models used for the map and texture them. (BlueMap will not work without those resources.)
+    # 2025-04-18T21:24:04
+    accept-download: true
+
+    # The folder where bluemap saves data-files it needs during runtime or to save e.g. the render-progress to resume it later.
+    # Default is "bluemap"
+    data: "data"
+
+    # This changes the amount of threads that BlueMap will use to render the maps.
+    # A higher value can improve render-speed but could impact performance on the host machine.
+    # This should be always below or equal to the number of available processor-cores.
+    # Zero or a negative value means the amount of available processor-cores subtracted by the value.
+    # (So a value of -2 with 6 cores results in 4 render-processes)
+    # Default is 1
+    render-thread-count: 3
+
+    # Controls whether BlueMap should try to find and load mod-resources and datapacks from the server/world-directories.
+    # Default is true
+    scan-for-mod-resources: true
+
+    # If this is true, BlueMap might send really basic metrics reports containing only the implementation-type and the version that is being used to https://metri❯ kubectl apply -f cluster/apps/games/minecraft/cwh11-sparks/hr-bluemap.yaml                                                                            │cs.bluecolored.de/bluemap/
+    # This allows me to track the basic usage of BlueMap and helps me stay motivated to further develop this tool! Please leave it on :)
+    # An example report looks like this: {"implementation":"bukkit","version":"5.7","mcVersion":"?"}
+    # Default is true
+    metrics: true
+
+    # Config-section for debug-logging
+    log: {
+      # The file where the debug-log will be written to.
+      # Comment out to disable debug-logging completely.
+      # Java String formatting syntax can be used to add time, see: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html
+      # Default is no logging
+      file: "data/logs/debug.log"
+      #file: "data/logs/debug_%1$tF_%1$tT.log"
+
+      # Whether the logger should append to an existing file, or overwrite it
+      # Default is false
+      append: false
+    }

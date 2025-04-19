@@ -24,11 +24,11 @@ spec:
       services/minecraft: active
     resources:
       requests:
-        memory: 8192Mi
-        cpu: 600m
+        memory: 6144Mi
+        cpu: 200m
     minecraftServer:
       eula: "TRUE"
-      version: "1.20.4"
+      version: "1.21.4"
       type: PAPER
       motd: "superdigdug.mc.sparks.codes"
       difficulty: normal
@@ -40,9 +40,9 @@ spec:
       gameMode: survival
       pvp: true
       onlineMode: false
-      memory: 8192M
+      memory: 6144M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.202.4
+      loadBalancerIP: 10.10.202.5
       rcon:
         enabled: true
         password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}
