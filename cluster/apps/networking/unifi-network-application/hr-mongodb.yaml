@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: mongodb
-      version: 16.4.12
+      version: 16.5.1
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts-oci
