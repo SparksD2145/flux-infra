@@ -16,11 +16,11 @@ resource "opnsense_unbound_host_override" "lb-internal-services" {
   server   = "10.10.201.1"
 }
 
-resource "opnsense_unbound_host_override" "lb-adblock" {
+resource "opnsense_unbound_host_override" "lb-unifi" {
   enabled     = false
-  description = "Former adblock location"
+  description = "Unifi Network Application"
 
-  hostname = "adblock-actual"
+  hostname = "unifi"
   domain   = "sparks.codes"
   server   = "10.10.201.2"
 }

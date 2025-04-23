@@ -367,6 +367,15 @@ resource "opnsense_unbound_host_alias" "svc-torrents-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-unifi-dashboard-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Unifi dashboard ingress"
+  hostname    = "unifi-dashboard"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-velero-minio-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 

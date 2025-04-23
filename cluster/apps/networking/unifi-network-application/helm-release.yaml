@@ -1,0 +1,113 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: unifi-controller
+  namespace: networking
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.3
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: lscr.io/linuxserver/unifi-network-application
+              tag: latest
+            env:
+              TZ: "America/Chicago"
+              PUID: 1000
+              PGID: 1000
+              MONGO_HOST: unifi-db-mongodb.networking.svc.cluster.local
+              MONGO_PORT: 27017
+              MONGO_USER: root
+              MONGO_PASS: ${NETWORKING_UNIFI_MONGODB_PASS}
+              MONGO_DBNAME: ${NETWORKING_UNIFI_MONGODB_DB}
+              MONGO_AUTHSOURCE: admin
+              MEM_LIMIT: 1024 #optional
+              MEM_STARTUP: 1024 #optional
+              # MONGO_TLS: #optional
+    persistence:
+      config:
+        enabled: true
+        globalMounts:
+          - path: /config
+        size: 2G
+        accessMode: "ReadWriteMany"
+        storageClass: ceph-filesystem
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: 10.10.201.2
+        controller: main
+        ports:
+          http:
+            enabled: true
+            port: 8443
+          stun:
+            enabled: true
+            primary: false
+            port: 3478
+            protocol: UDP
+          ap-discovery:
+            enabled: true
+            primary: false
+            port: 10001
+            protocol: UDP
+          device-communication:
+            enabled: true
+            primary: false
+            port: 8080
+            protocol: TCP
+          l2-discovery:
+            enabled: true
+            primary: false
+            port: 1900
+            protocol: UDP
+          guest-https:
+            enabled: true
+            primary: false
+            port: 8843
+            protocol: TCP
+          guest-http:
+            enabled: true
+            primary: false
+            port: 8880
+            protocol: UDP
+          mobile-thoroughput:
+            enabled: true
+            primary: false
+            port: 6789
+            protocol: TCP
+          remote-syslog:
+            enabled: true
+            primary: false
+            port: 5514
+            protocol: UDP
+    ingress:
+      main:
+        enabled: true
+        className: "nginx-internal"
+        annotations:
+          hajimari.io/enable: "false"
+        hosts:
+          - host: &host unifi-dashboard.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sparks-codes
