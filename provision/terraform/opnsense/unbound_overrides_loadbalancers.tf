@@ -17,7 +17,7 @@ resource "opnsense_unbound_host_override" "lb-internal-services" {
 }
 
 resource "opnsense_unbound_host_override" "lb-unifi" {
-  enabled     = false
+  enabled     = true
   description = "Unifi Network Application"
 
   hostname = "unifi"
