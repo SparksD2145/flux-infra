@@ -10,7 +10,7 @@ spec:
     storage: 45Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /opt/ollama
+    path: /opt/ollama-storage/ollama
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - beta
+                - gpu-node-1
 
 ---
 apiVersion: v1
