@@ -42,6 +42,7 @@ all:
         sierra.sparks.codes:
         romeo.sparks.codes:
         xray.sparks.codes:
+        gpu-node-1.sparks.codes:
         # kappa.sparks.codes:
 
     # -------------------------------------------
