@@ -19,7 +19,7 @@
           - nvidia-headless-565-server
           - nvidia-utils-565-server
           - libnvidia-compute-565-server
-          - nvidia-container-runtime
+          - nvidia-container-toolkit
 
     - name: Set text target
       shell: systemctl set-default multi-user.target
