@@ -17,14 +17,15 @@ spec:
       interval: 15m
   values:
     defaultPodOptions:
-      # runtimeClassName: "nvidia"
+      hostNetwork: true
+    # runtimeClassName: "nvidia"
     controllers:
       main:
         containers:
           main:
             image:
               repository: lscr.io/linuxserver/bambustudio
-              tag: latest
+              tag: "02.00.03"
             env:
               TZ: "America/Chicago"
             # resources:
