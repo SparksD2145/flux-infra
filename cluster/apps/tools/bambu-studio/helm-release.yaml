@@ -24,8 +24,8 @@ spec:
         containers:
           main:
             image:
-              repository: lscr.io/linuxserver/orcaslicer
-              tag: "2.3.0"
+              repository: lscr.io/linuxserver/bambustudio
+              tag: "02.00.03"
             env:
               TZ: "America/Chicago"
             # resources:

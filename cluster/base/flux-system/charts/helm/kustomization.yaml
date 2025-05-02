@@ -26,10 +26,12 @@ resources:
   - hashicorp-charts.yaml
   - infracloudio-charts.yaml
   - ingress-nginx-charts.yaml
+  - intel-charts.yaml
   - jetstack-charts.yaml
   - k8s-at-home-charts.yaml
   - k8s-at-home-libraries-charts.yaml
   - kasten-charts.yaml
+  - kube-sigs-charts.yaml
   - kuberhealthy-charts.yaml
   - kubernetes-stable-charts.yaml
   - kubernetes-dashboard-charts.yaml

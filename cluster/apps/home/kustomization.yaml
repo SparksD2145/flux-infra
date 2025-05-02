@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - emqx
   - esphome
+  # - frigate
   - home-assistant
   # - ispy-dvr
   - wyoming-piper

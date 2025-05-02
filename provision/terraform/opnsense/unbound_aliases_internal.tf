@@ -106,6 +106,15 @@ resource "opnsense_unbound_host_alias" "svc-emqx-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-frigate-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Frigate NVR"
+  hostname    = "frigate"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-data-sparks-cdes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
