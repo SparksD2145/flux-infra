@@ -50,7 +50,7 @@ spec:
           hajimari.io/icon: "printer-3d"
           hajimari.io/targetBlank: "true"
         hosts:
-          - host: &host bambustudio.sparks.codes
+          - host: &host bambu-studio.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"

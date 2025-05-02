@@ -25,12 +25,21 @@ resource "opnsense_unbound_host_alias" "svc-alertmanager-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-bambustudio-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-bambu-studio-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
   description = "Bambu Studio 3d printer control"
-  hostname    = "bambustudio"
+  hostname    = "bambu-studio"
+  domain      = "sparks.codes"
+}
+
+resource "opnsense_unbound_host_alias" "svc-bambu-storage-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Bambu Storage for 3d Printer"
+  hostname    = "bambu-storage"
   domain      = "sparks.codes"
 }
 
