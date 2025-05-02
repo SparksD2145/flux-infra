@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - gpu-node-1
+                - beta
 
 ---
 apiVersion: v1

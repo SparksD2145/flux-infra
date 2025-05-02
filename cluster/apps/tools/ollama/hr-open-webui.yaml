@@ -19,7 +19,7 @@ spec:
     defaultPodOptions:
       # runtimeClassName: nvidia
       nodeSelector:
-        kubernetes.io/hostname: gpu-node-1
+        kubernetes.io/hostname: beta
     controllers:
       main:
         containers:
