@@ -8,6 +8,7 @@ resources:
   - games.yaml
   - gitlab.yaml
   - home.yaml
+  - kubevirt.yaml
   - media.yaml
   - metallb-system.yaml
   - monitoring.yaml
