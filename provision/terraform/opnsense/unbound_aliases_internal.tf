@@ -61,15 +61,6 @@ resource "opnsense_unbound_host_alias" "svc-books-backend-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-cdi-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Containerized Data Importer for KubeVirt"
-  hostname    = "cdi"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-codeserver-home-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
