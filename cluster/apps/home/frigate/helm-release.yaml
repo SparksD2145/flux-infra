@@ -83,6 +83,12 @@ spec:
     ingress:
       main:
         className: "nginx-internal"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Frigate NVR"
+          hajimari.io/icon: "cctv"
+          hajimari.io/info: "Home Network Video Recorder"
+          hajimari.io/targetBlank: "true"
         hosts:
           - host: &host "frigate.sparks.codes"
             paths:
