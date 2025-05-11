@@ -92,14 +92,14 @@ data:
 
     go2rtc:
       streams:
-        dome_camera_1_detect:
-          - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
-        dome_camera_1_record:
-          - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
+        dome_camera_2_detect:
+          - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
+        dome_camera_2_record:
+          - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
         server_room_detect:
-          - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
+          - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
         server_room_record:
-          - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
+          - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
 
     cameras:
       server_room:
@@ -118,18 +118,18 @@ data:
         live:
           stream_name: server_room_record
 
-      dome_camera_1:
+      dome_camera_2:
         ffmpeg:
           inputs:
-            - path: rtsp://127.0.0.1:8554/dome_camera_1_detect
+            - path: rtsp://127.0.0.1:8554/dome_camera_2_detect
               input_args: preset-rtsp-restream
               roles:
                 - detect
-            - path: rtsp://127.0.0.1:8554/dome_camera_1_record
+            - path: rtsp://127.0.0.1:8554/dome_camera_2_record
               input_args: preset-rtsp-restream
               roles:
                 - record
         detect:
           fps: 5
         live:
-          stream_name: dome_camera_1_record
+          stream_name: dome_camera_2_record
