@@ -26,11 +26,6 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       hostNetwork: true
       automountServiceAccountToken: false
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-        fsGroupChangePolicy: "OnRootMismatch"
     controllers:
       main:
         containers:
@@ -56,6 +51,11 @@ spec:
               - --port
               - "8081"
               - "/config"
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              fsGroup: 1000
+              fsGroupChangePolicy: "OnRootMismatch"
     persistence:
       config:
         enabled: true
