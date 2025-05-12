@@ -37,9 +37,9 @@ spec:
               tag: 0.15.1@sha256:c4e02d2c511847eebbda8e0e370b41c78e7b51247353de79340e06c3e95f11be
             env:
               TZ: America/Chicago
-            # envFrom:
-            #   - secretRef:
-            #       name: frigate-secret
+            envFrom:
+              - secretRef:
+                  name: frigate-secret
             securityContext:
               privileged: true
             probes:
@@ -127,7 +127,7 @@ spec:
         globalMounts:
           - path: /media
       cache:
-        enabled: false
+        enabled: true
         type: emptyDir
         medium: Memory
         sizeLimit: 4Gi

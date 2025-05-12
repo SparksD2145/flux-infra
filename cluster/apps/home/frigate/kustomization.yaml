@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - configmap-frigate.yaml
   - helm-release.yaml
+  - secret.sops.yaml

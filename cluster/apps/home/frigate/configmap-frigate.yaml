@@ -10,11 +10,11 @@ data:
       enabled: false
 
     mqtt:
-      enabled: false
-      # host: emqx-listeners.default.svc
-      # topic_prefix: frigate
-      # user: mqtt
-      # password: '{FRIGATE_MQTT_PASSWORD}'
+      enabled: true
+      host: mqtt.sparks.codes
+      topic_prefix: frigate
+      user: '{FRIGATE_MQTT_USER}'
+      password: '{FRIGATE_MQTT_PASSWORD}'
 
     database:
       path: /config/frigate.db
@@ -27,34 +27,34 @@ data:
     birdseye:
       enabled: true
       # restream: true
-      mode: continuous
+      mode: objects
 
     ffmpeg:
       hwaccel_args: auto
-      output_args:
-        record: preset-record-generic
+      # output_args:
+      #   record: preset-record-generic
 
     audio:
       enabled: false
 
-    # objects:
-    #   track:
-    #     - person
-    #     - dog
-    #     - cat
-    #   filters:
-    #     person:
-    #       min_area: 3000
-    #       max_area: 100000
-    #       threshold: 0.75
-    #     dog:
-    #       min_area: 1000
-    #       max_area: 10000
-    #       threshold: 0.75
-    #     cat:
-    #       min_area: 1000
-    #       max_area: 10000
-    #       threshold: 0.75
+    objects:
+      track:
+        - person
+        - dog
+        - cat
+      filters:
+        person:
+          min_area: 3000
+          max_area: 100000
+          threshold: 0.75
+        dog:
+          min_area: 1000
+          max_area: 10000
+          threshold: 0.75
+        cat:
+          min_area: 1000
+          max_area: 10000
+          threshold: 0.75
 
     record:
       enabled: false
@@ -83,53 +83,126 @@ data:
           - cat
 
     snapshots:
-      enabled: true
+      enabled: false
       timestamp: false
       bounding_box: true
       crop: false
       retain:
         default: 7
 
+    semantic_search:
+      enabled: false
+
+    genai:
+      enabled: false
+      # Required if enabled: Provider must be one of ollama, gemini, or openai
+      provider: ollama
+      # Required if provider is ollama. May also be used for an OpenAI API compatible backend with the openai provider.
+      base_url: https://ollama.sparks.codes
+      # Required if gemini or openai
+      api_key: "frigate"
+      model: "moondream:latest"
+      # Optional: The default prompt for generating descriptions. Can use replacement
+      # variables like "label", "sub_label", "camera" to make more dynamic. (default: shown below)
+      # prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
+      # Optional: Object specific prompts to customize description results
+      # Format: {label}: {prompt}
+      # object_prompts:
+      #   person: "My special person prompt."
+
     go2rtc:
       streams:
-        dome_camera_2_detect:
+        dome_camera_2:
           - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
-        dome_camera_2_record:
-          - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
-        server_room_detect:
-          - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
-        server_room_record:
+        server_room:
           - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
 
     cameras:
       server_room:
         ffmpeg:
           inputs:
-            - path: rtsp://127.0.0.1:8554/server_room_detect
+            - path: rtsp://127.0.0.1:8554/server_room
               input_args: preset-rtsp-restream
               roles:
                 - detect
-            - path: rtsp://127.0.0.1:8554/server_room_record
-              input_args: preset-rtsp-restream
-              roles:
                 - record
         detect:
           fps: 5
         live:
-          stream_name: server_room_record
+          stream_name: server_room
+        motion:
+          enabled: true
+          mask:
+            - 0.266,0.001,0.271,0.083,0.493,0.092,0.813,0.115,0.819,0
+        onvif:
+          host: http://dome-camera-1.sparks.codes
+          port: 80
+          autotracking:
+            enabled: false
+            calibrate_on_startup: True
+            # Optional: the mode to use for zooming in/out on objects during autotracking. (default: shown below)
+            # Available options are: disabled, absolute, and relative
+            #   disabled - don't zoom in/out on autotracked objects, use pan/tilt only
+            #   absolute - use absolute zooming (supported by most PTZ capable cameras)
+            #   relative - use relative zooming (not supported on all PTZs, but makes concurrent pan/tilt/zoom movements)
+            zooming: disabled
+            # Optional: A value to change the behavior of zooming on autotracked objects. (default: shown below)
+            # A lower value will keep more of the scene in view around a tracked object.
+            # A higher value will zoom in more on a tracked object, but Frigate may lose tracking more quickly.
+            # The value should be between 0.1 and 0.75
+            zoom_factor: 0.3
+            # Optional: list of objects to track from labelmap.txt (default: shown below)
+            track:
+              - person
+            # Required: Begin automatically tracking an object when it enters any of the listed zones.
+            required_zones:
+              - zone_name
+            # Required: Name of ONVIF preset in camera's firmware to return to when tracking is over. (default: shown below)
+            return_preset: default
+            # Optional: Seconds to delay before returning to preset. (default: shown below)
+            timeout: 10
+            # Optional: Values generated automatically by a camera calibration. Do not modify these manually. (default: shown below)
+            # movement_weights: []
+
 
       dome_camera_2:
         ffmpeg:
           inputs:
-            - path: rtsp://127.0.0.1:8554/dome_camera_2_detect
+            - path: rtsp://127.0.0.1:8554/dome_camera_2
               input_args: preset-rtsp-restream
               roles:
                 - detect
-            - path: rtsp://127.0.0.1:8554/dome_camera_2_record
-              input_args: preset-rtsp-restream
-              roles:
                 - record
         detect:
           fps: 5
         live:
-          stream_name: dome_camera_2_record
+          stream_name: dome_camera_2
+        onvif:
+          host: http://dome-camera-2.sparks.codes
+          port: 80
+          autotracking:
+            enabled: true
+            calibrate_on_startup: True
+            # Optional: the mode to use for zooming in/out on objects during autotracking. (default: shown below)
+            # Available options are: disabled, absolute, and relative
+            #   disabled - don't zoom in/out on autotracked objects, use pan/tilt only
+            #   absolute - use absolute zooming (supported by most PTZ capable cameras)
+            #   relative - use relative zooming (not supported on all PTZs, but makes concurrent pan/tilt/zoom movements)
+            zooming: disabled
+            # Optional: A value to change the behavior of zooming on autotracked objects. (default: shown below)
+            # A lower value will keep more of the scene in view around a tracked object.
+            # A higher value will zoom in more on a tracked object, but Frigate may lose tracking more quickly.
+            # The value should be between 0.1 and 0.75
+            zoom_factor: 0.3
+            # Optional: list of objects to track from labelmap.txt (default: shown below)
+            track:
+              - person
+            # Required: Begin automatically tracking an object when it enters any of the listed zones.
+            required_zones:
+              - zone_name
+            # Required: Name of ONVIF preset in camera's firmware to return to when tracking is over. (default: shown below)
+            return_preset: default
+            # Optional: Seconds to delay before returning to preset. (default: shown below)
+            timeout: 10
+            # Optional: Values generated automatically by a camera calibration. Do not modify these manually. (default: shown below)
+            # movement_weights: []
