@@ -64,6 +64,7 @@ spec:
                 gpu.intel.com/i915: 1
               limits:
                 memory: 4000Mi
+                cpu: 1500m
                 gpu.intel.com/i915: 1
 
     service:
