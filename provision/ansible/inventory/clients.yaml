@@ -41,6 +41,7 @@ all:
         rpi4-poe-3.sparks.codes:
         sierra.sparks.codes:
         romeo.sparks.codes:
+        whiskey.sparks.codes:
         xray.sparks.codes:
         # kappa.sparks.codes:
 
