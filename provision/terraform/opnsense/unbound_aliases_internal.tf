@@ -133,6 +133,15 @@ resource "opnsense_unbound_host_alias" "svc-gitlab-iwrite-software" {
   domain      = "iwrite.software"
 }
 
+resource "opnsense_unbound_host_alias" "svc-registry-iwrite-software" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Gitlab Registry"
+  hostname    = "registry"
+  domain      = "iwrite.software"
+}
+
 resource "opnsense_unbound_host_alias" "svc-influxdb-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
