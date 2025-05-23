@@ -169,6 +169,15 @@ resource "opnsense_unbound_host_alias" "svc-k8s-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-media-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Media - Jellyfin"
+  hostname    = "media"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-metube-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
