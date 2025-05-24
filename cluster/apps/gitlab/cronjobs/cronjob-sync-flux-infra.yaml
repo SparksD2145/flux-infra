@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sync-flux-infra
+  namespace: gitlab
+spec:
+  schedule: "0 */2 * * *" # Every 2 hours
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: sync
+              image: bitnami/git:latest
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - secretRef:
+                    name: gitlab-pat
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  github_repo="https://github.com/SparksD2145/flux-infra.git"
+                  gitlab_repo="https://sparks:${GITLAB_PAT}@gitlab.iwrite.software/sparks/flux-infra.git"
+                  branch="master"
+                  git clone --depth 1 $github_repo /tmp/flux-infra
+                  cd /tmp/flux-infra
+                  git remote add gitlab $gitlab_repo
+                  git push gitlab $branch
