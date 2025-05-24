@@ -119,12 +119,11 @@ spec:
             subPath: config.yml
             readOnly: true
       media:
-        enabled: false
+        enabled: true
         type: custom
         volumeSpec:
-          nfs:
-            server: "nas.home"
-            path: /mnt/tank/media
+          local:
+            path: /mnt/local/frigate.sparks.codes/media
         globalMounts:
           - path: /media
       cache:
