@@ -57,7 +57,7 @@ data:
           threshold: 0.75
 
     record:
-      enabled: false
+      enabled: true
       retain:
         days: 3
         mode: all
@@ -83,8 +83,8 @@ data:
           - cat
 
     snapshots:
-      enabled: false
-      timestamp: false
+      enabled: true
+      timestamp: true
       bounding_box: true
       crop: false
       retain:
