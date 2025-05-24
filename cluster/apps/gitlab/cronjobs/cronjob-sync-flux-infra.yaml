@@ -22,9 +22,9 @@ spec:
                 - -c
                 - |
                   github_repo="https://github.com/SparksD2145/flux-infra.git"
-                  gitlab_repo="https://sparks:${GITLAB_PAT}@gitlab.iwrite.software/sparks/flux-infra.git"
+                  gitlab_repo="https://sparks:$GITLAB_PAT@gitlab.iwrite.software/sparks/flux-infra.git"
                   branch="master"
                   git clone --depth 1 $github_repo /tmp/flux-infra
                   cd /tmp/flux-infra
                   git remote add gitlab $gitlab_repo
-                  git push gitlab $branch
+                  git push --force gitlab $branch
