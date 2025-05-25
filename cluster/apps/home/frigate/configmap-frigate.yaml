@@ -7,7 +7,9 @@ metadata:
 data:
   config.yml: |
     auth:
-      enabled: false
+      enabled: true
+      reset_admin_password: False
+      cookie_secure: true
 
     mqtt:
       enabled: true
