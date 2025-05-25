@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: frigate-media-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 3Ti
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/local/frigate.sparks.codes/media
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - whiskey
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: frigate-media-pvc
+  namespace: home
+spec:
+  volumeName: frigate-media-pv
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 3Ti

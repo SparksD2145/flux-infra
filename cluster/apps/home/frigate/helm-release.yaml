@@ -120,10 +120,7 @@ spec:
             readOnly: true
       media:
         enabled: true
-        type: custom
-        volumeSpec:
-          local:
-            path: /mnt/local/frigate.sparks.codes/media
+        existingClaim: frigate-media-pvc
         globalMounts:
           - path: /media
       cache:
