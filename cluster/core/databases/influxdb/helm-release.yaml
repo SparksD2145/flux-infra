@@ -28,7 +28,7 @@ spec:
         token: "${DATABASES_INFLUXDB_ADMIN_TOKEN}"
       user:
         username: sparks
-        password: "{DATABASES_INFLUXDB_USER_PASSWORD}"
+        password: "${DATABASES_INFLUXDB_USER_PASSWORD}"
         org: sparkscodes
         bucket: "helloworld"
     influxdb:
@@ -50,4 +50,4 @@ spec:
             - influxdb.sparks.codes
     persistence:
       existingClaim: "influxdb-pvc"
-      size: 10Gi
+      size: 50Gi
