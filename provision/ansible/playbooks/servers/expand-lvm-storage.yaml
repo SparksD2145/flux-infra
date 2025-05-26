@@ -1,0 +1,10 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+    - name: Extend LVM volume to consume all free space in VG
+      community.general.lvol:
+        vg: "ubuntu-vg" # Replace with your VG name
+        lv: "ubuntu-lv" # Replace with your LV name
+        size: "+100%FREE"
+        resizefs: true
