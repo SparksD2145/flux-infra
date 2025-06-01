@@ -19,6 +19,8 @@
           - nvidia-headless-565-server
           - nvidia-utils-565-server
           - libnvidia-compute-565-server
+          - libnvidia-decode-565-server
+          - libnvidia-encode-565-server
           - nvidia-container-toolkit
 
     - name: Set text target
