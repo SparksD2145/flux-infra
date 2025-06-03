@@ -25,7 +25,7 @@ spec:
           main:
             image:
               repository: lscr.io/linuxserver/bambustudio
-              tag: "02.00.03"
+              tag: "02.01.00"
             env:
               TZ: "America/Chicago"
             # resources:
