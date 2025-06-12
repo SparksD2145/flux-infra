@@ -70,7 +70,7 @@ spec:
       edition: ee
 
       ## https://docs.gitlab.com/charts/charts/globals#gitlab-version
-      gitlabVersion: "18.0.1"
+      gitlabVersion: "18.0.2"
 
       ## https://docs.gitlab.com/charts/charts/globals#application-resource
       application:
