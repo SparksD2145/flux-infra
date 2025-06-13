@@ -10,7 +10,7 @@ spec:
     storage: 45Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mc.sparks.codes/cwh11
+    path: /mnt/local/mc.sparks.codes/cwh11
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - omega
+                - lambda
 
 ---
 apiVersion: v1

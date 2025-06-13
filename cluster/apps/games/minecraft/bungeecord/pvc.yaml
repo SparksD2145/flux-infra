@@ -10,7 +10,7 @@ spec:
     storage: 512Mi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/static/mc.sparks.codes/bungee
+    path: /mnt/local/mc.sparks.codes/bungee
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - omega
+                - lambda
 
 ---
 apiVersion: v1

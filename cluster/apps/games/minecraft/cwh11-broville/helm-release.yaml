@@ -21,7 +21,7 @@ spec:
       repository: itzg/minecraft-server
       tag: latest
     nodeSelector:
-      services/minecraft: active
+      services/minecraft: true
     resources:
       requests:
         memory: 6144Mi
