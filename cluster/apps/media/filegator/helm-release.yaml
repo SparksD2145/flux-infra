@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: filebrowser
+  name: filegator
   namespace: media
 spec:
   interval: 15m
@@ -28,35 +28,16 @@ spec:
         containers:
           main:
             image:
-              repository: filebrowser/filebrowser
-              tag: v2.32.0
+              repository: filegator/filegator
+              tag: v7.13.0-multiarch
             env:
               TZ: "America/Chicago"
-              FB_DATABASE: /config/filebrowser.db
-              FB_ROOT: /data
-              FB_LOG: stdout
-              FB_PORT: &port 80
-            probes:
-              startup:
-                enabled: false
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *probes
     service:
       main:
         controller: main
         ports:
           http:
-            port: *port
+            port: 8080
     ingress:
       main:
         enabled: true
@@ -82,15 +63,6 @@ spec:
               - data.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      config:
-        enabled: true
-        type: persistentVolumeClaim
-        accessMode: ReadWriteMany
-        storageClass: ceph-filesystem
-        size: 8Gi
-        retain: true
-        globalMounts:
-          - path: /config
       data:
         enabled: true
         type: persistentVolumeClaim
@@ -99,4 +71,4 @@ spec:
         size: 175Gi
         retain: true
         globalMounts:
-          - path: /data
+          - path: /var/www/filegator/repository
