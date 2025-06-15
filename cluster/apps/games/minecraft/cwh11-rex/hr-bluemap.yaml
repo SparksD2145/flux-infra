@@ -70,13 +70,13 @@ spec:
           main:
             main:
               - path: /app/world
-                subPath: cwh11_rex
+                subPath: world
                 readOnly: true
               - path: /app/world_nether
-                subPath: cwh11_rex_nether
+                subPath: world_the_nether
                 readOnly: true
               - path: /app/world_the_end
-                subPath: cwh11_rex_the_end
+                subPath: world_the_end
                 readOnly: true
       renderdata:
         enabled: true

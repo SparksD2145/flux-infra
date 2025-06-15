@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - velocity-proxy
   # - bungeecord
-  # - cwh11
+  - cwh11-rex
   # - cwh11-archive
   - cwh11-original
   # - cwh11-broville

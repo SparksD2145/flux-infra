@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: minecraft-cwh11
+  name: minecraft-cwh11-rex
   namespace: games
 spec:
   interval: 15m
@@ -21,7 +21,7 @@ spec:
       repository: itzg/minecraft-server
       tag: latest
     nodeSelector:
-      services/minecraft: true
+      services/minecraft: "true"
     resources:
       requests:
         memory: 6144Mi
@@ -42,11 +42,11 @@ spec:
       onlineMode: false
       memory: 6144M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.202.1
+      loadBalancerIP: 10.10.202.2
       rcon:
         enabled: true
         password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}
     persistence:
       dataDir:
         enabled: true
-        existingClaim: local-mc-cwh11
+        existingClaim: local-mc-cwh11-rex

@@ -21,7 +21,7 @@ spec:
       repository: itzg/minecraft-server
       tag: latest
     nodeSelector:
-      services/minecraft: true
+      services/minecraft: "true"
     resources:
       requests:
         memory: 4096Mi
@@ -42,7 +42,7 @@ spec:
       onlineMode: false
       memory: 4096M
       serviceType: LoadBalancer
-      loadBalancerIP: 10.10.202.7
+      loadBalancerIP: 10.10.202.8
       rcon:
         enabled: true
         password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}
