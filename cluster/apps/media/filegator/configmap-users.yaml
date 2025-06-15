@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filegator-users
+  namespace: media
+data:
+  users.json: |
+    {
+      "1": {
+        "username": "admin",
+        "name": "Admin",
+        "role": "admin",
+        "homedir": "\/",
+        "permissions": "read|write|upload|download|batchdownload|zip|chmod",
+        "password": "$2y$10$LRVwPZT4qqSZbApMavUcrOTjMMjdmcP4hMbrGXbbEyGnuoB6utRDe"
+      },
+      "2": {
+        "username": "guest",
+        "name": "Guest",
+        "role": "guest",
+        "homedir": "\/",
+        "permissions": "",
+        "password": ""
+      },
+      "3":{
+        "username": "sparks",
+        "name": "Sparks",
+        "role": "admin",
+        "homedir": "\/",
+        "permissions": "read|write|upload|download|batchdownload|zip|chmod",
+        "password": "$2y$10$miSYyp6B.t46r40U94c0\/O\/UEZKj57hz7tkgdbUW5Fodl7D39ZuFm"
+      }
+    }

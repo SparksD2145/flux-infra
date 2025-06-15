@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: filebrowser-internal
+  name: filegator-internal
   namespace: media
 spec:
   ingressClassName: nginx-internal
@@ -13,9 +13,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: filebrowser
+                name: filegator
                 port:
-                  number: 80
+                  number: 8080
   tls:
     - hosts:
         - *host
