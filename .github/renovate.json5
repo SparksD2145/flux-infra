@@ -16,25 +16,25 @@
     'ghcr.io/fluxcd/source-controller',
   ],
   flux: {
-    fileMatch: [
-      'cluster/.+\\.ya?ml$',
+    managerFilePatterns: [
+      '/cluster/.+\\.ya?ml$/',
     ],
   },
   'helm-values': {
-    fileMatch: [
-      'cluster/.+\\.ya?ml$',
+    managerFilePatterns: [
+      '/cluster/.+\\.ya?ml$/',
     ],
   },
   kubernetes: {
-    fileMatch: [
-      'cluster/.+\\.ya?ml$',
+    managerFilePatterns: [
+      '/cluster/.+\\.ya?ml$/',
     ],
   },
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: [
-        'cluster/.+\\.ya?ml$',
+      managerFilePatterns: [
+        '/cluster/.+\\.ya?ml$/',
       ],
       matchStrings: [
         'registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n',
@@ -43,8 +43,8 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        'cluster/crds/cert-manager/.+\\.ya?ml$',
+      managerFilePatterns: [
+        '/cluster/crds/cert-manager/.+\\.ya?ml$/',
       ],
       matchStrings: [
         'registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/',
@@ -53,8 +53,8 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        'cluster/crds/traefik/.+\\.ya?ml$',
+      managerFilePatterns: [
+        '/cluster/crds/traefik/.+\\.ya?ml$/',
       ],
       matchStrings: [
         'registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n',
