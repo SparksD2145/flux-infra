@@ -63,12 +63,9 @@ spec:
       customApps:
         - group: LAN
           apps:
-            - name: Habitica
-              url: https://habitica.com
-              icon: "check-bold"
-            - name: Alpha
-              url: http://alpha.sparks.codes
-              icon: "desktop-classic"
+            - name: Router
+              url: https://router.sparks.codes
+              icon: "router-network"
             - name: Gitlab
               url: https://gitlab.iwrite.software
               icon: "gitlab"
@@ -79,10 +76,10 @@ spec:
               url: https://idrac-omega.sparks.codes
               icon: "remote-desktop"
             - name: Dome Camera 1
-              url: http://dome-camera-1.sparks.codes:8080
+              url: http://dome-camera-1.sparks.codes
               icon: "webcam"
             - name: Dome Camera 2
-              url: http://dome-camera-2.sparks.codes:8080
+              url: http://dome-camera-2.sparks.codes
               icon: "webcam"
       globalBookmarks:
         - group: Kubernetes

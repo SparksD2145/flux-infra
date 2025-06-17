@@ -31,6 +31,8 @@ all:
     #     gamma.sparks.codes:
 
     linux_servers:
+      children:
+        liunx_virtual_machines:
       hosts:
         beta.sparks.codes:
         tango.sparks.codes:
@@ -45,12 +47,20 @@ all:
         xray.sparks.codes:
         # kappa.sparks.codes:
 
+    liunx_virtual_machines:
+      children:
+        linux_dedicated_gpu_servers:
+
+    linux_dedicated_gpu_servers:
+      hosts:
+        vm-gpu-1.sparks.codes:
+
     # -------------------------------------------
     # All Windows Machines ----------------------
     # -------------------------------------------
     windows_workstations:
       hosts:
-        zeta.sparks.codes:
+        alpha.sparks.codes:
 
     windows:
       children:

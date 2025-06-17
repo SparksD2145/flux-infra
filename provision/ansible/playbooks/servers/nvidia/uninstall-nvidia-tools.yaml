@@ -8,7 +8,9 @@
         pkg:
           - nvidia-headless-565-server
           - nvidia-utils-565-server
-          - nvidia-cuda-toolkit
+          - libnvidia-compute-565-server
+          - libnvidia-decode-565-server
+          - libnvidia-encode-565-server
           - nvidia-container-toolkit
 
     - name: Uninstall Containerd Template
