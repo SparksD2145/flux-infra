@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: filebrowser/filebrowser
-              tag: v2.32.3
+              tag: v2.33.0
             env:
               TZ: "America/Chicago"
               FB_DATABASE: /config/filebrowser.db
