@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: ghcr.io/esphome/esphome
-              tag: "2025.6.1"
+              tag: "2025.6.3"
             env:
               TZ: "America/Chicago"
               ESPHOME_DASHBOARD_USE_PING: "true"
