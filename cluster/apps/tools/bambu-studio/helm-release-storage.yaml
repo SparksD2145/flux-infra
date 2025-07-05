@@ -21,35 +21,16 @@ spec:
         containers:
           main:
             image:
-              repository: filebrowser/filebrowser
-              tag: v2.36.1
+              repository: directorylister/directorylister
+              tag: 5.1.0
             env:
-              TZ: "America/Chicago"
-              FB_DATABASE: /config/filebrowser.db
-              FB_ROOT: /data
-              FB_LOG: stdout
-              FB_PORT: &port 80
-            probes:
-              startup:
-                enabled: false
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *probes
+              TIMEZONE: "America/Chicago"
     service:
       main:
         controller: main
         ports:
           http:
-            port: *port
+            port: 80
     ingress:
       main:
         enabled: true
@@ -73,15 +54,6 @@ spec:
               - *host
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      config:
-        enabled: true
-        type: persistentVolumeClaim
-        accessMode: ReadWriteMany
-        storageClass: ceph-filesystem
-        size: 3Gi
-        retain: true
-        globalMounts:
-          - path: /config
       data:
         enabled: true
         type: persistentVolumeClaim
