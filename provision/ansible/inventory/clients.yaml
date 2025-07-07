@@ -45,7 +45,7 @@ all:
         romeo.sparks.codes:
         whiskey.sparks.codes:
         xray.sparks.codes:
-        # kappa.sparks.codes:
+        kappa.sparks.codes:
 
     liunx_virtual_machines:
       children:
