@@ -28,7 +28,7 @@ spec:
         cpu: 600m
     minecraftServer:
       eula: "TRUE"
-      version: "1.21.4"
+      version: "1.21.7"
       type: PAPER
       motd: "superdigdug-overworld.mc.sparks.codes"
       difficulty: normal
