@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: sonarqube-charts
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://SonarSource.github.io/helm-chart-sonarqube
+  timeout: 3m

@@ -61,6 +61,7 @@ resources:
   - rocketchat-charts.yaml
   - rook-ceph-charts.yaml
   - rook-charts.yaml
+  - sonarqube-charts.yaml
   - sparks-helm-repo.yaml
   - stakater-charts.yaml
   - strrl-charts.yaml

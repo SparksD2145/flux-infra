@@ -394,6 +394,15 @@ resource "opnsense_unbound_host_alias" "svc-ollama-webui" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-sonarqube" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Sonarqube code quality service"
+  hostname    = "sonarqube"
+  domain      = "iwrite.software"
+}
+
 resource "opnsense_unbound_host_alias" "svc-speed-test" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
