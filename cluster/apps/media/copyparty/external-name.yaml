@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: external-data-sparks-codes
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: data.sparks.codes
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+spec:
+  type: ExternalName
+  externalName: sparks.codes
