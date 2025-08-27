@@ -7,15 +7,6 @@ resource "opnsense_unbound_host_alias" "svc-auth-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-authcodes-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "2-Factor Auth service"
-  hostname    = "authcodes"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-alertmanager-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -295,30 +286,12 @@ resource "opnsense_unbound_host_alias" "svc-netboot-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-nvr-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Network video recorder"
-  hostname    = "nvr"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-paperless-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
   description = "Document manager"
   hostname    = "paperless"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-passbolt-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Password manager"
-  hostname    = "passbolt"
   domain      = "sparks.codes"
 }
 
@@ -337,15 +310,6 @@ resource "opnsense_unbound_host_alias" "svc-pxe-sparks-codes" {
   enabled     = true
   description = "Custom PXE boot server"
   hostname    = "pxe"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-remote-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Guacamole remote access"
-  hostname    = "remote"
   domain      = "sparks.codes"
 }
 
@@ -427,24 +391,6 @@ resource "opnsense_unbound_host_alias" "svc-unifi-dashboard-sparks-codes" {
   enabled     = true
   description = "Unifi dashboard ingress"
   hostname    = "unifi-dashboard"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-velero-minio-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Velero Minio frontend"
-  hostname    = "velero-minio"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-velero-minio-api-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Velero Minio API"
-  hostname    = "velero-minio-api"
   domain      = "sparks.codes"
 }
 
