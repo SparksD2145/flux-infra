@@ -2,7 +2,7 @@ terraform {
   required_providers {
     opnsense = {
       source  = "browningluke/opnsense"
-      version = "0.11.0"
+      version = "0.12.0"
     }
     sops = {
       source  = "carlpett/sops"
