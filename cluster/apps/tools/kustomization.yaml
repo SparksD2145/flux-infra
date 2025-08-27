@@ -5,6 +5,7 @@ resources:
   - bambu-studio
   - littlelink
   - mailserver
+  - n8n
   - netboot.xyz
   - ntfy
   - ollama
