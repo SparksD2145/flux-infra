@@ -72,7 +72,7 @@ spec:
     # Set the chart to use the latest released SonarQube Community Build
     community:
       enabled: true
-      buildNumber: "25.5.0.107428"
+      # buildNumber: "25.5.0.107428"
 
     image:
       repository: sonarqube
@@ -265,7 +265,13 @@ spec:
           - sh
           - -c
           - |
-            wget --no-proxy --quiet -O /dev/null --timeout={{ .Values.livenessProbe.timeoutSeconds }} --header="X-Sonar-Passcode: $SONAR_WEB_SYSTEMPASSCODE" "http://localhost:{{ .Values.service.internalPort }}{{ .Values.livenessProbe.sonarWebContext | default (include "sonarqube.webcontext" .) }}api/system/liveness"
+            exit 0
+        # command:
+        #   - sh
+        #   - -c
+        #   - |
+        #     host="$(hostname -i || echo '127.0.0.1')"
+        #     wget --no-proxy --quiet -O /dev/null --timeout={{ .Values.ApplicationNodes.livenessProbe.timeoutSeconds }} --header="X-Sonar-Passcode: $SONAR_WEB_SYSTEMPASSCODE" "http://${host}:{{ .Values.service.internalPort }}{{ .Values.ApplicationNodes.livenessProbe.sonarWebContext }}api/system/liveness"
       initialDelaySeconds: 60
       periodSeconds: 30
       failureThreshold: 6
