@@ -32,6 +32,8 @@ spec:
               N8N_RUNNERS_ENABLED: "true"
               GENERIC_TIMEZONE: "America/Chicago"
               TZ: "America/Chicago"
+              N8N_HOST: &host auto.sparks.codes
+              N8N_EDITOR_BASE_URL: "https://auto.sparks.codes"
     service:
       main:
         controller: main
@@ -48,7 +50,7 @@ spec:
           hajimari.io/info: "Automations toolset"
           hajimari.io/icon: "auto-mode"
         hosts:
-          - host: &host auto.sparks.codes
+          - host: *host
             paths:
               - path: "/"
                 pathType: "Prefix"
