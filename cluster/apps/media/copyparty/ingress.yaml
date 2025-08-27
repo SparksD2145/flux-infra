@@ -13,9 +13,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: filegator
+                name: copyparty
                 port:
-                  number: 8080
+                  number: 8086
   tls:
     - hosts:
         - *host

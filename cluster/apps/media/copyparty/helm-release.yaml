@@ -30,7 +30,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 3923
+            port: 8086
     ingress:
       main:
         enabled: true
@@ -54,15 +54,15 @@ spec:
               - data.sparks.codes
             secretName: acme-crt-secret-sparks-codes
     persistence:
-      # config:
-      #   enabled: true
-      #   type: configMap
-      #   name: copyparty-config
-      #   advancedMounts:
-      #     main:
-      #       main:
-      #         - path: /var/www/filegator/configuration.php
-      #           subPath: config.php
+      config-primary:
+        enabled: true
+        type: configMap
+        name: copyparty-config
+        advancedMounts:
+          main:
+            main:
+              - path: /config/main.conf
+                subPath: main.conf
       data:
         enabled: true
         type: persistentVolumeClaim
