@@ -33,7 +33,9 @@ spec:
               GENERIC_TIMEZONE: "America/Chicago"
               TZ: "America/Chicago"
               N8N_HOST: &host auto.sparks.codes
-              N8N_EDITOR_BASE_URL: "https://auto.sparks.codes"
+              N8N_EDITOR_BASE_URL: &endpoint "https://auto.sparks.codes"
+              WEBHOOK_URL: *endpoint
+              N8N_PROXY_HOPS: "1"
     service:
       main:
         controller: main
