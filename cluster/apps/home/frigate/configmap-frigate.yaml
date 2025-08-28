@@ -96,14 +96,14 @@ data:
       enabled: false
 
     genai:
-      enabled: false
+      enabled: true
       # Required if enabled: Provider must be one of ollama, gemini, or openai
       provider: ollama
       # Required if provider is ollama. May also be used for an OpenAI API compatible backend with the openai provider.
       base_url: https://ollama.sparks.codes
       # Required if gemini or openai
-      api_key: "frigate"
-      model: "moondream:latest"
+      # api_key: "frigate"
+      model: "moondream:1.8b"
       # Optional: The default prompt for generating descriptions. Can use replacement
       # variables like "label", "sub_label", "camera" to make more dynamic. (default: shown below)
       # prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
