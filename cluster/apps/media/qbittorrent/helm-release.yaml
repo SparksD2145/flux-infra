@@ -64,5 +64,8 @@ spec:
           - path: /config
       downloads:
         enabled: true
-        type: persistentVolumeClaim
-        existingClaim: torrents-downloads
+        size: 80Gi
+        storageClass: ceph-filesystem
+        accessMode: ReadWriteMany
+        globalMounts:
+          - path: /downloads
