@@ -92,9 +92,6 @@ data:
       retain:
         default: 7
 
-    face_recognition:
-      enabled: true
-
     semantic_search:
       enabled: true
 
