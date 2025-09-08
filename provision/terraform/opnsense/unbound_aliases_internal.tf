@@ -70,6 +70,15 @@ resource "opnsense_unbound_host_alias" "svc-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-docuseal-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Docuseal document signing service"
+  hostname    = "docuseal"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-esphome-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
