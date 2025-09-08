@@ -63,9 +63,6 @@ spec:
       customApps:
         - group: LAN
           apps:
-            - name: Router
-              url: https://router.sparks.codes
-              icon: "router-network"
             - name: Gitlab
               url: https://gitlab.iwrite.software
               icon: "gitlab"
