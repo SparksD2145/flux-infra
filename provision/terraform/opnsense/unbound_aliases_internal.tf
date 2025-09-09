@@ -151,6 +151,24 @@ resource "opnsense_unbound_host_alias" "svc-inventory-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-idrac-omega-console-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "idrac7 console proxy"
+  hostname    = "idrac-omega-console"
+  domain      = "sparks.codes"
+}
+
+resource "opnsense_unbound_host_alias" "svc-idrac-lambda-console-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "idrac7 console proxy"
+  hostname    = "idrac-lambda-console"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-k8s-dashboard-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 

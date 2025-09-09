@@ -13,6 +13,7 @@ resources:
   # - jupyter-lab
   - hajimari
   - homebox
+  - idrac6
   - shlink
   - sonarqube
   - uptime-kuma
