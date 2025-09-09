@@ -16,7 +16,7 @@ all:
     servers_with_idracs:
       hosts:
         omega.sparks.codes:
-        lambda.sparks.codes:
+        # router.sparks.codes:
 
     # -------------------------------------------
     # All Linux Machines ------------------------
@@ -37,7 +37,6 @@ all:
         beta.sparks.codes:
         tango.sparks.codes:
         omega.sparks.codes:
-        lambda.sparks.codes:
         rpi4-poe-1.sparks.codes:
         rpi4-poe-2.sparks.codes:
         rpi4-poe-3.sparks.codes:
