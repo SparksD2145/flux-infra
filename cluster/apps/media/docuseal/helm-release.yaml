@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: docuseal/docuseal
-              tag: "2.1.4"
+              tag: "2.1.5"
             env:
               TZ: "America/Chicago"
     service:
