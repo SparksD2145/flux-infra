@@ -12,6 +12,8 @@ spec:
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
       reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-imake-software
+  additionalOutputFormats:
+    - type: CombinedPEM
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -33,6 +35,8 @@ spec:
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
       reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-sparks-codes
+  additionalOutputFormats:
+    - type: CombinedPEM
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -54,6 +58,8 @@ spec:
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "games"
       reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "games"
   secretName: acme-crt-secret-mc-sparks-codes
+  additionalOutputFormats:
+    - type: CombinedPEM
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -75,6 +81,8 @@ spec:
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
       reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-sprk-sh
+  additionalOutputFormats:
+    - type: CombinedPEM
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -96,6 +104,8 @@ spec:
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
       reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-iwrite-software
+  additionalOutputFormats:
+    - type: CombinedPEM
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
