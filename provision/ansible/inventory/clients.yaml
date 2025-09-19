@@ -16,7 +16,7 @@ all:
     servers_with_idracs:
       hosts:
         omega.sparks.codes:
-        # router.sparks.codes:
+        lambda.sparks.codes:
 
     # -------------------------------------------
     # All Linux Machines ------------------------
