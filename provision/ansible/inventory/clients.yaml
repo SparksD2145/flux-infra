@@ -45,6 +45,7 @@ all:
         whiskey.sparks.codes:
         xray.sparks.codes:
         kappa.sparks.codes:
+        lambda.sparks.codes:
 
     liunx_virtual_machines:
       children:
