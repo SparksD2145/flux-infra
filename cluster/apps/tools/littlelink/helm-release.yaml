@@ -34,7 +34,7 @@ spec:
               AVATAR_2X_URL: https://www.gravatar.com/avatar/d22d82dec0d1b27fab6e5d770685e7d8
               AVATAR_ALT: Thomas Ibarra <hello@imake.software>
               NAME: Thomas Ibarra
-              BIO: Chip-to-Ship, Super-heroic Software Engineer.
+              BIO: Chip-to-Ship, software engineering, and everything in-between.
               BUTTON_ORDER: GITHUB,GITLAB,LINKED_IN,JOURNAL,SOUND_CLOUD,TUMBLR,YOUTUBE
               CUSTOM_BUTTON_TEXT: Journal,Personal Gitlab
               CUSTOM_BUTTON_URL: https://sprk.sh/journal,https://sprk.sh/gitlab
