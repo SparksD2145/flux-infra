@@ -44,7 +44,7 @@ resource "opnsense_unbound_host_override" "lb-zwavejs2mqtt" {
 }
 
 resource "opnsense_unbound_host_override" "lb-nvr" {
-  enabled     = true
+  enabled     = false
   description = "Network video recorder (agent-dvr)"
 
   hostname = "nvr-actual"
@@ -122,13 +122,4 @@ resource "opnsense_unbound_host_override" "lb-minecraft" {
   hostname = "mc"
   domain   = "sparks.codes"
   server   = "10.10.202.1"
-}
-
-resource "opnsense_unbound_host_override" "lb-cwh11-beammp" {
-  enabled     = true
-  description = "CWH11 BeamMP loadbalancer"
-
-  hostname = "cwh11"
-  domain   = "beammp.sparks.codes"
-  server   = "10.10.202.100"
 }

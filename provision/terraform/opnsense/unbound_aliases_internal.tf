@@ -1,11 +1,11 @@
-resource "opnsense_unbound_host_alias" "svc-auth-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
+# resource "opnsense_unbound_host_alias" "svc-auth-sparks-codes" {
+#   override = opnsense_unbound_host_override.lb-internal-services.id
 
-  enabled     = true
-  description = "Authentik auth service"
-  hostname    = "auth"
-  domain      = "sparks.codes"
-}
+#   enabled     = true
+#   description = "Authentik auth service"
+#   hostname    = "auth"
+#   domain      = "sparks.codes"
+# }
 
 resource "opnsense_unbound_host_alias" "svc-alertmanager-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
@@ -151,14 +151,14 @@ resource "opnsense_unbound_host_alias" "svc-inventory-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-k8s-dashboard-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
+# resource "opnsense_unbound_host_alias" "svc-k8s-dashboard-sparks-codes" {
+#   override = opnsense_unbound_host_override.lb-internal-services.id
 
-  enabled     = true
-  description = "K8s Dashboard"
-  hostname    = "k8s-dashboard"
-  domain      = "sparks.codes"
-}
+#   enabled     = true
+#   description = "K8s Dashboard"
+#   hostname    = "k8s-dashboard"
+#   domain      = "sparks.codes"
+# }
 
 resource "opnsense_unbound_host_alias" "svc-media-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
@@ -275,15 +275,6 @@ resource "opnsense_unbound_host_alias" "svc-superdigdug-wilderness-map-mc-sparks
   description = ""
   hostname    = "superdigdug-wilderness-map"
   domain      = "mc.sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-ml-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Machine Learning Workspace"
-  hostname    = "ml"
-  domain      = "sparks.codes"
 }
 
 resource "opnsense_unbound_host_alias" "svc-netboot-sparks-codes" {
