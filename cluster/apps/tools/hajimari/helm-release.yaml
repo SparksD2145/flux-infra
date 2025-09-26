@@ -66,6 +66,9 @@ spec:
             - name: Gitlab
               url: https://gitlab.iwrite.software
               icon: "gitlab"
+            - name: MicroTik Switch
+              url: http://microtik-switch.sparks.codes
+              icon: "remote-desktop"
             - name: Lambda iDRAC
               url: https://idrac-lambda.sparks.codes
               icon: "remote-desktop"
