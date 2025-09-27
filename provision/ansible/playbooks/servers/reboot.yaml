@@ -1,0 +1,8 @@
+---
+- hosts: servers!liunx_virtual_machines
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Reboot Servers
+      ansible.builtin.reboot:
+        reboot_timeout: 3600
