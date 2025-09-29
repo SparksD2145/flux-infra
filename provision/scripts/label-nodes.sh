@@ -1,6 +1,9 @@
 #!/bin/sh
 
-# rpi-poe-1
+# rpi settings
+kubectl taint node rpi4-poe-1 low-memory=true:NoSchedule
+kubectl taint node rpi4-poe-2 low-memory=true:NoSchedule
+kubectl taint node rpi4-poe-3 low-memory=true:NoSchedule
 kubectl label node rpi4-poe-1 zwave-controller=true
 kubectl label node rpi4-poe-2 zigbee-controller=true
 

@@ -22,6 +22,10 @@ spec:
     remediation:
       retries: 5
   values:
+    tolerations:
+      - key: "low-memory"
+        operator: "Exists"
+        effect: "NoSchedule"
     replicaCount: 1
     recreatePods: true
     emqxConfig:

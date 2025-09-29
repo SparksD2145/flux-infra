@@ -16,6 +16,10 @@ spec:
     spec:
       nodeSelector:
         zwave-controller: "true"
+      tolerations:
+        - key: "low-memory"
+          operator: "Exists"
+          effect: "NoSchedule"
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwave-js-ui:latest
