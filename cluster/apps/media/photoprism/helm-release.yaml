@@ -31,13 +31,14 @@ spec:
               # -- Photoprism originals path
               PHOTOPRISM_ORIGINALS_PATH: /photoprism/originals
               # -- Disable authentication / password protection
+              # PHOTOPRISM_AUTH_MODE: public
               PHOTOPRISM_PUBLIC: "false"
               PHOTOPRISM_DATABASE_DRIVER: sqlite
               PHOTOPRISM_DATABASE_SERVER: photoprism-mariadb:3306
               PHOTOPRISM_DATABASE_NAME: photoprism
               PHOTOPRISM_DATABASE_USER: photoprism
               PHOTOPRISM_DATABASE_PASSWORD: photoprism
-              # PHOTOPRISM_AUTH_MODE: public
+              PHOTOPRISM_FFMPEG_BITRATE: "1000"
     service:
       main:
         controller: main
