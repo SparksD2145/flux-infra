@@ -8,48 +8,59 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.bitnami.com/bitnami
-      chart: nginx
-      version: 21.1.23
+      chart: app-template
+      version: 3.7.3
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts-oci
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: nginx
+              tag: 1.29.1-perl
+            env:
+              TZ: America/Chicago
     service:
-      type: ClusterIP
-    serverBlock: |-
-      server {
-        listen       8080;
-        server_name  router.sparks.codes;
-
-        location / {
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_request_buffering off;
-          proxy_ssl_verify off;
-
-          # resolver 10.13.2.20;
-          set $backend "https://10.10.0.1";
-          proxy_pass $backend;
-        }
-
-        location ~ /\.ht {
-          deny  all;
-        }
-      }
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
     ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: "nginx-internal"
-        ingress.kubernetes.io/force-ssl-redirect: "true"
-        hajimari.io/enable: "true"
-        hajimari.io/appName: "Router"
-        hajimari.io/info: "Opnsense router dashboard"
-        hajimari.io/icon: "router-network"
-      hostname: "router.sparks.codes"
-      extraTls:
-        - hosts:
-            - router.sparks.codes
-          secretName: acme-crt-secret-sparks-codes
+      main:
+        enabled: true
+        className: nginx-internal
+        annotations:
+          ingress.kubernetes.io/force-ssl-redirect: "true"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Router"
+          hajimari.io/info: "Opnsense router dashboard"
+          hajimari.io/icon: "router-network"
+        hosts:
+          - host: &host router.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: nginx-proxy-router-sparks-codes-config
+        advancedMounts:
+          main:
+            main:
+              - path: /etc/nginx/conf.d/server.conf
+                subPath: config
+                readOnly: true
