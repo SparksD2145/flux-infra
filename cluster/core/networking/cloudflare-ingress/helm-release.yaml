@@ -47,9 +47,9 @@ spec:
 
     image:
       repository: cr.strrl.dev/strrl/cloudflare-tunnel-ingress-controller
-      pullPolicy: IfNotPresent
+      pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "latest"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -66,12 +66,10 @@ spec:
 
     podAnnotations: {}
 
-    podSecurityContext:
-      {}
+    podSecurityContext: {}
       # fsGroup: 2000
 
-    securityContext:
-      {}
+    securityContext: {}
       # capabilities:
       #   drop:
       #   - ALL
@@ -100,7 +98,7 @@ spec:
     cloudflared:
       image:
         repository: cloudflare/cloudflared
-        pullPolicy: IfNotPresent
+        pullPolicy: Always
         tag: latest
       replicaCount: 1
       protocol: auto
