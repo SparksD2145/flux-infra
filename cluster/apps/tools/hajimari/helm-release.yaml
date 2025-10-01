@@ -122,6 +122,8 @@ spec:
               url: "https://www.schwab.com/"
         - group: Shopping
           bookmarks:
+            - name: Amazon
+              url: "https://amazon.com"
             - name: eBay
               url: "https://ebay.com"
             - name: Craigslist (San Antonio)
