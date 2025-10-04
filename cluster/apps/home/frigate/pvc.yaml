@@ -7,7 +7,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 3Ti
+    storage: 1.7Ti
   persistentVolumeReclaimPolicy: Retain
   local:
     path: /mnt/local/frigate.sparks.codes/media
@@ -33,4 +33,4 @@ spec:
   storageClassName: ""
   resources:
     requests:
-      storage: 3Ti
+      storage: 1.7Ti
