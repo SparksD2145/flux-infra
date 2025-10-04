@@ -5,8 +5,6 @@ resources:
   - authelia-charts.yaml
   - authentik-charts.yaml
   - banzaicloud-charts.yaml
-  - bitnami-charts.yaml
-  - bitnami-labs-charts.yaml
   - bjw-s-charts.yaml
   - blakeshome-charts.yaml
   - coredns-charts.yaml
