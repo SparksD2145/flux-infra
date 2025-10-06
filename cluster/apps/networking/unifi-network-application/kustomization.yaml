@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - hr-mongodb.yaml
-  # - hr-nginx.yaml
   - pvc-mongodb.yaml
