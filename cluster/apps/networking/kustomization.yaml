@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   # - pihole
   - s2s-dnsmasq
-  # - unifi-network-application
+  - unifi-network-application

@@ -8,25 +8,36 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: mongodb
-      version: 16.5.45
+      chart: app-template
+      version: 3.7.3
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts-oci
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
-    architecture: standalone
-    auth:
-      enabled: true
-      rootPassword: "${NETWORKING_UNIFI_MONGODB_PASS}"
-      usernames:
-        - "${NETWORKING_UNIFI_MONGODB_USER}"
-      passwords:
-        - "${NETWORKING_UNIFI_MONGODB_PASS}"
-      databases:
-        - "${NETWORKING_UNIFI_MONGODB_DB}"
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: mongo
+              tag: 8.0.15-noble
+            env:
+              MONGO_INITDB_ROOT_USERNAME: "${NETWORKING_UNIFI_MONGODB_USER}"
+              MONGO_INITDB_ROOT_PASSWORD: "${NETWORKING_UNIFI_MONGODB_PASS}"
+              MONGO_INITDB_DATABASE: "${NETWORKING_UNIFI_MONGODB_DB}"
+              TZ: America/Chicago
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 27017
     persistence:
-      existingClaim: unifi-db-pvc
-      accessModes:
-        - ReadWriteMany
+      data:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: unifi-db-pvc
+        globalMounts:
+          - path: /data/db

@@ -27,7 +27,7 @@ spec:
               TZ: "America/Chicago"
               PUID: 1000
               PGID: 1000
-              MONGO_HOST: unifi-db-mongodb.networking.svc.cluster.local
+              MONGO_HOST: unifi-db.networking.svc.cluster.local
               MONGO_PORT: 27017
               MONGO_USER: ${NETWORKING_UNIFI_MONGODB_USER}
               MONGO_PASS: ${NETWORKING_UNIFI_MONGODB_PASS}
