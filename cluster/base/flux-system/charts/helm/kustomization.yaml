@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - authelia-charts.yaml
   - authentik-charts.yaml
-  - banzaicloud-charts.yaml
   - bjw-s-charts.yaml
   - blakeshome-charts.yaml
   - coredns-charts.yaml
@@ -52,6 +51,8 @@ resources:
   - openldap-charts.yaml
   - passbolt-charts.yaml
   - pihole-charts.yaml
+  - postgres-operator-charts.yaml
+  - postgres-operator-ui-charts.yaml
   - projectcalico-charts.yaml
   - prometheus-community-charts.yaml
   - portainer-charts.yaml
