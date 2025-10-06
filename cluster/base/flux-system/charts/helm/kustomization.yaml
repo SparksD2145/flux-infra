@@ -41,6 +41,7 @@ resources:
   - minecraft-charts.yaml
   - minio-charts.yaml
   - mlohr-charts.yaml
+  - mongodb-community-charts.yaml
   - next-cloud-charts.yaml
   - nvidia-charts.yaml
   - nvdp-charts.yaml
