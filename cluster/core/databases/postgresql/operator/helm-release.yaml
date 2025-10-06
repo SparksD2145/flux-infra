@@ -147,7 +147,7 @@ spec:
       # - downscaler/*
 
       # allow user secrets in other namespaces than the Postgres cluster
-      enable_cross_namespace_secret: false
+      enable_cross_namespace_secret: true
       # use finalizers to ensure all managed resources are deleted prior to the postgresql CR
       # this avoids stale resources in case the operator misses a delete event or is not running
       # during deletion
