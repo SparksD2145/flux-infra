@@ -83,6 +83,12 @@ spec:
       ingress:
         enabled: true
         ingressClassName: nginx-internal
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Monitoring Dashboard"
+          hajimari.io/info: "Access to the monitoring dashboard"
+          hajimari.io/icon: "monitor-shimmer"
+          hajimari.io/targetBlank: "true"
         hosts:
           - monitoring.sparks.codes
         tls:
