@@ -45,8 +45,7 @@ spec:
       common:
         labels: {}
 
-      image:
-        {}
+      image: {}
         # Registry value override is only available for the following Charts:
         # - Spamcheck
         # - Mailroom
@@ -70,7 +69,7 @@ spec:
       edition: ee
 
       ## https://docs.gitlab.com/charts/charts/globals#gitlab-version
-      gitlabVersion: "18.4.1"
+      # gitlabVersion: "18.4.1"
 
       ## https://docs.gitlab.com/charts/charts/globals#application-resource
       application:
@@ -132,8 +131,7 @@ spec:
         ## Enterprise license for this GitLab installation
         ## Secret created according to https://docs.gitlab.com/charts/installation/secrets#initial-enterprise-license
         ## If allowing shared-secrets generation, this is OPTIONAL.
-        license:
-          {}
+        license: {}
           # secret: RELEASE-gitlab-license
           # key: license
 
@@ -152,8 +150,7 @@ spec:
         keepalivesInterval:
         keepalivesCount:
         tcpUserTimeout:
-        password:
-          {}
+        password: {}
           # useSecret:
           # secret:
           # key:
@@ -165,8 +162,7 @@ spec:
         # applicationName:
         # preparedStatements: false
         # databaseTasks: true
-        main:
-          {}
+        main: {}
           # host: postgresql.hostedsomewhere.else
           # port: 123
           # username: gitlab
@@ -174,8 +170,7 @@ spec:
           # applicationName:
           # preparedStatements: false
           # databaseTasks: true
-        ci:
-          {}
+        ci: {}
           # host: postgresql.hostedsomewhere.else
           # port: 123
           # username: gitlab
@@ -208,8 +203,7 @@ spec:
       ## https://docs.gitlab.com/charts/charts/globals#configure-gitaly-settings
       gitaly:
         enabled: true
-        authToken:
-          {}
+        authToken: {}
           # secret:
           # key:
         # serviceName:
@@ -257,8 +251,7 @@ spec:
       ## https://docs.gitlab.com/charts/charts/globals#configure-minio-settings
       minio:
         enabled: true
-        credentials:
-          {}
+        credentials: {}
           # secret:
 
       ## https://docs.gitlab.com/charts/charts/globals#configure-appconfig-settings
@@ -286,8 +279,7 @@ spec:
         maxRequestDurationSeconds:
 
         ## https://docs.gitlab.com/charts/charts/globals#cron-jobs-related-settings
-        cron_jobs:
-          {}
+        cron_jobs: {}
           ## Flag stuck CI builds as failed
           # stuck_ci_jobs_worker:
           #   cron: "0 * * * *"
@@ -378,36 +370,31 @@ spec:
         object_store:
           enabled: false
           proxy_download: true
-          storage_options:
-            {}
+          storage_options: {}
             # server_side_encryption:
             # server_side_encryption_kms_key_id
-          connection:
-            {}
+          connection: {}
             # secret:
             # key:
         lfs:
           enabled: true
           proxy_download: true
           bucket: git-lfs
-          connection:
-            {}
+          connection: {}
             # secret:
             # key:
         artifacts:
           enabled: true
           proxy_download: true
           bucket: gitlab-artifacts
-          connection:
-            {}
+          connection: {}
             # secret:
             # key:
         uploads:
           enabled: true
           proxy_download: true
           bucket: gitlab-uploads
-          connection:
-            {}
+          connection: {}
             # secret:
             # key:
         packages:
@@ -476,8 +463,7 @@ spec:
             key: secret
           pollInterval: 60
           deliveryMethod: webhook
-          authToken:
-            {}
+          authToken: {}
             # secret:
             # key:
 
@@ -504,8 +490,7 @@ spec:
             key: secret
           pollInterval: 60
           deliveryMethod: webhook
-          authToken:
-            {}
+          authToken: {}
             # secret:
             # key:
 
@@ -525,8 +510,7 @@ spec:
           #   key:
 
         ## https://docs.gitlab.com/charts/charts/globals#kas-settings
-        gitlab_kas:
-          {}
+        gitlab_kas: {}
           # secret:
           # key:
           # enabled:
@@ -548,8 +532,7 @@ spec:
           # certificateFile:
 
         ## https://docs.gitlab.com/charts/charts/globals#suggested-reviewers-settings
-        suggested_reviewers:
-          {}
+        suggested_reviewers: {}
           # secret:
           # key:
 
@@ -609,15 +592,13 @@ spec:
           routingRules: []
 
         # Config that only applies to the defaults on initial install
-        initialDefaults:
-          {}
+        initialDefaults: {}
           # signupEnabled:
           # gitlabProductUsageData: true
       ## End of global.appConfig
 
       oauth:
-        gitlab-pages:
-          {}
+        gitlab-pages: {}
           # secret:
           # appIdKey:
           # appSecretKey:
@@ -673,8 +654,7 @@ spec:
         authToken: {}
         # secret:
         # key:
-        hostKeys:
-          {}
+        hostKeys: {}
           # secret:
         ## https://docs.gitlab.com/charts/charts/globals#tcp-proxy-protocol
         tcp:
@@ -683,8 +663,7 @@ spec:
       ## Rails application secrets
       ## Secret created according to https://docs.gitlab.com/charts/installation/secrets#gitlab-rails-secret
       ## If allowing shared-secrets generation, this is OPTIONAL.
-      railsSecrets:
-        {}
+      railsSecrets: {}
         # secret:
 
       ## Rails generic setting, applicable to all Rails-based containers
@@ -698,15 +677,12 @@ spec:
       registry:
         bucket: registry
 
-        certificate:
-          {}
+        certificate: {}
           # secret:
-        httpSecret:
-          {}
+        httpSecret: {}
           # secret:
           # key:
-        notificationSecret:
-          {}
+        notificationSecret: {}
           # secret:
           # key:
         tls:
@@ -720,8 +696,7 @@ spec:
           loadBalancing:
             password: {}
         # https://docs.docker.com/registry/notifications/#configuration
-        notifications:
-          {}
+        notifications: {}
           # endpoints:
           #   - name: FooListener
           #     url: https://foolistener.com/event
@@ -765,16 +740,13 @@ spec:
           enabled: true
           bucket: gitlab-pages
           # proxy_download: true
-          connection:
-            {}
+          connection: {}
             # secret:
             # key:
-        apiSecret:
-          {}
+        apiSecret: {}
           # secret:
           # key:
-        authSecret:
-          {}
+        authSecret: {}
           # secret:
           # key:
         namespaceInPath: false
@@ -783,8 +755,7 @@ spec:
       ## Secret created according to https://docs.gitlab.com/charts/installation/secrets#gitlab-runner-secret
       ## If allowing shared-secrets generation, this is OPTIONAL.
       runner:
-        registrationToken:
-          {}
+        registrationToken: {}
           # secret:
 
       ## https://docs.gitlab.com/charts/charts/globals#outgoing-email
@@ -974,8 +945,7 @@ spec:
 
     upgradeCheck:
       enabled: true
-      image:
-        {}
+      image: {}
         # repository:
         # tag:
         # pullPolicy: IfNotPresent
