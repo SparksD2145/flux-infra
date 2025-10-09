@@ -12,6 +12,6 @@ resources:
   - openspeedtest
   # - jupyter-lab
   - hajimari
-  - homebox
+  # - homebox
   - shlink
   - uptime-kuma
