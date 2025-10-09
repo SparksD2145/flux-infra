@@ -35,6 +35,7 @@ resources:
   - kyverno-charts.yaml
   - lwolf-charts.yaml
   - mailu-charts.yaml
+  - mariadb-operator-charts.yaml
   - metallb-charts.yaml
   - metrics-server-charts.yaml
   - minecraft-server-charts.yaml
