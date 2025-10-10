@@ -336,7 +336,7 @@ spec:
       # -- Default MariaDB image name
       mariadbImageName: docker-registry1.mariadb.com/library/mariadb
       # -- Default MaxScale image
-      maxscaleImage: docker-registry2.mariadb.com/mariadb/maxscale:23.08.5
+      maxscaleImage: docker-registry2.mariadb.com/mariadb/maxscale:24.02.7
       # -- Default MariaDB exporter image
       exporterImage: prom/mysqld-exporter:v0.15.1
       # -- Default MaxScale exporter image
