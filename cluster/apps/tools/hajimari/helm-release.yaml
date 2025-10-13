@@ -82,10 +82,12 @@ spec:
               url: http://dome-camera-2.sparks.codes
               icon: "webcam"
       globalBookmarks:
-        - group: Kubernetes
+        - group: Infrastructure
           bookmarks:
             - name: SparksD2145/flux-infra
               url: "https://github.com/sparksd2145/flux-infra"
+            - name: SparksD2145/nixos-config
+              url: "https://github.com/SparksD2145/nixos-config"
             - name: christianmetal3/home-infra
               url: https://github.com/christianmetal3/home-infra
         - group: Media
