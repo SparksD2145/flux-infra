@@ -111,7 +111,7 @@ spec:
         - group: Finance
           bookmarks:
             - name: Monarch
-              url: "https://app.monarchmoney.com/dashboard"
+              url: "https://app.monarch.com/dashboard"
             - name: Credit Karma
               url: "https://creditkarma.com"
             - name: Ally Bank
