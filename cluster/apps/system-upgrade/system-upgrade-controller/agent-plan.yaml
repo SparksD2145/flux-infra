@@ -26,6 +26,10 @@ spec:
       effect: NoSchedule
       operator: Equal
       value: active
+    - key: low-memory
+      effect: NoSchedule
+      operator: Equal
+      value: "true"
   prepare:
     image: rancher/k3s-upgrade
     args:
