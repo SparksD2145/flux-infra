@@ -25,6 +25,7 @@ spec:
               tag: "2025-04-16"
             env:
               TZ: "America/Chicago"
+              OUTPUT_TEMPLATE: "%(channel)s/%(title)s.%(ext)s"
     service:
       main:
         controller: main
