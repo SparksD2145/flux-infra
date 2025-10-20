@@ -6,7 +6,7 @@ resources:
   - frigate
   - home-assistant
   # - ispy-dvr
-  - wyoming-piper
-  - wyoming-whisper
+  # - wyoming-piper
+  # - wyoming-whisper
   - zigbee2mqtt
   - zwavejs2mqtt
