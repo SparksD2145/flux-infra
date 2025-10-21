@@ -135,8 +135,6 @@ data:
                 - record
         detect:
           fps: 5
-        live:
-          stream_name: server_room
         motion:
           enabled: true
           mask:
@@ -183,8 +181,6 @@ data:
                 - record
         detect:
           fps: 5
-        live:
-          stream_name: dome_camera_2
         onvif:
           host: http://dome-camera-2.sparks.codes
           port: 80
