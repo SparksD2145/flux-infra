@@ -5,5 +5,5 @@ resources:
   # - external-dns
   # - external-snapshotter
   - mariadb-operator
-  # - metallb
+  - metallb
   - rook-ceph
