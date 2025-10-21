@@ -138,12 +138,15 @@ spec:
       ## Initial root password for this GitLab installation
       ## Secret created according to https://docs.gitlab.com/charts/installation/secrets#initial-root-password
       ## If allowing shared-secrets generation, this is OPTIONAL.
-      initialRootPassword:
-        secret: gitlab-initial-root-password
-        key: password
+      initialRootPassword: {}
 
       ## https://docs.gitlab.com/charts/charts/globals#configure-postgresql-settings
       psql:
+        knownDecompositions:
+          - main
+          - ci
+          - embedding
+          - sec
         connectTimeout:
         keepalives:
         keepalivesIdle:
@@ -1295,14 +1298,28 @@ spec:
           adminPasswordKey: postgresql-postgres-password
           userPasswordKey: '{{ include "gitlab.psql.password.key" $ }}'
       image:
+        repository: bitnamilegacy/postgresql
         tag: 16.6.0
       primary:
         initdb:
           scriptsConfigMap: '{{ include "gitlab.psql.initdbscripts" $}}'
-        extraVolumeMounts:
-          - name: custom-init-scripts
-            mountPath: /docker-entrypoint-preinitdb.d/init_revision.sh
-            subPath: init_revision.sh
+          extraVolumeMounts:
+            - name: custom-init-scripts
+              mountPath: /docker-entrypoint-preinitdb.d/init_revision.sh
+              subPath: init_revision.sh
+            - name: registry-database-password
+              mountPath: /etc/gitlab/postgres/registry_database_password
+              subPath: database_password
+              readOnly: true
+          extraVolumes:
+            - name: registry-database-password
+              projected:
+                sources:
+                  - secret:
+                      name: '{{ include "gitlab.registry.database.password.secret" . }}'
+                      items:
+                        - key: '{{ include "gitlab.registry.database.password.key" . }}'
+                          path: database_password
         podAnnotations:
           postgresql.gitlab/init-revision: "1"
       metrics:
@@ -1406,6 +1423,17 @@ spec:
               name = "docker-certs"
               mount_path = "/certs/client"
               medium = "Memory"
+            {{- if .Values.global.minio.enabled }}
+            [runners.cache]
+              Type = "s3"
+              Path = "gitlab-runner"
+              Shared = true
+              [runners.cache.s3]
+                ServerAddress = {{ include "gitlab-runner.cache-tpl.s3ServerAddress" . }}
+                BucketName = "runner-cache"
+                BucketLocation = "us-east-1"
+                Insecure = false
+            {{ end }}
       podAnnotations:
         gitlab.com/prometheus_scrape: "true"
         gitlab.com/prometheus_port: 9252
