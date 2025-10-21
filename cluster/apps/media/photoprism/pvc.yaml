@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   local:
-    path: /mnt/static/photos.sparks.codes/import
+    path: /mnt/local/photos.sparks.codes/import
   nodeAffinity:
     required:
       nodeSelectorTerms:

@@ -88,8 +88,8 @@ spec:
         size: 1536Gi
         retain: true
 
-      # imports:
-      #   enabled: false
-      #   globalMounts:
-      #     - path: /photoprism/import
-      #   existingClaim: local-photoprism-imports
+      imports:
+        enabled: true
+        globalMounts:
+          - path: /photoprism/import
+        existingClaim: local-photoprism-imports
