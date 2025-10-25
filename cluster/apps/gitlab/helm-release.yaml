@@ -1299,7 +1299,7 @@ spec:
           userPasswordKey: '{{ include "gitlab.psql.password.key" $ }}'
       image:
         repository: bitnamilegacy/postgresql
-        tag: 16.6.0
+        tag: 17.6.0
       primary:
         initdb:
           scriptsConfigMap: '{{ include "gitlab.psql.initdbscripts" $}}'
