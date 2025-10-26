@@ -5,4 +5,4 @@ resources:
   - helm-release-ghost.yaml
   - helm-release-ghost-mariadb.yaml
   - content-pvc.yaml
-  - db-pvc.yaml
+  - secret.sops.yaml
