@@ -1,8 +1,5 @@
 - ghost:mariadb
 - paperless-ngx:postgres
 - paperless-ngx:redis
-- unifi-db:mongodb
-- nginx-proxy-unifi-sparks-codes:nginx
 - nginx-pxe-sparks-codes:nginx
 - shlink-mariadb:mariadb
-- external-dns
