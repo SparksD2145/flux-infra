@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - helm-release-shlink-mariadb.yaml
-  - pvc-db.yaml
+  - secret.sops.yaml
