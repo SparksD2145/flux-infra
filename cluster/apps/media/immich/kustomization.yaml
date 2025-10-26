@@ -1,5 +1,6 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - kusts.yaml
-  - local-path-provisioner
+  - helm-release.yaml
+  # - pvc.yaml

@@ -1,0 +1,114 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: photoprism
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: immich
+      version: 4.4.0
+      sourceRef:
+        kind: OCIRepository
+        name: immich-oci-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              tag: v2.0.0
+            env:
+              REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
+              IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
+              # Add the env vars to connect to your database here.
+
+    immich:
+      metrics:
+        # Enabling this will create the service monitors needed to monitor immich with the prometheus operator
+        enabled: false
+      persistence:
+        # Main data store for all photos shared between different components.
+        library:
+          # Automatically creating the library volume is not supported by this chart
+          # You have to specify an existing PVC to use
+          existingClaim:
+      # configuration is immich-config.json converted to yaml
+      # ref: https://immich.app/docs/install/config-file/
+      #
+      configuration: {}
+        # trash:
+        #   enabled: false
+        #   days: 30
+        # storageTemplate:
+        #   enabled: true
+        #   template: "{{y}}/{{y}}-{{MM}}-{{dd}}/{{filename}}"
+
+    # Dependencies
+    valkey:
+      enabled: false
+      controllers:
+        main:
+          containers:
+            main:
+              image:
+                repository: docker.io/valkey/valkey
+                tag: 9.0-alpine@sha256:73f3aa08d95879525aa0dc84ebf6b82b59b898a24e8067a37d6250c31ee2c4d4
+                pullPolicy: IfNotPresent
+      persistence:
+        data:
+          enabled: true
+          size: 1Gi
+          # Optional: Set this to persistentVolumeClaim to keep job queues persistent
+          type: emptyDir
+          accessMode: ReadWriteOnce
+          # storageClass: your-class
+
+    # Immich components
+    server:
+      enabled: true
+      controllers:
+        main:
+          containers:
+            main:
+              image:
+                repository: ghcr.io/immich-app/immich-server
+                pullPolicy: IfNotPresent
+      ingress:
+        main:
+          enabled: true
+          ingressClassName: nginx-internal
+          annotations:
+            # proxy-body-size is set to 0 to remove the body limit on file uploads
+            nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          hosts:
+            - host: immich.local
+              paths:
+                - path: "/"
+                  service:
+                    identifier: main
+          tls: []
+
+    machine-learning:
+      enabled: true
+      controllers:
+        main:
+          containers:
+            main:
+              image:
+                repository: ghcr.io/immich-app/immich-machine-learning
+                pullPolicy: IfNotPresent
+              env:
+                TRANSFORMERS_CACHE: /cache
+      persistence:
+        cache:
+          enabled: true
+          size: 10Gi
+          # Optional: Set this to persistentVolumeClaim to avoid downloading the ML models every start.
+          type: emptyDir
+          accessMode: ReadWriteMany
+          # storageClass: your-class
