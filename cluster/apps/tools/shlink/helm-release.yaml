@@ -25,7 +25,7 @@ spec:
           main:
             image:
               repository: ghcr.io/shlinkio/shlink
-              tag: latest
+              tag: 4.5.3
             env:
               TIMEZONE: America/Chicago
               DEFAULT_DOMAIN: &host sprk.sh
