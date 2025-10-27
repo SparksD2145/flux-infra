@@ -2,113 +2,183 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: photoprism
+  name: immich
   namespace: media
 spec:
   interval: 15m
   chart:
     spec:
-      chart: immich
+      chart: app-template
       version: 4.4.0
       sourceRef:
-        kind: OCIRepository
-        name: immich-oci-charts
+        kind: HelmRepository
+        name: bjw-s-charts
         namespace: flux-system
       interval: 15m
   values:
     controllers:
-      main:
+      server:
+        strategy: RollingUpdate
+        pod:
+          annotations:
+            reloader.stakater.com/auto: "true"
         containers:
           main:
             image:
-              tag: v2.0.0
+              repository: ghcr.io/immich-app/immich-server
+              tag: v2.1.0@sha256:72a9b9de6c6abfa7a9c9cdc244ae4d2bd9fea2ae00997f194cbd10aca72ea210
             env:
-              REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
-              IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
-              # Add the env vars to connect to your database here.
+              TZ: America/Chicago
+              IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
+              DB_HOSTNAME: "immich-postgres.media.svc.cluster.local"
+              DB_PORT: 5432
+              DB_SSL_MODE: "require"
+              DB_DATABASE_NAME: "immich"
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich.immich-postgres.credentials.postgresql.acid.zalan.do
+                    key: username
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich.immich-postgres.credentials.postgresql.acid.zalan.do
+                    key: password
+            envFrom:
+              - configMapRef:
+                  name: immich-configmap
 
-    immich:
-      metrics:
-        # Enabling this will create the service monitors needed to monitor immich with the prometheus operator
-        enabled: false
-      persistence:
-        # Main data store for all photos shared between different components.
-        library:
-          # Automatically creating the library volume is not supported by this chart
-          # You have to specify an existing PVC to use
-          existingClaim:
-      # configuration is immich-config.json converted to yaml
-      # ref: https://immich.app/docs/install/config-file/
-      #
-      configuration: {}
-        # trash:
-        #   enabled: false
-        #   days: 30
-        # storageTemplate:
-        #   enabled: true
-        #   template: "{{y}}/{{y}}-{{MM}}-{{dd}}/{{filename}}"
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+              limits:
+                memory: 4096Mi
 
-    # Dependencies
-    valkey:
-      enabled: false
-      controllers:
-        main:
-          containers:
-            main:
-              image:
-                repository: docker.io/valkey/valkey
-                tag: 9.0-alpine@sha256:b4ee67d73e00393e712accc72cfd7003b87d0fcd63f0eba798b23251bfc9c394
-                pullPolicy: IfNotPresent
-      persistence:
-        data:
-          enabled: true
-          size: 1Gi
-          # Optional: Set this to persistentVolumeClaim to keep job queues persistent
-          type: emptyDir
-          accessMode: ReadWriteOnce
-          # storageClass: your-class
-
-    # Immich components
-    server:
-      enabled: true
-      controllers:
-        main:
-          containers:
-            main:
-              image:
-                repository: ghcr.io/immich-app/immich-server
-                pullPolicy: IfNotPresent
-      ingress:
-        main:
-          enabled: true
-          ingressClassName: nginx-internal
+      machine-learning:
+        strategy: RollingUpdate
+        pod:
           annotations:
-            # proxy-body-size is set to 0 to remove the body limit on file uploads
-            nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          hosts:
-            - host: immich.local
-              paths:
-                - path: "/"
-                  service:
-                    identifier: main
-          tls: []
+            reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/immich-app/immich-machine-learning
+              tag: v2.1.0@sha256:24bfef29bc5c0923c64c98810931eda1449a4b237e6704a715605761bc107ae4
+            envFrom:
+              # - secretRef:
+              #     name: immich-secret
+              - configMapRef:
+                  name: immich-configmap
+            env:
+              MPLCONFIGDIR: "/cache/matplotlib"
+              IMMICH_MEDIA_LOCATION: *mediaLocation
+            resources:
+              requests:
+                cpu: 100m
+                memory: 274M
+              limits:
+                memory: 3949M
 
-    machine-learning:
-      enabled: true
-      controllers:
-        main:
-          containers:
+      valkey:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/valkey-io/valkey
+              tag: 9.0.0
+
+    service:
+      server:
+        controller: server
+        ports:
+          http:
+            port: 2283
+      machine-learning:
+        controller: machine-learning
+        ports:
+          http:
+            port: 3003
+      valkey:
+        controller: valkey
+        ports:
+          http:
+            port: 6379
+
+    ingress:
+      main:
+        enabled: true
+        className: nginx-internal
+        annotations:
+          nginx.ingress.kubernetes.io/proxy-body-size: 2G
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Photos"
+          hajimari.io/info: "Photo library"
+          hajimari.io/icon: "image-multiple"
+          hajimari.io/targetBlank: "true"
+          # authentik.sparks.codes/enabled: "true"
+        hosts:
+          - host: photos.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: server
+                  port: http
+        tls:
+          - hosts:
+              - photos.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
+
+    # route:
+    #   server:
+    #     annotations:
+    #       gethomepage.dev/enabled: "true"
+    #       gethomepage.dev/description: Photo management platform
+    #       gethomepage.dev/group: Apps
+    #       gethomepage.dev/icon: sh-immich.svg
+    #       gethomepage.dev/name: Immich
+    #       gethomepage.dev/app: immich
+    #     hostnames: ["photos.hemma.dev"]
+    #     parentRefs:
+    #       - name: external
+    #         namespace: networking
+    #         sectionName: https
+    #     rules:
+    #       - backendRefs:
+    #           - identifier: server
+    #             port: *port
+
+    persistence:
+      matplotlib:
+        type: emptyDir
+        advancedMounts:
+          server:
             main:
-              image:
-                repository: ghcr.io/immich-app/immich-machine-learning
-                pullPolicy: IfNotPresent
-              env:
-                TRANSFORMERS_CACHE: /cache
-      persistence:
-        cache:
-          enabled: true
-          size: 10Gi
-          # Optional: Set this to persistentVolumeClaim to avoid downloading the ML models every start.
-          type: emptyDir
-          accessMode: ReadWriteMany
-          # storageClass: your-class
+              - path: /config/matplotlib
+
+      library:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteMany
+        size: 800Gi
+        storageClass: ceph-filesystem
+        globalMounts:
+          - path: *mediaLocation
+
+      cache:
+        type: persistentVolumeClaim
+        existingClaim: immich-machine-learning-cache
+        globalMounts:
+          - path: /cache
+            subPath: cache
+          - path: /.cache
+            subPath: dotCache
+
+      tmpfs:
+        type: emptyDir
+        advancedMounts:
+          server:
+            main:
+              - path: /usr/src/app/.reverse-geocoding-dump
+                subPath: geocoding
+              - path: /usr/src/app/.transformers_cache
+                subPath: transformers

@@ -5,9 +5,10 @@ resources:
   - calibre
   # - docuseal
   - ghost
+  - immich
   - jellyfin
   - metube
   - paperless-ngx
-  - photoprism
+  # - photoprism
   - qbittorrent
   - sterling-pdf
