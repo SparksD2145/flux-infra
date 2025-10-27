@@ -20,6 +20,7 @@ spec:
       server:
         strategy: RollingUpdate
         pod:
+          hostNetwork: true
           annotations:
             reloader.stakater.com/auto: "true"
         containers:
@@ -37,12 +38,12 @@ spec:
               DB_USERNAME:
                 valueFrom:
                   secretKeyRef:
-                    name: immich.immich-postgres.credentials.postgresql.acid.zalan.do
+                    name: postgres.immich-postgres.credentials.postgresql.acid.zalan.do
                     key: username
               DB_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: immich.immich-postgres.credentials.postgresql.acid.zalan.do
+                    name: postgres.immich-postgres.credentials.postgresql.acid.zalan.do
                     key: password
             envFrom:
               - configMapRef:

@@ -6,9 +6,9 @@ metadata:
   namespace: media
 data:
   # URLS
-  IMMICH_WEB_URL: http://immich-server.media.svc.cluster.local:3000
-  IMMICH_SERVER_URL: http://immich-server.media.svc.cluster.local:3001
   PUBLIC_IMMICH_SERVER_URL: https://photos.sparks.codes
+  # IMMICH_WEB_URL: http://immich-server.media.svc.cluster.local:3000
+  # IMMICH_SERVER_URL: http://immich-server.media.svc.cluster.local:3001
   IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning.media.svc.cluster.local:3003
   # REDIS
   REDIS_HOSTNAME: "immich-valkey.media.svc.cluster.local"
