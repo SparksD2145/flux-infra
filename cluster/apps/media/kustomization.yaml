@@ -9,6 +9,5 @@ resources:
   - jellyfin
   - metube
   - paperless-ngx
-  # - photoprism
   - qbittorrent
   - sterling-pdf
