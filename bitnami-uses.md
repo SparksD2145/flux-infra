@@ -1,5 +1,3 @@
 - ghost:mariadb
 - paperless-ngx:postgres
 - paperless-ngx:redis
-- nginx-pxe-sparks-codes:nginx
-- shlink-mariadb:mariadb

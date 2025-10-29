@@ -1,0 +1,50 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: valkey-operator
+  namespace: databases
+spec:
+  interval: 15m
+  chartRef:
+    kind: OCIRepository
+    name: valkey-operator-charts
+    namespace: flux-system
+  install:
+    createNamespace: false
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    config:
+      exporterImage: ghcr.io/hyperspike/valkey-sidecar:v0.0.51
+      nodes: "3"
+      valkeyImage: ghcr.io/hyperspike/valkey:8.1.4
+    controllerManager:
+      manager:
+        args:
+          - --leader-elect=false
+          - --health-probe-bind-address=:8081
+        containerSecurityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+        image:
+          repository: ghcr.io/hyperspike/valkey-operator
+          tag: v0.0.61
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
+      podSecurityContext:
+        runAsNonRoot: true
+      replicas: 1
+      serviceAccount:
+        annotations: {}
+    kubernetesClusterDomain: cluster.local
