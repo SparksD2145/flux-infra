@@ -1,0 +1,36 @@
+---
+apiVersion: hyperspike.io/v1
+kind: Valkey
+metadata:
+  name: paperless-ngx-valkey
+  namespace: media
+spec:
+  anonymousAuth: false
+  clusterDomain: cluster.local
+  prometheus: false
+  serviceMonitor: false
+  nodes: 1
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 150m
+      memory: 1Gi
+
+  storage:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    # metadata:
+    #   name: paperless-ngx-data
+    #   namespace: media
+    spec:
+      storageClassName: ceph-block
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi
+
+  volumePermissions: true

@@ -1,33 +1,43 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
+kind: "postgresql"
+apiVersion: "acid.zalan.do/v1"
+
 metadata:
   name: paperless-ngx-postgresql
   namespace: media
+  labels:
+    team: acid
+
 spec:
-  interval: 5m
-  chart:
-    spec:
-      chart: postgresql
-      version: 15.5.38
-      sourceRef:
-        kind: HelmRepository
-        name: bitnami-charts-oci
-        namespace: flux-system
-      interval: 5m
-  values:
-    image:
-      tag: 16.4.0-debian-12-r14
-    auth:
-      username: paperless-ngx
-      password: ${MEDIA_PAPERLESS_DB_PASSWORD}
-      database: paperless-ngx
-    primary:
-      resourcesPreset: "small"
-      persistence:
-        enabled: true
-        existingClaim: paperless-ngx-postgresql
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
+  teamId: "acid"
+  postgresql:
+    version: "17"
+  numberOfInstances: 1
+  maintenanceWindows:
+    - "03:00-04:00"
+  volume:
+    size: "15Gi"
+    storageClass: "ceph-block"
+  users:
+    paperless: []
+  databases:
+    paperless: paperless
+  patroni:
+    pg_hba:
+      - local   all             all                                   trust
+      - hostssl all             +zalandos           127.0.0.1/32      pam
+      - host    all             all                 127.0.0.1/32      md5
+      - hostssl all             +zalandos           ::1/128           pam
+      - host    all             all                 ::1/128           md5
+      - local   replication     standby                               trust
+      - hostssl replication     standby             all               md5
+      - hostnossl all           all                 all               reject
+      - hostssl all             +zalandos           all               pam
+      - hostssl all             all                 all               md5
+  resources:
+    requests:
+      cpu: 100m
+      memory: 500Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
