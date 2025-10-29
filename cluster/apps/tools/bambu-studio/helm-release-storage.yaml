@@ -65,6 +65,6 @@ spec:
       data:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: bambu-storage-settings
+        existingClaim: bambu-studio
         globalMounts:
           - path: /shared
