@@ -94,7 +94,8 @@ spec:
 
     annotations: {}
 
-    nodeSelector: {}
+    nodeSelector:
+      beta.kubernetes.io/arch: amd64
 
     tolerations:
       - effect: NoSchedule
