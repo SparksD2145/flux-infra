@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - bambu-studio
   - littlelink
-  - mailserver
+  # - mailserver
   # - n8n
   - netboot.xyz
   - ntfy
