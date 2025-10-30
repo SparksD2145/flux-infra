@@ -41,7 +41,7 @@ spec:
                   secretKeyRef:
                     name: paperless.paperless-ngx-postgresql.credentials.postgresql.acid.zalan.do
                     key: password
-              PAPERLESS_REDIS: "redis://default:${MEDIA_PAPERLESS_REDIS_PASSWORD}@paperless-ngx-valkey.media.svc.cluster.local:6379"
+              PAPERLESS_REDIS: "redis://paperless-ngx-redis.media.svc.cluster.local:6379"
               PAPERLESS_CONSUMPTION_DIR: /paperless/consume
               PAPERLESS_DATA_DIR: /paperless/data
               PAPERLESS_MEDIA_ROOT: /paperless/media
