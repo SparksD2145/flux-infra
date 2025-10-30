@@ -28,8 +28,12 @@ spec:
               url: "https://journal.iwrite.software"
               database__client: mysql
               database__connection__host: ghost-mariadb.media.svc.cluster.local
-              database__connection__user: ${MEDIA_GHOST_DB_USER}
-              database__connection__password: ${MEDIA_GHOST_DB_PASSWORD}
+              database__connection__user: "${MEDIA_GHOST_DB_USER}"
+              database__connection__password:
+                valueFrom:
+                  secretKeyRef:
+                    name: ghost-secret
+                    key: GHOST_DB_PASSWORD
               database__connection__database: ${MEDIA_GHOST_DB_DB}
               NODE_ENV: production
     service:
