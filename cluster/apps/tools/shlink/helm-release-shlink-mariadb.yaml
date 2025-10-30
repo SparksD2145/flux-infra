@@ -14,17 +14,12 @@ spec:
     key: SHLINK_DB_PASSWORD
     generate: false
 
-  rootPasswordSecretKeyRef:
-    name: shlink-secret
-    key: SHLINK_DB_ROOT_PASSWORD
-    generate: false
-
   replicas: 1
 
   port: 3306
 
   storage:
-    size: 7Gi
+    size: 15Gi
     storageClassName: ceph-block
 
   myCnf: |
@@ -35,6 +30,13 @@ spec:
     innodb_autoinc_lock_mode=2
     innodb_buffer_pool_size=800M
     max_allowed_packet=256M
+
+  # Tune your startup probe accordingly to ensure that the SST completes with a large amount of data.
+  # failureThreshold × periodSeconds = 30 × 10 = 300s = 5m until the container gets restarted if unhealthy
+  startupProbe:
+    failureThreshold: 10
+    periodSeconds: 30
+    timeoutSeconds: 5
 
   resources:
     requests:

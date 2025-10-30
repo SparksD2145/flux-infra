@@ -40,7 +40,11 @@ spec:
               DB_DRIVER: maria
               DB_NAME: ${TOOLS_SHLINK_DB_DB}
               DB_USER: ${TOOLS_SHLINK_DB_USER}
-              DB_PASSWORD: ${TOOLS_SHLINK_DB_PASSWORD}
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: shlink-secret
+                    key: SHLINK_DB_PASSWORD
               DB_HOST: "shlink-mariadb.tools.svc.cluster.local"
             resources:
               requests:
