@@ -5,9 +5,9 @@ metadata:
   name: shlink-mariadb
   namespace: tools
 spec:
-  database: $TOOLS_SHLINK_DB_DB
+  database: "${TOOLS_SHLINK_DB_DB}"
 
-  username: $TOOLS_SHLINK_DB_USER
+  username: "${TOOLS_SHLINK_DB_USER}"
 
   passwordSecretKeyRef:
     name: shlink-secret
