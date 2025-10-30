@@ -1,3 +1,0 @@
-- ghost:mariadb
-- paperless-ngx:postgres
-- paperless-ngx:redis

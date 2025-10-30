@@ -5,9 +5,9 @@ metadata:
   name: ghost-mariadb
   namespace: media
 spec:
-  database: $MEDIA_GHOST_DB_DB
+  database: "${MEDIA_GHOST_DB_DB}"
 
-  username: $MEDIA_GHOST_DB_USER
+  username: "${MEDIA_GHOST_DB_USER}"
 
   passwordSecretKeyRef:
     name: ghost-secret
