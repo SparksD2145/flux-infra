@@ -26,6 +26,13 @@ spec:
             env:
               TZ: "America/Chicago"
               RUTORRENT_PORT: 8080
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256Mi
+              limits:
+                cpu: 100m
+                memory: 512Mi
     service:
       main:
         controller: main

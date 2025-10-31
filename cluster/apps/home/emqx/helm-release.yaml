@@ -62,10 +62,11 @@ spec:
       size: 1Gi
     resources:
       requests:
-        cpu: 10m
-        memory: 150Mi
-      limits:
+        cpu: 50m
         memory: 512Mi
+      limits:
+        cpu: 250m
+        memory: 768Mi
   valuesFrom:
     - targetPath: emqxConfig.EMQX_DASHBOARD__DEFAULT_PASSWORD
       kind: Secret

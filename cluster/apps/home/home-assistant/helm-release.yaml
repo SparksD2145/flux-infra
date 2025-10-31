@@ -35,6 +35,13 @@ spec:
               tag: "2025.10"
             env:
               TZ: "America/Chicago"
+            resources:
+              requests:
+                cpu: 50m
+                memory: 1Gi
+              limits:
+                cpu: 150m
+                memory: 1.5Gi
       code:
         containers:
           code:
@@ -56,6 +63,13 @@ spec:
               runAsGroup: 1000
               fsGroup: 1000
               fsGroupChangePolicy: "OnRootMismatch"
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 100m
+                memory: 512Mi
     persistence:
       config:
         enabled: true

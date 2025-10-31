@@ -60,7 +60,7 @@ spec:
             resources:
               requests:
                 memory: 1000Mi
-                cpu: 1500m
+                cpu: 700m
                 gpu.intel.com/i915: 1
               limits:
                 memory: 4000Mi
@@ -76,7 +76,7 @@ spec:
             primary: true
           go2rtc:
             enabled: true
-            port: &apiPort 1984
+            port: 1984
           rtsp:
             enabled: true
             port: 8554

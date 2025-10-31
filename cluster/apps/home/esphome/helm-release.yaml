@@ -43,6 +43,13 @@ spec:
               TZ: "America/Chicago"
               ESPHOME_DASHBOARD_USE_PING: "true"
               ESPHOME_DASHBOARD_RELATIVE_URL: "/"
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                cpu: 200m
+                memory: 512Mi
       code:
         containers:
           code:
@@ -59,6 +66,13 @@ spec:
               - --port
               - "8081"
               - "/config"
+            resources:
+              requests:
+                cpu: 10m
+                memory: 256Mi
+              limits:
+                cpu: 50m
+                memory: 1Gi
     persistence:
       config:
         enabled: true

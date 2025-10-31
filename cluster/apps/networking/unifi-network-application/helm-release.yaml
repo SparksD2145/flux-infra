@@ -36,6 +36,13 @@ spec:
               MEM_LIMIT: 1024 #optional
               MEM_STARTUP: 1024 #optional
               # MONGO_TLS: #optional
+            resources:
+              limits:
+                cpu: 100m
+                memory: 1G
+              requests:
+                cpu: 50m
+                memory: 1G
     persistence:
       config:
         enabled: true

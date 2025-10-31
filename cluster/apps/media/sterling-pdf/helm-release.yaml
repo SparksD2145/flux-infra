@@ -37,6 +37,13 @@ spec:
               TZ: America/Chicago
               DOCKER_ENABLE_SECURITY: false
               LANGS: en_US
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                cpu: 50m
+                memory: 256Mi
     service:
       main:
         controller: main

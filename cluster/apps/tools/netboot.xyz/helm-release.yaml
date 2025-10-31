@@ -25,6 +25,13 @@ spec:
               tag: latest
             env:
               TFTPD_OPTS: "--tftp-single-port"
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 100m
+                memory: 256Mi
     service:
       main:
         controller: main

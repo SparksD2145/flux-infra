@@ -25,6 +25,13 @@ spec:
               tag: 1.29.3-perl
             env:
               TZ: America/Chicago
+            resources:
+              limits:
+                cpu: 50m
+                memory: 128Mi
+              requests:
+                cpu: 10m
+                memory: 64Mi
     service:
       main:
         controller: main

@@ -26,6 +26,13 @@ spec:
             env:
               TZ: "America/Chicago"
               OUTPUT_TEMPLATE: "%(channel)s/%(title)s.%(ext)s"
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256Mi
+              limits:
+                cpu: 100m
+                memory: 512Mi
     service:
       main:
         controller: main

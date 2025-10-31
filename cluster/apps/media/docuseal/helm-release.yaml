@@ -25,6 +25,13 @@ spec:
               tag: "2.1.8"
             env:
               TZ: "America/Chicago"
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 100m
+                memory: 256Mi
     service:
       main:
         controller: main
