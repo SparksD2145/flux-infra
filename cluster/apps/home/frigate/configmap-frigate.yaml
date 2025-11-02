@@ -39,6 +39,10 @@ data:
     audio:
       enabled: false
 
+    detect:
+      enabled: true
+      fps: 5
+
     objects:
       track:
         - person
@@ -133,8 +137,6 @@ data:
               roles:
                 - detect
                 - record
-        detect:
-          fps: 5
         motion:
           enabled: true
           mask:
@@ -179,8 +181,6 @@ data:
               roles:
                 - detect
                 - record
-        detect:
-          fps: 5
         onvif:
           host: http://dome-camera-2.sparks.codes
           port: 80
