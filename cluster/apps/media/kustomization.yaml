@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - calibre
   # - docuseal
-  - ghost
   - immich
   - jellyfin
   - metube
