@@ -127,6 +127,23 @@ spec:
           - hosts:
               - photos.sparks.codes
             secretName: acme-crt-secret-sparks-codes
+      internal:
+        enabled: true
+        className: "nginx-internal"
+        annotations:
+          hajimari.io/enable: "false"
+        hosts:
+          - host: photos-internal.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: server
+                  port: http
+        tls:
+          - hosts:
+              - photos-internal.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
 
     # route:
     #   server:
