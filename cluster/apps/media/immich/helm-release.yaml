@@ -108,15 +108,13 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx-internal
+        className: "cloudflare-tunnel"
         annotations:
-          nginx.ingress.kubernetes.io/proxy-body-size: 2G
           hajimari.io/enable: "true"
           hajimari.io/appName: "Photos"
           hajimari.io/info: "Photo library"
           hajimari.io/icon: "image-multiple"
           hajimari.io/targetBlank: "true"
-          # authentik.sparks.codes/enabled: "true"
         hosts:
           - host: photos.sparks.codes
             paths:

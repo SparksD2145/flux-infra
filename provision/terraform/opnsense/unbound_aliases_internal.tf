@@ -295,14 +295,14 @@ resource "opnsense_unbound_host_alias" "svc-paperless-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-photos-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
+# resource "opnsense_unbound_host_alias" "svc-photos-sparks-codes" {
+#   override = opnsense_unbound_host_override.lb-internal-services.id
 
-  enabled     = true
-  description = "Photoprism photo storage server"
-  hostname    = "photos"
-  domain      = "sparks.codes"
-}
+#   enabled     = true
+#   description = "Photoprism photo storage server"
+#   hostname    = "photos"
+#   domain      = "sparks.codes"
+# }
 
 resource "opnsense_unbound_host_alias" "svc-pxe-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
