@@ -1,0 +1,73 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: beaver-habits
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 4.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        defaultContainerOptions:
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            fsGroup: 0
+        containers:
+          main:
+            image:
+              repository: daya0576/beaverhabits
+              tag: "0.7.3"
+            env:
+              TZ: "America/Chicago"
+              HABITS_STORAGE: USER_DISK # DATABASE stores in a single SQLite database named habits.db. USER_DISK option saves in a local json file.
+              INDEX_HABIT_DATE_COLUMNS: 5 # Customize the date columns for the index page.
+              ENABLE_IOS_STANDALONE: true
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: "nginx-internal"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Habit Tracker"
+          hajimari.io/info: "Habit Tracking Application"
+          hajimari.io/icon: "calendar-check"
+          hajimari.io/targetBlank: "true"
+        hosts:
+          - host: &host habit-tracking.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteMany
+        storageClass: ceph-filesystem
+        size: 3Gi
+        retain: true
+        globalMounts:
+          - path: /app/.user/
