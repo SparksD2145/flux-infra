@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - bambu-studio
   - beaver-habits
+  - hajimari
+  # - homebox
   - littlelink
   # - mailserver
   # - n8n
@@ -11,8 +13,6 @@ resources:
   - ntfy
   - ollama
   - openspeedtest
-  # - jupyter-lab
-  - hajimari
-  # - homebox
   - shlink
   # - uptime-kuma
+  - vikunja

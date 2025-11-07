@@ -385,6 +385,15 @@ resource "opnsense_unbound_host_alias" "svc-sterling-pdf" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-tasks-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Vikunja task manager"
+  hostname    = "tasks"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-torrents-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
