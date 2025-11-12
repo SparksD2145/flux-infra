@@ -27,6 +27,8 @@ spec:
     controllers:
       main:
         pod:
+          annotations:
+            reloader.stakater.com/auto: "true"
           nodeSelector:
             google.feature.node.kubernetes.io/coral: "true"
             intel.feature.node.kubernetes.io/gpu: "true"
