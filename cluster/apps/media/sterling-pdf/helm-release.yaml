@@ -39,11 +39,11 @@ spec:
               LANGS: en_US
             resources:
               requests:
-                cpu: 10m
+                cpu: 25m
                 memory: 256Mi
               limits:
-                cpu: 50m
-                memory: 512Mi
+                cpu: 100m
+                memory: 1Gi
     service:
       main:
         controller: main
