@@ -148,14 +148,14 @@ data:
             - 0,0.173,0.327,0.131,0.38,0.989,0.001,0.997
 
       dome_camera_2:
-        enabled: false
+        enabled: true
         ffmpeg:
           inputs:
             - path: rtsp://127.0.0.1:8554/dome_camera_2
               input_args: preset-rtsp-restream
               roles:
-                - detect
-                # - record
+                # - detect
+                - record
 
       doorbell:
         ffmpeg:
