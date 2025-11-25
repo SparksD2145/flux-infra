@@ -149,8 +149,6 @@ data:
 
       dome_camera_2:
         enabled: true
-        detect:
-          enabled: false
         ffmpeg:
           inputs:
             - path: rtsp://127.0.0.1:8554/dome_camera_2
