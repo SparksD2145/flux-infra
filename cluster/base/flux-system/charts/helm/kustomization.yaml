@@ -7,6 +7,7 @@ resources:
   - bjw-s-charts.yaml
   - blakeshome-charts.yaml
   - coredns-charts.yaml
+  - cillium-charts.yaml
   - deliveryhero-charts.yaml
   - descheduler-charts.yaml
   - docker-registry-charts.yaml
