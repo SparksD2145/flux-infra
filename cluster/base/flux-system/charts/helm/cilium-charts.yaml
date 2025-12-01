@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cillium-charts
+  name: cilium-charts
   namespace: flux-system
 spec:
   interval: 15m
