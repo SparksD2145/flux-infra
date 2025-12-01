@@ -17,6 +17,10 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    config:
+      apiVersion: "controller.config.cert-manager.io/v1alpha1"
+      kind: "ControllerConfiguration"
+      enableGatewayAPI: true
     extraArgs:
       - --dns01-recursive-nameservers-only
       - --dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53
@@ -27,8 +31,3 @@ spec:
     ingressShim:
       defaultIssuerName: letsencrypt-prod
       defaultIssuerKind: ClusterIssuer
-    # prometheus:
-    #   enabled: true
-    #   servicemonitor:
-    #     enabled: true
-    #     prometheusInstance: monitoring
