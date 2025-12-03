@@ -27,7 +27,7 @@ spec:
           main:
             image:
               repository: daya0576/beaverhabits
-              tag: "0.7.4"
+              tag: "0.8.0"
             env:
               TZ: "America/Chicago"
               HABITS_STORAGE: USER_DISK # DATABASE stores in a single SQLite database named habits.db. USER_DISK option saves in a local json file.
