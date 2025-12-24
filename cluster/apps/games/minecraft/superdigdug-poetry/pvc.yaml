@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-mc-superdigdug-poetry
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 45Gi
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /mnt/local/mc.sparks.codes/superdigdug-poetry
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - lambda
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-mc-superdigdug-poetry
+  namespace: games
+spec:
+  volumeName: local-mc-superdigdug-poetry
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 45Gi

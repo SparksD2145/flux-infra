@@ -69,3 +69,12 @@ resource "opnsense_unbound_host_alias" "superdigdug-wilderness-mc-sparks-codes" 
   hostname    = "superdigdug-wilderness"
   domain      = "mc.sparks.codes"
 }
+
+resource "opnsense_unbound_host_alias" "superdigdug-poetry-mc-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-minecraft.id
+
+  enabled     = true
+  description = "SuperDigDug's Minecraft Server (Poetry)"
+  hostname    = "poetry"
+  domain      = "mc.sparks.codes"
+}

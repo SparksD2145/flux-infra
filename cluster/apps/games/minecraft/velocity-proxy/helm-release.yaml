@@ -17,6 +17,10 @@ spec:
         namespace: flux-system
       interval: 15m
   values:
+    tolerations:
+      - key: "minecraft-dedicated"
+        operator: "Exists"
+        effect: "NoSchedule"
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.4.0-SNAPSHOT

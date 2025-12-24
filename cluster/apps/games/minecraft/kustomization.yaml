@@ -3,14 +3,15 @@ kind: Kustomization
 resources:
   - velocity-proxy
   # - bungeecord
-  - cwh11-rex
-  - cwh11-archive
-  - cwh11-original
+  # - cwh11-rex
+  # - cwh11-archive
+  # - cwh11-original
   # - cwh11-broville
-  - superdigdug
-  - superdigdug-overworld
-  - superdigdug-sparks
-  - superdigdug-rectify
-  - superdigdug-newlands
-  - superdigdug-wilderness
+  # - superdigdug
+  # - superdigdug-overworld
+  - superdigdug-poetry
+  # - superdigdug-sparks
+  # - superdigdug-rectify
+  # - superdigdug-newlands
+  # - superdigdug-wilderness
   - bluemap-renderdata-pvc.yaml

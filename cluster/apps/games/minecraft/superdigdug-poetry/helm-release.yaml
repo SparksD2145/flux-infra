@@ -1,0 +1,56 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft-superdigdug-poetry
+  namespace: games
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://itzg.github.io/minecraft-server-charts/
+      chart: minecraft
+      version: 5.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    tolerations:
+      - key: "minecraft-dedicated"
+        operator: "Exists"
+        effect: "NoSchedule"
+    image:
+      repository: itzg/minecraft-server
+      tag: latest
+    nodeSelector:
+      services/minecraft: "true"
+    resources:
+      requests:
+        memory: 4096Mi
+        cpu: 1000m
+    minecraftServer:
+      eula: "TRUE"
+      version: "1.21.10"
+      type: PAPER
+      motd: "poetry.mc.sparks.codes"
+      difficulty: normal
+      ops: "superdigdug"
+      worldSaveName: world
+      maxPlayers: 20
+      viewDistance: 14
+      levelSeed: ""
+      gameMode: survival
+      pvp: true
+      onlineMode: false
+      memory: 4096M
+      serviceType: LoadBalancer
+      loadBalancerIP: 10.10.202.12
+      rcon:
+        enabled: true
+        password: ${GAMES_MINECRAFT_BUNGEECORD_RCON_PASSWORD}
+    persistence:
+      dataDir:
+        enabled: true
+        existingClaim: local-mc-superdigdug-poetry

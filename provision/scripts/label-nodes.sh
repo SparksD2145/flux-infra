@@ -16,3 +16,4 @@ kubectl label node vm-gpu-1 node-role.kubernetes.io/gpu=true
 # Lambda
 kubectl label node lambda services/gaming=true
 kubectl label node lambda services/minecraft=true
+kubectl taint node lambda minecraft-dedicated=true:NoSchedule
