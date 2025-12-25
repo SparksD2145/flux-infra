@@ -52,7 +52,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx-internal"
+        className: "cloudflare-tunnel"
         annotations:
           hajimari.io/enable: "false"
         hosts:
