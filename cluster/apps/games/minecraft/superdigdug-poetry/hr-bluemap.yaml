@@ -112,7 +112,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: minecraft-cwh11-rex-bluemap-config
+  name: minecraft-superdigdug-poetry-bluemap-config
   namespace: games
 data:
   data: |
