@@ -40,7 +40,7 @@ spec:
       worldSaveName: world
       maxPlayers: 20
       viewDistance: 14
-      levelSeed: ""
+      levelSeed: "875760518"
       gameMode: survival
       pvp: true
       onlineMode: false
