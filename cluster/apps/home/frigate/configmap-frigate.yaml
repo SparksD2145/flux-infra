@@ -118,10 +118,10 @@ data:
 
     go2rtc:
       streams:
-        dome_camera_2:
-          - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
-        server_room:
-          - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
+        # dome_camera_2:
+        #   - rtsp://dome-camera-2.sparks.codes/ch0_0.h264
+        # server_room:
+        #   - rtsp://dome-camera-1.sparks.codes/ch0_0.h264
         doorbell:
           - "ffmpeg:http://doorbell.sparks.codes/flv?port=1935&app=bcs&stream=channel0_main.bcs&user={FRIGATE_CAMERA_DOORBELL_USER}&password={FRIGATE_CAMERA_DOORBELL_PASSWORD}#video=copy#audio=copy#audio=opus"
           - rtsp://doorbell.sparks.codes/Preview_01_sub
@@ -129,33 +129,33 @@ data:
           - "ffmpeg:http://doorbell.sparks.codes/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user={FRIGATE_CAMERA_DOORBELL_USER}&password={FRIGATE_CAMERA_DOORBELL_PASSWORD}"
 
     cameras:
-      server_room:
-        ffmpeg:
-          inputs:
-            - path: rtsp://127.0.0.1:8554/server_room
-              input_args: preset-rtsp-restream
-              roles:
-                - detect
-                # - record
-        record:
-          enabled: false
-        snapshots:
-          enabled: false
-        motion:
-          enabled: true
-          mask:
-            - 0.263,0,0.265,0.206,0.498,0.193,0.507,0.444,0.597,0.44,0.618,0.197,0.813,0.199,0.825,0.002
-            - 0,0.173,0.327,0.131,0.38,0.989,0.001,0.997
+      # server_room:
+      #   ffmpeg:
+      #     inputs:
+      #       - path: rtsp://127.0.0.1:8554/server_room
+      #         input_args: preset-rtsp-restream
+      #         roles:
+      #           - detect
+      #           # - record
+      #   record:
+      #     enabled: false
+      #   snapshots:
+      #     enabled: false
+      #   motion:
+      #     enabled: true
+      #     mask:
+      #       - 0.263,0,0.265,0.206,0.498,0.193,0.507,0.444,0.597,0.44,0.618,0.197,0.813,0.199,0.825,0.002
+      #       - 0,0.173,0.327,0.131,0.38,0.989,0.001,0.997
 
-      dome_camera_2:
-        enabled: true
-        ffmpeg:
-          inputs:
-            - path: rtsp://127.0.0.1:8554/dome_camera_2
-              input_args: preset-rtsp-restream
-              roles:
-                # - detect
-                - record
+      # dome_camera_2:
+      #   enabled: true
+      #   ffmpeg:
+      #     inputs:
+      #       - path: rtsp://127.0.0.1:8554/dome_camera_2
+      #         input_args: preset-rtsp-restream
+      #         roles:
+      #           # - detect
+      #           - record
 
       doorbell:
         ffmpeg:
