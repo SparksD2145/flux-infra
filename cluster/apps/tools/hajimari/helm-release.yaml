@@ -98,6 +98,8 @@ spec:
               url: "https://drive.google.com"
             - name: Google Photos
               url: "https://photos.google.com"
+            - name: Gmail
+              url: "https://mail.google.com"
             - name: YouTube Music
               url: "https://music.youtube.com"
             - name: My Soundcloud
