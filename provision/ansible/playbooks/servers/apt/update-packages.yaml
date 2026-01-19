@@ -7,3 +7,6 @@
         update_cache: "yes"
         name: "*"
         state: latest
+    - name: Autoremove unused packages
+      apt:
+        autoremove: yes
