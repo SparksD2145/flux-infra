@@ -15,4 +15,4 @@ resources:
   - openspeedtest
   - shlink
   # - uptime-kuma
-  - vikunja
+  # - vikunja
