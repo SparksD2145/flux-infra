@@ -70,15 +70,6 @@ resource "opnsense_unbound_host_alias" "svc-dashboard-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-docuseal-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Docuseal document signing service"
-  hostname    = "docuseal"
-  domain      = "sparks.codes"
-}
-
 resource "opnsense_unbound_host_alias" "svc-esphome-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -150,24 +141,6 @@ resource "opnsense_unbound_host_alias" "svc-influxdb-sparks-codes" {
   hostname    = "influxdb"
   domain      = "sparks.codes"
 }
-
-resource "opnsense_unbound_host_alias" "svc-inventory-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Homebox inventory manager"
-  hostname    = "inventory"
-  domain      = "sparks.codes"
-}
-
-# resource "opnsense_unbound_host_alias" "svc-k8s-dashboard-sparks-codes" {
-#   override = opnsense_unbound_host_override.lb-internal-services.id
-
-#   enabled     = true
-#   description = "K8s Dashboard"
-#   hostname    = "k8s-dashboard"
-#   domain      = "sparks.codes"
-# }
 
 resource "opnsense_unbound_host_alias" "svc-media-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
@@ -358,39 +331,12 @@ resource "opnsense_unbound_host_alias" "svc-ollama-webui" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-sonarqube" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Sonarqube code quality service"
-  hostname    = "sonarqube"
-  domain      = "iwrite.software"
-}
-
 resource "opnsense_unbound_host_alias" "svc-speed-test" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
   description = "Internal speed test service"
   hostname    = "speed-test"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-sterling-pdf" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "PDF Tools"
-  hostname    = "pdf-tools"
-  domain      = "sparks.codes"
-}
-
-resource "opnsense_unbound_host_alias" "svc-tasks-sparks-codes" {
-  override = opnsense_unbound_host_override.lb-internal-services.id
-
-  enabled     = true
-  description = "Vikunja task manager"
-  hostname    = "tasks"
   domain      = "sparks.codes"
 }
 
