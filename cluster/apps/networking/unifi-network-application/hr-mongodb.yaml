@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: mongo
-              tag: 8.2.3-noble
+              tag: 8.2.4-noble
             env:
               MONGO_INITDB_ROOT_USERNAME: "${NETWORKING_UNIFI_MONGODB_USER}"
               MONGO_INITDB_ROOT_PASSWORD: "${NETWORKING_UNIFI_MONGODB_PASS}"
