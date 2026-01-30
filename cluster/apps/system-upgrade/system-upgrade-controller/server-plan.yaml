@@ -4,6 +4,8 @@ kind: Plan
 metadata:
   name: k3s-server
   namespace: system-upgrade
+  labels:
+    k3s-upgrade: server
 spec:
   channel: https://update.k3s.io/v1-release/channels/latest
   version: v1.35.0+k3s1
@@ -12,16 +14,9 @@ spec:
   cordon: true
   nodeSelector:
     matchExpressions:
-      - key: node-role.kubernetes.io/master
-        operator: In
-        values:
-          - "true"
+      - { key: node-role.kubernetes.io/control-plane, operator: Exists }
   tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Exists"
-    - key: low-memory
-      effect: NoSchedule
-      operator: Equal
-      value: "true"
   upgrade:
     image: rancher/k3s-upgrade
