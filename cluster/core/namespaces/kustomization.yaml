@@ -9,7 +9,7 @@ resources:
   - gitlab.yaml
   - home.yaml
   - media.yaml
-  - metallb-system.yaml
+  # - metallb-system.yaml
   - monitoring.yaml
   - networking.yaml
   - nginx.yaml
