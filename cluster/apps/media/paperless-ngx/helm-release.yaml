@@ -21,7 +21,7 @@ spec:
           main:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
-              tag: 2.20.5
+              tag: 2.20.6
             env:
               COMPOSE_PROJECT_NAME: paperless-ngx
               PAPERLESS_TIME_ZONE: "America/Chicago"
