@@ -33,7 +33,7 @@ spec:
 
     ingress:
       enabled: true
-      ingressClassName: nginx-internal
+      ingressClassName: traefik
       hosts:
         - host: &host auth.sparks.codes
           paths:

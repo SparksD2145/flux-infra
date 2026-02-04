@@ -49,7 +49,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx-internal"
+        className: "traefik"
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
           hajimari.io/enable: "false"

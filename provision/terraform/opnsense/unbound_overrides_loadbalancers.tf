@@ -11,7 +11,7 @@ resource "opnsense_unbound_host_override" "lb-internal-services" {
   enabled     = true
   description = "Internal Services loadbalancer"
 
-  hostname = "nginx-internal"
+  hostname = "traefik-internal"
   domain   = "sparks.codes"
   server   = "10.10.201.1"
 }

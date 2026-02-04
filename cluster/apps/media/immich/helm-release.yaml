@@ -129,7 +129,7 @@ spec:
             secretName: acme-crt-secret-sparks-codes
       internal:
         enabled: true
-        className: "nginx-internal"
+        className: "traefik"
         annotations:
           hajimari.io/enable: "false"
         hosts:

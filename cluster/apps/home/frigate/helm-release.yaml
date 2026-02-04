@@ -85,7 +85,7 @@ spec:
 
     ingress:
       main:
-        className: "nginx-internal"
+        className: "traefik"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Frigate NVR"

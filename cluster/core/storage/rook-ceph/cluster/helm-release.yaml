@@ -22,7 +22,7 @@ spec:
     ingress:
       dashboard:
         annotations:
-          kubernetes.io/ingress.class: nginx-internal
+          kubernetes.io/ingress.class: traefik
           hajimari.io/enable: "true"
           hajimari.io/appName: "Rook"
           hajimari.io/info: "Ceph distributed storage"

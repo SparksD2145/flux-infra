@@ -60,7 +60,7 @@ spec:
             port: 8000
     ingress:
       main:
-        className: nginx-internal
+        className: traefik
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 2G
           hajimari.io/enable: "true"

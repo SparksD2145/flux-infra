@@ -38,7 +38,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx-internal"
+        className: "traefik"
         annotations:
           authentik.sparks.codes/enabled: "true"
           hajimari.io/enable: "true"

@@ -59,7 +59,7 @@ spec:
       enabled: true
       ingress:
         enabled: false
-        ingressClassName: nginx-internal
+        ingressClassName: traefik
         hosts:
           - alertmanager.sparks.codes
         tls:
@@ -82,7 +82,7 @@ spec:
         passwordKey: admin-password
       ingress:
         enabled: true
-        ingressClassName: nginx-internal
+        ingressClassName: traefik
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Monitoring Dashboard"
