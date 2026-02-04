@@ -39,7 +39,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: "nginx-internal"
+        kubernetes.io/ingress.class: "traefik"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
         hajimari.io/enable: "true"
         hajimari.io/appName: "PXE Server"

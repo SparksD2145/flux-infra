@@ -52,7 +52,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx-internal
+        className: traefik
         annotations:
           nginx.ingress.kubernetes.io/proxy-read-timeout: "240"
           hajimari.io/enable: "false"

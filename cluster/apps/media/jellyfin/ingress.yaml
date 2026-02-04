@@ -5,7 +5,7 @@ metadata:
   name: jellyfin-internal
   namespace: media
 spec:
-  ingressClassName: nginx-internal
+  ingressClassName: traefik
   rules:
     - host: &host media.sparks.codes
       http:

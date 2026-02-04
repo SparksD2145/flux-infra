@@ -5,7 +5,7 @@ metadata:
   name: gitlab-internal
   namespace: gitlab
 spec:
-  ingressClassName: nginx-internal
+  ingressClassName: traefik
   rules:
     - host: &host gitlab.iwrite.software
       http:
@@ -29,7 +29,7 @@ metadata:
   name: gitlab-registry-internal
   namespace: gitlab
 spec:
-  ingressClassName: nginx-internal
+  ingressClassName: traefik
   rules:
     - host: &host registry.iwrite.software
       http:

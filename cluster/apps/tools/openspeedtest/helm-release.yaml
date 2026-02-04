@@ -34,7 +34,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx-internal
+        className: traefik
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "OpenSpeedTest"

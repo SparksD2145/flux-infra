@@ -103,7 +103,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx-internal
+        className: traefik
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"

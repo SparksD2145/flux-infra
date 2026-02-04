@@ -45,7 +45,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx-internal"
+        className: "traefik"
         annotations:
           hajimari.io/enable: "false"
         hosts:
