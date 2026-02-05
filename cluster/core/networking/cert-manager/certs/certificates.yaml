@@ -9,8 +9,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,monitoring,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,monitoring,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-imake-software
   additionalOutputFormats:
     - type: CombinedPEM
@@ -32,8 +32,8 @@ spec:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,monitoring,networking,rook-ceph,security,tools"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "auth,cert-manager,databases,finance,nginx,home,default,kube-system,flux-system,games,gitlab,kube-public,media,monitoring,networking,rook-ceph,security,tools"
   secretName: acme-crt-secret-sparks-codes
   additionalOutputFormats:
     - type: CombinedPEM
