@@ -100,10 +100,10 @@ data:
     [Data]
       path = /storage
       comment = Shared
-      valid users = @smb
+      # valid users = @smb
       guest ok = yes
       browseable = yes
-      writable = yes
+      # writable = yes
       read only = yes
       force user = root
       force group = root
