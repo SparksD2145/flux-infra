@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: davinci-autoconverter-samba
+  name: samba-access
   namespace: media
 spec:
   interval: 15m
@@ -37,7 +37,7 @@ spec:
         enabled: true
         controller: main
         type: LoadBalancer
-        loadBalancerIP: 10.10.201.14
+        # loadBalancerIP: 10.10.201.15
         ports:
           smb1:
             port: 139
@@ -50,7 +50,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: davinci-autoconverter-samba-config
+        name: samba-access-config
         advancedMounts:
           main:
             main:
@@ -61,7 +61,7 @@ spec:
       users:
         enabled: true
         type: secret
-        name: davinci-autoconverter-samba-users
+        name: samba-access-users
         advancedMounts:
           main:
             main:
@@ -70,28 +70,18 @@ spec:
                 readOnly: true
 
       ingest-input:
-        existingClaim: local-davinci-autoconverter-input
+        existingClaim: immich
         advancedMounts:
           main:
             main:
-              - path: /input
-                readOnly: false
-                subPath: consume
-
-      ingest-output:
-        existingClaim: local-davinci-autoconverter-output
-        advancedMounts:
-          main:
-            main:
-              - path: /smb
-                readOnly: false
-                subPath: consume
+              - path: /storage
+                readOnly: true
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: davinci-autoconverter-samba-config
+  name: samba-access-config
   namespace: media
 data:
   config: |
@@ -111,8 +101,9 @@ data:
       path = /storage
       comment = Shared
       valid users = @smb
+      guest ok = yes
       browseable = yes
       writable = yes
-      read only = no
+      read only = yes
       force user = root
       force group = root

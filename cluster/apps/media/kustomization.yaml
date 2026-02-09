@@ -9,3 +9,4 @@ resources:
   - metube
   - paperless-ngx
   - qbittorrent
+  - samba-access
