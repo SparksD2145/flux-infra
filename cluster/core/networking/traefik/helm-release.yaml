@@ -46,3 +46,11 @@ spec:
       type: LoadBalancer
       externalTrafficPolicy: Cluster
       loadBalancerIP: 10.10.201.1
+
+    ports:
+      ssh:
+        port: 22
+        expose:
+          default: true
+        exposedPort: 22
+        protocol: TCP
