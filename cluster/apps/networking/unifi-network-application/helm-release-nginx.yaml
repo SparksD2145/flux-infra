@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nginx-proxy-unifi-dashboard
+  namespace: networking
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 4.6.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: nginx
+              tag: 1.29.5-perl
+            env:
+              TZ: America/Chicago
+            resources:
+              limits:
+                cpu: 50m
+                memory: 128Mi
+              requests:
+                cpu: 10m
+                memory: 64Mi
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: traefik
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Unifi"
+          hajimari.io/info: "Unifi Dashboard"
+          hajimari.io/icon: "access-point-network"
+        hosts:
+          - host: &host unifi-dashboard.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: acme-crt-secret-sparks-codes
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: nginx-proxy-unifi-dashboard-config
+        advancedMounts:
+          main:
+            main:
+              - path: /etc/nginx/conf.d/server.conf
+                subPath: config
+                readOnly: true

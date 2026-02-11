@@ -102,7 +102,7 @@ spec:
             protocol: UDP
     ingress:
       main:
-        enabled: true
+        enabled: false
         className: traefik
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
