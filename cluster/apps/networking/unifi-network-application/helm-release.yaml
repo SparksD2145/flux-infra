@@ -38,8 +38,8 @@ spec:
               # MONGO_TLS: #optional
             resources:
               limits:
-                cpu: 100m
-                memory: 1G
+                cpu: 200m
+                memory: 2G
               requests:
                 cpu: 50m
                 memory: 1G
