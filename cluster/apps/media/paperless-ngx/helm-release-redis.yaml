@@ -21,7 +21,7 @@ spec:
           main:
             image:
               repository: redis
-              tag: 8.6.0
+              tag: 8.6.1
 
     service:
       main:
