@@ -64,9 +64,6 @@ data:
 
     record:
       enabled: true
-      retain:
-        days: 3
-        mode: all
       alerts:
         retain:
           days: 3
@@ -100,8 +97,6 @@ data:
       enabled: true
 
     genai:
-      enabled: true
-      # Required if enabled: Provider must be one of ollama, gemini, or openai
       provider: ollama
       # Required if provider is ollama. May also be used for an OpenAI API compatible backend with the openai provider.
       base_url: https://ollama.sparks.codes
