@@ -22,9 +22,12 @@ data:
       path: /config/frigate.db
 
     detectors:
-      coral:
+      coral1:
         type: edgetpu
-        device: usb
+        device: pci:0
+      coral2:
+        type: edgetpu
+        device: pci:1
 
     birdseye:
       enabled: true

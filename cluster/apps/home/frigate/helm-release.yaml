@@ -30,7 +30,7 @@ spec:
           annotations:
             reloader.stakater.com/auto: "true"
           nodeSelector:
-            google.feature.node.kubernetes.io/coral: "true"
+            google.feature.node.kubernetes.io/coral-tpu: "true"
             intel.feature.node.kubernetes.io/gpu: "true"
         containers:
           main:
@@ -132,10 +132,15 @@ spec:
         sizeLimit: 4Gi
         globalMounts:
           - path: /dev/shm
-      usb:
+      tpu1:
         enabled: true
         type: hostPath
-        hostPath: /dev/bus/usb
-        hostPathType: Directory
+        hostPath: /dev/apex_0
         globalMounts:
-          - path: /dev/bus/usb
+          - path: /dev/apex_0
+      tpu2:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/apex_1
+        globalMounts:
+          - path: /dev/apex_1

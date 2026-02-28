@@ -1,16 +1,31 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/nfd.k8s-sigs.io/nodefeaturerule_v1alpha1.json
 apiVersion: nfd.k8s-sigs.io/v1alpha1
 kind: NodeFeatureRule
 metadata:
-  name: google-coral-device
+  name: google-coral-device-usb
 spec:
   rules:
     - # Google Coral USB Accelerator
-      name: google.coral
+      name: google.coral.usb
       labels:
-        google.feature.node.kubernetes.io/coral: "true"
+        google.feature.node.kubernetes.io/coral-usb: "true"
       matchFeatures:
         - feature: usb.device
           matchExpressions:
             vendor: { op: In, value: ["1a6e", "18d1"] }
+
+---
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: google-coral-device-tpu
+spec:
+  rules:
+    - # Google Coral PCIe Accelerator
+      name: google.coral.tpu
+      labels:
+        google.feature.node.kubernetes.io/coral-tpu: "true"
+      matchFeatures:
+        - feature: pci.device
+          matchExpressions:
+            vendor: { op: In, value: ["1ac1"] }
