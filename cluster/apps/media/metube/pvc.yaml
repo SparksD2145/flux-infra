@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   local:
-    path: /mnt/media-vault/metube.sparks.codes
+    path: /mnt/local/media-vault/metube.sparks.codes
   nodeAffinity:
     required:
       nodeSelectorTerms:

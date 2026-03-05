@@ -9,7 +9,7 @@ spec:
   capacity:
     storage: 25Gi
   local:
-    path: /mnt/media-vault/media.sparks.codes/config
+    path: /mnt/local/media-vault/media.sparks.codes/config
   nodeAffinity:
     required:
       nodeSelectorTerms:
