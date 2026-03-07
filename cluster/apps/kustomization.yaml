@@ -10,5 +10,5 @@ resources:
   - networking
   - nginx
   - security
-  - system-upgrade
+  # - system-upgrade
   - tools

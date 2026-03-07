@@ -284,7 +284,7 @@ git push
    ```sh
    flux -n flux-system create secret git flux-system \
        --url=ssh://git@github.com/sparksd2145/flux-infra \
-       ---ssh-key-algorithm=ed25519 \
+       --ssh-key-algorithm=ed25519 \
        --private-key-file=./private.key
    ```
 
