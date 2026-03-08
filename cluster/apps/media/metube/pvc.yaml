@@ -5,11 +5,11 @@ metadata:
   name: local-metube-downloads-pv
 spec:
   capacity:
-    storage: 200Gi
+    storage: 20Gi
   accessModes:
     - ReadWriteMany
   local:
-    path: /mnt/local/media-vault/metube.sparks.codes
+    path: /mnt/local/metube.sparks.codes
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -32,4 +32,4 @@ spec:
   storageClassName: ""
   resources:
     requests:
-      storage: 200Gi
+      storage: 20Gi
