@@ -10,7 +10,7 @@ spec:
     storage: 14Ti
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /mnt/local/media-vault/media.sparks.codes/media
+    path: /mnt/local/media.sparks.codes/media
   nodeAffinity:
     required:
       nodeSelectorTerms:
