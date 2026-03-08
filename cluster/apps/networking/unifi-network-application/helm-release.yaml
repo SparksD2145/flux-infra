@@ -54,7 +54,8 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: 10.10.201.2
+        annotations:
+          metallb.io/loadBalancerIPs: 10.10.201.2
         controller: main
         ports:
           http:

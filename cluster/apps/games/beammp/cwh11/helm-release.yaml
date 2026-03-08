@@ -49,7 +49,8 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: "10.10.202.100"
+        annotations:
+          metallb.io/loadBalancerIPs: 10.10.202.100
         controller: main
         ports:
           gameserver:

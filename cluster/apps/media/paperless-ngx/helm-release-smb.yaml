@@ -41,7 +41,8 @@ spec:
         enabled: true
         controller: main
         type: LoadBalancer
-        loadBalancerIP: 10.10.201.13
+        annotations:
+          metallb.io/loadBalancerIPs: 10.10.201.13
         ports:
           smb1:
             port: 139

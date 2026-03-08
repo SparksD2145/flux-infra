@@ -58,7 +58,8 @@ metadata:
     run: s2s-dnsmasq
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.10.201.6
+  annotations:
+    metallb.io/loadBalancerIPs: 10.10.201.6
   ports:
     - port: 53
       targetPort: 53

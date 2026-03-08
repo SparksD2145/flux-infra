@@ -38,8 +38,8 @@ spec:
         enabled: true
         primary: true
         type: LoadBalancer
-        loadBalancerIP: 10.10.201.12
         annotations:
+          metallb.io/loadBalancerIPs: 10.10.201.12
           metallb.universe.tf/allow-shared-ip: mail-svc
         controller: main
         ports:

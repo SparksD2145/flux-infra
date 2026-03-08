@@ -96,7 +96,8 @@ spec:
       targetPort: 3000
       protocol: TCP
   type: LoadBalancer
-  loadBalancerIP: 10.10.201.4
+  annotations:
+    metallb.io/loadBalancerIPs: 10.10.201.4
   selector:
     run: zwavejs2mqtt
 

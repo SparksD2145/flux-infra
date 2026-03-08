@@ -36,8 +36,8 @@ spec:
       main:
         controller: main
         type: LoadBalancer
-        loadBalancerIP: 10.10.201.9
         annotations:
+          metallb.io/loadBalancerIPs: 10.10.201.9
           metallb.universe.tf/allow-shared-ip: "netboot-ip"
         ports:
           http:

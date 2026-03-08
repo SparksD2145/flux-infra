@@ -33,9 +33,8 @@ spec:
       EMQX_AUTH__MNESIA__PASSWORD_HASH: plain
     service:
       type: LoadBalancer
-      loadBalancerIP: 10.10.201.3
-      externalIPs:
-        - 10.10.201.3
+      annotations:
+        metallb.io/loadBalancerIPs: 10.10.201.3
       externalTrafficPolicy: Local
     ingress:
       dashboard:
