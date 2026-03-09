@@ -15,7 +15,7 @@ spec:
         run: zwavejs2mqtt
     spec:
       nodeSelector:
-        kubernetes.io/hostname: whiskey
+        kubernetes.io/hostname: xray
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwave-js-ui:latest
