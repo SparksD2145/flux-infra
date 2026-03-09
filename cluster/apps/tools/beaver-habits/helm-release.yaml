@@ -18,11 +18,6 @@ spec:
   values:
     controllers:
       main:
-        defaultContainerOptions:
-          securityContext:
-            runAsUser: 0
-            runAsGroup: 0
-            fsGroup: 0
         containers:
           main:
             image:
