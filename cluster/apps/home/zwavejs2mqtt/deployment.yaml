@@ -79,6 +79,8 @@ kind: Service
 metadata:
   name: zwavejs2mqtt
   namespace: home
+  annotations:
+    metallb.io/loadBalancerIPs: 10.10.201.4
   labels:
     run: home
 spec:
@@ -92,8 +94,6 @@ spec:
       targetPort: 3000
       protocol: TCP
   type: LoadBalancer
-  annotations:
-    metallb.io/loadBalancerIPs: 10.10.201.4
   selector:
     run: zwavejs2mqtt
 
