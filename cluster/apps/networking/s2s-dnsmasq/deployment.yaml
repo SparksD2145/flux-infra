@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: s2s-dnsmasq
-          image: registry.iwrite.software/sparks/dnsmasq:1.0.0
+          image: registry.iwrite.software/sparks/dnsmasq:c25073c28366adbb77d52e18c4e5f0bc242626b1
           volumeMounts:
             - name: config-vol
               mountPath: /etc/dnsmasq.conf
