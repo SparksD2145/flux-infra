@@ -15,11 +15,7 @@ spec:
         run: zwavejs2mqtt
     spec:
       nodeSelector:
-        zwave-controller: "true"
-      tolerations:
-        - key: "low-memory"
-          operator: "Exists"
-          effect: "NoSchedule"
+        kubernetes.io/hostname: whiskey
       containers:
         - name: zwavejs2mqtt
           image: zwavejs/zwave-js-ui:latest

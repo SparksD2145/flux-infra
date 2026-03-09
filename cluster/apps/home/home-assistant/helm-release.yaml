@@ -18,7 +18,7 @@ spec:
   values:
     defaultPodOptions:
       nodeSelector:
-        kubernetes.io/hostname: romeo
+        kubernetes.io/hostname: whiskey
       dnsConfig:
         options:
           - name: ndots

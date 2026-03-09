@@ -21,11 +21,7 @@ spec:
   values:
     defaultPodOptions:
       nodeSelector:
-        kubernetes.io/hostname: rpi4-poe-3
-      tolerations:
-        - key: "low-memory"
-          operator: "Exists"
-          effect: "NoSchedule"
+        kubernetes.io/hostname: whiskey
       dnsConfig:
         options:
           - name: ndots

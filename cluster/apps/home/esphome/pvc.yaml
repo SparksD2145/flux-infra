@@ -10,7 +10,7 @@ spec:
     storage: 30Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /opt/esphome.sparks.codes
+    path: /mnt/local/esphome.sparks.codes
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - rpi4-poe-3
+                - whiskey
 
 ---
 apiVersion: v1

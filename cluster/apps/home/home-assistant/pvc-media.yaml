@@ -10,7 +10,7 @@ spec:
     storage: 32Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /opt/home.sparks.codes-media
+    path: /mnt/local/home.sparks.codes-media
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -18,7 +18,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - romeo
+                - whiskey
 
 ---
 apiVersion: v1

@@ -10,15 +10,15 @@ spec:
     storage: 2Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /opt/zigbee2mqtt.sparks.codes
+    path: /mnt/local/zigbee2mqtt.sparks.codes
   nodeAffinity:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: zigbee-controller
+            - key: kubernetes.io/hostname
               operator: In
               values:
-                - "true"
+                - whiskey
 
 ---
 apiVersion: v1
