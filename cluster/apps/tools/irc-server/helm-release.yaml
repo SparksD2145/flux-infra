@@ -1,0 +1,68 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: irc-server
+  namespace: tools
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 4.6.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/ergochat/ergo
+              tag: "v2.17.0"
+            env:
+              TZ: "America/Chicago"
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: ircd
+        globalMounts:
+          - path: /ircd/ircd.yaml
+            subPath: ircd.yaml
+          - path: /ircd/ircd.motd
+            subPath: motd
+      data:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteMany
+        storageClass: ceph-filesystem
+        size: 10Gi
+        retain: true
+        globalMounts:
+          - path: /ircd
+      cert:
+        enabled: true
+        type: secret
+        name: acme-crt-secret-sparks-codes
+        globalMounts:
+          - path: /ircd/fullchain.pem
+            subPath: tls.crt
+          - path: /ircd/privkey.pem
+            subPath: tls.key
+    service:
+      main:
+        type: LoadBalancer
+        annotations:
+          metallb.io/loadBalancerIPs: 10.10.201.14
+        controller: main
+        ports:
+          tcp1:
+            protocol: TCP
+            port: 6667
+          tcp2:
+            protocol: TCP
+            port: 6697

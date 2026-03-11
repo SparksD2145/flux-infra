@@ -115,11 +115,11 @@ resource "opnsense_unbound_host_override" "lb-paperless-dropbox" {
   server   = "10.10.201.13"
 }
 
-resource "opnsense_unbound_host_override" "lb-davinci-resolve-samba" {
+resource "opnsense_unbound_host_override" "lb-irc-server" {
   enabled     = true
-  description = "Davinci Resolve Ingest Samba Server"
+  description = "IRC Server"
 
-  hostname = "davinci-converter"
+  hostname = "irc-server"
   domain   = "sparks.codes"
   server   = "10.10.201.14"
 }

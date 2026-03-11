@@ -133,12 +133,12 @@ resource "opnsense_unbound_host_alias" "svc-registry-iwrite-software" {
   domain      = "iwrite.software"
 }
 
-resource "opnsense_unbound_host_alias" "svc-influxdb-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-irc-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "Influxdb dashboard"
-  hostname    = "influxdb"
+  description = "IRC Client"
+  hostname    = "irc"
   domain      = "sparks.codes"
 }
 
