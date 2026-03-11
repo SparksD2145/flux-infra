@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: nginx
-              tag: 1.29.5-perl
+              tag: 1.29.6-perl
             env:
               TZ: America/Chicago
             resources:
