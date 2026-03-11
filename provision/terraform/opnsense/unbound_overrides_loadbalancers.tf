@@ -116,7 +116,7 @@ resource "opnsense_unbound_host_override" "lb-paperless-dropbox" {
 }
 
 resource "opnsense_unbound_host_override" "lb-irc-server" {
-  enabled     = true
+  enabled     = false
   description = "IRC Server"
 
   hostname = "irc-server"

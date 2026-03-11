@@ -6,8 +6,6 @@ resources:
   - beaver-habits
   - hajimari
   # - homebox
-  - irc-server
-  - irc-client
   - littlelink
   # - mailserver
   - netboot.xyz
