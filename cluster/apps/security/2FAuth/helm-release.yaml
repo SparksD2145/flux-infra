@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: 2fauth/2fauth
-              tag: 6.1.0
+              tag: 6.1.1
             securityContext:
               runAsGroup: 1000
               runAsUser: 1000
