@@ -27,10 +27,9 @@ spec:
               TZ: America/Chicago
               GUAC_USER: calibre
               GUAC_PASS: "${MEDIA_CALIBRE_GUAC_PASSWORD}"
-              # PUID: "1001"
-              # PGID: "1001"
-              # UMASK_SET: "022"
-              CLI_ARGS:
+              PUID: "0"
+              PGID: "0"
+              UMASK_SET: "022"
     service:
       main:
         controller: main

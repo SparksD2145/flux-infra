@@ -25,6 +25,8 @@ spec:
               tag: version-0.6.12
             env:
               TZ: America/Chicago
+              PUID: "0"
+              PGID: "0"
     service:
       main:
         controller: main
