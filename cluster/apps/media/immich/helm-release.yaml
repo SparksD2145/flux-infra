@@ -74,12 +74,12 @@ spec:
             env:
               MPLCONFIGDIR: "/cache/matplotlib"
               IMMICH_MEDIA_LOCATION: *mediaLocation
-            resources:
-              requests:
-                cpu: 100m
-                memory: 274M
-              limits:
-                memory: 3949M
+            # resources:
+            #   requests:
+            #     cpu: 100m
+            #     memory: 274M
+            #   limits:
+            #     memory: 3949M
 
       valkey:
         containers:
