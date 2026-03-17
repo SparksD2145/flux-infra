@@ -54,7 +54,8 @@ spec:
                 cpu: 100m
                 memory: 256Mi
               limits:
-                memory: 2Gi
+                cpu: 300m
+                memory: 4Gi
 
       machine-learning:
         strategy: RollingUpdate
@@ -133,7 +134,7 @@ spec:
         annotations:
           hajimari.io/enable: "false"
         hosts:
-          - host: photos-internal.sparks.codes
+          - host: photos.sparks.codes
             paths:
               - path: "/"
                 pathType: "Prefix"
@@ -142,7 +143,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - photos-internal.sparks.codes
+              - photos.sparks.codes
             secretName: acme-crt-secret-sparks-codes
 
     # route:

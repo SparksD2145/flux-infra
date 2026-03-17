@@ -52,6 +52,15 @@ resource "opnsense_unbound_host_alias" "svc-books-backend-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-home-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Home Assistant"
+  hostname    = "home"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-codeserver-home-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -169,6 +178,15 @@ resource "opnsense_unbound_host_alias" "svc-monitoring-sparks-codes" {
   domain      = "sparks.codes"
 }
 
+resource "opnsense_unbound_host_alias" "svc-notify-sparks-codes" {
+  override = opnsense_unbound_host_override.lb-internal-services.id
+
+  enabled     = true
+  description = "Ntfy server"
+  hostname    = "notify"
+  domain      = "sparks.codes"
+}
+
 resource "opnsense_unbound_host_alias" "svc-cwh11-rex-map-mc-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
@@ -282,7 +300,7 @@ resource "opnsense_unbound_host_alias" "svc-photos-sparks-codes" {
 
   enabled     = true
   description = "Photoprism photo storage server"
-  hostname    = "photos-internal"
+  hostname    = "photos"
   domain      = "sparks.codes"
 }
 

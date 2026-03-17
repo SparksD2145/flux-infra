@@ -61,6 +61,23 @@ spec:
           - hosts:
               - notify.sparks.codes
             secretName: acme-crt-secret-sparks-codes
+      internal:
+        enabled: true
+        className: "traefik"
+        annotations:
+          hajimari.io/enable: "false"
+        hosts:
+          - host: notify.sparks.codes
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - photos.sparks.codes
+            secretName: acme-crt-secret-sparks-codes
     persistence:
       config:
         enabled: true
