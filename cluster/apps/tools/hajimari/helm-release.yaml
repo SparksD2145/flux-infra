@@ -39,6 +39,7 @@ spec:
       alwaysTargetBlank: true
       namespaceSelector:
         matchNames:
+          - ai
           - auth
           - databases
           - finance

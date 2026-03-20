@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: ollama-pv
+  name: ollama-web-pv
 spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 45Gi
+    storage: 15Gi
   persistentVolumeReclaimPolicy: Retain
   local:
-    path: /opt/ollama-storage/ollama
+    path: /opt/ollama-storage/ollama-web
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -24,13 +24,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ollama-pvc
-  namespace: tools
+  name: ollama-web-pvc
+  namespace: ai
 spec:
-  volumeName: ollama-pv
+  volumeName: ollama-web-pv
   accessModes:
     - ReadWriteOnce
   storageClassName: ""
   resources:
     requests:
-      storage: 45Gi
+      storage: 15Gi

@@ -9,7 +9,6 @@ resources:
   # - mailserver
   - netboot.xyz
   - ntfy
-  - ollama
   - openspeedtest
   - shlink
   # - uptime-kuma
