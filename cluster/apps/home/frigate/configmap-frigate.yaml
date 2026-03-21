@@ -6,6 +6,7 @@ metadata:
   namespace: home
 data:
   config.yml: |
+    # yaml-language-server: $schema=https://frigate.sparks.codes/api/config/schema.json
     auth:
       enabled: true
       reset_admin_password: False
@@ -66,15 +67,19 @@ data:
           threshold: 0.75
 
     record:
-      enabled: true
+      enabled: True
+      continuous:
+        days: 3
+      motion:
+        days: 7
       alerts:
         retain:
-          days: 3
-          mode: active_objects
+          days: 30
+          mode: all
       detections:
         retain:
-          days: 14
-          mode: active_objects
+          days: 30
+          mode: all
 
     review:
       alerts:
@@ -98,6 +103,7 @@ data:
 
     semantic_search:
       enabled: true
+      reindex: false
 
     genai:
       provider: ollama
@@ -105,7 +111,7 @@ data:
       base_url: https://ollama.sparks.codes
       # Required if gemini or openai
       # api_key: "frigate"
-      model: "moondream:1.8b"
+      model: "gemma3:4b"
       # Optional: The default prompt for generating descriptions. Can use replacement
       # variables like "label", "sub_label", "camera" to make more dynamic. (default: shown below)
       # prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
