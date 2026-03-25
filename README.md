@@ -4,48 +4,30 @@ Highly opinionated template for deploying a single [k3s](https://k3s.io) cluster
 
 The purpose here is to showcase how you can deploy an entire Kubernetes cluster and show it off to the world using the [GitOps](https://www.weave.works/blog/what-is-gitops-really) tool [Flux](https://toolkit.fluxcd.io/). When completed, your Git repository will be driving the state of your Kubernetes cluster. In addition with the help of the [Ansible](https://github.com/ansible-collections/community.sops), [Terraform](https://github.com/carlpett/terraform-provider-sops) and [Flux](https://toolkit.fluxcd.io/guides/mozilla-sops/) SOPS integrations you'll be able to commit Age encrypted secrets to your public repo.
 
-## Overview
 
-- [Introduction](https://github.com/k8s-at-home/template-cluster-k3s#-introduction)
-- [Prerequisites](https://github.com/k8s-at-home/template-cluster-k3s#-prerequisites)
-- [Repository structure](https://github.com/k8s-at-home/template-cluster-k3s#-repository-structure)
-- [Lets go!](https://github.com/k8s-at-home/template-cluster-k3s#-lets-go)
-- [Thanks](https://github.com/k8s-at-home/template-cluster-k3s#-thanks)
-
-## 👋 Introduction
+## Introduction
 
 The following components will be installed in your [k3s](https://k3s.io/) cluster by default. They are only included to get a minimum viable cluster up and running. You are free to add / remove components to your liking but anything outside the scope of the below components are not supported by this template.
 
 Feel free to read up on any of these technologies before you get started to be more familiar with them.
 
 - [cert-manager](https://cert-manager.io/) - SSL certificates - with Cloudflare DNS challenge
-- [calico](https://www.tigera.io/project-calico/) - CNI (container network interface)
-- [echo-server](https://github.com/Ealenn/Echo-Server) - REST Server Tests (Echo-Server) API (useful for debugging HTTP issues)
 - [flux](https://toolkit.fluxcd.io/) - GitOps tool for deploying manifests from the `cluster` directory
 - [hajimari](https://github.com/toboshii/hajimari) - start page with ingress discovery
 - [kube-vip](https://kube-vip.io/) - layer 2 load balancer for the Kubernetes control plane
-- [local-path-provisioner](https://github.com/rancher/local-path-provisioner) - default storage class provided by k3s
 - [metallb](https://metallb.universe.tf/) - bare metal load balancer
 - [reloader](https://github.com/stakater/Reloader) - restart pods when Kubernetes `configmap` or `secret` changes
 - [reflector](https://github.com/emberstack/kubernetes-reflector) - mirror `configmap`s or `secret`s to other Kubernetes namespaces
-- [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller) - automate upgrading k3s
 - [traefik](https://traefik.io) - ingress controller
 
 For provisioning the following tools will be used:
 
-- [Ubuntu](https://ubuntu.com/download/server) - this is a pretty universal operating system that supports running all kinds of home related workloads in Kubernetes
 - [Ansible](https://www.ansible.com) - this will be used to provision the Ubuntu operating system to be ready for Kubernetes and also to install k3s
 - [Terraform](https://www.terraform.io) - in order to help with the DNS settings this will be used to provision an already existing Cloudflare domain and DNS settings
 
-## 📝 Prerequisites
+## Prerequisites
 
-### 💻 Systems
-
-- One or more nodes with a fresh install of [Ubuntu Server 20.04](https://ubuntu.com/download/server). These nodes can be bare metal or VMs.
-- A [Cloudflare](https://www.cloudflare.com/) account with a domain, this will be managed by Terraform.
-- Some experience in debugging problems and a positive attitude ;)
-
-### 🔧 Tools
+### Tools
 
 📍 You should install the below CLI tools on your workstation. Make sure you pull in the latest versions.
 
@@ -74,7 +56,7 @@ For provisioning the following tools will be used:
 | [gitleaks](https://github.com/zricethezav/gitleaks)    | Scan git repos (or files) for secrets                    |
 | [prettier](https://github.com/prettier/prettier)       | Prettier is an opinionated code formatter.               |
 
-### ⚠️ pre-commit
+### pre-commit
 
 It is advisable to install [pre-commit](https://pre-commit.com/) and the pre-commit hooks that come with this repository.
 [sops-pre-commit](https://github.com/k8s-at-home/sops-pre-commit) and [gitleaks](https://github.com/zricethezav/gitleaks) will check to make sure you are not by accident committing your secrets un-encrypted.
@@ -101,7 +83,7 @@ This command checks for new versions of hooks, though it will occasionally make 
 pre-commit autoupdate
 ```
 
-## 📂 Repository structure
+## Repository structure
 
 The Git repository contains the following directories under `cluster` and are ordered below by how Flux will apply them.
 
@@ -161,7 +143,7 @@ source ~/.bashrc
 
 4. Fill out the Age public key in the `.config.env` under `BOOTSTRAP_AGE_PUBLIC_KEY`, **note** the public key should start with `age`...
 
-### ☁️ Global Cloudflare API Key
+### Global Cloudflare API Key
 
 In order to use Terraform and `cert-manager` with the Cloudflare DNS challenge you will need to create a API key.
 
@@ -173,37 +155,7 @@ In order to use Terraform and `cert-manager` with the Cloudflare DNS challenge y
 
 📍 You may wish to update this later on to a Cloudflare **API Token** which can be scoped to certain resources. I do not recommend using a Cloudflare **API Key**, but for the purposes of this template it is easier getting started without having to define which scopes and resources are needed. For more information see the [Cloudflare docs on API Keys and Tokens](https://developers.cloudflare.com/api/).
 
-### 📄 Configuration
-
-📍 The `.config.env` file contains necessary configuration that is needed by Ansible, Terraform and Flux.
-
-📍 It is suggested to use **three control plane nodes**. If you **only need a single control plane node**, make sure **you update** `./provision/ansible/inventory/group_vars/kubernetes/k3s.yml` and set `k3s_use_unsupported_config` to `true`
-
-1. Copy the `.config.sample.env` to `.config.env` and start filling out all the environment variables. **All are required** and read the comments they will explain further what is required.
-
-2. Once that is done, verify the configuration is correct by running `./configure.sh --verify`
-
-3. If you do not encounter any errors run `./configure.sh` to start having the script wire up the templated files and place them where they need to be.
-
-### ⚡ Preparing Ubuntu with Ansible
-
-📍 Here we will be running a Ansible Playbook to prepare Ubuntu for running a Kubernetes cluster.
-
-📍 Nodes are not security hardened by default, you can do this with [dev-sec/ansible-collection-hardening](https://github.com/dev-sec/ansible-collection-hardening) or something similar.
-
-1. Ensure you are able to SSH into you nodes from your workstation with using your private ssh key. This is how Ansible is able to connect to your remote nodes.
-
-2. Install the deps by running `task ansible:deps`
-
-3. Verify Ansible can view your config by running `task ansible:list`
-
-4. Verify Ansible can ping your nodes by running `task ansible:adhoc:ping`
-
-5. Finally, run the Ubuntu Prepare playbook by running `task ansible:playbook:ubuntu-prepare`
-
-6. If everything goes as planned you should see Ansible running the Ubuntu Prepare Playbook against your nodes.
-
-### ⛵ Installing k3s with Ansible
+### Installing k3s with Ansible
 
 📍 Here we will be running a Ansible Playbook to install [k3s](https://k3s.io/) with [this](https://galaxy.ansible.com/xanmanning/k3s) wonderful k3s Ansible galaxy role. After completion, Ansible will drop a `kubeconfig` in `./provision/kubeconfig` for use with interacting with your cluster with `kubectl`.
 

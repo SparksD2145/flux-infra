@@ -1,0 +1,12 @@
+---
+- hosts: linux
+  become: true
+  tasks:
+    - name: Reset Comin directory
+      ansible.builtin.file:
+        path: /var/lib/comin
+        state: absent
+    - name: Restart Comin Service
+      ansible.builtin.systemd_service:
+        name: comin
+        state: restarted
