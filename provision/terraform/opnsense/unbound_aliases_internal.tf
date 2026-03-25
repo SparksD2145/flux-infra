@@ -25,12 +25,12 @@ resource "opnsense_unbound_host_alias" "svc-bambu-studio-sparks-codes" {
   domain      = "sparks.codes"
 }
 
-resource "opnsense_unbound_host_alias" "svc-bambu-storage-sparks-codes" {
+resource "opnsense_unbound_host_alias" "svc-backups-sparks-codes" {
   override = opnsense_unbound_host_override.lb-internal-services.id
 
   enabled     = true
-  description = "Bambu Storage for 3d Printer"
-  hostname    = "bambu-storage"
+  description = "Backups server web ui"
+  hostname    = "backups"
   domain      = "sparks.codes"
 }
 

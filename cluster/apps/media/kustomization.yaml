@@ -9,4 +9,5 @@ resources:
   - metube
   - paperless-ngx
   - qbittorrent
-  - sftp-access
+  # - sftp-access
+  - urbackup

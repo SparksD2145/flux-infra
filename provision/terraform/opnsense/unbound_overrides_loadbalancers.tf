@@ -115,11 +115,11 @@ resource "opnsense_unbound_host_override" "lb-paperless-dropbox" {
   server   = "10.10.201.13"
 }
 
-resource "opnsense_unbound_host_override" "lb-irc-server" {
+resource "opnsense_unbound_host_override" "lb-backups" {
   enabled     = false
-  description = "IRC Server"
+  description = "Backup Server"
 
-  hostname = "irc-server"
+  hostname = "backups-actual"
   domain   = "sparks.codes"
   server   = "10.10.201.14"
 }
