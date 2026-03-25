@@ -1,5 +1,5 @@
 ---
-- hosts: linux
+- hosts: nixos
   become: true
   tasks:
     - name: Reset Comin directory

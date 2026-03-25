@@ -55,6 +55,19 @@ all:
       hosts:
         vm-gpu-1.sparks.codes:
 
+    nixos:
+      vars:
+        executable: /run/current-system/sw/bin/bash
+        ansible_shell_interpreter: /run/current-system/sw/bin/bash
+      hosts:
+        tango.sparks.codes:
+        omega.sparks.codes:
+        sierra.sparks.codes:
+        romeo.sparks.codes:
+        whiskey.sparks.codes:
+        xray.sparks.codes:
+        lambda.sparks.codes:
+
     # -------------------------------------------
     # All Windows Machines ----------------------
     # -------------------------------------------
