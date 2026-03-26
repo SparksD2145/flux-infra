@@ -10,4 +10,3 @@ resources:
   - paperless-ngx
   - qbittorrent
   # - sftp-access
-  - urbackup

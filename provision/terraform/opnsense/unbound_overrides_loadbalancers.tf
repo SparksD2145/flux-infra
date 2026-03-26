@@ -45,7 +45,7 @@ resource "opnsense_unbound_host_override" "lb-zwavejs2mqtt" {
 
 resource "opnsense_unbound_host_override" "lb-nvr" {
   enabled     = false
-  description = "Network video recorder (agent-dvr)"
+  description = "Network video recorder (frigate)"
 
   hostname = "nvr-actual"
   domain   = "sparks.codes"
@@ -62,7 +62,7 @@ resource "opnsense_unbound_host_override" "lb-s2s-dns" {
 }
 
 resource "opnsense_unbound_host_override" "lb-influxdb" {
-  enabled     = true
+  enabled     = false
   description = "Influxdb loadbalancer"
 
   hostname = "influxdb-actual"
