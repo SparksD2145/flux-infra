@@ -43,7 +43,8 @@ resources:
   - minio-charts.yaml
   - mlohr-charts.yaml
   - mongodb-community-charts.yaml
-  - next-cloud-charts.yaml
+  - nextcloud-charts.yaml
+  - nextcloud-aio-charts.yaml
   - nvidia-charts.yaml
   - nvdp-charts.yaml
   - nfs-subdir-external-provisioner-charts.yaml

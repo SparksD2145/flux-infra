@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: nextcloud-aio-charts
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://nextcloud.github.io/all-in-one/
+  timeout: 3m
