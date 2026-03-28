@@ -7,7 +7,6 @@ resources:
   - immich
   - jellyfin
   - metube
-  - nextcloud
   - paperless-ngx
   - qbittorrent
   # - sftp-access
