@@ -53,13 +53,14 @@ all:
 
     linux_dedicated_gpu_servers:
       hosts:
-        vm-gpu-1.sparks.codes:
+        beta.sparks.codes:
 
     nixos:
       vars:
         executable: /run/current-system/sw/bin/bash
         ansible_shell_interpreter: /run/current-system/sw/bin/bash
       hosts:
+        beta.sparks.codes:
         tango.sparks.codes:
         omega.sparks.codes:
         sierra.sparks.codes:
