@@ -10,8 +10,8 @@
 # Tango
 kubectl label node tango node-role.kubernetes.io/gpu=true
 
-# VMs
-# kubectl label node vm-gpu-1 node-role.kubernetes.io/gpu=true
+# Beta
+kubectl label node beta node-role.kubernetes.io/gpu=true
 
 # Lambda
 kubectl label node lambda services/gaming=true
