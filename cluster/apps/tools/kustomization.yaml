@@ -4,11 +4,8 @@ kind: Kustomization
 resources:
   - bambu-studio
   - hajimari
-  # - homebox
   - littlelink
-  # - mailserver
   - netboot.xyz
   - ntfy
   - openspeedtest
   - shlink
-  # - uptime-kuma
