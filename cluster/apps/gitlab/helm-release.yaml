@@ -1416,6 +1416,8 @@ spec:
               privileged = true
               disable_cache = false
               volumes = ["/certs/client", "/cache"]
+              pull_policy = ["if-not-present"]
+              allowed_pull_policies = ["always", "if-not-present"]
             [runners.kubernetes]
               image = "ubuntu:latest"
               privileged = true
