@@ -63,3 +63,4 @@ spec:
     name: intel-gpu-plugin
     sharedDevNum: 1 # TODO: the higher the number, the less resrouce slices each client gets, consider setting this to 1
     nodeFeatureRule: true
+    bypathMode: none
