@@ -36,7 +36,7 @@ data:
       mode: objects
 
     ffmpeg:
-      hwaccel_args: auto
+      hwaccel_args: preset-vaapi
       # output_args:
       #   record: preset-record-generic
 

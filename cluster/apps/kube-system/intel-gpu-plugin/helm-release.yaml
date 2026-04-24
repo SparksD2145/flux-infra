@@ -61,5 +61,5 @@ spec:
     keepHistory: false
   values:
     name: intel-gpu-plugin
-    sharedDevNum: 2 # TODO: the higher the number, the less resrouce slices each client gets, consider setting this to 1
+    sharedDevNum: 1 # TODO: the higher the number, the less resrouce slices each client gets, consider setting this to 1
     nodeFeatureRule: true
