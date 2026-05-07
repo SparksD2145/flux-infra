@@ -1,3 +1,7 @@
+# Archived!
+This repository was superceeded by https://github.com/sparksd2145/homelab !
+
+
 # Flux Infrastructure
 
 Highly opinionated template for deploying a single [k3s](https://k3s.io) cluster with [Ansible](https://www.ansible.com) and [Terraform](https://www.terraform.io) backed by [Flux](https://toolkit.fluxcd.io/) and [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/).
